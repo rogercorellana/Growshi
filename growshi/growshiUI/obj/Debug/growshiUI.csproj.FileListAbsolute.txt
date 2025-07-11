@@ -1,0 +1,11 @@
+C:\Users\Compu\source\repos\growshi\growshiUI\bin\Debug\growshiUI.exe.config
+C:\Users\Compu\source\repos\growshi\growshiUI\bin\Debug\growshiUI.exe
+C:\Users\Compu\source\repos\growshi\growshiUI\bin\Debug\growshiUI.pdb
+C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.csproj.AssemblyReference.cache
+C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.Login.resources
+C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.Properties.Resources.resources
+C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.Usuario.InicioUsuario.resources
+C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.csproj.GenerateResource.cache
+C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.csproj.CoreCompileInputs.cache
+C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.exe
+C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.pdb

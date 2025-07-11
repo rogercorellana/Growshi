@@ -1,0 +1,73 @@
+UNIVERSO DE ROLES Y PERMISOS
+
+// --- ROL BÁSICO DE USUARIO ---
+[C] Rol USUARIO
+ ├── (H) CU001 IniciarSesion
+ ├── (H) CU002 RecuperarCuenta
+ ├── (H) CU003 CerrarSesion
+ └── (H) CU004 CambiarIdioma
+
+
+// --- ROL BÁSICO DE AGRICULTOR ---
+
+[C] Rol Agricultor
+ │
+ │ // 1. Contiene sus propias patentes exclusivas
+ │ ├── (H) CU005 GestionarBaldeEnPlanta
+ │ ├── (H) CU006 RegistrarPlanta
+ │ ├── (H) CU007 EliminarPlanta
+ │ └── (H) CU008 ModificarPlanta...
+ │
+ │ // 2. Y ADEMÁS, contiene el rol completo de USUARIO
+ │
+ ├── [C] Rol USUARIO  // <-- Reutilizamos el rol completo de USUARIO
+ │    ├── (H) CU001 IniciarSesion
+ │    ├── (H) CU002 RecuperarCuenta
+ │    ├── (H) CU003 CerrarSesion
+ │    └── (H) CU004 CambiarIdioma
+ 
+
+
+
+// --- ROL BÁSICO DE TÉCNICO ---
+
+
+[C] Rol TECNICO
+ │
+ │ // 1. Contiene sus propias patentes exclusivas
+ │ ├── (H) CU009 ConfigurarSensores
+ │ ├── (H) CU010 VerBitacora
+ │ ├── (H) CU011 VerReportes
+ │ └── (H) CU012 GestionarSoftware
+ │
+ │ // 2. Y ADEMÁS, contiene el rol completo de USUARIO
+ │
+ ├── [C] Rol USUARIO  // <-- Reutilizamos el rol completo de USUARIO
+ │    ├── (H) CU001 IniciarSesion
+ │    ├── (H) CU002 RecuperarCuenta
+ │    ├── (H) CU003 CerrarSesion
+ │    └── (H) CU004 CambiarIdioma
+
+
+// --- ROL MÁXIMO DE ADMINISTRADOR ---
+[C] Rol Administrador (Total)
+ │
+ │ // 1. Contiene sus propias patentes exclusivas
+ │ ├── (H) CU020 GestionarUsuarios
+ │ ├── (H) CU021 GestionarBitacora
+ │ ├── (H) CU022 ConfigurarParametrosGlobales
+ │
+ │ // 2. Y ADEMÁS, contiene los otros roles completos
+ │
+ ├── [C] Rol USUARIO  // <-- Reutilizamos el rol completo de USUARIO
+ │    ├── (H) CU001 IniciarSesion
+ │    ├── (H) CU002 RecuperarCuenta
+ │    ├── (H) CU003 CerrarSesion
+ │    └── (H) CU004 CambiarIdioma
+ │
+ └── [C] Rol TECNICO  // <-- Reutilizamos el rol completo de TECNICO
+      ├── (H) CU009 ConfigurarSensores
+      ├── (H) CU010 VerBitacora
+      ├── (H) CU011 VerReportes
+      └── (H) CU012 GestionarSoftware
+	 
