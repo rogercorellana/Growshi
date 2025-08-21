@@ -9,3 +9,17 @@ C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.csproj.Generat
 C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.csproj.CoreCompileInputs.cache
 C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.exe
 C:\Users\Compu\source\repos\growshi\growshiUI\obj\Debug\growshiUI.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\bin\Debug\growshiUI.exe.config
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\bin\Debug\growshiUI.exe
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\bin\Debug\growshiUI.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\bin\Debug\MetroFramework.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.csproj.AssemblyReference.cache
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.Login.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.Properties.Resources.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.Usuario.InicioUsuario.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.csproj.GenerateResource.cache
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.csproj.CoreCompileInputs.cache
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.csproj.Up2Date
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.exe
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\growshi\growshiUI\obj\Debug\growshiUI.pdb
