@@ -37,3 +37,4 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Desarrollo\growshiUI\obj\Debug\grow
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.Up2Date
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.exe
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.exe.config

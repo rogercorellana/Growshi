@@ -14,6 +14,7 @@ namespace growshiUI
 {
     public partial class Login : MetroFramework.Forms.MetroForm
     {
+
         public Login()
         {
 
@@ -23,16 +24,6 @@ namespace growshiUI
 
         private void Login_Load(object sender, EventArgs e)
         {
-
-          
-
-            textBoxUsuario.PromptText = "Usuario o Email";
-            textBoxContraseña.PromptText = "Contraseña";
-            textBoxUsuario.Text = null;
-            textBoxContraseña.Text = null;
-
-            // 3. Quitamos el foco inicial.
-            this.ActiveControl = null;
 
 
 
