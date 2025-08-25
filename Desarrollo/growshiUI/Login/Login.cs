@@ -28,9 +28,22 @@ namespace growshiUI
 
         }
 
+
+
         //LOGICA UI
 
+        private void buttonIniciarSesion_Click(object sender, EventArgs e)
+        {
 
+
+            string usuarioLogin = textBoxUsuario.Text;
+            string contraseñaLogin = textBoxContraseña.Text;
+
+            BLL.UsuarioBLL.GetInstance.iniciarSesion(usuarioLogin,contraseñaLogin);
+
+
+
+        }
 
 
 

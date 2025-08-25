@@ -72,6 +72,7 @@
             this.buttonIniciarSesion.TabIndex = 0;
             this.buttonIniciarSesion.Text = "Iniciar Sesion";
             this.buttonIniciarSesion.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.buttonIniciarSesion.Click += new System.EventHandler(this.buttonIniciarSesion_Click);
             // 
             // pictureBox3
             // 
