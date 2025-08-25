@@ -37,6 +37,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -46,7 +48,7 @@
             // textBoxUsuario
             // 
             this.textBoxUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.textBoxUsuario.Location = new System.Drawing.Point(264, 34);
+            this.textBoxUsuario.Location = new System.Drawing.Point(262, 57);
             this.textBoxUsuario.Name = "textBoxUsuario";
             this.textBoxUsuario.Size = new System.Drawing.Size(168, 23);
             this.textBoxUsuario.TabIndex = 1;
@@ -54,7 +56,7 @@
             // textBoxContraseña
             // 
             this.textBoxContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.textBoxContraseña.Location = new System.Drawing.Point(264, 73);
+            this.textBoxContraseña.Location = new System.Drawing.Point(262, 117);
             this.textBoxContraseña.Name = "textBoxContraseña";
             this.textBoxContraseña.PasswordChar = '*';
             this.textBoxContraseña.Size = new System.Drawing.Size(168, 23);
@@ -63,7 +65,7 @@
             // 
             // buttonIniciarSesion
             // 
-            this.buttonIniciarSesion.Location = new System.Drawing.Point(240, 141);
+            this.buttonIniciarSesion.Location = new System.Drawing.Point(238, 184);
             this.buttonIniciarSesion.Name = "buttonIniciarSesion";
             this.buttonIniciarSesion.Size = new System.Drawing.Size(192, 23);
             this.buttonIniciarSesion.Style = MetroFramework.MetroColorStyle.Green;
@@ -75,7 +77,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(240, 73);
+            this.pictureBox3.Location = new System.Drawing.Point(238, 117);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 23);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -86,7 +88,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(240, 34);
+            this.pictureBox2.Location = new System.Drawing.Point(238, 57);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 23);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -98,9 +100,9 @@
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(8, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 26);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(206, 170);
+            this.pictureBox1.Size = new System.Drawing.Size(203, 200);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -108,9 +110,9 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(-1, 4);
+            this.pictureBox4.Location = new System.Drawing.Point(-5, 26);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(443, 188);
+            this.pictureBox4.Size = new System.Drawing.Size(453, 226);
             this.pictureBox4.TabIndex = 12;
             this.pictureBox4.TabStop = false;
             // 
@@ -120,11 +122,35 @@
             this.metroLink1.CustomBackground = true;
             this.metroLink1.CustomForeColor = true;
             this.metroLink1.ForeColor = System.Drawing.Color.Black;
-            this.metroLink1.Location = new System.Drawing.Point(308, 102);
+            this.metroLink1.Location = new System.Drawing.Point(306, 146);
             this.metroLink1.Name = "metroLink1";
             this.metroLink1.Size = new System.Drawing.Size(124, 16);
             this.metroLink1.TabIndex = 13;
             this.metroLink1.Text = "Olvide mi contraseña";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
+            this.metroLabel1.CustomBackground = true;
+            this.metroLabel1.Location = new System.Drawing.Point(238, 35);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(53, 19);
+            this.metroLabel1.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroLabel1.TabIndex = 14;
+            this.metroLabel1.Text = "Usuario";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
+            this.metroLabel2.CustomBackground = true;
+            this.metroLabel2.Location = new System.Drawing.Point(238, 95);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(75, 19);
+            this.metroLabel2.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroLabel2.TabIndex = 15;
+            this.metroLabel2.Text = "Contraseña";
             // 
             // Login
             // 
@@ -132,7 +158,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(704, 425);
+            this.ClientSize = new System.Drawing.Size(448, 253);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox3);
@@ -151,6 +179,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -164,6 +193,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
         private MetroFramework.Controls.MetroLink metroLink1;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
     }
 }
 

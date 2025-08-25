@@ -19,7 +19,6 @@ namespace growshiUI
         {
 
             InitializeComponent();
-            this.ActiveControl = null;
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -28,6 +27,12 @@ namespace growshiUI
 
 
         }
+
+        //LOGICA UI
+
+
+
+
 
 
     }
