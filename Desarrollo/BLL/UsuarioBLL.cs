@@ -26,9 +26,9 @@ namespace BLL
         #endregion
 
 
-        public void iniciarSesion(string usuario, string contraseña)
+        public bool iniciarSesion(string usuario, string contraseña)
         {
-
+            return true;
         }
 
     }

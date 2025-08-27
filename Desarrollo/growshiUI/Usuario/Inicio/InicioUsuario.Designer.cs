@@ -167,6 +167,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.menuStrip1);
             this.Name = "InicioUsuario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InicioUsuario_FormClosing);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
