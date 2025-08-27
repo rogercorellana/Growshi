@@ -31,5 +31,10 @@ namespace BLL
             return true;
         }
 
+        public bool traerUsuarioDeLaDB(string usuario, string contraseña)
+        {
+            return true;
+        }
+
     }
 }
