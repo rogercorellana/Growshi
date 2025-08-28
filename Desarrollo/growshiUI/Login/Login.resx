@@ -1047,7 +1047,7 @@
   <data name="pictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAA/7JJREFUeF7s/fn/rldRJ3rnUc/x6T4q2rbafRy6Pdrajq2tOBwZHFEh4AQEmUdt
+        vQAADr0BR/uQrQAA/7JJREFUeF7s/fn/rldRJ3rnUc/x6T4q2rbafRy6Pdrajq2tOBwZHFEh4AQEmUdt
         hDAkAkJAZnYggSQkJCHZIQNJdoAMTBkImQkJYZIhoIJz2/bzX9xPfarqs1bVWnVd931/d+xGzQ+f1/3N
         xp99v6pWVV3HXPO5922u+dx7N1d/1nLVZ67RXCl/X/nZazbvkb/f/ZmrN+/+E+aqzbs+faXmik8h79lc
         HnLZp94teZfkyOayT16xufQTV2ze+Yl3SeT345dvLtFctrnw4+/cXHjPpSnv+Ng7Wy64+5LN+XdftDnv
@@ -7722,10 +7722,13 @@
         dj1jj6Dnh2lWE/H7L7phW8/X3L7x0f8PjGMCZ54O7JcAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="temporizadorBloqueo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAA/7JJREFUeF7s/fn/rldRJ3rnUc/x6T4q2rbafRy6Pdrajq2tOBwZHFEh4AQEmUdt
+        vAAADrwBlbxySQAA/7JJREFUeF7s/fn/rldRJ3rnUc/x6T4q2rbafRy6Pdrajq2tOBwZHFEh4AQEmUdt
         hDAkAkJAZnYggSQkJCHZIQNJdoAMTBkImQkJYZIhoIJz2/bzX9xPfarqs1bVWnVd931/d+xGzQ+f1/3N
         xp99v6pWVV3HXPO5922u+dx7N1d/1nLVZ67RXCl/X/nZazbvkb/f/ZmrN+/+E+aqzbs+faXmik8h79lc
         HnLZp94teZfkyOayT16xufQTV2ze+Yl3SeT345dvLtFctrnw4+/cXHjPpSnv+Ng7Wy64+5LN+XdftDnv

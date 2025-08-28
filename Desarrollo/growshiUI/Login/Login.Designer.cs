@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.textBoxUsuario = new MetroFramework.Controls.MetroTextBox();
             this.textBoxContraseña = new MetroFramework.Controls.MetroTextBox();
@@ -39,6 +40,8 @@
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.temporizadorBloqueo = new System.Windows.Forms.Timer(this.components);
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -153,6 +156,21 @@
             this.metroLabel2.TabIndex = 15;
             this.metroLabel2.Text = "Contraseña";
             // 
+            // temporizadorBloqueo
+            // 
+            this.temporizadorBloqueo.Interval = 500;
+            this.temporizadorBloqueo.Tick += new System.EventHandler(this.temporizadorBloqueo_Tick);
+            // 
+            // progressBar
+            // 
+            this.progressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
+            this.progressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.progressBar.Location = new System.Drawing.Point(-5, 229);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(453, 23);
+            this.progressBar.TabIndex = 16;
+            this.progressBar.Visible = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +178,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(448, 253);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroLink1);
@@ -196,6 +215,8 @@
         private MetroFramework.Controls.MetroLink metroLink1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private System.Windows.Forms.Timer temporizadorBloqueo;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

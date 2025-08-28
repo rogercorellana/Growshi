@@ -150,15 +150,45 @@ namespace growshiUI
         }
 
         //Bloquear textboxs, iniciar temporizador bloqueo
+        private int segundosRestantes;
+
         public void BloquearForm() {
+            segundosRestantes = 5;
+
             textBoxUsuario.Enabled = false;
             textBoxContraseña.Enabled = false;
             buttonIniciarSesion.Enabled = false;
+           
 
-            MessageBox.Show("Cuenta bloqueada por favor vuelve a intentarlo mas tarde");
+            progressBar.Visible = true;
+            progressBar.Maximum = 5;      
+            progressBar.Value = 5;
+
+            temporizadorBloqueo.Start();
         }
 
+        private void temporizadorBloqueo_Tick(object sender, EventArgs e)
+        {
+            segundosRestantes--;
+            progressBar.Value = segundosRestantes;
+
+            if(segundosRestantes <= 0)
+            {
+                temporizadorBloqueo.Stop();
+
+                textBoxUsuario.Enabled = true;
+                textBoxContraseña.Enabled = true;
+                buttonIniciarSesion.Enabled = true;
+
+                progressBar.Visible = false;
+            }
+
+            
+
+        }
 
         #endregion
+
+
     }
 }

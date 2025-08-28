@@ -3,23 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{61B86F09-5EEE-40DE-BFA8-401A670B4D68}|..\\DAL\\DAL.csproj|c:\\users\\roger\\desktop\\growshi definitivo\\growshi\\desarrollo\\dal\\daos\\sqlhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1129D7ED-E310-4BCA-9B07-85159ED2308A}|..\\BE\\BE.csproj|c:\\users\\roger\\desktop\\growshi definitivo\\growshi\\desarrollo\\be\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B86F09-5EEE-40DE-BFA8-401A670B4D68}|..\\DAL\\DAL.csproj|c:\\users\\roger\\desktop\\growshi definitivo\\growshi\\desarrollo\\dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|DAL||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2557642-39CC-4203-99B5-2D924EB0AC20}|..\\BLL\\BLL.csproj|c:\\users\\roger\\desktop\\growshi definitivo\\growshi\\desarrollo\\bll\\usuariobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\usuario\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuario\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo\\growshi\\desarrollo\\growshiui\\login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:login\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\usuario\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuario\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61B86F09-5EEE-40DE-BFA8-401A670B4D68}|..\\DAL\\DAL.csproj|c:\\users\\roger\\desktop\\growshi definitivo\\growshi\\desarrollo\\dal\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,7 +40,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -37,20 +48,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InicioUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\Usuario\\Inicio\\InicioUsuario.cs",
-              "RelativeDocumentMoniker": "Usuario\\Inicio\\InicioUsuario.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\Usuario\\Inicio\\InicioUsuario.cs",
-              "RelativeToolTip": "Usuario\\Inicio\\InicioUsuario.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCYAAABUAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "SqlHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\DAL\\Daos\\SqlHelper.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\Daos\\SqlHelper.cs",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\DAL\\Daos\\SqlHelper.cs",
+              "RelativeToolTip": "..\\DAL\\Daos\\SqlHelper.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBYAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T19:02:57.412Z",
+              "WhenOpened": "2025-08-27T21:15:18.974Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\BE\\Usuario.cs",
+              "RelativeDocumentMoniker": "..\\BE\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\BE\\Usuario.cs",
+              "RelativeToolTip": "..\\BE\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T20:45:44.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DAL",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\DAL\\DAL.csproj",
+              "RelativeDocumentMoniker": "..\\DAL\\DAL.csproj",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\DAL\\DAL.csproj",
+              "RelativeToolTip": "..\\DAL\\DAL.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-27T20:43:46.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\DAL\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\Class1.cs",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\DAL\\Class1.cs",
+              "RelativeToolTip": "..\\DAL\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T20:43:23.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "InicioUsuario.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\Usuario\\Inicio\\InicioUsuario.cs",
               "RelativeDocumentMoniker": "Usuario\\Inicio\\InicioUsuario.cs",
@@ -62,7 +111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "UsuarioBLL.cs",
               "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\BLL\\UsuarioBLL.cs",
               "RelativeDocumentMoniker": "..\\BLL\\UsuarioBLL.cs",
@@ -75,20 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\Login\\Login.cs",
-              "RelativeDocumentMoniker": "Login\\Login.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\Login\\Login.cs",
-              "RelativeToolTip": "Login\\Login.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAwwIIAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T15:05:02.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Login.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\Login\\Login.cs",
               "RelativeDocumentMoniker": "Login\\Login.cs",
@@ -97,6 +133,19 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-10T14:51:36.384Z",
               "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\Login\\Login.cs",
+              "RelativeDocumentMoniker": "Login\\Login.cs",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo\\Growshi\\Desarrollo\\growshiUI\\Login\\Login.cs",
+              "RelativeToolTip": "Login\\Login.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAawC4AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-25T15:05:02.168Z",
+              "EditorCaption": ""
             }
           ]
         }
