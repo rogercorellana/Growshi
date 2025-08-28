@@ -54,144 +54,58 @@ namespace DAL.DAO
         DataTable table;
 
         //CRUD
-        //R(READ) ExecuteReader
 
-        // Ado Conectado - Con Query
-      
-        //traigo una fila de la DB, y se la asigno a un Datatable usando una consulta query
+        #region R(READ) ExecuteReader - Lee filas y columnas  - Devuelve: DataTable o SqlDataReader
 
-        //lo uso de la forma donde lee en la DB y carga a un Datatable todo. 
-        //DataTable usuarios = miSqlHelper.ExecuteReader("SELECT * FROM Usuarios");
+       
+        //string consulta = "SELECT * FROM Usuario WHERE NombreUsuario = @nombre";
 
-        
-        public DataTable ExecuteReader(string query)
+        public DataTable ExecuteReader(string query, List<SqlParameter> parametros)
         {
-
-            table = new DataTable();
-
-            try
+            var table = new DataTable();
+            using (var connection = new SqlConnection(this.ConnString))
             {
-                using (connection = new SqlConnection(this.ConnString))
+                connection.Open();
+                using (var command = connection.CreateCommand())
                 {
-                    command = connection.CreateCommand();
-                    command.CommandType = CommandType.Text;
                     command.CommandText = query;
-
-                    connection.Open();
-
-                    reader = command.ExecuteReader();
+                    // Línea clave: los parámetros se añaden de forma segura
+                    if (parametros != null)
+                    {
+                        command.Parameters.AddRange(parametros.ToArray());
+                    }
+                    var reader = command.ExecuteReader();
                     table.Load(reader);
-
-                    connection.Close();
                 }
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
             return table;
         }
+        #endregion
 
 
 
-        public DataTable ExecuteTable(string StoreProcedureName, List<SqlParameter> parameters)
+        #region CUD(CREATE,UPDATE,DELETE) ExecuteNonQuery - Escribir datos (INSERT, UPDATE, DELETE) - Devuelve: int(filas afectadas)
+
+        //EJEMPLO DE USO
+        //int resultado = miSqlHelper.ExecuteNonQuery("DELETE FROM Usuarios WHERE Activo = 0");
+
+        public int ExecuteNonQuery(string query)
         {
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataSet dt = new DataSet();
-
-            try
-            {
-                using (connection = new SqlConnection(this.ConnString))
-                {
-                    command = connection.CreateCommand();
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = StoreProcedureName;
-
-                    adapter.SelectCommand = command;
-
-                    adapter.Fill(dt);
-
-                    return dt.Tables[0];
-
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-
-        }
-
-        public bool ExecuteNonQuery(string StoreProcedure, List<SqlParameter> parameters)
-        {
-            bool returnValue = false;
-
-
+            int filasAfectadas = 0;
             using (connection = new SqlConnection(this.ConnString))
             {
-                command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = StoreProcedure;
-
-                if (parameters != null)
-                {
-                    command.Parameters.AddRange(parameters.ToArray());
-                }
-
                 connection.Open();
-
-                if (command.ExecuteNonQuery() > 0)
+                using (command = connection.CreateCommand())
                 {
-                    returnValue = true;
-                }
-
-            }
-
-            return returnValue;
-
-
-        }
-
-        // ADO Conectado - Con Store Procedure
-        public DataTable ExecuteReader(string StoreProcedureName, List<SqlParameter> parameters)
-        {
-            table = new DataTable();
-
-            try
-            {
-                using (connection = new SqlConnection(this.ConnString))
-                {
-                    command = connection.CreateCommand();
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = StoreProcedureName;
-
-                    if (parameters != null)
-                    {
-                        command.Parameters.AddRange(parameters.ToArray());
-                    }
-
-                    connection.Open();
-
-                    reader = command.ExecuteReader();
-                    table.Load(reader);
-
-                    connection.Close();
-
-                    return table;
-
+                    command.CommandText = query;
+                    filasAfectadas = command.ExecuteNonQuery();
                 }
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-
+            return filasAfectadas;
         }
+
+        #endregion 
+
+
     }
 }
