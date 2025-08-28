@@ -53,47 +53,20 @@ namespace DAL.DAO
         SqlDataReader reader;
         DataTable table;
 
-        // ADO Conectado - Con Store Procedure
-        public DataTable ExecuteReader(string StoreProcedureName, List<SqlParameter> parameters)
-        {
-            table = new DataTable();
-
-            try
-            {
-                using (connection = new SqlConnection(this.ConnString))
-                {
-                    command = connection.CreateCommand();
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = StoreProcedureName;
-
-                    if (parameters != null)
-                    {
-                        command.Parameters.AddRange(parameters.ToArray());
-                    }
-
-                    connection.Open();
-
-                    reader = command.ExecuteReader();
-                    table.Load(reader);
-
-                    connection.Close();
-
-                    return table;
-
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-
-        }
+        //CRUD
+        //R(READ) ExecuteReader
 
         // Ado Conectado - Con Query
+      
+        //traigo una fila de la DB, y se la asigno a un Datatable usando una consulta query
+
+        //lo uso de la forma donde lee en la DB y carga a un Datatable todo. 
+        //DataTable usuarios = miSqlHelper.ExecuteReader("SELECT * FROM Usuarios");
+
+        
         public DataTable ExecuteReader(string query)
         {
+
             table = new DataTable();
 
             try
@@ -120,6 +93,7 @@ namespace DAL.DAO
 
             return table;
         }
+
 
 
         public DataTable ExecuteTable(string StoreProcedureName, List<SqlParameter> parameters)
@@ -178,6 +152,44 @@ namespace DAL.DAO
             }
 
             return returnValue;
+
+
+        }
+
+        // ADO Conectado - Con Store Procedure
+        public DataTable ExecuteReader(string StoreProcedureName, List<SqlParameter> parameters)
+        {
+            table = new DataTable();
+
+            try
+            {
+                using (connection = new SqlConnection(this.ConnString))
+                {
+                    command = connection.CreateCommand();
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = StoreProcedureName;
+
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters.ToArray());
+                    }
+
+                    connection.Open();
+
+                    reader = command.ExecuteReader();
+                    table.Load(reader);
+
+                    connection.Close();
+
+                    return table;
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
 
         }
