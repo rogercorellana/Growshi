@@ -74,34 +74,35 @@ namespace DAL.DAO
                     {
                         command.Parameters.AddRange(parametros.ToArray());
                     }
-                    var reader = command.ExecuteReader();
-                    table.Load(reader);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        table.Load(reader);
+                    }
                 }
             }
             return table;
         }
         #endregion
 
-
-
         #region CUD(CREATE,UPDATE,DELETE) ExecuteNonQuery - Escribir datos (INSERT, UPDATE, DELETE) - Devuelve: int(filas afectadas)
 
-        //EJEMPLO DE USO
-        //int resultado = miSqlHelper.ExecuteNonQuery("DELETE FROM Usuarios WHERE Activo = 0");
-
-        public int ExecuteNonQuery(string query)
+        public int ExecuteNonQuery(string query, List<SqlParameter> parameters)
         {
-            int filasAfectadas = 0;
-            using (connection = new SqlConnection(this.ConnString))
+            int rowsAffected = 0;
+            using (var connection = new SqlConnection(this.ConnString))
             {
                 connection.Open();
-                using (command = connection.CreateCommand())
+                using (var command = connection.CreateCommand())
                 {
                     command.CommandText = query;
-                    filasAfectadas = command.ExecuteNonQuery();
+                    if (parameters != null)
+                    {
+                        command.Parameters.AddRange(parameters.ToArray());
+                    }
+                    rowsAffected = command.ExecuteNonQuery();
                 }
             }
-            return filasAfectadas;
+            return rowsAffected;
         }
 
         #endregion 

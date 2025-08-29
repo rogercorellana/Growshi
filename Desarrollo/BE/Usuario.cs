@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    /// <summary>
+    /// Representa a un usuario autenticado dentro de la aplicación.
+    /// Esta clase es un DTO seguro que no contiene datos sensibles.
+    /// </summary>
     public class Usuario
     {
-        public string usuarioId { get; set; }
-        public string contraseña { get; set; }
-        public string claveRecuperacion { get; set; }
+        public int IdUsuario { get; set; }
+        public string NombreUsuario { get; set; }
         public int IntentosUsuario { get; set; }
 
 
