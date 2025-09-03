@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace DAL.Mappers
 {
-    internal static class UsuarioMapper
+    public static class UsuarioMapper
     {
         public static Usuario MapearDesdeDataRow(DataRow fila)
         {
-            // Asegúrate de que los nombres de columna en fila["..."]
-            // coincidan EXACTAMENTE con tu tabla de base de datos.
+            // asegurar que los nombres de columna en fila["..."]
+            // coincidan EXACTAMENTE con la DB.
             return new Usuario
             {
-                IdUsuario = (int)fila["UsuarioID"],
-                NombreUsuario = fila["NombreUsuario"].ToString(),
-                IntentosUsuario = (int)fila["IntentosUsuario"]
+                NombreUsuario = fila["UsuarioNombre"].ToString(),
             };
         }
     }

@@ -12,9 +12,7 @@ namespace BE
     /// </summary>
     public class Usuario
     {
-        public int IdUsuario { get; set; }
         public string NombreUsuario { get; set; }
-        public int IntentosUsuario { get; set; }
 
 
     }

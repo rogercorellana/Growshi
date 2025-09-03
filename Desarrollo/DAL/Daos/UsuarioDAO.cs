@@ -21,7 +21,7 @@ namespace DAL
         public DataTable ObtenerDatosCrudosPorNombre(string nombreUsuario)
         {
             // La consulta trae todas las columnas necesarias para la validación.
-            string consulta = "SELECT * FROM Usuario WHERE usuario = @nombre"; // Ajusta el nombre de la columna si es diferente
+            string consulta = "SELECT * FROM Usuario WHERE UsuarioNombre = @nombre"; // Ajusta el nombre de la columna si es diferente
             var parametros = new List<SqlParameter> { new SqlParameter("@nombre", nombreUsuario) };
 
             return SqlHelper.GetInstance().ExecuteReader(consulta, parametros);
@@ -32,7 +32,7 @@ namespace DAL
         /// </summary>
         public void ActualizarIntentos(int usuarioId, int nuevosIntentos)
         {
-            string consulta = "UPDATE Usuario SET intentos = @intentos WHERE UsuarioID = @id"; // Ajusta los nombres de las columnas
+            string consulta = "UPDATE Usuario SET UsuarioIntentos = @intentos WHERE UsuarioID = @id"; // Ajusta los nombres de las columnas
             var parametros = new List<SqlParameter>
             {
                 new SqlParameter("@intentos", nuevosIntentos),

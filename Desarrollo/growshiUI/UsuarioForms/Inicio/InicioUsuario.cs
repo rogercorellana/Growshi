@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace growshiUI.Usuario
+namespace growshiUI.UsuarioForms
 {
     public partial class InicioUsuario : Form
     {
-        public InicioUsuario()
+
+        public Usuario UsuarioActual { get; private set; }
+
+        public InicioUsuario(Usuario usuario)
         {
             InitializeComponent();
+            this.UsuarioActual = usuario;
+
+            
+            // Podrías tener lógica como:
+            // if (this.UsuarioActual.EsAdmin) { botonDeAdmin.Visible = true; }
         }
 
         private void InicioUsuario_FormClosing(object sender, FormClosingEventArgs e)
@@ -37,6 +46,11 @@ namespace growshiUI.Usuario
 
             // Si el usuario hace clic en "Sí", no hacemos nada.
             // El código simplemente continúa y el formulario se cierra normalmente.
+        }
+
+        private void InicioUsuario_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
