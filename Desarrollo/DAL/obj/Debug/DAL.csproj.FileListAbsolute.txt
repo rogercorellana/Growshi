@@ -7,3 +7,5 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\obj\Debug\DAL.c
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.Up2Date
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\obj\Debug\DAL.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\obj\Debug\DAL.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.pdb

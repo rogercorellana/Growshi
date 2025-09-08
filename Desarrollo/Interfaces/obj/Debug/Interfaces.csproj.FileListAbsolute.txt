@@ -4,3 +4,6 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\obj\Debu
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\bin\Debug\BE.dll
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\bin\Debug\BE.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.Up2Date

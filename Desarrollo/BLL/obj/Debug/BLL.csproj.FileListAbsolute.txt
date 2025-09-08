@@ -3,11 +3,9 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\BLL.p
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\BE.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\DAL.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\Interfaces.dll
-C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\Services.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\BE.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\DAL.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\Interfaces.pdb
-C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\Services.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.Up2Date

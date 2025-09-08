@@ -28,6 +28,8 @@ namespace BLL
         //}
         //#endregion
 
+
+
         private readonly UsuarioDAO usuarioDAO;
 
         public UsuarioBLL()
