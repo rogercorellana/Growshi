@@ -46,8 +46,7 @@ namespace BLL
 
         public Usuario Login(string username, string password)
         {
-            // --- TU LÓGICA ORIGINAL SE MANTIENE INTACTA ---
-
+            // 0. Validacion formularios
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 throw new ArgumentException("El nombre de usuario y la contraseña no pueden estar vacíos.");
@@ -58,20 +57,24 @@ namespace BLL
 
             if (tablaUsuario.Rows.Count == 0)
             {
+                //si no existen registros devuelvo null y corto
                 return null;
             }
 
+            // si si existen registros, es decir user existente en la DB
             // 2. Extraemos los datos necesarios del DataRow.
             DataRow filaUsuario = tablaUsuario.Rows[0];
             int intentos = Convert.ToInt32(filaUsuario["UsuarioIntentos"]);
-            string contraseñaGuardada = filaUsuario["UsuarioContraseña"].ToString(); // <-- Obtenemos el hash
+            string contraseñaGuardada = filaUsuario["UsuarioContraseña"].ToString(); // <--  hash
             int usuarioId = Convert.ToInt32(filaUsuario["UsuarioID"]);
 
             // 3. REGLA DE NEGOCIO: ¿Cuenta bloqueada?
-            if (intentos >= 3)
+            if (intentos > 3)
             {
-                throw new CuentaBloqueadaException("La cuenta está bloqueada por exceso de intentos.");
+                throw new CuentaBloqueadaException("Su cuenta está bloqueada por exceso de intentos. Contactar con un administrador! ");
             }
+
+
 
             // 4. DELEGACIÓN: Le pasamos los datos puros al servicio para que valide.
             bool loginEsValido = loginservice.ValidarLogin(password, contraseñaGuardada);

@@ -56,11 +56,12 @@ namespace growshiUI
 
             try
             {
-                //hago una sola llamada a la BLL
+                //hago una sola llamada a la BLL, devuelve un OBJETO DTO USUARIO
                 UsuarioLogueado = usuarioBLL.Login(usuarioLogin, contraseñaLogin);
 
                 if (UsuarioLogueado != null)
                 {
+                    IntentosLoginContador = 0;
                     MessageBox.Show($"¡Bienvenido, {UsuarioLogueado.NombreUsuario}!", "Login Exitoso");
                     this.DialogResult = DialogResult.OK;
 
@@ -74,7 +75,13 @@ namespace growshiUI
                 else
                 {
                     //usuario no existe en la DB, o Contraseña incorrecta
+                    IntentosLoginContador += 1;
                     MessageBox.Show("Usuario o contraseña incorrectos.", "Error de Sesión");
+                    if(IntentosLoginContador > 3)
+                    {
+                        BloquearForm();
+                    }
+
                 }
             }
             catch (CuentaBloqueadaException ex)
