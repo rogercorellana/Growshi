@@ -9,3 +9,5 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\obj\Debug\DAL.d
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\obj\Debug\DAL.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Services.dll
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Services.pdb

@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IUsuarioService.cs" />
+    <Compile Include="IBLL\IUsuarioBLL.cs" />
+    <Compile Include="IDAL\IABM.cs" />
+    <Compile Include="IServices\IEncriptacionService.cs" />
+    <Compile Include="IServices\ILoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

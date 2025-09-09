@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Interfaces.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,30 +8,28 @@ using System.Threading.Tasks;
 
 namespace Services
 {
+    // Implementación del servicio de validación.
+    // NO conoce a la DAL, es puro.
     public class LoginService : ILoginService
     {
-        private readonly IEncriptacionService _encriptacionService;
+        private readonly EncriptacionService _encriptacionService;
 
         public LoginService()
         {
             _encriptacionService = new EncriptacionService();
         }
 
-        public bool ValidarLogin(string passwordIngresada, Usuario usuarioDesdeDB)
+        public bool ValidarLogin(string passwordIngresada, string hashTraido)
         {
-            if (usuarioDesdeDB == null || string.IsNullOrEmpty(passwordIngresada))
+            if (hashTraido == null || string.IsNullOrEmpty(passwordIngresada))
             {
                 return false;
             }
 
-            // 1. Usa otra herramienta (Encriptacion) para verificar la contraseña.
-            if (!_encriptacionService.Verificar(passwordIngresada, usuarioDesdeDB.Password))
+            if (!_encriptacionService.Verificar(passwordIngresada, hashTraido))
             {
                 return false;
             }
-
-            // 2. Aquí podría tener otras validaciones puras (ej: la cuenta no está deshabilitada)
-            // if (!usuarioDesdeDB.Activo) return false;
 
             return true;
         }

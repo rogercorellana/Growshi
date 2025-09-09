@@ -1,5 +1,9 @@
 ﻿using BE;
 using DAL;
+using DAL.Mappers;
+using Interfaces;
+using Interfaces.IBLL;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class UsuarioBLL
+    public class UsuarioBLL : IUsuarioBLL
     {
         //#region Patron Singleton 
         //private static UsuarioBLL _instancia;
@@ -31,61 +35,63 @@ namespace BLL
 
 
         private readonly UsuarioDAO usuarioDAO;
+        private readonly LoginService loginservice;
+
 
         public UsuarioBLL()
         {
             usuarioDAO = new UsuarioDAO();
+            loginservice = new LoginService();
         }
 
-
-        public Usuario ValidarLogin(string nombreUsuario, string contraseñaIngresada)
+        public Usuario Login(string username, string password)
         {
-            if (string.IsNullOrWhiteSpace(nombreUsuario) || string.IsNullOrWhiteSpace(contraseñaIngresada))
+            // --- TU LÓGICA ORIGINAL SE MANTIENE INTACTA ---
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 throw new ArgumentException("El nombre de usuario y la contraseña no pueden estar vacíos.");
             }
 
-            DataTable tablaUsuario = usuarioDAO.ObtenerDatosCrudosPorNombre(nombreUsuario);
+            // 1. Hablamos con la DAO para obtener los datos crudos.
+            DataTable tablaUsuario = usuarioDAO.ObtenerDatosCrudosPorNombre(username);
 
             if (tablaUsuario.Rows.Count == 0)
             {
-                // Usuario no existe. Devolvemos null para que la UI dé un mensaje genérico.
                 return null;
             }
 
-            //cargo dataTable
+            // 2. Extraemos los datos necesarios del DataRow.
             DataRow filaUsuario = tablaUsuario.Rows[0];
             int intentos = Convert.ToInt32(filaUsuario["UsuarioIntentos"]);
+            string contraseñaGuardada = filaUsuario["UsuarioContraseña"].ToString(); // <-- Obtenemos el hash
             int usuarioId = Convert.ToInt32(filaUsuario["UsuarioID"]);
-            string contraseñaGuardada = filaUsuario["UsuarioContraseña"].ToString();
 
-            //Regla de Negocio: ¿La cuenta está bloqueada?
-
+            // 3. REGLA DE NEGOCIO: ¿Cuenta bloqueada?
             if (intentos >= 3)
             {
                 throw new CuentaBloqueadaException("La cuenta está bloqueada por exceso de intentos.");
             }
 
-            //Regla de Negocio: ¿La contraseña es correcta?
+            // 4. DELEGACIÓN: Le pasamos los datos puros al servicio para que valide.
+            bool loginEsValido = loginservice.ValidarLogin(password, contraseñaGuardada);
 
-            if (contraseñaIngresada == contraseñaGuardada) // Recordar usar HASHES aquí
+            // 5. REGLA DE NEGOCIO: Decidir qué hacer.
+            if (loginEsValido)
             {
                 if (intentos > 0)
                 {
                     usuarioDAO.ActualizarIntentos(usuarioId, 0);
                 }
-                // Usamos el Mapper y devolvemos el objeto Usuario seguro.
-                return DAL.Mappers.UsuarioMapper.MapearDesdeDataRow(filaUsuario);
+                // Si el login es válido, AHORA SÍ creamos el objeto Usuario completo para devolverlo.
+                return UsuarioMapper.MapearDesdeDataRow(filaUsuario);
             }
             else
             {
-                // Contraseña incorrecta. Incrementamos intentos.
                 usuarioDAO.ActualizarIntentos(usuarioId, intentos + 1);
-                // Si este fue el TERCER intento fallido, la próxima vez entrará en el if de arriba.
                 return null;
             }
         }
-
 
 
 

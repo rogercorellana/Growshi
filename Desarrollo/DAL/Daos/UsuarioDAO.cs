@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DAL.Mappers;
+using Interfaces;
+using Interfaces.IDAL;
 
 namespace DAL
 {
-    public class UsuarioDAO
+    public class UsuarioDAO : IABM<Usuario>
     {
         /// <summary>
         /// Obtiene la fila completa de un usuario, incluyendo datos sensibles como la contraseña.
@@ -58,6 +60,29 @@ namespace DAL
             };
 
             SqlHelper.GetInstance().ExecuteNonQuery(consulta, parametros);
+        }
+
+
+
+
+        public void Alta(Usuario entidad)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Modificacion(Usuario entidad)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Baja(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Usuario> ObtenerTodos()
+        {
+            throw new NotImplementedException();
         }
 
 

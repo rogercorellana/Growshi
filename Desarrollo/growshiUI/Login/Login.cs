@@ -57,7 +57,7 @@ namespace growshiUI
             try
             {
                 //hago una sola llamada a la BLL
-                UsuarioLogueado = usuarioBLL.ValidarLogin(usuarioLogin, contraseñaLogin);
+                UsuarioLogueado = usuarioBLL.Login(usuarioLogin, contraseñaLogin);
 
                 if (UsuarioLogueado != null)
                 {

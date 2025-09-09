@@ -11,3 +11,5 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\obj\Debug\BLL.c
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.Up2Date
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\obj\Debug\BLL.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\obj\Debug\BLL.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\Services.dll
+C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\BLL\bin\Debug\Services.pdb

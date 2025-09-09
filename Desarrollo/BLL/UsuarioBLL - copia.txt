@@ -1,0 +1,54 @@
+﻿using BE;
+using DAL;
+using Interfaces.IBLL;
+using Interfaces.IDAL;
+using Interfaces;
+using Services;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BLL
+{
+
+    // El cerebro que orquesta todo.
+    public class UsuarioBLL : IUsuarioBLL
+    {
+        private readonly IABM<Usuario> _usuarioDAO;
+        private readonly ILoginService _loginService;
+
+        public UsuarioBLL()
+        {
+            _usuarioDAO = new UsuarioDAO();
+            _loginService = new LoginService();
+        }
+
+        public Usuario Login(string username, string password)
+        {
+            // 1. La BLL habla con la DAL.
+            var usuarioDaoConcreto = _usuarioDAO as UsuarioDAO;
+            if (usuarioDaoConcreto == null) return null;
+            Usuario usuarioDesdeDB = usuarioDaoConcreto.ObtenerPorUsername(username);
+
+            // 2. La BLL usa el LoginService para validar.
+            bool esValido = _loginService.ValidarLogin(password, usuarioDesdeDB);
+
+            if (!esValido)
+            {
+                return null;
+            }
+
+            // 3. La BLL aplica las reglas de negocio finales.
+            if (usuarioDesdeDB.IntentosFallidos >= 3)
+            {
+                throw new CuentaBloqueadaException("La cuenta se encuentra bloqueada.");
+            }
+
+            return usuarioDesdeDB;
+        }
+    }
+
+}
