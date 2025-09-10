@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Services
 {
     // Implementación del servicio de validación.
-    // NO conoce a la DAL, es puro.
     public class LoginService : ILoginService
     {
         private readonly EncriptacionService _encriptacionService;

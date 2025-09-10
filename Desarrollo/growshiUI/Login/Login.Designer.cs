@@ -131,6 +131,7 @@
             this.metroLink1.Size = new System.Drawing.Size(124, 16);
             this.metroLink1.TabIndex = 13;
             this.metroLink1.Text = "Olvide mi contraseña";
+            this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
             // metroLabel1
             // 

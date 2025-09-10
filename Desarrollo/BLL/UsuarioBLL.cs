@@ -15,24 +15,6 @@ namespace BLL
 {
     public class UsuarioBLL : IUsuarioBLL
     {
-        //#region Patron Singleton 
-        //private static UsuarioBLL _instancia;
-        //private UsuarioBLL() { }
-        //public static UsuarioBLL GetInstance
-        //{
-        //    get
-        //    {
-        //        if (_instancia == null)
-        //        {
-        //                    _instancia = new UsuarioBLL();
-
-        //        }
-        //        return _instancia;
-        //    }
-        //}
-        //#endregion
-
-
 
         private readonly UsuarioDAO usuarioDAO;
         private readonly LoginService loginservice;
@@ -44,16 +26,17 @@ namespace BLL
             loginservice = new LoginService();
         }
 
-        public Usuario Login(string username, string password)
+        public Usuario Login(string usernameTextBox, string passwordTextBox)
         {
             // 0. Validacion formularios
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+
+            if (string.IsNullOrWhiteSpace(usernameTextBox) || string.IsNullOrWhiteSpace(passwordTextBox))
             {
                 throw new ArgumentException("El nombre de usuario y la contraseña no pueden estar vacíos.");
             }
 
             // 1. Hablamos con la DAO para obtener los datos crudos.
-            DataTable tablaUsuario = usuarioDAO.ObtenerDatosCrudosPorNombre(username);
+            DataTable tablaUsuario = usuarioDAO.ObtenerDatosCrudosPorNombre(usernameTextBox);
 
             if (tablaUsuario.Rows.Count == 0)
             {
@@ -61,7 +44,8 @@ namespace BLL
                 return null;
             }
 
-            // si si existen registros, es decir user existente en la DB
+            // si existen registros, es decir user existente en la DB
+
             // 2. Extraemos los datos necesarios del DataRow.
             DataRow filaUsuario = tablaUsuario.Rows[0];
             int intentos = Convert.ToInt32(filaUsuario["UsuarioIntentos"]);
@@ -74,10 +58,8 @@ namespace BLL
                 throw new CuentaBloqueadaException("Su cuenta está bloqueada por exceso de intentos. Contactar con un administrador! ");
             }
 
-
-
             // 4. DELEGACIÓN: Le pasamos los datos puros al servicio para que valide.
-            bool loginEsValido = loginservice.ValidarLogin(password, contraseñaGuardada);
+            bool loginEsValido = loginservice.ValidarLogin(passwordTextBox, contraseñaGuardada);
 
             // 5. REGLA DE NEGOCIO: Decidir qué hacer.
             if (loginEsValido)

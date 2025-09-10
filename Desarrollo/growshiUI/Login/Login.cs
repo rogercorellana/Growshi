@@ -14,6 +14,7 @@ using BE;
 using BLL;
 using growshiUI.UsuarioForms;
 using System.Data.SqlClient;
+using Interfaces.IServices;
 
 namespace growshiUI
 {
@@ -45,8 +46,6 @@ namespace growshiUI
         #region INICIARSESION
 
 
-
-
         public int IntentosLoginContador = 0;
 
         private void buttonIniciarSesion_Click(object sender, EventArgs e)
@@ -62,6 +61,13 @@ namespace growshiUI
                 if (UsuarioLogueado != null)
                 {
                     IntentosLoginContador = 0;
+
+                    // 1. Obtenemos el servicio a través de su contrato.
+                    ISessionService session = SessionManager.GetInstance();
+
+                    // 2. Lo usamos. El formulario no sabe ni le importa dónde vive la implementación.
+                    session.Login(UsuarioLogueado);
+
                     MessageBox.Show($"¡Bienvenido, {UsuarioLogueado.NombreUsuario}!", "Login Exitoso");
                     this.DialogResult = DialogResult.OK;
 
@@ -143,5 +149,14 @@ namespace growshiUI
 
         #endregion
 
+
+
+        #region OLVIDE MI CONTRASEÑA
+        private void metroLink1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }
