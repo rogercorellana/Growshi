@@ -47,7 +47,6 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\De
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.exe.config
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.Login.resources
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.Properties.Resources.resources
-C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.Usuario.InicioUsuario.resources
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.GenerateResource.cache
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.CoreCompileInputs.cache
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.Up2Date
@@ -77,3 +76,14 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\growshiUI\bin\Debug
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\growshiUI\bin\Debug\Services.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\growshiUI\bin\Debug\Interfaces.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\growshiUI\bin\Debug\Services.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\BE.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\BLL.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\Interfaces.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\Services.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\DAL.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\BE.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\BLL.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\Interfaces.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\Services.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\Debug\DAL.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.InicioUsuario.resources

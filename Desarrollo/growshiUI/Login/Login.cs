@@ -62,12 +62,6 @@ namespace growshiUI
                 {
                     IntentosLoginContador = 0;
 
-                    // 1. Obtenemos el servicio a través de su contrato.
-                    ISessionService session = SessionManager.GetInstance();
-
-                    // 2. Lo usamos. El formulario no sabe ni le importa dónde vive la implementación.
-                    session.Login(UsuarioLogueado);
-
                     MessageBox.Show($"¡Bienvenido, {UsuarioLogueado.NombreUsuario}!", "Login Exitoso");
                     this.DialogResult = DialogResult.OK;
 

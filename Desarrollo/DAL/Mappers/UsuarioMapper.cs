@@ -16,8 +16,9 @@ namespace DAL.Mappers
             // coincidan EXACTAMENTE con la DB.
             return new Usuario
             {
-                NombreUsuario = fila["UsuarioNombre"].ToString(),
-            };
+                IdUsuario = Convert.ToInt32(fila["UsuarioID"]),
+                NombreUsuario = fila["UsuarioNombre"].ToString()
+            }; 
         }
     }
 }

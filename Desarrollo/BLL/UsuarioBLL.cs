@@ -3,6 +3,7 @@ using DAL;
 using DAL.Mappers;
 using Interfaces;
 using Interfaces.IBLL;
+using Interfaces.IServices;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,15 @@ namespace BLL
 
         private readonly UsuarioDAO usuarioDAO;
         private readonly LoginService loginservice;
+        private readonly ISessionService _sessionService;
 
 
         public UsuarioBLL()
         {
             usuarioDAO = new UsuarioDAO();
             loginservice = new LoginService();
+            _sessionService = SessionService.GetInstance();
+
         }
 
         public Usuario Login(string usernameTextBox, string passwordTextBox)
@@ -69,7 +73,14 @@ namespace BLL
                     usuarioDAO.ActualizarIntentos(usuarioId, 0);
                 }
                 // Si el login es válido, AHORA SÍ creamos el objeto Usuario completo para devolverlo.
-                return UsuarioMapper.MapearDesdeDataRow(filaUsuario);
+                
+                Usuario usuario = UsuarioMapper.MapearDesdeDataRow(filaUsuario);
+
+                // La BLL, que sí conoce al Usuario, se lo pasa al servicio genérico.
+                _sessionService.Login(usuario);
+
+                return usuario;
+                
             }
             else
             {

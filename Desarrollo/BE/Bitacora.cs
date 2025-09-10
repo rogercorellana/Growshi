@@ -9,9 +9,9 @@ namespace BE
     public class Bitacora
     {
         public int Id { get; set; }
-        public Usuario Usuario { get; set; }
+        public Usuario Usuario { get; set; } // Referencia al usuario que hizo la acción
         public string Mensaje { get; set; }
         public DateTime Fecha { get; set; }
-        // Puedes agregar más campos como Criticidad, Módulo, etc.
+        public string Criticidad { get; set; }
     }
 }

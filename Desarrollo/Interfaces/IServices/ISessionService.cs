@@ -9,8 +9,8 @@ namespace Interfaces.IServices
 {
     public interface ISessionService
     {
-        Usuario UsuarioLogueado { get; }
-        void Login(Usuario usuario);
+        object UsuarioLogueado { get; }
+        void Login(object usuario);
         void Logout();
     }
 }

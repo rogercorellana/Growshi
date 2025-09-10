@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace Interfaces.IServices
 {
+    // El contrato que define nuestro servicio de registro de eventos.
+    // Es el "menú" que la BLL usará.
     public interface IBitacoraService
     {
-        DataTable Registrar(string mensaje, int usuario);
+        void Registrar(string mensaje, string criticidad);
     }
 }

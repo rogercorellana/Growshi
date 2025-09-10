@@ -11,3 +11,16 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Inter
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Services.dll
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\DAL\bin\Debug\Services.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\DAL.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\DAL.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\BE.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\Services.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\BE.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\Services.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DAL.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DAL.pdb

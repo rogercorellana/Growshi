@@ -9,3 +9,14 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Services\bin\Debug\
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Services\bin\Debug\BE.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Services\bin\Debug\Interfaces.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Services\obj\Debug\Services.csproj.Up2Date
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\obj\Debug\Services.csproj.AssemblyReference.cache
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\obj\Debug\Services.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\obj\Debug\Services.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Services.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Services.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Interfaces.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\BE.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Interfaces.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\BE.pdb
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\obj\Debug\Services.csproj.Up2Date
