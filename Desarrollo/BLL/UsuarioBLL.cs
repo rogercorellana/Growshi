@@ -1,8 +1,9 @@
 ﻿using BE;
 using DAL;
+using DAL.Daos;
 using DAL.Mappers;
 using Interfaces;
-using Interfaces.IBLL;
+using Interfaces.IBE;
 using Interfaces.IServices;
 using Services;
 using System;
@@ -14,20 +15,22 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class UsuarioBLL : IUsuarioBLL
+    public class UsuarioBLL 
     {
-
         private readonly UsuarioDAO usuarioDAO;
         private readonly LoginService loginservice;
-        private readonly ISessionService _sessionService;
+        private readonly ISessionService<Usuario> _sessionService; // variable tipo genérico especificando que trabajará con 'Usuario'
+        private readonly IBitacoraService _bitacoraService;
+        private readonly BitacoraDAO _bitacoraDAO;
 
 
         public UsuarioBLL()
         {
             usuarioDAO = new UsuarioDAO();
             loginservice = new LoginService();
-            _sessionService = SessionService.GetInstance();
-
+            _sessionService = SessionService<Usuario>.GetInstance(); // Obtenemos la instancia del servicio genérico, especificando el tipo 'Usuario'
+            _bitacoraService = BitacoraService.GetInstance();
+            _bitacoraDAO = new BitacoraDAO();
         }
 
         public Usuario Login(string usernameTextBox, string passwordTextBox)
@@ -40,15 +43,38 @@ namespace BLL
             }
 
             // 1. Hablamos con la DAO para obtener los datos crudos.
+
             DataTable tablaUsuario = usuarioDAO.ObtenerDatosCrudosPorNombre(usernameTextBox);
 
             if (tablaUsuario.Rows.Count == 0)
             {
-                //si no existen registros devuelvo null y corto
+                // --- REGISTRO EN BITÁCORA ---
+
+                // Paso 1: Llamas al servicio para que cree el objeto del evento.
+                IBitacora eventoUsuarioInexistente = _bitacoraService.CrearEvento(
+                    NivelCriticidad.Advertencia,
+                    $"Intento de login para un usuario inexistente: '{usernameTextBox}'.",
+                    "Login"
+                // Como el usuario no existe, no pasamos un ID de usuario.
+                );
+
+                // Paso 2: Creas el objeto 'Bitacora' que el DAO necesita,
+                //         copiando los datos del objeto que te dio el servicio.
+                var bitacoraParaGuardar = new Bitacora
+                {
+                    Nivel = eventoUsuarioInexistente.Nivel,
+                    Mensaje = eventoUsuarioInexistente.Mensaje,
+                    Modulo = eventoUsuarioInexistente.Modulo,
+                    UsuarioID = eventoUsuarioInexistente.UsuarioID
+                };
+
+                // Paso 3: Llamas al DAO para guardarlo en la base de datos.
+                _bitacoraDAO.Guardar(bitacoraParaGuardar);
+
+
+
                 return null;
             }
-
-            // si existen registros, es decir user existente en la DB
 
             // 2. Extraemos los datos necesarios del DataRow.
             DataRow filaUsuario = tablaUsuario.Rows[0];
@@ -72,24 +98,71 @@ namespace BLL
                 {
                     usuarioDAO.ActualizarIntentos(usuarioId, 0);
                 }
-                // Si el login es válido, AHORA SÍ creamos el objeto Usuario completo para devolverlo.
-                
+
                 Usuario usuario = UsuarioMapper.MapearDesdeDataRow(filaUsuario);
 
-                // La BLL, que sí conoce al Usuario, se lo pasa al servicio genérico.
+                // La llamada a Login ahora es 100% segura en tipos.
                 _sessionService.Login(usuario);
 
+
+                // --- REGISTRO EN BITÁCORA ---
+
+                // Paso 1: Llamas al servicio para que cree el evento.
+                IBitacora eventoLogin = _bitacoraService.CrearEvento(
+                    NivelCriticidad.Info,
+                    $"Inicio de sesión exitoso para el usuario '{usuario.NombreUsuario}'.",
+                    "Login",
+                    usuario.IdUsuario
+                );
+
+                // Paso 2: Creas el objeto 'Bitacora' que el DAO necesita.
+                var bitacoraParaGuardar = new Bitacora
+                {
+                    Nivel = eventoLogin.Nivel,
+                    Mensaje = eventoLogin.Mensaje,
+                    Modulo = eventoLogin.Modulo,
+                    UsuarioID = eventoLogin.UsuarioID
+                     
+
+                };
+
+                // Paso 3: Llamas al DAO para guardarlo.
+                _bitacoraDAO.Guardar(bitacoraParaGuardar);
+
+
                 return usuario;
-                
+
+
+
             }
             else
             {
                 usuarioDAO.ActualizarIntentos(usuarioId, intentos + 1);
+
+                // --- REGISTRO DE LOGIN FALLIDO ---
+
+                // Paso 1: Crear el evento.
+                IBitacora eventoFallo = _bitacoraService.CrearEvento(
+                    NivelCriticidad.Advertencia,
+                    $"Intento de inicio de sesión fallido para el usuario con ID {usuarioId}.",
+                    "Login",
+                    usuarioId
+                );
+
+                // Paso 2: Mapear a la entidad.
+                var bitacoraParaGuardar = new Bitacora
+                {
+                    Nivel = eventoFallo.Nivel,
+                    Mensaje = eventoFallo.Mensaje,
+                    Modulo = eventoFallo.Modulo,
+                    UsuarioID = eventoFallo.UsuarioID
+                };
+
+                // Paso 3: Guardar.
+                _bitacoraDAO.Guardar(bitacoraParaGuardar);
+
                 return null;
             }
         }
-
-
-
-        }
+    }
 }

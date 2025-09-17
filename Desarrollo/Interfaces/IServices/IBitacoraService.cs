@@ -1,19 +1,18 @@
-﻿using BE;
-using Interfaces.IBE;
-using Interfaces.IDAL;
+﻿using Interfaces.IBE;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Interfaces.IServices
 {
-    // El contrato que define nuestro servicio de registro de eventos.
-    // Es el "menú" que la BLL usará.
     public interface IBitacoraService
     {
-        void Registrar(string mensaje, string criticidad);
+        /// <summary>
+        /// Crea un objeto de evento de bitácora estandarizado.
+        /// </summary>
+        /// <returns>Un objeto que cumple con el contrato IBitacora.</returns>
+        IBitacora CrearEvento(NivelCriticidad nivel, string mensaje, string modulo = null, int? usuarioId = null);
     }
 }

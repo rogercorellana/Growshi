@@ -1,0 +1,214 @@
+ select * from Usuario
+
+ -- Verificar si la tabla ya existe para evitar errores
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Bitacora' and xtype='U')
+BEGIN
+    CREATE TABLE Bitacora (
+        -- Llave primaria autoincremental para identificar cada registro de forma única.
+        BitacoraID INT PRIMARY KEY IDENTITY(1,1),
+
+        -- LLAVE FORÁNEA (FK): El corazón de la relación.
+        -- Se conecta con la tabla Usuario. Puede ser NULO para eventos del sistema
+        -- que no están asociados a un usuario específico (ej: "Error al conectar a la DB").
+        UsuarioID INT NULL,
+
+        -- La fecha y hora exactas en que ocurrió el evento.
+        -- Se establece automáticamente con la fecha actual al insertar.
+        FechaHora DATETIME2(3) NOT NULL DEFAULT GETDATE(),
+
+        -- Nivel de criticidad del evento para poder filtrar fácilmente.
+        -- Ej: 'Info', 'Advertencia', 'Error', 'Critico'
+        Nivel NVARCHAR(20) NOT NULL,
+
+        -- Módulo o parte del sistema donde se originó el evento.
+        -- Ej: 'Login', 'GestionUsuarios', 'Backup'
+        Modulo NVARCHAR(50) NULL,
+
+        -- Descripción detallada del evento que se está registrando.
+        Mensaje NVARCHAR(MAX) NOT NULL,
+
+        -- DEFINICIÓN DE LA RELACIÓN (FOREIGN KEY)
+        -- Esto le dice a SQL Server que Bitacora.UsuarioID está vinculado a Usuario.UsuarioID.
+        CONSTRAINT FK_Bitacora_Usuario FOREIGN KEY (UsuarioID)
+        REFERENCES Usuario(UsuarioID)
+        -- ON DELETE NO ACTION: Si se borra un usuario, sus registros de bitácora NO se borran
+        -- para mantener la integridad del historial.
+    );
+
+    PRINT 'Tabla Bitacora creada exitosamente.';
+END
+ELSE
+BEGIN
+    PRINT 'La tabla Bitacora ya existe.';
+END
+GO -- Fin del lote
+
+
+
+INSERT INTO Bitacora (UsuarioID, Nivel, Modulo, Mensaje)
+VALUES (1, 'Advertencia', 'Login', 'Intento de inicio de sesión fallido para el usuario.');
+
+
+
+Select * from Bitacora
+
+Select * from Usuario
+
+
+CREATE TABLE TipoUsuario (
+    TipoUsuarioID INT PRIMARY KEY IDENTITY(1,1),
+    NombreTipo NVARCHAR(50) NOT NULL UNIQUE -- Usamos UNIQUE para asegurar que no haya roles duplicados
+);
+GO
+
+
+CREATE TABLE Usuario_TipoUsuario (
+    UsuarioID INT NOT NULL,
+    TipoUsuarioID INT NOT NULL,
+
+    -- Llave primaria compuesta para que no se pueda asignar el mismo rol dos veces al mismo usuario
+    PRIMARY KEY (UsuarioID, TipoUsuarioID),
+
+    -- Relaciones con las tablas principales
+    CONSTRAINT FK_UTU_Usuario FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID) ON DELETE CASCADE,
+    CONSTRAINT FK_UTU_TipoUsuario FOREIGN KEY (TipoUsuarioID) REFERENCES TipoUsuario(TipoUsuarioID) ON DELETE CASCADE
+);
+GO
+
+CREATE TABLE PermisoComponente (
+    PermisoID NVARCHAR(50) PRIMARY KEY,
+    NombreDescriptivo NVARCHAR(100) NOT NULL,
+    EsFamilia BIT NOT NULL, -- 1 si es un grupo (Familia), 0 si es un permiso individual
+
+    -- Columna para crear la jerarquía (un permiso pertenece a una familia)
+    PadreID NVARCHAR(50) NULL,
+
+    -- Relación de la tabla consigo misma para formar el árbol
+    CONSTRAINT FK_Permiso_Padre FOREIGN KEY (PadreID) REFERENCES PermisoComponente(PermisoID)
+);
+GO
+
+
+CREATE TABLE TipoUsuario_Permiso (
+    TipoUsuarioID INT NOT NULL,
+    PermisoID NVARCHAR(50) NOT NULL,
+
+    -- Llave primaria compuesta para evitar asignaciones duplicadas
+    PRIMARY KEY (TipoUsuarioID, PermisoID),
+
+    -- Relaciones con las tablas principales
+    CONSTRAINT FK_TUP_TipoUsuario FOREIGN KEY (TipoUsuarioID) REFERENCES TipoUsuario(TipoUsuarioID) ON DELETE CASCADE,
+    CONSTRAINT FK_TUP_Permiso FOREIGN KEY (PermisoID) REFERENCES PermisoComponente(PermisoID) ON DELETE CASCADE
+);
+GO
+
+
+
+
+
+-- Insertamos los tres roles de una sola vez para mayor comodidad.
+INSERT INTO TipoUsuario (NombreTipo)
+VALUES
+('Administrador'), -- Este será el rol con todos los permisos.
+('Técnico'),       -- Este rol tendrá permisos técnicos sobre los cultivos.
+('Agricultor');    -- Este rol tendrá permisos básicos de visualización..
+
+
+-- Insertamos las dos familias principales. No tienen padre (PadreID es NULL).
+INSERT INTO PermisoComponente (PermisoID, NombreDescriptivo, EsFamilia, PadreID)
+VALUES
+('Seguridad', 'Permisos sobre la administración del sistema', 1, NULL),
+('GestionCultivos', 'Permisos sobre la gestión de los cultivos', 1, NULL);
+
+
+-- Insertamos los permisos que pertenecen a la familia 'Seguridad'
+INSERT INTO PermisoComponente (PermisoID, NombreDescriptivo, EsFamilia, PadreID)
+VALUES
+('GestionarUsuarios', 'Permite crear, editar y eliminar usuarios', 0, 'Seguridad'),
+('GestionarPermisos', 'Permite asignar permisos a los roles', 0, 'Seguridad'),
+('VerBitacora', 'Permite visualizar la bitácora del sistema', 0, 'Seguridad');
+
+-- Insertamos los permisos que pertenecen a la familia 'GestionCultivos'
+INSERT INTO PermisoComponente (PermisoID, NombreDescriptivo, EsFamilia, PadreID)
+VALUES
+('VerCultivos', 'Permite ver el estado de los cultivos', 0, 'GestionCultivos'),
+('RegistrarActividad', 'Permite registrar una nueva actividad en un cultivo', 0, 'GestionCultivos'),
+('EditarCultivo', 'Permite modificar datos de un cultivo existente', 0, 'GestionCultivos');
+
+-- Asignamos los roles a los usuarios.
+INSERT INTO Usuario_TipoUsuario (UsuarioID, TipoUsuarioID)
+VALUES
+(1, 1), -- Usuario 1 (roger) es TipoUsuario 1 (Administrador)
+(2, 2), -- Usuario 2 (roro) es TipoUsuario 2 (Técnico)
+(2, 3); -- Usuario 2 (roro) también es TipoUsuario 3 (Agricultor)
+
+
+-- Asignamos permisos a los roles.
+INSERT INTO TipoUsuario_Permiso (TipoUsuarioID, PermisoID)
+VALUES
+-- El Administrador (ID 1) tiene acceso a TODO. Le asignamos las familias completas.
+(1, 'Seguridad'),
+(1, 'GestionCultivos'),
+
+-- El Técnico (ID 2) tiene permisos intermedios. Le asignamos permisos individuales.
+(2, 'VerCultivos'),
+(2, 'RegistrarActividad'),
+
+-- El Agricultor (ID 3) solo puede ver. Le asignamos el permiso más básico.
+(3, 'VerCultivos');
+
+
+
+
+
+
+-- Declaramos la variable para el ID del usuario
+DECLARE @UsuarioIDDeseado INT = 1;
+
+-- Iniciamos la Expresión de Tabla Común Recursiva (CTE)
+;WITH UserPermissions AS (
+    -- 1. Parte Inicial (Ancla): Obtenemos los permisos DIRECTAMENTE asignados a los roles del usuario.
+    SELECT
+        tup.TipoUsuarioID,
+        pc.PermisoID,
+        pc.PadreID
+    FROM
+        Usuario_TipoUsuario utu
+    JOIN
+        TipoUsuario_Permiso tup ON utu.TipoUsuarioID = tup.TipoUsuarioID
+    JOIN
+        PermisoComponente pc ON tup.PermisoID = pc.PermisoID
+    WHERE
+        utu.UsuarioID = @UsuarioIDDeseado
+
+    UNION ALL
+
+    -- 2. Parte Recursiva: Buscamos los permisos "hijos" de las familias que ya encontramos.
+    SELECT
+        up.TipoUsuarioID,
+        child.PermisoID,
+        child.PadreID
+    FROM
+        PermisoComponente child
+    JOIN
+        UserPermissions up ON child.PadreID = up.PermisoID -- La magia de la recursión
+)
+
+-- 3. Consulta Final: Seleccionamos la información y filtramos para mostrar solo los permisos individuales.
+SELECT DISTINCT
+    u.UsuarioNombre,
+    tu.NombreTipo AS Rol,
+    pc.PermisoID,
+    pc.NombreDescriptivo AS DescripcionDelPermiso
+FROM
+    UserPermissions up
+JOIN
+    PermisoComponente pc ON up.PermisoID = pc.PermisoID
+JOIN
+    Usuario u ON u.UsuarioID = @UsuarioIDDeseado
+JOIN
+    TipoUsuario tu ON up.TipoUsuarioID = tu.TipoUsuarioID
+WHERE
+    pc.EsFamilia = 0 -- Mostramos solo los permisos finales, no los grupos.
+ORDER BY
+    u.UsuarioNombre, tu.NombreTipo, pc.PermisoID;

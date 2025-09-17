@@ -1,34 +1,42 @@
 ﻿using BE;
+using BLL; // <-- AÑADIR: Para usar la nueva BLL
+using Interfaces.IServices;
+using Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace growshiUI.UsuarioForms
 {
     public partial class InicioUsuario : Form
     {
+        private readonly ISessionService<Usuario> _sessionService;
+        private readonly InicioUsuarioBLL _inicioUsuarioBLL; // <-- AÑADIR: La dependencia a la BLL
 
         public Usuario UsuarioActual { get; private set; }
 
-        public InicioUsuario(Usuario usuario)
+        public InicioUsuario()
         {
             InitializeComponent();
-            this.UsuarioActual = usuario;
 
+            _sessionService = SessionService<Usuario>.GetInstance();
+            _inicioUsuarioBLL = new InicioUsuarioBLL(); // <-- AÑADIR: Se crea la instancia de la BLL
+
+            this.UsuarioActual = _sessionService.UsuarioLogueado;
+
+            if (this.UsuarioActual == null)
+            {
+                MessageBox.Show("No se ha podido recuperar la sesión del usuario...", "Error de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Load += (s, e) => Close();
+            }
+        }
+
+        private void InicioUsuario_Load(object sender, EventArgs e)
+        {
             
-            // Podrías tener lógica como:
-            // if (this.UsuarioActual.EsAdmin) { botonDeAdmin.Visible = true; }
         }
 
         private void InicioUsuario_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Muestra un cuadro de diálogo con botones de Sí y No, y un ícono de advertencia.
             DialogResult resultado = MessageBox.Show(
                 "¿Estás seguro de que deseas salir? Tu sesión se cerrará.",
                 "Confirmar Cierre de Sesión",
@@ -36,21 +44,15 @@ namespace growshiUI.UsuarioForms
                 MessageBoxIcon.Warning
             );
 
-            // Comprueba la respuesta del usuario.
-            // Si el usuario hace clic en "No"...
             if (resultado == DialogResult.No)
             {
-                // ...cancela el evento de cierre.
                 e.Cancel = true;
             }
-
-            // Si el usuario hace clic en "Sí", no hacemos nada.
-            // El código simplemente continúa y el formulario se cierra normalmente.
-        }
-
-        private void InicioUsuario_Load(object sender, EventArgs e)
-        {
-
+            else
+            {
+                
+                _inicioUsuarioBLL.CerrarSesion(this.UsuarioActual);
+            }
         }
     }
 }

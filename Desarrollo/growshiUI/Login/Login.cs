@@ -67,7 +67,7 @@ namespace growshiUI
 
                     this.Hide();
 
-                    InicioUsuario inicioUsuario = new InicioUsuario(UsuarioLogueado);
+                    InicioUsuario inicioUsuario = new InicioUsuario();
                     inicioUsuario.ShowDialog();
 
                     this.Close();

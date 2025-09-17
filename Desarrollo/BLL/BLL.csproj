@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CuentaBloqueadaException.cs" />
+    <Compile Include="InicioUsuarioBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioBLL.cs" />
   </ItemGroup>

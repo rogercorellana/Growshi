@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interfaces.IBE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,17 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Bitacora
+    public class Bitacora : IBitacora 
     {
-        public int Id { get; set; }
-        public Usuario Usuario { get; set; } // Referencia al usuario que hizo la acción
+        // El ID y la Fecha se generan en la DB pero son útiles en el objeto
+        // 'int?' para permitir valores nulos.
+
+        public int BitacoraID { get; set; }
+        public DateTime FechaHora { get; set; }
+
+        public NivelCriticidad Nivel { get; set; }
         public string Mensaje { get; set; }
-        public DateTime Fecha { get; set; }
-        public string Criticidad { get; set; }
+        public string Modulo { get; set; }
+        public int? UsuarioID { get; set; }
     }
 }

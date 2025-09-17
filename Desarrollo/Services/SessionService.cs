@@ -1,16 +1,20 @@
-﻿using Interfaces.IServices;
+﻿using Interfaces.IBE;
+using Interfaces.IServices;
 
 namespace Services
 {
     // Este es tu módulo de sesión 100% reutilizable.
-    public sealed class SessionService : ISessionService
+    public sealed class SessionService<T> : ISessionService<T> where T : class, IUsuarioLogueado
     {
-        private static readonly ISessionService _instancia = new SessionService();
-        public object UsuarioLogueado { get; private set; }
-        private SessionService() { }
-        public static ISessionService GetInstance() => _instancia;
+        private static readonly ISessionService<T> _instancia = new SessionService<T>();
 
-        public void Login(object usuario)
+        public T UsuarioLogueado { get; private set; }
+
+        private SessionService() { }
+
+        public static ISessionService<T> GetInstance() => _instancia;
+
+        public void Login(T usuario)
         {
             UsuarioLogueado = usuario;
         }

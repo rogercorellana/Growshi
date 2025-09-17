@@ -8,39 +8,32 @@ namespace DAL.Daos
 {
     public class BitacoraDAO
     {
-        public void Insertar(Bitacora entrada)
+        /// <summary>
+        /// Guarda un nuevo registro de evento en la tabla Bitacora.
+        /// </summary>
+        /// <param name="evento">El objeto Bitacora con la información a guardar.</param>
+        public void Guardar(Bitacora evento)
         {
-            // La consulta SQL con parámetros para evitar inyección SQL.
             string consulta = @"
-                INSERT INTO Bitacora 
-                    (UsuarioID, Mensaje, Fecha, Criticidad) 
-                VALUES 
-                    (@userId, @mensaje, @fecha, @criticidad)";
+                INSERT INTO Bitacora (UsuarioID, Nivel, Modulo, Mensaje)
+                VALUES (@UsuarioID, @Nivel, @Modulo, @Mensaje)";
 
-            // Maneja el caso de un usuario nulo (para eventos del sistema).
-            // Si entrada.Usuario es null, guardamos un DBNull.Value en la DB.
-            SqlParameter userIdParam;
-            if (entrada.Usuario != null)
-            {
-                userIdParam = new SqlParameter("@userId", entrada.Usuario.IdUsuario);
-            }
-            else
-            {
-                // DBNull.Value es la forma correcta de insertar un NULL en la base de datos.
-                userIdParam = new SqlParameter("@userId", DBNull.Value);
-            }
-
-            // Creamos la lista de parámetros.
+            // Usamos List<SqlParameter> para mantener la consistencia con tu UsuarioDAO
             var parametros = new List<SqlParameter>
             {
-                userIdParam,
-                new SqlParameter("@mensaje", entrada.Mensaje),
-                new SqlParameter("@fecha", entrada.Fecha),
-                new SqlParameter("@criticidad", entrada.Criticidad)
+                // Manejamos correctamente los valores nulos para columnas que lo permiten
+                new SqlParameter("@UsuarioID", evento.UsuarioID.HasValue ? (object)evento.UsuarioID.Value : DBNull.Value),
+                new SqlParameter("@Nivel", evento.Nivel.ToString()), // El enum se convierte a string para guardarlo en la DB
+                new SqlParameter("@Modulo", string.IsNullOrEmpty(evento.Modulo) ? DBNull.Value : (object)evento.Modulo),
+                new SqlParameter("@Mensaje", evento.Mensaje)
             };
 
-            // Usamos tu SqlHelper para ejecutar la consulta.
+            // Llamamos al SqlHelper para ejecutar la consulta de inserción
             SqlHelper.GetInstance().ExecuteNonQuery(consulta, parametros);
         }
+
+        // Aquí podrías agregar métodos futuros para LEER la bitácora
+        // public List<Bitacora> ObtenerTodos() { ... }
+        // public List<Bitacora> ObtenerPorUsuario(int usuarioId) { ... }
     }
 }

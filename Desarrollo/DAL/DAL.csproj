@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Daos\BitacoraDAO.cs" />
+    <Compile Include="Mappers\BitacoraMapper.cs" />
     <Compile Include="Mappers\UsuarioMapper.cs" />
     <Compile Include="SQLHelper\SqlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,46 +1,43 @@
 ﻿using Interfaces.IBE;
-using Interfaces.IDAL;
 using Interfaces.IServices;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Services
 {
-    public class BitacoraService : IBitacoraService
+    // DTO interno para transportar los datos del evento.
+    internal class BitacoraDTO : IBitacora
     {
-        public BitacoraService() { }
+        public int BitacoraID { get; set; }
+        public int? UsuarioID { get; set; }
+        public DateTime FechaHora { get; set; }
+        public NivelCriticidad Nivel { get; set; }
+        public string Modulo { get; set; }
+        public string Mensaje { get; set; }
+    }
 
+    public sealed class BitacoraService : IBitacoraService
+    {
+        private static readonly IBitacoraService _instancia = new BitacoraService();
 
+        private BitacoraService() { }
 
-        public DataTable Registrar(string mensaje, int usuario)
+        public static IBitacoraService GetInstance() => _instancia;
+
+        // El método ahora es mucho más simple: solo crea y devuelve.
+        public IBitacora CrearEvento(NivelCriticidad nivel, string mensaje, string modulo = null, int? usuarioId = null)
         {
-
-            // 1. Crea una instancia de DataTable (puedes darle un nombre)
-            var tablaBitacora = new DataTable("Bitacora");
-
-            // 2. Define las columnas que tendrá tu tabla
-            //    addColumn(nombre_columna, tipo_de_dato)
-            tablaBitacora.Columns.Add("Mensaje", typeof(string));
-            tablaBitacora.Columns.Add("Usuario", typeof(string)); // Guardamos el nombre de usuario como string
-            tablaBitacora.Columns.Add("Fecha", typeof(DateTime));
-
-            // 3. Crea una nueva fila usando la estructura de la tabla
-            DataRow nuevaFila = tablaBitacora.NewRow();
-
-            // 4. Asigna los valores a cada columna de esa fila
-            nuevaFila["Mensaje"] = mensaje;
-            nuevaFila["Usuario"] = usuario; // Accedemos a la propiedad del usuario
-            nuevaFila["Fecha"] = DateTime.Now;
-
-            // 5. Agrega la fila completa a la tabla
-            tablaBitacora.Rows.Add(nuevaFila);
-
-            // 6. Retorna la tabla ya cargada
-            return tablaBitacora;
+            return new BitacoraDTO
+            {
+                Nivel = nivel,
+                Mensaje = mensaje,
+                Modulo = modulo,
+                UsuarioID = usuarioId,
+                FechaHora = DateTime.Now
+            };
         }
     }
 }
