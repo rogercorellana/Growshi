@@ -17,5 +17,8 @@ namespace Interfaces.IBE
         // La clase Usuario implementará esto sin problemas.
         int IdUsuario { get; set; }
         string NombreUsuario { get; set; }
+
+        List<string> Permisos { get; set; }
+
     }
 }

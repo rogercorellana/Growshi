@@ -44,6 +44,7 @@
     <Compile Include="BitacoraService.cs" />
     <Compile Include="EncriptacionService.cs" />
     <Compile Include="LoginService.cs" />
+    <Compile Include="PermissionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionService.cs" />
   </ItemGroup>

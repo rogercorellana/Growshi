@@ -47,6 +47,7 @@
     <Compile Include="IServices\IBitacoraService.cs" />
     <Compile Include="IServices\IEncriptacionService.cs" />
     <Compile Include="IServices\ILoginService.cs" />
+    <Compile Include="IServices\IPermissionService.cs" />
     <Compile Include="IServices\ISessionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

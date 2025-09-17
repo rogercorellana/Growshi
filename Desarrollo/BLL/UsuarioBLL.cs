@@ -22,15 +22,17 @@ namespace BLL
         private readonly ISessionService<Usuario> _sessionService; // variable tipo genérico especificando que trabajará con 'Usuario'
         private readonly IBitacoraService _bitacoraService;
         private readonly BitacoraDAO _bitacoraDAO;
+        private readonly PermisoDAO _permisoDAO; 
 
 
         public UsuarioBLL()
         {
             usuarioDAO = new UsuarioDAO();
             loginservice = new LoginService();
-            _sessionService = SessionService<Usuario>.GetInstance(); // Obtenemos la instancia del servicio genérico, especificando el tipo 'Usuario'
+            _sessionService = SessionService<Usuario>.GetInstance(); // instancia del servicio genérico, especificando el tipo 'Usuario'
             _bitacoraService = BitacoraService.GetInstance();
             _bitacoraDAO = new BitacoraDAO();
+            _permisoDAO = new PermisoDAO();
         }
 
         public Usuario Login(string usernameTextBox, string passwordTextBox)
@@ -99,10 +101,18 @@ namespace BLL
                     usuarioDAO.ActualizarIntentos(usuarioId, 0);
                 }
 
+
+
+                // 1. Mapear el usuario como siempre
                 Usuario usuario = UsuarioMapper.MapearDesdeDataRow(filaUsuario);
 
-                // La llamada a Login ahora es 100% segura en tipos.
+                // ✅ 2. ¡Paso Clave! Llenar la lista de permisos del usuario
+                usuario.Permisos = _permisoDAO.ObtenerPermisosPorUsuario(usuario.IdUsuario);
+
+                // 3. Guardar el objeto Usuario COMPLETO (con permisos) en la sesión
                 _sessionService.Login(usuario);
+
+
 
 
                 // --- REGISTRO EN BITÁCORA ---

@@ -16,7 +16,11 @@ namespace BE
 
         public int IdUsuario { get; set; }
         public string NombreUsuario { get; set; }
+        public List<string> Permisos { get; set; } // El llavero de permisos
 
-
+        public Usuario()
+        {
+            this.Permisos = new List<string>();
+        }
     }
 }
