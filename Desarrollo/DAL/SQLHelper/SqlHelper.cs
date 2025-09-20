@@ -21,10 +21,11 @@ namespace DAL.DAO
         private SqlHelper()
         {
             //PARA PC
-            this.ConnString = "Data Source=./;Initial Catalog=Growshi;Integrated Security=True";
+            //this.ConnString = "Data Source=./;Initial Catalog=Growshi;Integrated Security=True";
 
+            
             //PARA MI LAPTOP
-            //this.ConnString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Growshi;Integrated Security=True";
+            this.ConnString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Growshi;Integrated Security=True";
         }
 
         private static SqlHelper _instance;

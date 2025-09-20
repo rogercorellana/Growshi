@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonCopiaSeguridad = new System.Windows.Forms.Button();
             this.buttonAjusteSistema = new System.Windows.Forms.Button();
             this.buttonRolesPermisos = new System.Windows.Forms.Button();
             this.btnGestionUsuarios = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -57,6 +57,19 @@
             this.splitContainer1.SplitterDistance = 224;
             this.splitContainer1.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(0, 470);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(224, 124);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Actualizaciones";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // buttonCopiaSeguridad
             // 
             this.buttonCopiaSeguridad.Dock = System.Windows.Forms.DockStyle.Top;
@@ -69,6 +82,7 @@
             this.buttonCopiaSeguridad.TabIndex = 3;
             this.buttonCopiaSeguridad.Text = "Copias de Seguridad";
             this.buttonCopiaSeguridad.UseVisualStyleBackColor = true;
+            this.buttonCopiaSeguridad.Click += new System.EventHandler(this.buttonCopiaSeguridad_Click);
             // 
             // buttonAjusteSistema
             // 
@@ -110,19 +124,6 @@
             this.btnGestionUsuarios.Text = "Gestión de Usuarios";
             this.btnGestionUsuarios.UseVisualStyleBackColor = true;
             this.btnGestionUsuarios.Click += new System.EventHandler(this.btnGestionUsuarios_Click);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 470);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(224, 124);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Actualizaciones";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // ConfigurationView
             // 

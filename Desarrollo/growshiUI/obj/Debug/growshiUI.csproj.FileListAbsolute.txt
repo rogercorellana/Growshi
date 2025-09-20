@@ -93,3 +93,10 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\growshiUI\obj\Debug
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.ConfigurationView.resources
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.RolesYPermisosView.resources
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.IdiomaView.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Form1.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.GestionUsuariosView.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.IdiomaView.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.RolesYPermisosView.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.ConfigurationView.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.InicioView.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.CopiasSeguridadView.resources

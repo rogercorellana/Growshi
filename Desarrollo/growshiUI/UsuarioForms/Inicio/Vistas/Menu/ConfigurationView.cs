@@ -37,5 +37,10 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas
             CargarVista(new RolesYPermisosView());
 
         }
+
+        private void buttonCopiaSeguridad_Click(object sender, EventArgs e)
+        {
+            CargarVista(new CopiasSeguridadView());
+        }
     }
 }

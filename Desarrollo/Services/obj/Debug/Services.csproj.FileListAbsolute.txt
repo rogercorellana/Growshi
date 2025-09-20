@@ -14,7 +14,5 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\obj\Deb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Services.dll
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Services.pdb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Interfaces.dll
-C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\BE.dll
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Interfaces.pdb
-C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\BE.pdb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\obj\Debug\Services.csproj.Up2Date

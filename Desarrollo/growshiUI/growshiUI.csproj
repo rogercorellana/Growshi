@@ -76,6 +76,12 @@
     <Compile Include="UsuarioForms\Inicio\InicioUsuario.Designer.cs">
       <DependentUpon>InicioUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\CopiasSeguridadView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\CopiasSeguridadView.Designer.cs">
+      <DependentUpon>CopiasSeguridadView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioForms\Inicio\Vistas\Menu\IdiomaView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\InicioUsuario.resx">
       <DependentUpon>InicioUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\CopiasSeguridadView.resx">
+      <DependentUpon>CopiasSeguridadView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\GestionUsuariosView.resx">
       <DependentUpon>GestionUsuariosView.cs</DependentUpon>
