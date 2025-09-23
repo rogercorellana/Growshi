@@ -29,6 +29,7 @@ namespace BLL
         {
             usuarioDAO = new UsuarioDAO();
             loginservice = new LoginService();
+
             _sessionService = SessionService<Usuario>.GetInstance(); // instancia del servicio genérico, especificando el tipo 'Usuario'
             _bitacoraService = BitacoraService.GetInstance();
             _bitacoraDAO = new BitacoraDAO();

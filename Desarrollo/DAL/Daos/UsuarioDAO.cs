@@ -63,7 +63,26 @@ namespace DAL
         }
 
 
+        /// <summary>
+        /// Obtiene un usuario completo a partir de su ID.
+        /// </summary>
+        /// <returns>Un objeto Usuario, o null si no se encuentra.</returns>
+        public Usuario ObtenerPorId(int usuarioId)
+        {
+            // La consulta solo trae los datos públicos del usuario.
+            string consulta = "SELECT * FROM Usuario WHERE UsuarioID = @id";
+            var parametros = new List<SqlParameter> { new SqlParameter("@id", usuarioId) };
 
+            var tabla = SqlHelper.GetInstance().ExecuteReader(consulta, parametros);
+
+            if (tabla.Rows.Count > 0)
+            {
+                // Usamos el mapper para convertir la primera (y única) fila.
+                return UsuarioMapper.MapearDesdeDataRow(tabla.Rows[0]);
+            }
+
+            return null; // No se encontró el usuario.
+        }
 
         public void Alta(Usuario entidad)
         {

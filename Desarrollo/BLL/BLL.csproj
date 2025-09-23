@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupBLL.cs" />
     <Compile Include="Exceptions\CuentaBloqueadaException.cs" />
     <Compile Include="InicioUsuarioBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

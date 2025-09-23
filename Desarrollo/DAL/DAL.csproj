@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,8 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Daos\BackupDAO.cs" />
     <Compile Include="Daos\BitacoraDAO.cs" />
+    <Compile Include="Daos\DatabaseAdminDAO.cs" />
     <Compile Include="Daos\PermisoDAO.cs" />
+    <Compile Include="Mappers\BackupMapper.cs" />
     <Compile Include="Mappers\BitacoraMapper.cs" />
     <Compile Include="Mappers\UsuarioMapper.cs" />
     <Compile Include="SQLHelper\SqlHelper.cs" />

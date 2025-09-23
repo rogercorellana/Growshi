@@ -100,3 +100,4 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\De
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.ConfigurationView.resources
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.InicioView.resources
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.CopiasSeguridadView.resources
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Menu.AjustesGeneralesView.resources

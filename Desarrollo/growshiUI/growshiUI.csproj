@@ -82,6 +82,12 @@
     <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\CopiasSeguridadView.Designer.cs">
       <DependentUpon>CopiasSeguridadView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Menu\AjustesGeneralesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Menu\AjustesGeneralesView.Designer.cs">
+      <DependentUpon>AjustesGeneralesView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioForms\Inicio\Vistas\Menu\IdiomaView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\GestionUsuariosView.resx">
       <DependentUpon>GestionUsuariosView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\AjustesGeneralesView.resx">
+      <DependentUpon>AjustesGeneralesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\IdiomaView.resx">
       <DependentUpon>IdiomaView.cs</DependentUpon>
