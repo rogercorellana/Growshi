@@ -1,55 +1,65 @@
 ﻿using BE;
 using DAL.DAO;
-using DAL.Mappers;
-using System;
+using DAL.Mappers; // Asegúrate de tener el using al namespace de tus mappers
+using Interfaces.IBE;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace DAL.Daos
 {
-    /// <summary>
-    /// Gestiona las operaciones de negocio (ABM) para el catálogo de backups,
-    /// interactuando con la tabla [Backup] a través del SqlHelper.
-    /// </summary>
     public class BackupDAO
     {
-        private const string GET_ALL_QUERY = "SELECT Id, FechaHora, NombreArchivo, RutaArchivo, UsuarioID FROM [dbo].[Backup] ORDER BY FechaHora DESC";
-        private const string INSERT_QUERY = "INSERT INTO [dbo].[Backup] (FechaHora, NombreArchivo, RutaArchivo, UsuarioID) VALUES (@FechaHora, @NombreArchivo, @RutaArchivo, @UsuarioID)";
+        private readonly SqlHelper _sqlHelper;
 
-        public List<Backup> ObtenerCatalogo()
+        public BackupDAO()
         {
-            var lista = new List<Backup>();
-
-            // 1. Llama a tu SqlHelper.GetInstance(), que devuelve un DataTable.
-            // Se pasa 'null' como segundo parámetro ya que esta consulta no requiere parámetros.
-            var tablaResultados = SqlHelper.GetInstance().ExecuteReader(GET_ALL_QUERY, null);
-
-            // 2. Se recorre cada DataRow en el DataTable devuelto.
-            foreach (DataRow fila in tablaResultados.Rows)
-            {
-                // 3. Se utiliza el mapper que trabaja con DataRow para convertir la fila en un objeto.
-                lista.Add(BackupMapper.MapearDesdeDataRow(fila));
-            }
-            return lista;
+            _sqlHelper = SqlHelper.GetInstance();
         }
 
-        public void CrearRegistro(Backup backup)
+        public void Guardar(IBackup backup)
         {
-            // Se crea la lista de parámetros como la espera tu SqlHelper.
-            var parametros = new List<SqlParameter>
+            // ... (El código de Guardar y Eliminar no cambia)
+            string query = "INSERT INTO Backup (FechaHora, NombreArchivo, RutaArchivo, Nota, IdUsuario) VALUES (@FechaHora, @NombreArchivo, @RutaArchivo, @Nota, @IdUsuario)";
+            var parameters = new List<SqlParameter>
             {
                 new SqlParameter("@FechaHora", backup.FechaHora),
                 new SqlParameter("@NombreArchivo", backup.NombreArchivo),
                 new SqlParameter("@RutaArchivo", backup.RutaArchivo),
-                new SqlParameter("@UsuarioID", backup.Usuario.IdUsuario)
+                new SqlParameter("@Nota", backup.Nota),
+                new SqlParameter("@IdUsuario", backup.Usuario.IdUsuario)
             };
+            _sqlHelper.ExecuteNonQuery(query, parameters);
+        }
 
-            SqlHelper.GetInstance().ExecuteNonQuery(INSERT_QUERY, parametros);
+        public void Eliminar(int id)
+        {
+            // ... (El código de Guardar y Eliminar no cambia)
+            string query = "DELETE FROM Backup WHERE Id = @Id";
+            var parameters = new List<SqlParameter> { new SqlParameter("@Id", id) };
+            _sqlHelper.ExecuteNonQuery(query, parameters);
+        }
+
+        public List<Backup> ListarTodos()
+        {
+            string query = @"SELECT b.Id, b.FechaHora, b.NombreArchivo, b.RutaArchivo, b.Nota, 
+                                    u.Id as IdUsuario, u.Nombre as NombreUsuario 
+                             FROM Backup b 
+                             JOIN Usuario u ON b.IdUsuario = u.Id 
+                             ORDER BY b.FechaHora DESC";
+
+            DataTable tabla = _sqlHelper.ExecuteReader(query, null);
+
+            var listaDeBackups = new List<Backup>();
+
+            // --- AQUÍ ESTÁ EL CAMBIO ---
+            // El DAO ahora itera sobre la tabla y usa el mapper estático.
+            foreach (DataRow fila in tabla.Rows)
+            {
+                listaDeBackups.Add(BackupMapper.MapearDesdeDataRow(fila));
+            }
+
+            return listaDeBackups;
         }
     }
 }

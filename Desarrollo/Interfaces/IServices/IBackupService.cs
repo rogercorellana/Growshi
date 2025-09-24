@@ -1,18 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Interfaces.IBE;
 
 namespace Interfaces.IServices
 {
+    /// <summary>
+    /// Define un contrato para un servicio con lógica de negocio pura y reutilizable relacionada con backups.
+    /// Este servicio no realiza operaciones de I/O (base de datos, archivos), solo procesa datos.
+    /// </summary>
     public interface IBackupService
     {
         /// <summary>
-        /// Prepara la información para una nueva copia de seguridad, generando la ruta completa del archivo.
+        /// Genera un nombre de archivo estandarizado y único para una nueva copia de seguridad.
         /// </summary>
-        /// <param name="rutaDestino">La carpeta donde se guardará el archivo.</param>
-        /// <returns>La ruta completa y el nombre del archivo .bak a generar.</returns>
-        string PrepararNuevoBackup(string rutaDestino);
+        /// <returns>Un string con el nombre del archivo, ej: "backup_20250923_153000.bak".</returns>
+        string GenerarNombreDeArchivo();
+
+        /// <summary>
+        /// Valida si una entidad de backup cumple con las reglas de negocio para ser creada.
+        /// </summary>
+        /// <param name="backup">La entidad a validar.</param>
+        /// <returns>True si es válida, de lo contrario lanza una excepción.</returns>
+        bool Validar(IBackup backup);
     }
 }

@@ -1,29 +1,35 @@
-﻿using Interfaces.IServices;
-using System;
-using System.IO;
+﻿using System;
+using Interfaces.IBE;
+using Interfaces.IServices;
 
 namespace Services
 {
     /// <summary>
-    /// Implementa la lógica de negocio pura para la preparación de backups.
-    /// No accede a datos y su única dependencia es con el proyecto 'Interfaces'.
+    /// Implementa las herramientas de lógica de negocio para backups.
+    /// Esta clase solo conoce interfaces y no tiene dependencias con DAL o BLL.
     /// </summary>
     public class BackupService : IBackupService
     {
-        private readonly string _databaseName = "Growshi";
-
-        public string PrepararNuevoBackup(string rutaDestino)
+        public string GenerarNombreDeArchivo()
         {
-            if (string.IsNullOrWhiteSpace(rutaDestino) || !Directory.Exists(rutaDestino))
+            // Lógica pura: crear un nombre basado en la fecha y hora.
+            return $"backup_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
+        }
+
+        public bool Validar(IBackup backup)
+        {
+            // Lógica pura: aplicar reglas de negocio.
+            if (backup.Usuario == null)
             {
-                throw new DirectoryNotFoundException("La carpeta de destino para el backup no es válida o no existe.");
+                throw new ArgumentException("El backup debe tener un usuario asociado.");
             }
 
-            // Lógica de negocio pura: crear un nombre de archivo estandarizado.
-            string nombreArchivo = $"{_databaseName}_backup_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
-            string rutaCompleta = Path.Combine(rutaDestino, nombreArchivo);
+            if (backup.Nota != null && backup.Nota.Length > 500)
+            {
+                throw new ArgumentException("La nota no puede exceder los 500 caracteres.");
+            }
 
-            return rutaCompleta;
+            return true;
         }
     }
 }

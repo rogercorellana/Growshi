@@ -6,10 +6,7 @@ C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\obj\Debu
 C:\Users\Roger\Desktop\Growshi Definitivo\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.pdb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\bin\Debug\Interfaces.dll
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\bin\Debug\Interfaces.pdb
-C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\bin\Debug\BE.dll
-C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\bin\Debug\BE.pdb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.AssemblyReference.cache
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
-C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.Up2Date
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.dll
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.pdb
