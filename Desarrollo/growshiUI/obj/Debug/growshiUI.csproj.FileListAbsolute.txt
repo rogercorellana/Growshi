@@ -101,3 +101,35 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\De
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.InicioView.resources
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.CopiasSeguridadView.resources
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Menu.AjustesGeneralesView.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\growshiUI.exe.config
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\growshiUI.exe
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\growshiUI.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\BE.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\BLL.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\MetroFramework.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\Services.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\DAL.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\BE.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\BLL.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\Services.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\bin\Debug\DAL.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.Login.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.Properties.Resources.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Form1.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.InicioUsuario.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.CopiasSeguridadView.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.GestionUsuariosView.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Menu.AjustesGeneralesView.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.IdiomaView.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.RolesYPermisosView.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.ConfigurationView.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.InicioView.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.GenerateResource.cache
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.Up2Date
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.exe
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.pdb

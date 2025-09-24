@@ -1,6 +1,6 @@
 ﻿using BE;
 using DAL.DAO;
-using DAL.Mappers; // Asegúrate de tener el using al namespace de tus mappers
+using DAL.Mappers;
 using Interfaces.IBE;
 using System.Collections.Generic;
 using System.Data;
@@ -19,41 +19,46 @@ namespace DAL.Daos
 
         public void Guardar(IBackup backup)
         {
-            // ... (El código de Guardar y Eliminar no cambia)
-            string query = "INSERT INTO Backup (FechaHora, NombreArchivo, RutaArchivo, Nota, IdUsuario) VALUES (@FechaHora, @NombreArchivo, @RutaArchivo, @Nota, @IdUsuario)";
+            // --- CORRECCIÓN AQUÍ ---
+            string query = "INSERT INTO [Backup] (FechaHora, NombreArchivo, RutaArchivo, Nota, UsuarioID) VALUES (@FechaHora, @NombreArchivo, @RutaArchivo, @Nota, @IdUsuario)";
+
             var parameters = new List<SqlParameter>
             {
                 new SqlParameter("@FechaHora", backup.FechaHora),
                 new SqlParameter("@NombreArchivo", backup.NombreArchivo),
                 new SqlParameter("@RutaArchivo", backup.RutaArchivo),
                 new SqlParameter("@Nota", backup.Nota),
-                new SqlParameter("@IdUsuario", backup.Usuario.IdUsuario)
+                new SqlParameter("@IdUsuario", backup.Usuario.IdUsuario) // Asumo que la propiedad se llama IdUsuario
             };
+
             _sqlHelper.ExecuteNonQuery(query, parameters);
         }
 
         public void Eliminar(int id)
         {
-            // ... (El código de Guardar y Eliminar no cambia)
-            string query = "DELETE FROM Backup WHERE Id = @Id";
+            // --- CORRECCIÓN AQUÍ ---
+            string query = "DELETE FROM [Backup] WHERE Id = @Id";
             var parameters = new List<SqlParameter> { new SqlParameter("@Id", id) };
+
             _sqlHelper.ExecuteNonQuery(query, parameters);
         }
 
         public List<Backup> ListarTodos()
         {
+            // --- CORRECCIÓN FINAL AQUÍ ---
+            // Se ajustaron los nombres de las columnas de la tabla Usuario (u.Id -> u.UsuarioID, u.Nombre -> u.UsuarioNombre)
+            // para que coincidan EXACTAMENTE con tu base de datos.
             string query = @"SELECT b.Id, b.FechaHora, b.NombreArchivo, b.RutaArchivo, b.Nota, 
-                                    u.Id as IdUsuario, u.Nombre as NombreUsuario 
-                             FROM Backup b 
-                             JOIN Usuario u ON b.IdUsuario = u.Id 
-                             ORDER BY b.FechaHora DESC";
+                            u.UsuarioID, 
+                            u.UsuarioNombre
+                     FROM [Backup] b 
+                     JOIN [Usuario] u ON b.UsuarioId = u.UsuarioID 
+                     ORDER BY b.FechaHora DESC";
 
             DataTable tabla = _sqlHelper.ExecuteReader(query, null);
 
             var listaDeBackups = new List<Backup>();
 
-            // --- AQUÍ ESTÁ EL CAMBIO ---
-            // El DAO ahora itera sobre la tabla y usa el mapper estático.
             foreach (DataRow fila in tabla.Rows)
             {
                 listaDeBackups.Add(BackupMapper.MapearDesdeDataRow(fila));

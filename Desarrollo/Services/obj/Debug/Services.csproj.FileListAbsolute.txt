@@ -16,3 +16,12 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Deb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Interfaces.dll
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Interfaces.pdb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\obj\Debug\Services.csproj.Up2Date
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\bin\Debug\Services.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\bin\Debug\Services.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\obj\Debug\Services.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\obj\Debug\Services.csproj.Up2Date
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\obj\Debug\Services.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\Services\obj\Debug\Services.pdb

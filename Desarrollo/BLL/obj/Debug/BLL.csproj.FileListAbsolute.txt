@@ -28,3 +28,18 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\DA
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\Interfaces.pdb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\Services.pdb
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\BLL.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\BLL.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\BE.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\DAL.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\Services.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\BE.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\DAL.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\bin\Debug\Services.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\obj\Debug\BLL.dll
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\BLL\obj\Debug\BLL.pdb

@@ -1,6 +1,6 @@
 ﻿using BE;
 using BLL;
-using Interfaces.IBE; // Necesario para obtener el usuario de la sesión y castear el objeto de la grilla
+using Interfaces.IBE;
 using Interfaces.IServices;
 using Services; // Necesario para acceder al SessionService
 using System;
@@ -11,24 +11,25 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 {
     public partial class CopiasSeguridadView : UserControl
     {
-        // La UI solo necesita conocer a la BLL para darle órdenes.
+        // --- Dependencias y Variables ---
         private readonly BackupBLL _backupBLL;
-
-        // Asumo que tu SessionService se llama así y es un Singleton.
         private readonly ISessionService<Usuario> _sessionService;
-
-        public Usuario UsuarioActual { get; private set; }
+        private IUsuarioLogueado _usuarioActual; // Variable para guardar el usuario
 
         public CopiasSeguridadView()
         {
             InitializeComponent();
 
-            // Instanciamos la BLL y el servicio de sesión que usaremos.
+            // --- LA CORRECCIÓN ESTÁ AQUÍ ---
+            // 1. Instanciamos la BLL que usaremos.
             _backupBLL = new BackupBLL();
 
-            this.UsuarioActual = _sessionService.UsuarioLogueado;
 
-            
+            // 2. OBTENEMOS la instancia del Singleton de Sesión.
+            _sessionService = SessionService<Usuario>.GetInstance();
+
+            // 3. AHORA SÍ podemos acceder al usuario logueado.
+            _usuarioActual = _sessionService.UsuarioLogueado;
         }
 
         private void CopiasSeguridadView_Load(object sender, EventArgs e)
@@ -39,19 +40,22 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
         private void buttonCrearCopia_Click(object sender, EventArgs e)
         {
+            if (_usuarioActual == null)
+            {
+                MessageBox.Show("No se pudo identificar al usuario de la sesión.", "Error de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var confirmResult = MessageBox.Show("¿Desea iniciar una nueva copia de seguridad ahora?", "Confirmar Operación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirmResult != DialogResult.Yes) return;
 
             try
             {
-                // La UI prepara los ingredientes y se los pasa a la BLL.
                 string nota = textBoxNotasCopia.Text;
-                IUsuarioLogueado usuario = _sessionService.UsuarioLogueado;
-
-                this.Cursor = Cursors.WaitCursor; // Cambiamos el cursor para dar feedback
+                this.Cursor = Cursors.WaitCursor;
 
                 // Le damos la orden a la BLL. La UI no sabe cómo se hace, solo lo pide.
-                _backupBLL.CrearCopiaDeSeguridad(nota, usuario);
+                _backupBLL.CrearCopiaDeSeguridad(nota, _usuarioActual);
 
                 MessageBox.Show("Copia de seguridad creada con éxito.", "Operación Completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -61,7 +65,6 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             }
             finally
             {
-                // Pase lo que pase, restauramos el cursor y actualizamos la vista.
                 this.Cursor = Cursors.Default;
                 textBoxNotasCopia.Clear();
                 ActualizarGrilla();
@@ -96,8 +99,12 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (dataGridViewHistorial.CurrentRow?.DataBoundItem is IBackup backupSeleccionado)
             {
-                // Usamos la ruta del backup seleccionado para abrir la carpeta.
                 Process.Start("explorer.exe", backupSeleccionado.RutaArchivo);
+            }
+            else
+            {
+                // Si no hay nada seleccionado, abre la carpeta raíz de backups
+                Process.Start("explorer.exe", @"C:\Growshi\Backups\");
             }
         }
 
@@ -111,7 +118,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                 try
                 {
                     _backupBLL.EliminarCopiaDeSeguridad(backupSeleccionado);
-                    ActualizarGrilla(); // Actualizamos para que desaparezca de la lista.
+                    ActualizarGrilla();
                 }
                 catch (Exception ex)
                 {
@@ -126,11 +133,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             try
             {
-                // Le pedimos los datos a la BLL.
                 dataGridViewHistorial.DataSource = null;
                 dataGridViewHistorial.DataSource = _backupBLL.ObtenerHistorial();
-
-                // Aquí puedes configurar las columnas para que se vean mejor.
                 ConfigurarColumnasGrilla();
             }
             catch (Exception ex)
@@ -143,17 +147,23 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (dataGridViewHistorial.Columns.Count == 0) return;
 
-            // Ocultamos las columnas que no son útiles para el usuario.
             dataGridViewHistorial.Columns["Id"].Visible = false;
             dataGridViewHistorial.Columns["RutaArchivo"].Visible = false;
 
-            // Cambiamos los títulos de las columnas a algo más amigable.
             dataGridViewHistorial.Columns["FechaHora"].HeaderText = "Fecha y Hora";
             dataGridViewHistorial.Columns["NombreArchivo"].HeaderText = "Nombre del Archivo";
             dataGridViewHistorial.Columns["Nota"].HeaderText = "Notas";
+
+
             dataGridViewHistorial.Columns["Usuario"].HeaderText = "Realizado por";
 
-            // Ajustamos el tamaño de las columnas.
+            //dataGridViewHistorial.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    HeaderText = "Realizado por",
+            //    DataPropertyName = "Usuario.NombreUsuario" 
+            //});
+
+
             dataGridViewHistorial.Columns["NombreArchivo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewHistorial.Columns["Nota"].Width = 250;
         }

@@ -40,6 +40,7 @@ namespace BLL
             };
             _bitacoraDAO.Guardar(bitacoraParaGuardar);
             _sessionService.Logout();
+
             #endregion
 
 

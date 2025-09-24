@@ -22,5 +22,14 @@ namespace BE
         {
             this.Permisos = new List<string>();
         }
+
+
+        public override string ToString()
+        {
+            
+            return this.NombreUsuario;
+        }
+
+
     }
 }

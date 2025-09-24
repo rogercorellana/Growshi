@@ -23,7 +23,7 @@ namespace BLL
         private readonly BackupDAO _backupDAO;
 
         // --- Configuración ---
-        private readonly string _rutaDeBackups = @"C:\Growshi\Backups\"; // Es buena práctica definir la ruta aquí
+        private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\";
 
         /// <summary>
         /// En el constructor, la BLL prepara todas las herramientas y conexiones que necesitará.
@@ -46,10 +46,19 @@ namespace BLL
             var nuevoBackup = new Backup
             {
                 Nota = nota,
-                Usuario = usuario,
                 FechaHora = DateTime.Now,
+
+                Usuario = usuario,
                 RutaArchivo = _rutaDeBackups
             };
+            //esto hay en la clase de la BE Backup
+            //public int Id { get; set; }
+            //public DateTime FechaHora { get; set; }
+            //public string NombreArchivo { get; set; }
+            //public string RutaArchivo { get; set; }
+            //public string Nota { get; set; }
+            //public IUsuarioLogueado Usuario { get; set; }
+
 
             // 2. La BLL usa la HERRAMIENTA del servicio para validar la entidad.
             _backupService.Validar(nuevoBackup);
