@@ -2,60 +2,56 @@
 using BLL;
 using Interfaces.IBE;
 using Interfaces.IServices;
-using Services; // Necesario para acceder al SessionService
+using Services; 
 using System;
-using System.Diagnostics; // Necesario para abrir la ubicación del archivo
+using System.Diagnostics; 
 using System.Windows.Forms;
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 {
     public partial class CopiasSeguridadView : UserControl
     {
-        // --- Dependencias y Variables ---
         private readonly BackupBLL _backupBLL;
         private readonly ISessionService<Usuario> _sessionService;
-        private IUsuarioLogueado _usuarioActual; // Variable para guardar el usuario
+        private IUsuarioLogueado _usuarioActual;
 
         public CopiasSeguridadView()
         {
             InitializeComponent();
-
-            // --- LA CORRECCIÓN ESTÁ AQUÍ ---
-            // 1. Instanciamos la BLL que usaremos.
             _backupBLL = new BackupBLL();
-
-
-            // 2. OBTENEMOS la instancia del Singleton de Sesión.
             _sessionService = SessionService<Usuario>.GetInstance();
-
-            // 3. AHORA SÍ podemos acceder al usuario logueado.
             _usuarioActual = _sessionService.UsuarioLogueado;
         }
 
         private void CopiasSeguridadView_Load(object sender, EventArgs e)
         {
-            // Al cargar la vista, llenamos la grilla con el historial.
             ActualizarGrilla();
         }
 
+
+        #region BOTON - CREAR COPIA DE SEGURIDAD
         private void buttonCrearCopia_Click(object sender, EventArgs e)
         {
+
             if (_usuarioActual == null)
             {
                 MessageBox.Show("No se pudo identificar al usuario de la sesión.", "Error de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var confirmResult = MessageBox.Show("¿Desea iniciar una nueva copia de seguridad ahora?", "Confirmar Operación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirmResult != DialogResult.Yes) return;
+            DialogResult confirmResult = new DialogResult();
+
+            confirmResult = MessageBox.Show("¿Desea iniciar una nueva copia de seguridad ahora?", "Confirmar Operación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmResult != DialogResult.Yes) 
+                return;
 
             try
             {
-                string nota = textBoxNotasCopia.Text;
+                string notaDeBackUp = textBoxNotasCopia.Text;
                 this.Cursor = Cursors.WaitCursor;
 
-                // Le damos la orden a la BLL. La UI no sabe cómo se hace, solo lo pide.
-                _backupBLL.CrearCopiaDeSeguridad(nota, _usuarioActual);
+                _backupBLL.CrearCopiaDeSeguridad(notaDeBackUp, _usuarioActual);
 
                 MessageBox.Show("Copia de seguridad creada con éxito.", "Operación Completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -70,6 +66,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                 ActualizarGrilla();
             }
         }
+        #endregion
 
         private void buttonRestaurar_Click(object sender, EventArgs e)
         {
@@ -90,6 +87,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                 }
                 finally
                 {
+                    ActualizarGrilla();
                     this.Cursor = Cursors.Default;
                 }
             }
@@ -104,7 +102,23 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             else
             {
                 // Si no hay nada seleccionado, abre la carpeta raíz de backups
-                Process.Start("explorer.exe", @"C:\Growshi\Backups\");
+
+                DialogResult resultado = MessageBox.Show(
+                "Usted no ha seleccionado ninguna copia de seguridad. Desea abrir el directorio destino?",
+                "",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+
+                if (resultado == DialogResult.Yes)
+                {
+                    Process.Start("explorer.exe", @"C:\Growshi\Backups\");
+                }
+                
+
+                //
+
+
             }
         }
 
@@ -149,20 +163,12 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
             dataGridViewHistorial.Columns["Id"].Visible = false;
             dataGridViewHistorial.Columns["RutaArchivo"].Visible = false;
+            dataGridViewHistorial.Columns["Usuario"].Visible = false;
+
 
             dataGridViewHistorial.Columns["FechaHora"].HeaderText = "Fecha y Hora";
             dataGridViewHistorial.Columns["NombreArchivo"].HeaderText = "Nombre del Archivo";
             dataGridViewHistorial.Columns["Nota"].HeaderText = "Notas";
-
-
-            dataGridViewHistorial.Columns["Usuario"].HeaderText = "Realizado por";
-
-            //dataGridViewHistorial.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    HeaderText = "Realizado por",
-            //    DataPropertyName = "Usuario.NombreUsuario" 
-            //});
-
 
             dataGridViewHistorial.Columns["NombreArchivo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewHistorial.Columns["Nota"].Width = 250;

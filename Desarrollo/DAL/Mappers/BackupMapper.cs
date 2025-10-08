@@ -15,9 +15,7 @@ public static class BackupMapper
             FechaHora = Convert.ToDateTime(fila["FechaHora"]),
             NombreArchivo = fila["NombreArchivo"].ToString(),
             RutaArchivo = fila["RutaArchivo"].ToString(),
-            // Leemos la nueva columna, manejando posibles valores nulos.
             Nota = fila["Nota"] == DBNull.Value ? "" : fila["Nota"].ToString(),
-            //Usuario = new Usuario { IdUsuario = Convert.ToInt32(fila["UsuarioID"]) }
             Usuario = usuario
 
         };

@@ -8,9 +8,10 @@ namespace Interfaces.IDAL
 {
     public interface IABM<T> where T : class
     {
-        void Alta(T entidad);
-        void Modificacion(T entidad);
-        void Baja(int id);
+        void Crear(T entidad);
+        void Actualizar(T entidad);
+        void Eliminar(int id);
         List<T> ObtenerTodos();
+        T ObtenerPorId(int id);
     }
 }

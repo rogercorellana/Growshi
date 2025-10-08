@@ -17,13 +17,12 @@ namespace DAL
     {
         /// <summary>
         /// Obtiene la fila completa de un usuario, incluyendo datos sensibles como la contraseña.
-        /// Su propósito es ser usado por la BLL solo para el proceso de validación.
         /// </summary>
         /// <returns>Un DataTable con la fila del usuario, o un DataTable vacío si no se encuentra.</returns>
         public DataTable ObtenerDatosCrudosPorNombre(string nombreUsuario)
         {
             // La consulta trae todas las columnas necesarias para la validación.
-            string consulta = "SELECT * FROM Usuario WHERE UsuarioNombre = @nombre"; // Ajusta el nombre de la columna si es diferente
+            string consulta = "SELECT * FROM Usuario WHERE UsuarioNombre = @nombre"; 
             var parametros = new List<SqlParameter> { new SqlParameter("@nombre", nombreUsuario) };
 
             return SqlHelper.GetInstance().ExecuteReader(consulta, parametros);
@@ -34,20 +33,16 @@ namespace DAL
         /// </summary>
         public void ActualizarIntentos(int usuarioId, int nuevosIntentos)
         {
-            string consulta = "UPDATE Usuario SET UsuarioIntentos = @intentos WHERE UsuarioID = @id"; // Ajusta los nombres de las columnas
+            string consulta = "UPDATE Usuario SET UsuarioIntentos = @intentos WHERE UsuarioID = @id";
             var parametros = new List<SqlParameter>
             {
                 new SqlParameter("@intentos", nuevosIntentos),
                 new SqlParameter("@id", usuarioId)
             };
 
-            SqlHelper helper = SqlHelper.GetInstance();
-            // NOTA: Asegúrate de que tu SqlHelper tenga una versión de ExecuteNonQuery que acepte parámetros.
-            helper.ExecuteNonQuery(consulta, parametros);
+            SqlHelper.GetInstance().ExecuteNonQuery(consulta, parametros);
         }
 
-
-        //
 
         public void ActualizarEstadoSesion(int usuarioId, bool estaLogueado)
         {
@@ -69,7 +64,6 @@ namespace DAL
         /// <returns>Un objeto Usuario, o null si no se encuentra.</returns>
         public Usuario ObtenerPorId(int usuarioId)
         {
-            // La consulta solo trae los datos públicos del usuario.
             string consulta = "SELECT * FROM Usuario WHERE UsuarioID = @id";
             var parametros = new List<SqlParameter> { new SqlParameter("@id", usuarioId) };
 
@@ -77,24 +71,26 @@ namespace DAL
 
             if (tabla.Rows.Count > 0)
             {
-                // Usamos el mapper para convertir la primera (y única) fila.
                 return UsuarioMapper.MapearDesdeDataRow(tabla.Rows[0]);
             }
 
-            return null; // No se encontró el usuario.
+            return null; 
         }
 
-        public void Alta(Usuario entidad)
+
+
+
+        public void Crear(Usuario entidad)
         {
             throw new NotImplementedException();
         }
 
-        public void Modificacion(Usuario entidad)
+        public void Actualizar(Usuario entidad)
         {
             throw new NotImplementedException();
         }
 
-        public void Baja(int id)
+        public void Eliminar(int id)
         {
             throw new NotImplementedException();
         }
@@ -103,45 +99,5 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
-
-
-
-
-
-
-
-
-
-        #region codigo anterior 
-        //public Usuario ObtenerPorNombre(string nombreUsuario)
-        //{
-        //    string consulta = "SELECT UsuarioID, NombreUsuario, Email, IntentosUsuario FROM Usuario WHERE NombreUsuario = @nombre";
-        //    var parametros = new List<SqlParameter> { new SqlParameter("@nombre", nombreUsuario) };
-
-        //    SqlHelper helper = SqlHelper.GetInstance();
-        //    DataTable tabla = helper.ExecuteReader(consulta, parametros);
-
-        //    if (tabla.Rows.Count > 0)
-        //    {
-        //        // La llamada es ahora más limpia y directa
-        //        return UsuarioMapper.MapearDesdeDataRow(tabla.Rows[0]);
-        //    }
-        //    return null;
-        //}
-
-        //// EJEMPLO DE USO DEL NUEVO ExecuteNonQuery
-        //public void ActualizarIntentos(int usuarioId, int nuevosIntentos)
-        //{
-        //    string consulta = "UPDATE Usuario SET IntentosUsuario = @intentos WHERE UsuarioID = @id";
-        //    var parametros = new List<SqlParameter>
-        //{
-        //    new SqlParameter("@intentos", nuevosIntentos),
-        //    new SqlParameter("@id", usuarioId)
-        //};
-
-        //    SqlHelper helper = SqlHelper.GetInstance();
-        //    helper.ExecuteNonQuery(consulta, parametros);
-        //}
-        #endregion
     }
 }

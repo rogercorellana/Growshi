@@ -38,6 +38,8 @@ namespace BLL
                 Modulo = eventoLogout.Modulo,
                 UsuarioID = eventoLogout.UsuarioID
             };
+
+
             _bitacoraDAO.Guardar(bitacoraParaGuardar);
             _sessionService.Logout();
 
