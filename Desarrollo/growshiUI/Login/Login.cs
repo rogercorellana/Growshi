@@ -141,16 +141,17 @@ namespace growshiUI
 
         }
 
+
         #endregion
 
-
-
         #region OLVIDE MI CONTRASEÑA
-        private void metroLink1_Click(object sender, EventArgs e)
+
+        private void buttonOlvideMiContraseña_Click(object sender, EventArgs e)
         {
 
         }
-
         #endregion
+
+
     }
 }

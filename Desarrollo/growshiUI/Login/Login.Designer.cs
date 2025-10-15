@@ -37,7 +37,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.buttonOlvideMiContraseña = new MetroFramework.Controls.MetroLink();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.temporizadorBloqueo = new System.Windows.Forms.Timer(this.components);
@@ -120,18 +120,18 @@
             this.pictureBox4.TabIndex = 12;
             this.pictureBox4.TabStop = false;
             // 
-            // metroLink1
+            // buttonOlvideMiContraseña
             // 
-            this.metroLink1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.metroLink1.CustomBackground = true;
-            this.metroLink1.CustomForeColor = true;
-            this.metroLink1.ForeColor = System.Drawing.Color.Black;
-            this.metroLink1.Location = new System.Drawing.Point(306, 146);
-            this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(124, 16);
-            this.metroLink1.TabIndex = 13;
-            this.metroLink1.Text = "Olvide mi contraseña";
-            this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
+            this.buttonOlvideMiContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
+            this.buttonOlvideMiContraseña.CustomBackground = true;
+            this.buttonOlvideMiContraseña.CustomForeColor = true;
+            this.buttonOlvideMiContraseña.ForeColor = System.Drawing.Color.Black;
+            this.buttonOlvideMiContraseña.Location = new System.Drawing.Point(306, 146);
+            this.buttonOlvideMiContraseña.Name = "buttonOlvideMiContraseña";
+            this.buttonOlvideMiContraseña.Size = new System.Drawing.Size(124, 16);
+            this.buttonOlvideMiContraseña.TabIndex = 13;
+            this.buttonOlvideMiContraseña.Text = "Olvide mi contraseña";
+            this.buttonOlvideMiContraseña.Click += new System.EventHandler(this.buttonOlvideMiContraseña_Click);
             // 
             // metroLabel1
             // 
@@ -182,7 +182,7 @@
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroLink1);
+            this.Controls.Add(this.buttonOlvideMiContraseña);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.buttonIniciarSesion);
@@ -213,7 +213,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private MetroFramework.Controls.MetroLink metroLink1;
+        private MetroFramework.Controls.MetroLink buttonOlvideMiContraseña;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private System.Windows.Forms.Timer temporizadorBloqueo;

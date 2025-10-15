@@ -16,7 +16,6 @@ namespace Services
 
         public static IPermissionService GetInstance() => _instancia;
 
-        // El método recibe la interfaz, cumpliendo 100% con la arquitectura.
         public bool TienePermiso(IUsuarioLogueado usuario, string permisoId)
         {
             if (usuario?.Permisos == null)

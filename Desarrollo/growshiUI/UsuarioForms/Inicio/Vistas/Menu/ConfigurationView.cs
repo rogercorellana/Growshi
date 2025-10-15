@@ -1,4 +1,8 @@
-﻿using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion;
+﻿using BE;
+using BLL;
+using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion;
+using Interfaces.IServices;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +17,47 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas
 {
     public partial class ConfigurationView : UserControl
     {
+
+
+        private readonly ISessionService<Usuario> _sessionService;
+        private readonly InicioUsuarioBLL _inicioUsuarioBLL;
+        private readonly IPermissionService _permissionService;
+
+        public Usuario UsuarioActual { get; private set; }
+
+
         public ConfigurationView()
         {
             InitializeComponent();
+
+            _sessionService = SessionService<Usuario>.GetInstance();
+            _inicioUsuarioBLL = new InicioUsuarioBLL();
+            _permissionService = PermissionService.GetInstance();
+
+            this.UsuarioActual = _sessionService.UsuarioLogueado;
+
+            
         }
+
+
+        //permisos
+        private void AplicarPermisos()
+        {
+            
+            buttonGestionUsuarios.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonGestionUsuarios");
+            buttonRolesPermisos.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonRolesPermisos");
+            buttonAjusteSistema.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonAjusteSistema");
+            buttonCopiaSeguridad.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonCopiaSeguridad");
+            buttonActualizaciones.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonActualizaciones");
+
+
+
+
+        }
+
 
         private void CargarVista(UserControl vista)
         {
-            // Panel2 es el panel derecho de nuestro SplitContainer
             this.splitContainer1.Panel2.Controls.Clear();
             vista.Dock = DockStyle.Fill;
             this.splitContainer1.Panel2.Controls.Add(vista);

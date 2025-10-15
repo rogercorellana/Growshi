@@ -1,5 +1,5 @@
 ﻿using BE;
-using BLL; // <-- AÑADIR: Para usar la nueva BLL
+using BLL; 
 using growshiUI.UsuarioForms.Inicio;
 using growshiUI.UsuarioForms.Inicio.Vistas;
 using Interfaces.IServices;
@@ -14,8 +14,8 @@ namespace growshiUI.UsuarioForms
     public partial class InicioUsuario : Form
     {
         private readonly ISessionService<Usuario> _sessionService;
-        private readonly InicioUsuarioBLL _inicioUsuarioBLL; // <-- AÑADIR: La dependencia a la BLL
-        private readonly IPermissionService _permissionService; // ✅ Añadir
+        private readonly InicioUsuarioBLL _inicioUsuarioBLL;
+        private readonly IPermissionService _permissionService;
 
 
         public Usuario UsuarioActual { get; private set; }
@@ -25,8 +25,8 @@ namespace growshiUI.UsuarioForms
             InitializeComponent();
 
             _sessionService = SessionService<Usuario>.GetInstance();
-            _inicioUsuarioBLL = new InicioUsuarioBLL(); // <-- AÑADIR: Se crea la instancia de la BLL
-            _permissionService = PermissionService.GetInstance(); // ✅ Añadir
+            _inicioUsuarioBLL = new InicioUsuarioBLL(); 
+            _permissionService = PermissionService.GetInstance(); 
 
             this.UsuarioActual = _sessionService.UsuarioLogueado;
 
@@ -57,12 +57,49 @@ namespace growshiUI.UsuarioForms
         #region COMPOSITE PERMISOS APLICAR
         private void AplicarPermisos()
         {
-            // ✅ La verificación se hace a través del servicio, manteniendo el código limpio.
             // btnGestionUsuarios.Enabled = _permissionService.TienePermiso(this.UsuarioActual, "GestionarUsuarios");
             // btnVerBitacora.Visible = _permissionService.TienePermiso(this.UsuarioActual, "VerBitacora");
 
             //el usuario tiene esa llave??
             //groupBoxCultivos.Enabled = _permissionService.TienePermiso(this.UsuarioActual, "VerCultivos");
+
+            
+
+            //validacion permisos MenuToolStrip
+            menuStripGlobal.Items["MenuStrip_inicioMenuItem"].Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_inicioMenuItem");
+            menuStripGlobal.Items["MenuStrip_misCultivosMenuItem"].Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_misCultivosMenuItem");
+            menuStripGlobal.Items["MenuStrip_historialMenuItem"].Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_historialMenuItem");
+            menuStripGlobal.Items["MenuStrip_reportesMenuItem"].Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_reportesMenuItem");
+            menuStripGlobal.Items["MenuStrip_configuracionMenuItem"].Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem");
+            menuStripGlobal.Items["MenuStrip_miCuentaMenuItem"].Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_miCuentaMenuItem");     
+            menuStripGlobal.Items["MenuStrip_idiomaMenuItem"].Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_idiomaMenuItem");
+
+
+            //validacion permisos internos por apartado, todos dentro de su form 
+
+            //inicio
+            //miscultivos
+            //historial
+            //reportes
+
+
+
+            //configuracion
+
+
+            //micuenta
+
+            //idioma
+
+
+
+
+
+
+
+
+
+
         }
         #endregion
 
@@ -108,10 +145,8 @@ namespace growshiUI.UsuarioForms
 
         private void MostrarVistaInicio()
         {
-            // Resalta el botón del menú de inicio
             ResaltarBotonMenu(inicioMenuItem);
 
-            // Carga el UserControl de la vista de inicio
             this.panelInicio.Controls.Clear();
             InicioView vistaDashboard = new InicioView();
             vistaDashboard.Dock = DockStyle.Fill;
@@ -121,15 +156,12 @@ namespace growshiUI.UsuarioForms
 
         private void ResaltarBotonMenu(ToolStripMenuItem botonSeleccionado)
         {
-            // 1. Quita el resaltado de TODOS los botones del menú principal.
-            foreach (ToolStripMenuItem boton in menuStrip1.Items)
+            foreach (ToolStripMenuItem boton in menuStripGlobal.Items)
             {
-                // Vuelve a poner el color de fondo por defecto del menú.
                 boton.BackColor = SystemColors.MenuBar;
             }
 
-            // 2. Pinta solo el botón que fue seleccionado.
-            // Un buen color es el que usa el sistema para resaltar cosas.
+            
             botonSeleccionado.BackColor = SystemColors.Highlight;
         }
 
@@ -140,10 +172,8 @@ namespace growshiUI.UsuarioForms
 
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Resalta el botón del menú
             ResaltarBotonMenu((ToolStripMenuItem)sender);
 
-            // Carga el UserControl principal de configuración
             this.panelInicio.Controls.Clear();
             ConfigurationView vistaConfig = new ConfigurationView();
             vistaConfig.Dock = DockStyle.Fill;
@@ -152,10 +182,8 @@ namespace growshiUI.UsuarioForms
 
         private void idiomaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Resalta el botón del menú
             ResaltarBotonMenu((ToolStripMenuItem)sender);
 
-            // Carga el UserControl principal de configuración
             this.panelInicio.Controls.Clear();
             IdiomaView idiomaView = new IdiomaView();
             idiomaView.Dock = DockStyle.Fill;

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonActualizaciones = new System.Windows.Forms.Button();
             this.buttonCopiaSeguridad = new System.Windows.Forms.Button();
             this.buttonAjusteSistema = new System.Windows.Forms.Button();
             this.buttonRolesPermisos = new System.Windows.Forms.Button();
-            this.btnGestionUsuarios = new System.Windows.Forms.Button();
+            this.buttonGestionUsuarios = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -48,27 +48,27 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.buttonActualizaciones);
             this.splitContainer1.Panel1.Controls.Add(this.buttonCopiaSeguridad);
             this.splitContainer1.Panel1.Controls.Add(this.buttonAjusteSistema);
             this.splitContainer1.Panel1.Controls.Add(this.buttonRolesPermisos);
-            this.splitContainer1.Panel1.Controls.Add(this.btnGestionUsuarios);
+            this.splitContainer1.Panel1.Controls.Add(this.buttonGestionUsuarios);
             this.splitContainer1.Size = new System.Drawing.Size(816, 597);
             this.splitContainer1.SplitterDistance = 224;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button1
+            // buttonActualizaciones
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 470);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(224, 124);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Actualizaciones";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonActualizaciones.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonActualizaciones.FlatAppearance.BorderSize = 0;
+            this.buttonActualizaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonActualizaciones.Location = new System.Drawing.Point(0, 470);
+            this.buttonActualizaciones.Name = "buttonActualizaciones";
+            this.buttonActualizaciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonActualizaciones.Size = new System.Drawing.Size(224, 124);
+            this.buttonActualizaciones.TabIndex = 4;
+            this.buttonActualizaciones.Text = "Actualizaciones";
+            this.buttonActualizaciones.UseVisualStyleBackColor = true;
             // 
             // buttonCopiaSeguridad
             // 
@@ -111,19 +111,19 @@
             this.buttonRolesPermisos.UseVisualStyleBackColor = true;
             this.buttonRolesPermisos.Click += new System.EventHandler(this.buttonRolesPermisos_Click);
             // 
-            // btnGestionUsuarios
+            // buttonGestionUsuarios
             // 
-            this.btnGestionUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGestionUsuarios.FlatAppearance.BorderSize = 0;
-            this.btnGestionUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGestionUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.btnGestionUsuarios.Name = "btnGestionUsuarios";
-            this.btnGestionUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnGestionUsuarios.Size = new System.Drawing.Size(224, 127);
-            this.btnGestionUsuarios.TabIndex = 0;
-            this.btnGestionUsuarios.Text = "Gestión de Usuarios";
-            this.btnGestionUsuarios.UseVisualStyleBackColor = true;
-            this.btnGestionUsuarios.Click += new System.EventHandler(this.btnGestionUsuarios_Click);
+            this.buttonGestionUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonGestionUsuarios.FlatAppearance.BorderSize = 0;
+            this.buttonGestionUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGestionUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.buttonGestionUsuarios.Name = "buttonGestionUsuarios";
+            this.buttonGestionUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonGestionUsuarios.Size = new System.Drawing.Size(224, 127);
+            this.buttonGestionUsuarios.TabIndex = 0;
+            this.buttonGestionUsuarios.Text = "Gestión de Usuarios";
+            this.buttonGestionUsuarios.UseVisualStyleBackColor = true;
+            this.buttonGestionUsuarios.Click += new System.EventHandler(this.btnGestionUsuarios_Click);
             // 
             // ConfigurationView
             // 
@@ -142,10 +142,10 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button btnGestionUsuarios;
+        private System.Windows.Forms.Button buttonGestionUsuarios;
         private System.Windows.Forms.Button buttonCopiaSeguridad;
         private System.Windows.Forms.Button buttonAjusteSistema;
         private System.Windows.Forms.Button buttonRolesPermisos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonActualizaciones;
     }
 }

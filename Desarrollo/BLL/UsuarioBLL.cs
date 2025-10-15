@@ -173,6 +173,7 @@ namespace BLL
 
                 _bitacoraDAO.Guardar(bitacoraParaGuardar);
 
+            
 
                 #endregion
 
