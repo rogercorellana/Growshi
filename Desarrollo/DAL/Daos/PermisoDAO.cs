@@ -16,25 +16,29 @@ namespace DAL.Daos
         /// </summary>
         public List<string> ObtenerPermisosPorUsuario(int usuarioId)
         {
+            // Consulta corregida: se eliminó el filtro "WHERE pc.EsFamilia = 0"
             string consulta = @"
-                ;WITH UserPermissions AS (
-                    SELECT tup.PermisoID
-                    FROM Usuario_TipoUsuario utu
-                    JOIN TipoUsuario_Permiso tup ON utu.TipoUsuarioID = tup.TipoUsuarioID
-                    WHERE utu.UsuarioID = @UsuarioID
-                    UNION ALL
-                    SELECT child.PermisoID
-                    FROM PermisoComponente child
-                    JOIN UserPermissions up ON child.PadreID = up.PermisoID
-                )
-                SELECT DISTINCT pc.PermisoID
-                FROM UserPermissions up
-                JOIN PermisoComponente pc ON up.PermisoID = pc.PermisoID
-                WHERE pc.EsFamilia = 0;";
+            ;WITH UserPermissions AS (
+            -- 1. Punto de partida: Permisos asignados directamente a los roles del usuario
+            SELECT tup.PermisoID
+            FROM Usuario_TipoUsuario utu
+            JOIN TipoUsuario_Permiso tup ON utu.TipoUsuarioID = tup.TipoUsuarioID
+            WHERE utu.UsuarioID = @UsuarioID
+
+            UNION ALL
+
+            -- 2. Parte recursiva: Busca los hijos de los permisos ya encontrados
+            SELECT child.PermisoID
+            FROM PermisoComponente child
+            JOIN UserPermissions up ON child.PadreID = up.PermisoID
+            )
+            -- 3. Selección final: Devuelve TODOS los permisos encontrados, sin filtrar.
+            SELECT DISTINCT PermisoID
+            FROM UserPermissions;";
 
             var parametros = new List<SqlParameter> {
-                new SqlParameter("@UsuarioID", usuarioId)
-            };
+            new SqlParameter("@UsuarioID", usuarioId)
+        };
 
             var tabla = SqlHelper.GetInstance().ExecuteReader(consulta, parametros);
 
