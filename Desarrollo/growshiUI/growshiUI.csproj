@@ -82,6 +82,12 @@
     <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\CopiasSeguridadView.Designer.cs">
       <DependentUpon>CopiasSeguridadView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosView.Designer.cs">
+      <DependentUpon>RolesYPermisosView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioForms\Inicio\Vistas\Menu\AjustesGeneralesView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,11 +100,11 @@
     <Compile Include="UsuarioForms\Inicio\Vistas\Menu\IdiomaView.Designer.cs">
       <DependentUpon>IdiomaView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosView.cs">
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosViewA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosView.Designer.cs">
-      <DependentUpon>RolesYPermisosView.cs</DependentUpon>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosViewA.Designer.cs">
+      <DependentUpon>RolesYPermisosViewA.cs</DependentUpon>
     </Compile>
     <Compile Include="UsuarioForms\Inicio\Vistas\Menu\ConfigurationView.cs">
       <SubType>UserControl</SubType>
@@ -142,14 +148,17 @@
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\GestionUsuariosView.resx">
       <DependentUpon>GestionUsuariosView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosView.resx">
+      <DependentUpon>RolesYPermisosView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\AjustesGeneralesView.resx">
       <DependentUpon>AjustesGeneralesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\IdiomaView.resx">
       <DependentUpon>IdiomaView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosView.resx">
-      <DependentUpon>RolesYPermisosView.cs</DependentUpon>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\RolesYPermisosViewA.resx">
+      <DependentUpon>RolesYPermisosViewA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\ConfigurationView.resx">
       <DependentUpon>ConfigurationView.cs</DependentUpon>

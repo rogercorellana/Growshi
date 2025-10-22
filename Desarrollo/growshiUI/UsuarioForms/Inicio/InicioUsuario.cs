@@ -14,7 +14,7 @@ namespace growshiUI.UsuarioForms
     public partial class InicioUsuario : Form
     {
         private readonly ISessionService<Usuario> _sessionService;
-        private readonly InicioUsuarioBLL _inicioUsuarioBLL;
+        private readonly InicioUsuarioBL _inicioUsuarioBLL;
         private readonly IPermissionService _permissionService;
 
 
@@ -25,7 +25,7 @@ namespace growshiUI.UsuarioForms
             InitializeComponent();
 
             _sessionService = SessionService<Usuario>.GetInstance();
-            _inicioUsuarioBLL = new InicioUsuarioBLL(); 
+            _inicioUsuarioBLL = new InicioUsuarioBL(); 
             _permissionService = PermissionService.GetInstance(); 
 
             this.UsuarioActual = _sessionService.UsuarioLogueado;
@@ -145,7 +145,7 @@ namespace growshiUI.UsuarioForms
 
         private void MostrarVistaInicio()
         {
-            ResaltarBotonMenu(inicioMenuItem);
+            ResaltarBotonMenu(MenuStrip_inicioMenuItem);
 
             this.panelInicio.Controls.Clear();
             InicioView vistaDashboard = new InicioView();

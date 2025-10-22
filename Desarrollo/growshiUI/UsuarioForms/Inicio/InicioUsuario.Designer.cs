@@ -28,67 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.inicioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.misCultivosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historialMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuracionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miCuentaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_inicioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_misCultivosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_historialMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_reportesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_configuracionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_miCuentaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
-            this.idiomaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_idiomaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelInicio = new System.Windows.Forms.Panel();
             this.menuStripGlobal.SuspendLayout();
             this.SuspendLayout();
             // 
-            // inicioMenuItem
+            // MenuStrip_inicioMenuItem
             // 
-            this.inicioMenuItem.Name = "inicioMenuItem";
-            this.inicioMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.inicioMenuItem.Text = "Inicio";
-            this.inicioMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
+            this.MenuStrip_inicioMenuItem.Name = "MenuStrip_inicioMenuItem";
+            this.MenuStrip_inicioMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.MenuStrip_inicioMenuItem.Text = "Inicio";
+            this.MenuStrip_inicioMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
             // 
-            // misCultivosMenuItem
+            // MenuStrip_misCultivosMenuItem
             // 
-            this.misCultivosMenuItem.Name = "misCultivosMenuItem";
-            this.misCultivosMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.misCultivosMenuItem.Text = "Mis Cultivos";
+            this.MenuStrip_misCultivosMenuItem.Name = "MenuStrip_misCultivosMenuItem";
+            this.MenuStrip_misCultivosMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.MenuStrip_misCultivosMenuItem.Text = "Mis Cultivos";
             // 
-            // historialMenuItem
+            // MenuStrip_historialMenuItem
             // 
-            this.historialMenuItem.Name = "historialMenuItem";
-            this.historialMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.historialMenuItem.Text = "Historial";
+            this.MenuStrip_historialMenuItem.Name = "MenuStrip_historialMenuItem";
+            this.MenuStrip_historialMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.MenuStrip_historialMenuItem.Text = "Historial";
             // 
-            // reportesMenuItem
+            // MenuStrip_reportesMenuItem
             // 
-            this.reportesMenuItem.Name = "reportesMenuItem";
-            this.reportesMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.reportesMenuItem.Text = "Reportes";
+            this.MenuStrip_reportesMenuItem.Name = "MenuStrip_reportesMenuItem";
+            this.MenuStrip_reportesMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.MenuStrip_reportesMenuItem.Text = "Reportes";
             // 
-            // configuracionMenuItem
+            // MenuStrip_configuracionMenuItem
             // 
-            this.configuracionMenuItem.Name = "configuracionMenuItem";
-            this.configuracionMenuItem.ShowShortcutKeys = false;
-            this.configuracionMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.configuracionMenuItem.Text = "Configuración";
-            this.configuracionMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            this.MenuStrip_configuracionMenuItem.Name = "MenuStrip_configuracionMenuItem";
+            this.MenuStrip_configuracionMenuItem.ShowShortcutKeys = false;
+            this.MenuStrip_configuracionMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.MenuStrip_configuracionMenuItem.Text = "Configuración";
+            this.MenuStrip_configuracionMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
-            // miCuentaMenuItem
+            // MenuStrip_miCuentaMenuItem
             // 
-            this.miCuentaMenuItem.Name = "miCuentaMenuItem";
-            this.miCuentaMenuItem.Size = new System.Drawing.Size(74, 20);
-            this.miCuentaMenuItem.Text = "Mi Cuenta";
+            this.MenuStrip_miCuentaMenuItem.Name = "MenuStrip_miCuentaMenuItem";
+            this.MenuStrip_miCuentaMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.MenuStrip_miCuentaMenuItem.Text = "Mi Cuenta";
             // 
             // menuStripGlobal
             // 
             this.menuStripGlobal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inicioMenuItem,
-            this.misCultivosMenuItem,
-            this.historialMenuItem,
-            this.reportesMenuItem,
-            this.configuracionMenuItem,
-            this.miCuentaMenuItem,
-            this.idiomaMenuItem});
+            this.MenuStrip_inicioMenuItem,
+            this.MenuStrip_misCultivosMenuItem,
+            this.MenuStrip_historialMenuItem,
+            this.MenuStrip_reportesMenuItem,
+            this.MenuStrip_configuracionMenuItem,
+            this.MenuStrip_miCuentaMenuItem,
+            this.MenuStrip_idiomaMenuItem});
             this.menuStripGlobal.Location = new System.Drawing.Point(0, 0);
             this.menuStripGlobal.Name = "menuStripGlobal";
             this.menuStripGlobal.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -96,12 +96,12 @@
             this.menuStripGlobal.TabIndex = 4;
             this.menuStripGlobal.Text = "menuStrip1";
             // 
-            // idiomaMenuItem
+            // MenuStrip_idiomaMenuItem
             // 
-            this.idiomaMenuItem.Name = "idiomaMenuItem";
-            this.idiomaMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.idiomaMenuItem.Text = "Idioma";
-            this.idiomaMenuItem.Click += new System.EventHandler(this.idiomaToolStripMenuItem_Click);
+            this.MenuStrip_idiomaMenuItem.Name = "MenuStrip_idiomaMenuItem";
+            this.MenuStrip_idiomaMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.MenuStrip_idiomaMenuItem.Text = "Idioma";
+            this.MenuStrip_idiomaMenuItem.Click += new System.EventHandler(this.idiomaToolStripMenuItem_Click);
             // 
             // panelInicio
             // 
@@ -129,14 +129,14 @@
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripMenuItem inicioMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem misCultivosMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem historialMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportesMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configuracionMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miCuentaMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_inicioMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_misCultivosMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_historialMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_reportesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_configuracionMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_miCuentaMenuItem;
         private System.Windows.Forms.MenuStrip menuStripGlobal;
         private System.Windows.Forms.Panel panelInicio;
-        private System.Windows.Forms.ToolStripMenuItem idiomaMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_idiomaMenuItem;
     }
 }

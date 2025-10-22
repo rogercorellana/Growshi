@@ -20,7 +20,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas
 
 
         private readonly ISessionService<Usuario> _sessionService;
-        private readonly InicioUsuarioBLL _inicioUsuarioBLL;
+        private readonly InicioUsuarioBL _inicioUsuarioBLL;
         private readonly IPermissionService _permissionService;
 
         public Usuario UsuarioActual { get; private set; }
@@ -31,12 +31,12 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas
             InitializeComponent();
 
             _sessionService = SessionService<Usuario>.GetInstance();
-            _inicioUsuarioBLL = new InicioUsuarioBLL();
+            _inicioUsuarioBLL = new InicioUsuarioBL();
             _permissionService = PermissionService.GetInstance();
 
             this.UsuarioActual = _sessionService.UsuarioLogueado;
 
-            
+            AplicarPermisos();
         }
 
 
