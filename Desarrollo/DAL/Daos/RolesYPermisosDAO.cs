@@ -26,5 +26,19 @@ namespace DAL.Daos
 
             return SqlHelper.GetInstance().ExecuteReader(consulta, null);
         }
+
+        public DataTable ListarRolesDelSistema()
+        {
+            // Se usa DISTINCT para evitar duplicados
+            string consulta = @"
+            SELECT DISTINCT 
+                PermisoID,
+                NombreDescriptivo
+            FROM 
+                PermisoComponente 
+            ";
+
+            return SqlHelper.GetInstance().ExecuteReader(consulta, null);
+        }
     }
 }
