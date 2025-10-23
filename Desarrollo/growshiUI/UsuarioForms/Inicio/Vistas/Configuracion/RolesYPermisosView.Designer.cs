@@ -39,12 +39,12 @@
             this.dataGridViewRolesAsociados = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.buttonAgregarNuevaFamilia = new System.Windows.Forms.Button();
-            this.buttonRenombrarFamilia = new System.Windows.Forms.Button();
-            this.buttonEliminarFamilia = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonAgregarNuevaFamilia = new System.Windows.Forms.Button();
+            this.buttonRenombrarFamilia = new System.Windows.Forms.Button();
+            this.buttonEliminarFamilia = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQuitar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFamiliaDeRoles)).BeginInit();
@@ -120,6 +120,7 @@
             this.dataGridViewFamiliaDeRoles.Name = "dataGridViewFamiliaDeRoles";
             this.dataGridViewFamiliaDeRoles.Size = new System.Drawing.Size(388, 400);
             this.dataGridViewFamiliaDeRoles.TabIndex = 14;
+            this.dataGridViewFamiliaDeRoles.SelectionChanged += new System.EventHandler(this.dataGridViewFamiliaDeRoles_SelectionChanged);
             // 
             // dataGridViewRolesDelSistema
             // 
@@ -172,40 +173,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Roles del Sistema";
             // 
-            // buttonAgregarNuevaFamilia
-            // 
-            this.buttonAgregarNuevaFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonAgregarNuevaFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonAgregarNuevaFamilia.Location = new System.Drawing.Point(3, 421);
-            this.buttonAgregarNuevaFamilia.Name = "buttonAgregarNuevaFamilia";
-            this.buttonAgregarNuevaFamilia.Size = new System.Drawing.Size(388, 41);
-            this.buttonAgregarNuevaFamilia.TabIndex = 10;
-            this.buttonAgregarNuevaFamilia.Text = "Nuevo";
-            this.buttonAgregarNuevaFamilia.UseVisualStyleBackColor = true;
-            this.buttonAgregarNuevaFamilia.Click += new System.EventHandler(this.buttonAgregarNuevaFamilia_Click);
-            // 
-            // buttonRenombrarFamilia
-            // 
-            this.buttonRenombrarFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonRenombrarFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonRenombrarFamilia.Location = new System.Drawing.Point(3, 462);
-            this.buttonRenombrarFamilia.Name = "buttonRenombrarFamilia";
-            this.buttonRenombrarFamilia.Size = new System.Drawing.Size(388, 41);
-            this.buttonRenombrarFamilia.TabIndex = 11;
-            this.buttonRenombrarFamilia.Text = "Renombrar";
-            this.buttonRenombrarFamilia.UseVisualStyleBackColor = true;
-            // 
-            // buttonEliminarFamilia
-            // 
-            this.buttonEliminarFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonEliminarFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonEliminarFamilia.Location = new System.Drawing.Point(3, 503);
-            this.buttonEliminarFamilia.Name = "buttonEliminarFamilia";
-            this.buttonEliminarFamilia.Size = new System.Drawing.Size(388, 41);
-            this.buttonEliminarFamilia.TabIndex = 12;
-            this.buttonEliminarFamilia.Text = "Eliminar";
-            this.buttonEliminarFamilia.UseVisualStyleBackColor = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridViewRolesAsociados);
@@ -246,6 +213,42 @@
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Familia De Roles";
+            // 
+            // buttonAgregarNuevaFamilia
+            // 
+            this.buttonAgregarNuevaFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonAgregarNuevaFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.buttonAgregarNuevaFamilia.Location = new System.Drawing.Point(3, 421);
+            this.buttonAgregarNuevaFamilia.Name = "buttonAgregarNuevaFamilia";
+            this.buttonAgregarNuevaFamilia.Size = new System.Drawing.Size(388, 41);
+            this.buttonAgregarNuevaFamilia.TabIndex = 10;
+            this.buttonAgregarNuevaFamilia.Text = "Nuevo";
+            this.buttonAgregarNuevaFamilia.UseVisualStyleBackColor = true;
+            this.buttonAgregarNuevaFamilia.Click += new System.EventHandler(this.buttonAgregarNuevaFamilia_Click);
+            // 
+            // buttonRenombrarFamilia
+            // 
+            this.buttonRenombrarFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonRenombrarFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.buttonRenombrarFamilia.Location = new System.Drawing.Point(3, 462);
+            this.buttonRenombrarFamilia.Name = "buttonRenombrarFamilia";
+            this.buttonRenombrarFamilia.Size = new System.Drawing.Size(388, 41);
+            this.buttonRenombrarFamilia.TabIndex = 11;
+            this.buttonRenombrarFamilia.Text = "Renombrar";
+            this.buttonRenombrarFamilia.UseVisualStyleBackColor = true;
+            this.buttonRenombrarFamilia.Click += new System.EventHandler(this.buttonRenombrarFamilia_Click);
+            // 
+            // buttonEliminarFamilia
+            // 
+            this.buttonEliminarFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonEliminarFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.buttonEliminarFamilia.Location = new System.Drawing.Point(3, 503);
+            this.buttonEliminarFamilia.Name = "buttonEliminarFamilia";
+            this.buttonEliminarFamilia.Size = new System.Drawing.Size(388, 41);
+            this.buttonEliminarFamilia.TabIndex = 12;
+            this.buttonEliminarFamilia.Text = "Eliminar";
+            this.buttonEliminarFamilia.UseVisualStyleBackColor = true;
+            this.buttonEliminarFamilia.Click += new System.EventHandler(this.buttonEliminarFamilia_Click);
             // 
             // RolesYPermisosView
             // 

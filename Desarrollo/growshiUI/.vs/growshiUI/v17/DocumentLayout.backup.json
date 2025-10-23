@@ -11,18 +11,14 @@
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\configuracion\\rolesypermisosview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{61B86F09-5EEE-40DE-BFA8-401A670B4D68}|..\\DAL\\DAL.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\dal\\daos\\rolesypermisosdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E2557642-39CC-4203-99B5-2D924EB0AC20}|..\\BLL\\BLL.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\bll\\rolesypermisosbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\vistas\\configuracion\\rolesypermisosview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\configuracion\\rolesypermisosview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\usuarioforms\\inicio\\vistas\\menu\\configurationview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\menu\\configurationview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61B86F09-5EEE-40DE-BFA8-401A670B4D68}|..\\DAL\\DAL.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\dal\\daos\\rolesypermisosdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\vistas\\configuracion\\abm_rolesypermisos\\agregarfamilia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\configuracion\\abm_rolesypermisos\\agregarfamilia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,7 +28,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -40,15 +36,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RolesYPermisosView.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.Designer.cs",
-              "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.Designer.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.Designer.cs",
-              "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.Designer.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAEwK0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "RolesYPermisosDAO.cs",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\DAL\\Daos\\RolesYPermisosDAO.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\Daos\\RolesYPermisosDAO.cs",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\DAL\\Daos\\RolesYPermisosDAO.cs",
+              "RelativeToolTip": "..\\DAL\\Daos\\RolesYPermisosDAO.cs",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAYwHUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T23:12:55.351Z",
+              "WhenOpened": "2025-10-23T16:00:59.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RolesYPermisosBLL.cs",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\BLL\\RolesYPermisosBLL.cs",
+              "RelativeDocumentMoniker": "..\\BLL\\RolesYPermisosBLL.cs",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\BLL\\RolesYPermisosBLL.cs",
+              "RelativeToolTip": "..\\BLL\\RolesYPermisosBLL.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAcwDkAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T16:00:15.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RolesYPermisosView.cs",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
+              "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
+              "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
+              "ViewState": "AgIAANoAAAAAAAAAAAAmwPIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T15:52:04.298Z",
               "EditorCaption": ""
             },
             {
@@ -60,59 +82,21 @@
               "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs [Dise\u00F1o]",
               "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T23:01:13.062Z",
+              "WhenOpened": "2025-10-23T15:52:02.803Z",
               "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RolesYPermisosBLL.cs",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\BLL\\RolesYPermisosBLL.cs",
-              "RelativeDocumentMoniker": "..\\BLL\\RolesYPermisosBLL.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\BLL\\RolesYPermisosBLL.cs",
-              "RelativeToolTip": "..\\BLL\\RolesYPermisosBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T18:26:48.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RolesYPermisosView.cs",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
-              "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
-              "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAowF8AAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T18:25:22.574Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RolesYPermisosDAO.cs",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\DAL\\Daos\\RolesYPermisosDAO.cs",
-              "RelativeDocumentMoniker": "..\\DAL\\Daos\\RolesYPermisosDAO.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\DAL\\Daos\\RolesYPermisosDAO.cs",
-              "RelativeToolTip": "..\\DAL\\Daos\\RolesYPermisosDAO.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACYAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T18:23:09.064Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ConfigurationView.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Menu\\ConfigurationView.cs",
-              "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\Vistas\\Menu\\ConfigurationView.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Menu\\ConfigurationView.cs [Dise\u00F1o]",
-              "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Menu\\ConfigurationView.cs [Dise\u00F1o]",
+              "Title": "AgregarFamilia.cs",
+              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\AgregarFamilia.cs",
+              "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\AgregarFamilia.cs",
+              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\AgregarFamilia.cs",
+              "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\AgregarFamilia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T19:24:42.058Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-10-23T14:18:32.66Z",
+              "EditorCaption": ""
             }
           ]
         }

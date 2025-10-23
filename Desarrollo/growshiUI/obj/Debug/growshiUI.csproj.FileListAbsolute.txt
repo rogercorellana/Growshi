@@ -160,7 +160,6 @@ C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\o
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.RolesYPermisosView.resources
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Menu.AjustesGeneralesView.resources
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.IdiomaView.resources
-C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.RolesYPermisosViewA.resources
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.ConfigurationView.resources
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.InicioView.resources
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.GenerateResource.cache
@@ -168,3 +167,5 @@ C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\o
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.csproj.Up2Date
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.exe
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.pdb
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_RolesYPermisos.AgregarFamilia.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_RolesYPermisos.ModificarFamilia.resources

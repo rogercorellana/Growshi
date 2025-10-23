@@ -13,18 +13,61 @@ namespace BLL.InicioUsuarioBLL
 
         RolesYPermisosDAO rolesYPermisosDAO = new RolesYPermisosDAO();
 
-        public DataTable ListarFamiliaDeRoles()
-        {
-            return rolesYPermisosDAO.ListarFamiliaDeRoles();
-        }
+        
 
         public void ListarRolesAsociados()
         {
 
         }
-        public DataTable ListarRolesDelSistema()
+        public DataTable ListarTodosRolesDelSistema()
         {
-            return rolesYPermisosDAO.ListarRolesDelSistema();
+            return rolesYPermisosDAO.ListarTodosRolesDelSistema();
+
+        }
+
+
+
+        #region 1ER DATAGRID - FAMILIA DE ROLES
+        //   
+
+        //CREAR
+        public void CrearFamiliaDeRoles(string permisoID, string nombreDescriptivo)
+        {
+            rolesYPermisosDAO.CrearFamiliaDeRoles(permisoID,nombreDescriptivo);
+        }
+
+
+        //LISTAR
+        public DataTable ListarFamiliaDeRoles()
+        {
+            return rolesYPermisosDAO.ListarFamiliaDeRoles();
+        }
+
+        //BORRAR
+        public void EliminarFamiliaDeRoles(string idParaBorrar)
+        {
+            rolesYPermisosDAO.EliminarFamiliaDeRoles(idParaBorrar);
+        }
+
+        //MODIFICAR
+        public void ModificarFamiliaDeRoles(string idOriginal, string idModificado, string descripcionFinal)
+        {
+            rolesYPermisosDAO.ModificarFamiliaDeRoles(idOriginal,idModificado,descripcionFinal);
+        }
+
+        public DataTable ListarRolesAsociadosAfamilia(string idParaListarSuFamilia)
+        {
+            return rolesYPermisosDAO.ListarRolesAsociadosAfamilia(idParaListarSuFamilia);
+        }
+
+        #endregion
+
+        //
+
+
+        public DataTable ListarRolesDelSistemaDisponibles(string idParaListarSusRolesDisponibles)
+        {
+            return rolesYPermisosDAO.ListarRolesDelSistemaDisponibles(idParaListarSusRolesDisponibles);
 
         }
     }
