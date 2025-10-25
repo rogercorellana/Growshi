@@ -78,6 +78,7 @@
             this.pictureBoxAgregar.Size = new System.Drawing.Size(100, 50);
             this.pictureBoxAgregar.TabIndex = 7;
             this.pictureBoxAgregar.TabStop = false;
+            this.pictureBoxAgregar.Click += new System.EventHandler(this.pictureBoxAgregar_Click);
             // 
             // label3
             // 

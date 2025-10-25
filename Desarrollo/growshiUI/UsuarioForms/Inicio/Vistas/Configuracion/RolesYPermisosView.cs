@@ -178,8 +178,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
         #region CRUD - SEGUNDO DATAGRID PERMISOS ASOCIADOS A UNA FAMILIA
 
-        // *** MÉTODO CORREGIDO ***
-        // Ahora recibe el ID de la familia seleccionada
+        
         public void listarRolesAsociadosAUnaFamilia(string idFamilia)
         {
             DataTable dataTable = rolesYPermisosBLL.ListarRolesAsociadosAfamilia(idFamilia);
@@ -194,8 +193,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
         #region CRUD - TERCER DATAGRID PERMISOS DISPONIBLES DE LA FAMILIA
 
-        // *** MÉTODO CORREGIDO ***
-        // Ahora recibe el ID de la familia seleccionada
+        
         public void ListarRolesDelSistemaDisponibles(string idFamilia)
         {
             DataTable dataTable = rolesYPermisosBLL.ListarRolesDelSistemaDisponibles(idFamilia);
@@ -206,15 +204,62 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             }
         }
 
+
+
+        private void pictureBoxAgregar_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridViewRolesDelSistema.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor, seleccione el permiso que desea agregar.",
+                                "Ninguna fila seleccionada",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string idParaAgregar = dataGridViewRolesDelSistema.CurrentRow.Cells["PermisoID"].Value.ToString();
+                string idFamiliaPadre = dataGridViewFamiliaDeRoles.CurrentRow.Cells["PermisoID"].Value.ToString();
+
+
+                rolesYPermisosBLL.AgregarPermisoComponenteAFamilia(idParaAgregar, idFamiliaPadre);
+
+                MessageBox.Show($"Permiso agregado Exitosamente",
+                                "Exito",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.None);
+
+                CargarVista(new RolesYPermisosView());
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar Permiso:  {ex.Message}",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+            }
+            
+
+                
+                
+        
+                
+            
+
+        }
+
+
         #endregion
 
-        // *** MÉTODO CORREGIDO ***
-        // Este evento ahora controla la carga de las otras dos grillas.
+
+
+
         private void dataGridViewFamiliaDeRoles_SelectionChanged(object sender, EventArgs e)
         {
-            // 1. Verificación de seguridad
-            // Si CurrentRow es null (porque la grilla se está cargando o está vacía),
-            // limpia las grillas secundarias y detiene la ejecución.
+           
             if (dataGridViewFamiliaDeRoles.CurrentRow == null)
             {
                 dataGridViewRolesAsociados.DataSource = null;
@@ -222,13 +267,16 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                 return;
             }
 
-            // 2. Si la verificación pasa, obtiene el ID de la fila seleccionada
             string idFamiliaSeleccionada = dataGridViewFamiliaDeRoles.CurrentRow.Cells["PermisoID"].Value.ToString();
 
-            // 3. Llama a los métodos de carga pasándoles el ID
             listarRolesAsociadosAUnaFamilia(idFamiliaSeleccionada);
             ListarRolesDelSistemaDisponibles(idFamiliaSeleccionada);
         }
+
+
+
+
+
 
         public void listarTodosRolesDelSistema()
         {
@@ -239,5 +287,9 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                 dataGridViewRolesDelSistema.DataSource = dataTable;
             }
         }
+
+
+
+       
     }
 }

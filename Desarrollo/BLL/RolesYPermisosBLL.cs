@@ -24,7 +24,11 @@ namespace BLL.InicioUsuarioBLL
             return rolesYPermisosDAO.ListarTodosRolesDelSistema();
 
         }
+        public DataTable ListarRolesDelSistemaDisponibles(string idParaListarSusRolesDisponibles)
+        {
+            return rolesYPermisosDAO.ListarRolesDelSistemaDisponibles(idParaListarSusRolesDisponibles);
 
+        }
 
 
         #region 1ER DATAGRID - FAMILIA DE ROLES
@@ -65,10 +69,17 @@ namespace BLL.InicioUsuarioBLL
         //
 
 
-        public DataTable ListarRolesDelSistemaDisponibles(string idParaListarSusRolesDisponibles)
-        {
-            return rolesYPermisosDAO.ListarRolesDelSistemaDisponibles(idParaListarSusRolesDisponibles);
 
+
+
+        
+
+
+
+        //agregar del 3er datagrid al 2do datagrid
+        public void AgregarPermisoComponenteAFamilia(string idParaAgregar, string idFamiliaPadre)
+        {
+            rolesYPermisosDAO.AgregarPermisoComponenteAFamilia(idParaAgregar, idFamiliaPadre);
         }
     }
 }
