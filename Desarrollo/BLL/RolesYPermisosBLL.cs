@@ -1,62 +1,37 @@
-﻿using DAL.Daos;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.InicioUsuarioBLL
 {
     public class RolesYPermisosBLL
     {
-
         RolesYPermisosDAO rolesYPermisosDAO = new RolesYPermisosDAO();
 
-        
-
-        public void ListarRolesAsociados()
-        {
-
-        }
-        public DataTable ListarTodosRolesDelSistema()
-        {
-            return rolesYPermisosDAO.ListarTodosRolesDelSistema();
-
-        }
         public DataTable ListarRolesDelSistemaDisponibles(string idParaListarSusRolesDisponibles)
         {
             return rolesYPermisosDAO.ListarRolesDelSistemaDisponibles(idParaListarSusRolesDisponibles);
-
         }
-
 
         #region 1ER DATAGRID - FAMILIA DE ROLES
-        //   
 
-        //CREAR
         public void CrearFamiliaDeRoles(string permisoID, string nombreDescriptivo)
         {
-            rolesYPermisosDAO.CrearFamiliaDeRoles(permisoID,nombreDescriptivo);
+            rolesYPermisosDAO.CrearFamiliaDeRoles(permisoID, nombreDescriptivo);
         }
 
-
-        //LISTAR
         public DataTable ListarFamiliaDeRoles()
         {
             return rolesYPermisosDAO.ListarFamiliaDeRoles();
         }
 
-        //BORRAR
         public void EliminarFamiliaDeRoles(string idParaBorrar)
         {
             rolesYPermisosDAO.EliminarFamiliaDeRoles(idParaBorrar);
         }
 
-        //MODIFICAR
         public void ModificarFamiliaDeRoles(string idOriginal, string idModificado, string descripcionFinal)
         {
-            rolesYPermisosDAO.ModificarFamiliaDeRoles(idOriginal,idModificado,descripcionFinal);
+            rolesYPermisosDAO.ModificarFamiliaDeRoles(idOriginal, idModificado, descripcionFinal);
         }
 
         public DataTable ListarRolesAsociadosAfamilia(string idParaListarSuFamilia)
@@ -66,20 +41,32 @@ namespace BLL.InicioUsuarioBLL
 
         #endregion
 
-        //
 
 
+        #region 2DO y 3ER DATAGRID - AGREGAR BORRAR PERMISOS a la familia
+        public void AgregarPermisoComponenteAFamilia(string idPermisoHijo, string idFamiliaPadre)
+        {
+            if (idPermisoHijo == idFamiliaPadre)
+            {
+                throw new Exception("No puede agregarse un permiso a sí mismo.");
+            }
 
+            
+            if (rolesYPermisosDAO.CheckearCircularidad(idPermisoHijo, idFamiliaPadre))
+            {
+                throw new Exception("Error de referencia circular: " +
+                    "No se puede agregar una familia como hija de uno de sus propios descendientes.");
+            }
 
+            rolesYPermisosDAO.AgregarPermisoComponenteAFamilia(idPermisoHijo, idFamiliaPadre);
+        }
 
         
-
-
-
-        //agregar del 3er datagrid al 2do datagrid
-        public void AgregarPermisoComponenteAFamilia(string idParaAgregar, string idFamiliaPadre)
+        public void QuitarPermisoComponenteDeFamilia(string idPermisoHijo, string idFamiliaPadre)
         {
-            rolesYPermisosDAO.AgregarPermisoComponenteAFamilia(idParaAgregar, idFamiliaPadre);
+            rolesYPermisosDAO.QuitarPermisoComponenteDeFamilia(idPermisoHijo, idFamiliaPadre);
         }
+
+        #endregion
     }
 }

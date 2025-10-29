@@ -68,6 +68,7 @@
             this.pictureBoxQuitar.Size = new System.Drawing.Size(100, 44);
             this.pictureBoxQuitar.TabIndex = 6;
             this.pictureBoxQuitar.TabStop = false;
+            this.pictureBoxQuitar.Click += new System.EventHandler(this.pictureBoxQuitar_Click);
             // 
             // pictureBoxAgregar
             // 

@@ -76,6 +76,18 @@
     <Compile Include="UsuarioForms\Inicio\InicioUsuario.Designer.cs">
       <DependentUpon>InicioUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\AgregarUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\AgregarUsuario.Designer.cs">
+      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\ModificarUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\ModificarUsuario.Designer.cs">
+      <DependentUpon>ModificarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_RolesYPermisos\AgregarFamilia.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +159,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\InicioUsuario.resx">
       <DependentUpon>InicioUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\AgregarUsuario.resx">
+      <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\ModificarUsuario.resx">
+      <DependentUpon>ModificarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_RolesYPermisos\AgregarFamilia.resx">
       <DependentUpon>AgregarFamilia.cs</DependentUpon>

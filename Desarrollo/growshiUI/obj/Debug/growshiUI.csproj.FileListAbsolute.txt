@@ -169,3 +169,5 @@ C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\o
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_RolesYPermisos.AgregarFamilia.resources
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_RolesYPermisos.ModificarFamilia.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_GestionUsuarios.AgregarUsuario.resources
+C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_GestionUsuarios.ModificarUsuario.resources

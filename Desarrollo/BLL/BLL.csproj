@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BackupBLL.cs" />
     <Compile Include="Exceptions\CuentaBloqueadaException.cs" />
+    <Compile Include="GestionUsuariosBLL.cs" />
     <Compile Include="InicioUsuarioBL.cs" />
     <Compile Include="RolesYPermisosBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

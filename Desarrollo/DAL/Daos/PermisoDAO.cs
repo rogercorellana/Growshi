@@ -11,28 +11,26 @@ namespace DAL.Daos
 {
     public class PermisoDAO
     {
-        /// <summary>
-        /// Obtiene la lista final de todos los PermisoID que un usuario tiene.
-        /// </summary>
+        
         public List<string> ObtenerPermisosPorUsuario(int usuarioId)
         {
-            // Consulta corregida: se eliminó el filtro "WHERE pc.EsFamilia = 0"
+            // Consulta para usar la tabla Permiso_Relacion
             string consulta = @"
             ;WITH UserPermissions AS (
-            -- 1. Punto de partida: Permisos asignados directamente a los roles del usuario
-            SELECT tup.PermisoID
+                -- 1. Punto de partida: Permisos asignados directamente a los roles del usuario
+                SELECT tup.PermisoID
             FROM Usuario_TipoUsuario utu
             JOIN TipoUsuario_Permiso tup ON utu.TipoUsuarioID = tup.TipoUsuarioID
             WHERE utu.UsuarioID = @UsuarioID
 
             UNION ALL
 
-            -- 2. Parte recursiva: Busca los hijos de los permisos ya encontrados
-            SELECT child.PermisoID
-            FROM PermisoComponente child
-            JOIN UserPermissions up ON child.PadreID = up.PermisoID
+            -- 2. Parte recursiva: Busca los hijos usando la tabla de relación
+            SELECT pr.HijoID   -- <-- SELECCIONAMOS EL HIJO
+            FROM Permiso_Relacion pr -- <-- DESDE LA TABLA DE RELACION
+            JOIN UserPermissions up ON pr.PadreID = up.PermisoID -- <-- DONDE EL PADRE es un permiso que ya tenemos
             )
-            -- 3. Selección final: Devuelve TODOS los permisos encontrados, sin filtrar.
+            -- 3. Selección final: Devuelve TODOS los permisos (directos + recursivos)
             SELECT DISTINCT PermisoID
             FROM UserPermissions;";
 

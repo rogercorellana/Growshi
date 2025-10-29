@@ -17,6 +17,14 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             InitializeComponent();
         }
 
-        
+        private void pictureBoxEspañol_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxIngles_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

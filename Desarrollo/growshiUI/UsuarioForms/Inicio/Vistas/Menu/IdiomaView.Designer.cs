@@ -33,15 +33,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIngles = new System.Windows.Forms.PictureBox();
             this.panelEspañol = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEspañol = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIngles)).BeginInit();
             this.panelEspañol.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEspañol)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,7 +77,7 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pictureBoxIngles);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel1.Location = new System.Drawing.Point(264, 125);
             this.panel1.Name = "panel1";
@@ -96,23 +96,24 @@
             this.label3.Text = "Ingles";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox2
+            // pictureBoxIngles
             // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(198, 150);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxIngles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBoxIngles.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxIngles.Image")));
+            this.pictureBoxIngles.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxIngles.Name = "pictureBoxIngles";
+            this.pictureBoxIngles.Size = new System.Drawing.Size(198, 150);
+            this.pictureBoxIngles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxIngles.TabIndex = 0;
+            this.pictureBoxIngles.TabStop = false;
+            this.pictureBoxIngles.Click += new System.EventHandler(this.pictureBoxIngles_Click);
             // 
             // panelEspañol
             // 
             this.panelEspañol.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelEspañol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelEspañol.Controls.Add(this.label2);
-            this.panelEspañol.Controls.Add(this.pictureBox1);
+            this.panelEspañol.Controls.Add(this.pictureBoxEspañol);
             this.panelEspañol.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelEspañol.Location = new System.Drawing.Point(21, 125);
             this.panelEspañol.Name = "panelEspañol";
@@ -131,16 +132,17 @@
             this.label2.Text = "Español";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // pictureBoxEspañol
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(198, 150);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxEspañol.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBoxEspañol.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxEspañol.Image")));
+            this.pictureBoxEspañol.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxEspañol.Name = "pictureBoxEspañol";
+            this.pictureBoxEspañol.Size = new System.Drawing.Size(198, 150);
+            this.pictureBoxEspañol.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEspañol.TabIndex = 0;
+            this.pictureBoxEspañol.TabStop = false;
+            this.pictureBoxEspañol.Click += new System.EventHandler(this.pictureBoxEspañol_Click);
             // 
             // IdiomaView
             // 
@@ -153,10 +155,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIngles)).EndInit();
             this.panelEspañol.ResumeLayout(false);
             this.panelEspañol.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEspañol)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,9 +170,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panelEspañol;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxEspañol;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBoxIngles;
     }
 }
