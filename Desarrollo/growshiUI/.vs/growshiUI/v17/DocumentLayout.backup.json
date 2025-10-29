@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\configuracion\\abm_rolesypermisos\\modificarfamilia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\vistas\\configuracion\\abm_rolesypermisos\\modificarfamilia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\usuarioforms\\inicio\\vistas\\configuracion\\abm_rolesypermisos\\modificarfamilia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\configuracion\\abm_rolesypermisos\\modificarfamilia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\configuracion\\rolesypermisosview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\vistas\\configuracion\\rolesypermisosview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\usuarioforms\\inicio\\vistas\\configuracion\\rolesypermisosview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\configuracion\\rolesypermisosview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -43,8 +43,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -53,7 +57,7 @@
               "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\ModificarFamilia.cs",
               "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\ModificarFamilia.cs",
               "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\ModificarFamilia.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAABPAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAsAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T20:24:30.513Z",
               "EditorCaption": ""
@@ -67,8 +71,7 @@
               "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\ModificarFamilia.cs [Dise\u00F1o]",
               "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\ABM_RolesYPermisos\\ModificarFamilia.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T20:24:28.882Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-10-29T20:24:28.882Z"
             },
             {
               "$type": "Document",
@@ -80,12 +83,7 @@
               "RelativeToolTip": "..\\DAL\\Daos\\RolesYPermisosDAO.cs*",
               "ViewState": "AgIAACAAAAAAAAAAAAArwGgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T19:23:28.926Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2025-10-29T19:23:28.926Z"
             },
             {
               "$type": "Document",
@@ -97,8 +95,7 @@
               "RelativeToolTip": "..\\DAL\\Daos\\GestionUsuariosDAO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBQAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T17:33:29.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T17:33:29.389Z"
             },
             {
               "$type": "Document",
@@ -110,8 +107,7 @@
               "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\GestionUsuariosView.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAgwBwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T17:29:04.933Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T17:29:04.933Z"
             },
             {
               "$type": "Document",
@@ -123,8 +119,7 @@
               "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs",
               "ViewState": "AgIAAIwAAAAAAAAAAAAhwJcAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T17:28:59.528Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T17:28:59.528Z"
             },
             {
               "$type": "Document",
@@ -135,8 +130,7 @@
               "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs [Dise\u00F1o]",
               "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T17:22:01.185Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-10-29T17:22:01.185Z"
             },
             {
               "$type": "Document",
@@ -147,8 +141,7 @@
               "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\GestionUsuariosView.cs [Dise\u00F1o]",
               "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Configuracion\\GestionUsuariosView.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T17:23:55.623Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-10-29T17:23:55.623Z"
             },
             {
               "$type": "Document",
