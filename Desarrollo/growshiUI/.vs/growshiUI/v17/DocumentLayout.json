@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\",
+  "WorkspaceRootPath": "C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\compu\\desktop\\nueva carpeta (3)\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\vistas\\menu\\miscultivosview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\usuarioforms\\inicio\\vistas\\menu\\miscultivosview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\vistas\\menu\\miscultivosview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\usuarioforms\\inicio\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|c:\\users\\roger\\desktop\\growshi definitivo - copia\\growshi\\desarrollo\\growshiui\\usuarioforms\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\usuarioforms\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1DC17DD0-B699-4C39-80AC-EA6E18C2750F}|growshiUI.csproj|solutionrelative:usuarioforms\\inicio\\iniciousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -36,33 +36,31 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Form1.cs",
               "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\Form1.cs",
               "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "UsuarioForms\\Inicio\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T14:42:42.299Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-11-12T14:42:42.299Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MisCultivosView.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Menu\\MisCultivosView.cs",
+              "DocumentMoniker": "C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Menu\\MisCultivosView.cs",
               "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\Vistas\\Menu\\MisCultivosView.cs",
               "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Menu\\MisCultivosView.cs [Dise\u00F1o]",
-              "RelativeToolTip": "UsuarioForms\\Inicio\\Vistas\\Menu\\MisCultivosView.cs [Dise\u00F1o]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Menu\\MisCultivosView.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-12T14:39:52.465Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-11-12T14:39:52.465Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "InicioUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.cs",
               "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\InicioUsuario.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.cs",
+              "ToolTip": "C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.cs",
               "RelativeToolTip": "UsuarioForms\\Inicio\\InicioUsuario.cs",
               "ViewState": "AgIAAJ8AAAAAAAAAAAAtwOwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -73,9 +71,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "InicioUsuario.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.cs",
               "RelativeDocumentMoniker": "UsuarioForms\\Inicio\\InicioUsuario.cs",
-              "ToolTip": "C:\\Users\\Roger\\Desktop\\Growshi Definitivo - copia\\growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\Compu\\Desktop\\Nueva carpeta (3)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.cs [Dise\u00F1o]",
               "RelativeToolTip": "UsuarioForms\\Inicio\\InicioUsuario.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T12:05:47.805Z",
