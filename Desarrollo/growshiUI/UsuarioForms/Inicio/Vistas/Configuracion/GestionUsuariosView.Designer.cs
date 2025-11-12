@@ -30,6 +30,7 @@
         {
             this.dataGridViewUsuarios = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonModificarPermisosUsuario = new System.Windows.Forms.Button();
             this.buttonAdministrarSuscripcion = new System.Windows.Forms.Button();
             this.textBoxBuscarUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonModificarPermisosUsuario);
             this.panel1.Controls.Add(this.buttonAdministrarSuscripcion);
             this.panel1.Controls.Add(this.textBoxBuscarUsuario);
             this.panel1.Controls.Add(this.label1);
@@ -66,6 +68,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1200, 61);
             this.panel1.TabIndex = 1;
+            // 
+            // buttonModificarPermisosUsuario
+            // 
+            this.buttonModificarPermisosUsuario.Location = new System.Drawing.Point(883, 21);
+            this.buttonModificarPermisosUsuario.Name = "buttonModificarPermisosUsuario";
+            this.buttonModificarPermisosUsuario.Size = new System.Drawing.Size(125, 23);
+            this.buttonModificarPermisosUsuario.TabIndex = 6;
+            this.buttonModificarPermisosUsuario.Text = "Modificar Permisos";
+            this.buttonModificarPermisosUsuario.UseVisualStyleBackColor = true;
+            this.buttonModificarPermisosUsuario.Click += new System.EventHandler(this.buttonModificarPermisosUsuario_Click);
             // 
             // buttonAdministrarSuscripcion
             // 
@@ -148,5 +160,6 @@
         private System.Windows.Forms.Button buttonEditarUsuario;
         private System.Windows.Forms.Button buttonEliminarUsuario;
         private System.Windows.Forms.Button buttonAdministrarSuscripcion;
+        private System.Windows.Forms.Button buttonModificarPermisosUsuario;
     }
 }

@@ -171,6 +171,7 @@
             this.progressBar.Size = new System.Drawing.Size(453, 23);
             this.progressBar.TabIndex = 16;
             this.progressBar.Visible = false;
+            this.progressBar.Click += new System.EventHandler(this.progressBar_Click);
             // 
             // Login
             // 
@@ -194,7 +195,6 @@
             this.Name = "Login";
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

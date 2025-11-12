@@ -141,7 +141,6 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             }
         }
 
-        // --- MÉTODOS PRIVADOS DE AYUDA ---
 
         private void ActualizarGrilla()
         {

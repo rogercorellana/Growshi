@@ -42,9 +42,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonEliminarFamilia = new System.Windows.Forms.Button();
             this.buttonAgregarNuevaFamilia = new System.Windows.Forms.Button();
             this.buttonRenombrarFamilia = new System.Windows.Forms.Button();
-            this.buttonEliminarFamilia = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQuitar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFamiliaDeRoles)).BeginInit();
@@ -216,6 +216,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Familia De Roles";
             // 
+            // buttonEliminarFamilia
+            // 
+            this.buttonEliminarFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonEliminarFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.buttonEliminarFamilia.Location = new System.Drawing.Point(3, 503);
+            this.buttonEliminarFamilia.Name = "buttonEliminarFamilia";
+            this.buttonEliminarFamilia.Size = new System.Drawing.Size(388, 41);
+            this.buttonEliminarFamilia.TabIndex = 12;
+            this.buttonEliminarFamilia.Text = "Eliminar";
+            this.buttonEliminarFamilia.UseVisualStyleBackColor = true;
+            this.buttonEliminarFamilia.Click += new System.EventHandler(this.buttonEliminarFamilia_Click);
+            // 
             // buttonAgregarNuevaFamilia
             // 
             this.buttonAgregarNuevaFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -239,18 +251,6 @@
             this.buttonRenombrarFamilia.Text = "Renombrar";
             this.buttonRenombrarFamilia.UseVisualStyleBackColor = true;
             this.buttonRenombrarFamilia.Click += new System.EventHandler(this.buttonRenombrarFamilia_Click);
-            // 
-            // buttonEliminarFamilia
-            // 
-            this.buttonEliminarFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonEliminarFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonEliminarFamilia.Location = new System.Drawing.Point(3, 503);
-            this.buttonEliminarFamilia.Name = "buttonEliminarFamilia";
-            this.buttonEliminarFamilia.Size = new System.Drawing.Size(388, 41);
-            this.buttonEliminarFamilia.TabIndex = 12;
-            this.buttonEliminarFamilia.Text = "Eliminar";
-            this.buttonEliminarFamilia.UseVisualStyleBackColor = true;
-            this.buttonEliminarFamilia.Click += new System.EventHandler(this.buttonEliminarFamilia_Click);
             // 
             // RolesYPermisosView
             // 

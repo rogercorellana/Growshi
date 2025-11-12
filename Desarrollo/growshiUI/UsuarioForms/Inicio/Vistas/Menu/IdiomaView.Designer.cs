@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IdiomaView));
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelSeleccioneUnIdioma = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelIngles = new System.Windows.Forms.Label();
             this.pictureBoxIngles = new System.Windows.Forms.PictureBox();
             this.panelEspañol = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelEspañol = new System.Windows.Forms.Label();
             this.pictureBoxEspañol = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -44,17 +44,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEspañol)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // labelSeleccioneUnIdioma
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(251, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Seleccione un Idioma: ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelSeleccioneUnIdioma.AutoSize = true;
+            this.labelSeleccioneUnIdioma.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelSeleccioneUnIdioma.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSeleccioneUnIdioma.Location = new System.Drawing.Point(0, 0);
+            this.labelSeleccioneUnIdioma.Name = "labelSeleccioneUnIdioma";
+            this.labelSeleccioneUnIdioma.Size = new System.Drawing.Size(251, 25);
+            this.labelSeleccioneUnIdioma.TabIndex = 0;
+            this.labelSeleccioneUnIdioma.Text = "Seleccione un Idioma: ";
+            this.labelSeleccioneUnIdioma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
@@ -76,7 +76,7 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.labelIngles);
             this.panel1.Controls.Add(this.pictureBoxIngles);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel1.Location = new System.Drawing.Point(264, 125);
@@ -84,17 +84,17 @@
             this.panel1.Size = new System.Drawing.Size(200, 200);
             this.panel1.TabIndex = 2;
             // 
-            // label3
+            // labelIngles
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(0, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Ingles";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelIngles.AutoSize = true;
+            this.labelIngles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelIngles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIngles.Location = new System.Drawing.Point(0, 150);
+            this.labelIngles.Name = "labelIngles";
+            this.labelIngles.Size = new System.Drawing.Size(58, 20);
+            this.labelIngles.TabIndex = 1;
+            this.labelIngles.Text = "Ingles";
+            this.labelIngles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBoxIngles
             // 
@@ -112,7 +112,7 @@
             // 
             this.panelEspañol.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelEspañol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelEspañol.Controls.Add(this.label2);
+            this.panelEspañol.Controls.Add(this.labelEspañol);
             this.panelEspañol.Controls.Add(this.pictureBoxEspañol);
             this.panelEspañol.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelEspañol.Location = new System.Drawing.Point(21, 125);
@@ -120,17 +120,17 @@
             this.panelEspañol.Size = new System.Drawing.Size(200, 200);
             this.panelEspañol.TabIndex = 0;
             // 
-            // label2
+            // labelEspañol
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(0, 150);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Español";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelEspañol.AutoSize = true;
+            this.labelEspañol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEspañol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEspañol.Location = new System.Drawing.Point(0, 150);
+            this.labelEspañol.Name = "labelEspañol";
+            this.labelEspañol.Size = new System.Drawing.Size(74, 20);
+            this.labelEspañol.TabIndex = 1;
+            this.labelEspañol.Text = "Español";
+            this.labelEspañol.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBoxEspañol
             // 
@@ -149,7 +149,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelSeleccioneUnIdioma);
             this.Name = "IdiomaView";
             this.Size = new System.Drawing.Size(486, 475);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -166,13 +166,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelSeleccioneUnIdioma;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panelEspañol;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelEspañol;
         private System.Windows.Forms.PictureBox pictureBoxEspañol;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelIngles;
         private System.Windows.Forms.PictureBox pictureBoxIngles;
     }
 }

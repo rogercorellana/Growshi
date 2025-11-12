@@ -52,6 +52,7 @@
             this.MenuStrip_misCultivosMenuItem.Name = "MenuStrip_misCultivosMenuItem";
             this.MenuStrip_misCultivosMenuItem.Size = new System.Drawing.Size(84, 20);
             this.MenuStrip_misCultivosMenuItem.Text = "Mis Cultivos";
+            this.MenuStrip_misCultivosMenuItem.Click += new System.EventHandler(this.MenuStrip_misCultivosMenuItem_Click);
             // 
             // MenuStrip_historialMenuItem
             // 

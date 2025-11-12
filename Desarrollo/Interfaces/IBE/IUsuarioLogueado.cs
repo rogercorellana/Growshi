@@ -15,6 +15,7 @@ namespace Interfaces.IBE
       
         int IdUsuario { get; set; }
         string NombreUsuario { get; set; }
+        int IdiomaPreferidoID { get; set; }
 
         List<string> Permisos { get; set; }
 

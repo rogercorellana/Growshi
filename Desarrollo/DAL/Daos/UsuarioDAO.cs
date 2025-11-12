@@ -99,5 +99,27 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        public void ActualizarIdioma(int idUsuario, int nuevoIdiomaId)
+        {
+            string query = "UPDATE Usuario SET IdiomaPreferidoID = @idiomaId " +
+                           "WHERE UsuarioID = @usuarioId;";
+
+            var parameters = new List<SqlParameter>
+    {
+        new SqlParameter("@idiomaId", nuevoIdiomaId),
+        new SqlParameter("@usuarioId", idUsuario)
+    };
+
+            try
+            {
+                SqlHelper.GetInstance().ExecuteNonQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al actualizar el idioma en la BD: {ex.Message}");
+                throw;
+            }
+        }
     }
 }

@@ -69,42 +69,43 @@ public class RolesYPermisosDAO
 
     public void EliminarFamiliaDeRoles(string idParaBorrar)
     {
-        string queryRelaciones = "DELETE FROM Permiso_Relacion " +
-                                 "WHERE PadreID = @permisoID OR HijoID = @permisoID;";
+        // Esta consulta única ejecuta todo como una transacción:
+        // 1. Borra el permiso de cualquier relación jerárquica (padre o hijo).
+        // 2. Borra el permiso de la tabla principal 'PermisoComponente'.
+        // 3. (Automático) La BD borrará las asignaciones en 'Usuario_Permiso'
+        //    gracias al 'ON DELETE CASCADE'.
+        string queryTransaccional = @"
+    SET XACT_ABORT ON; -- Asegura que la transacción se revierta si hay un error
+    BEGIN TRANSACTION;
 
-        string queryRoles = "DELETE FROM TipoUsuario_Permiso " +
-                            "WHERE PermisoID = @permisoID;";
+    -- 1. Eliminar de la tabla de relaciones (no tiene ON DELETE CASCADE)
+    DELETE FROM [dbo].[Permiso_Relacion]
+    WHERE [PadreID] = @permisoID OR [HijoID] = @permisoID;
+    
+    -- 2. Eliminar de la tabla principal (esto dispara el CASCADE)
+    DELETE FROM [dbo].[PermisoComponente]
+    WHERE [PermisoID] = @permisoID;
 
-        string queryComponente = "DELETE FROM PermisoComponente " +
-                                 "WHERE PermisoID = @permisoID;";
+    COMMIT TRANSACTION;
+    ";
 
         try
         {
-            
-            var parametersRelaciones = new List<SqlParameter>
+            // Solo necesitamos una lista de parámetros
+            var parameters = new List<SqlParameter>
         {
             new SqlParameter("@permisoID", idParaBorrar)
         };
-            SqlHelper.GetInstance().ExecuteNonQuery(queryRelaciones, parametersRelaciones);
 
-            
-            var parametersRoles = new List<SqlParameter>
-        {
-            new SqlParameter("@permisoID", idParaBorrar)
-        };
-            SqlHelper.GetInstance().ExecuteNonQuery(queryRoles, parametersRoles);
-
-            
-            var parametersComponente = new List<SqlParameter>
-        {
-            new SqlParameter("@permisoID", idParaBorrar)
-        };
-            SqlHelper.GetInstance().ExecuteNonQuery(queryComponente, parametersComponente);
+            // Ejecutamos la transacción completa en una sola llamada
+            SqlHelper.GetInstance().ExecuteNonQuery(queryTransaccional, parameters);
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error al eliminar la familia de roles: {ex.Message}");
-            throw;
+            // Si la transacción falla (BEGIN TRAN sin COMMIT), SQL Server
+            // la revierte automáticamente al detectar el error (gracias a XACT_ABORT).
+            Console.WriteLine($"Error al eliminar el permiso componente: {ex.Message}");
+            throw; // Re-lanzar la excepción para que la capa superior se entere
         }
     }
 

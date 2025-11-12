@@ -8,6 +8,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion;
+using growshiUI.UsuarioForms.Inicio.Vistas.Menu;
 
 namespace growshiUI.UsuarioForms
 {
@@ -16,6 +17,7 @@ namespace growshiUI.UsuarioForms
         private readonly ISessionService<Usuario> _sessionService;
         private readonly InicioUsuarioBL _inicioUsuarioBLL;
         private readonly IPermissionService _permissionService;
+        private readonly IdiomaBLL _idiomaBLL;
 
 
         public Usuario UsuarioActual { get; private set; }
@@ -26,7 +28,8 @@ namespace growshiUI.UsuarioForms
 
             _sessionService = SessionService<Usuario>.GetInstance();
             _inicioUsuarioBLL = new InicioUsuarioBL(); 
-            _permissionService = PermissionService.GetInstance(); 
+            _permissionService = PermissionService.GetInstance();
+            _idiomaBLL = new IdiomaBLL();
 
             this.UsuarioActual = _sessionService.UsuarioLogueado;
 
@@ -44,12 +47,45 @@ namespace growshiUI.UsuarioForms
 
             if (UsuarioActual != null)
             {
+
+                
+                _idiomaBLL.CargarIdiomaInicial(this.UsuarioActual);
+
+                
+                IdiomaService.GetInstance().IdiomaCambiado += ActualizarTextos;
+
+                ActualizarTextos();
+
+
+
+
+
                 AplicarPermisos();
                 MostrarVistaInicio();
 
             }
 
         }
+
+        private void ActualizarTextos()
+        {
+            
+            this.Text = _idiomaBLL.Traducir("form_inicio_titulo");
+
+            // Traducir solamente el Menú, no puedo las vistas
+            // (Usar las claves que definimos en la BD)
+            MenuStrip_inicioMenuItem.Text = _idiomaBLL.Traducir("menu_inicio");
+            MenuStrip_misCultivosMenuItem.Text = _idiomaBLL.Traducir("menu_miscultivos");
+            MenuStrip_historialMenuItem.Text = _idiomaBLL.Traducir("menu_historial");
+            MenuStrip_reportesMenuItem.Text = _idiomaBLL.Traducir("menu_reportes");
+            MenuStrip_configuracionMenuItem.Text = _idiomaBLL.Traducir("menu_configuracion");
+            MenuStrip_miCuentaMenuItem.Text = _idiomaBLL.Traducir("menu_micuenta");
+            MenuStrip_idiomaMenuItem.Text = _idiomaBLL.Traducir("menu_idioma");
+
+
+        }
+
+
 
 
 
@@ -122,7 +158,8 @@ namespace growshiUI.UsuarioForms
             }
             else
             {
-                
+                IdiomaService.GetInstance().IdiomaCambiado -= ActualizarTextos;
+
                 _inicioUsuarioBLL.CerrarSesion(this.UsuarioActual);
             }
         }
@@ -188,6 +225,16 @@ namespace growshiUI.UsuarioForms
             IdiomaView idiomaView = new IdiomaView();
             idiomaView.Dock = DockStyle.Fill;
             this.panelInicio.Controls.Add(idiomaView);
+        }
+
+        private void MenuStrip_misCultivosMenuItem_Click(object sender, EventArgs e)
+        {
+            ResaltarBotonMenu((ToolStripMenuItem)sender);
+
+            this.panelInicio.Controls.Clear();
+            MisCultivosView misCultivosView = new MisCultivosView();
+            misCultivosView.Dock = DockStyle.Fill;
+            this.panelInicio.Controls.Add(misCultivosView);
         }
     }
 }

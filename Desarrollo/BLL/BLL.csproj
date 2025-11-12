@@ -44,9 +44,11 @@
     <Compile Include="BackupBLL.cs" />
     <Compile Include="Exceptions\CuentaBloqueadaException.cs" />
     <Compile Include="GestionUsuariosBLL.cs" />
+    <Compile Include="IdiomaBLL.cs" />
     <Compile Include="InicioUsuarioBL.cs" />
     <Compile Include="RolesYPermisosBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolesYPermisosPorUsuarioBLL.cs" />
     <Compile Include="UsuarioBLL.cs" />
   </ItemGroup>
   <ItemGroup>

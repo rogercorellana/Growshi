@@ -11,35 +11,38 @@ namespace DAL.Daos
 {
     public class PermisoDAO
     {
-        
+
         public List<string> ObtenerPermisosPorUsuario(int usuarioId)
         {
-            // Consulta para usar la tabla Permiso_Relacion
+            // Consulta (CTE) actualizada para usar la nueva tabla Usuario_Permiso
             string consulta = @"
-            ;WITH UserPermissions AS (
-                -- 1. Punto de partida: Permisos asignados directamente a los roles del usuario
-                SELECT tup.PermisoID
-            FROM Usuario_TipoUsuario utu
-            JOIN TipoUsuario_Permiso tup ON utu.TipoUsuarioID = tup.TipoUsuarioID
-            WHERE utu.UsuarioID = @UsuarioID
+    ;WITH UserPermissions AS (
+        -- 1. Punto de partida: Permisos asignados directamente al usuario
+        --    Buscamos en la nueva tabla 'Usuario_Permiso'.
+        SELECT up.PermisoID
+        FROM dbo.Usuario_Permiso up
+        WHERE up.UsuarioID = @UsuarioID
 
-            UNION ALL
+        UNION ALL
 
-            -- 2. Parte recursiva: Busca los hijos usando la tabla de relación
-            SELECT pr.HijoID   -- <-- SELECCIONAMOS EL HIJO
-            FROM Permiso_Relacion pr -- <-- DESDE LA TABLA DE RELACION
-            JOIN UserPermissions up ON pr.PadreID = up.PermisoID -- <-- DONDE EL PADRE es un permiso que ya tenemos
-            )
-            -- 3. Selección final: Devuelve TODOS los permisos (directos + recursivos)
-            SELECT DISTINCT PermisoID
-            FROM UserPermissions;";
+        -- 2. Parte recursiva: Busca los hijos usando la tabla de relación (Esta lógica no cambia)
+        SELECT pr.HijoID   -- <-- SELECCIONAMOS EL HIJO
+        FROM dbo.Permiso_Relacion pr
+        JOIN UserPermissions up_cte ON pr.PadreID = up_cte.PermisoID -- <-- DONDE EL PADRE es un permiso que ya tenemos
+    )
+    -- 3. Selección final: Devuelve TODOS los permisos (directos + recursivos) sin duplicados
+    SELECT DISTINCT PermisoID
+    FROM UserPermissions;";
 
+            // Tu lógica de parámetros (se mantiene igual)
             var parametros = new List<SqlParameter> {
-            new SqlParameter("@UsuarioID", usuarioId)
-        };
+        new SqlParameter("@UsuarioID", usuarioId)
+    };
 
+            // Tu lógica de SqlHelper (se mantiene igual)
             var tabla = SqlHelper.GetInstance().ExecuteReader(consulta, parametros);
 
+            // Tu lógica de procesamiento de resultados (se mantiene igual)
             var permisos = new List<string>();
             foreach (DataRow fila in tabla.Rows)
             {

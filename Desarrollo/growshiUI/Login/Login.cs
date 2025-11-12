@@ -31,12 +31,7 @@ namespace growshiUI
             usuarioBLL = new UsuarioBLL();
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-
-
-        }
+        
 
 
 
@@ -150,8 +145,12 @@ namespace growshiUI
         {
 
         }
+
         #endregion
 
+        private void progressBar_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

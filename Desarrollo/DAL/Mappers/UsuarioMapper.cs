@@ -17,7 +17,8 @@ namespace DAL.Mappers
             return new Usuario
             {
                 IdUsuario = Convert.ToInt32(fila["UsuarioID"]),
-                NombreUsuario = fila["UsuarioNombre"].ToString()
+                NombreUsuario = fila["UsuarioNombre"].ToString(),
+                IdiomaPreferidoID = Convert.ToInt32(fila["IdiomaPreferidoID"])
             }; 
         }
     }

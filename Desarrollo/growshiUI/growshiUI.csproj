@@ -82,6 +82,12 @@
     <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\AgregarUsuario.Designer.cs">
       <DependentUpon>AgregarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\ModificarPermisosPorUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\ModificarPermisosPorUsuario.Designer.cs">
+      <DependentUpon>ModificarPermisosPorUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\ModificarUsuario.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +148,12 @@
     <Compile Include="UsuarioForms\Inicio\Vistas\Menu\InicioView.Designer.cs">
       <DependentUpon>InicioView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Menu\MisCultivosView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Menu\MisCultivosView.Designer.cs">
+      <DependentUpon>MisCultivosView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\AgregarUsuario.resx">
       <DependentUpon>AgregarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\ModificarPermisosPorUsuario.resx">
+      <DependentUpon>ModificarPermisosPorUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Configuracion\ABM_GestionUsuarios\ModificarUsuario.resx">
       <DependentUpon>ModificarUsuario.cs</DependentUpon>
@@ -192,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\InicioView.resx">
       <DependentUpon>InicioView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\MisCultivosView.resx">
+      <DependentUpon>MisCultivosView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

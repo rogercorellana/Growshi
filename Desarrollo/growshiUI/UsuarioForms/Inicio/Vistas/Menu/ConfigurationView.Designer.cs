@@ -69,7 +69,7 @@
             this.buttonActualizaciones.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonActualizaciones.FlatAppearance.BorderSize = 0;
             this.buttonActualizaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonActualizaciones.Location = new System.Drawing.Point(0, 359);
+            this.buttonActualizaciones.Location = new System.Drawing.Point(0, 334);
             this.buttonActualizaciones.Name = "buttonActualizaciones";
             this.buttonActualizaciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.buttonActualizaciones.Size = new System.Drawing.Size(230, 96);
@@ -85,7 +85,7 @@
             this.buttonCopiaSeguridad.Location = new System.Drawing.Point(0, 247);
             this.buttonCopiaSeguridad.Name = "buttonCopiaSeguridad";
             this.buttonCopiaSeguridad.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonCopiaSeguridad.Size = new System.Drawing.Size(230, 112);
+            this.buttonCopiaSeguridad.Size = new System.Drawing.Size(230, 87);
             this.buttonCopiaSeguridad.TabIndex = 3;
             this.buttonCopiaSeguridad.Text = "Copias de Seguridad";
             this.buttonCopiaSeguridad.UseVisualStyleBackColor = true;

@@ -146,5 +146,15 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                 }
             }
         }
+
+        private void buttonModificarPermisosUsuario_Click(object sender, EventArgs e)
+        {
+            
+                CargarVista(new ModificarPermisosPorUsuario());
+
+                
+            }
+
+
+        }
     }
-}
