@@ -44,12 +44,15 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             
             _idiomaBLL.CambiarIdioma(1, _usuarioActual);
+
         }
 
         private void pictureBoxIngles_Click(object sender, EventArgs e)
         {
             
             _idiomaBLL.CambiarIdioma(2, _usuarioActual);
+
+
         }
     }
 }

@@ -28,3 +28,12 @@ C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\Interfaces\obj\Debug
 C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
 C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.dll
 C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\MetroFramework.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.Up2Date
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.pdb
