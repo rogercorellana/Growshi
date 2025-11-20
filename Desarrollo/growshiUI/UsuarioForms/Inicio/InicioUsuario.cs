@@ -236,5 +236,27 @@ namespace growshiUI.UsuarioForms
             misCultivosView.Dock = DockStyle.Fill;
             this.panelInicio.Controls.Add(misCultivosView);
         }
+
+        private void MenuStrip_reportesMenuItem_Click(object sender, EventArgs e)
+        {
+            ResaltarBotonMenu((ToolStripMenuItem)sender);
+
+            this.panelInicio.Controls.Clear();
+            MisReportesView misReportesView = new MisReportesView();
+            misReportesView.Dock = DockStyle.Fill;
+            this.panelInicio.Controls.Add(misReportesView);
+
+        }
+
+        private void MenuStrip_historialMenuItem_Click(object sender, EventArgs e)
+        {
+
+            ResaltarBotonMenu((ToolStripMenuItem)sender);
+
+            this.panelInicio.Controls.Clear();
+            HistorialView historial = new HistorialView();
+            historial.Dock = DockStyle.Fill;
+            this.panelInicio.Controls.Add(historial);
+        }
     }
 }

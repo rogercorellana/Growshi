@@ -35,7 +35,10 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_GestionUsuarios
         private void buttonAgregarUsuario_Click(object sender, EventArgs e)
         {
             string nombreUsuario = textBoxNombreUsuario.Text.Trim();
+            
             string contraseñaUsuario = textBoxContraseñaUsuario.Text.Trim();
+            
+
             string contraseñaRespaldo = textBoxContraseñaRespaldoUsuario.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(nombreUsuario) || string.IsNullOrWhiteSpace(contraseñaUsuario) || string.IsNullOrWhiteSpace(contraseñaRespaldo))

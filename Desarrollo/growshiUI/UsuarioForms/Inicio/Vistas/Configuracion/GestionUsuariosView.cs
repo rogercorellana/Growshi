@@ -72,7 +72,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             }
 
             string mensaje = "¡Esta será una acción IRREVERSIBLE!\n\n" +
-                             "¿Desea borrar el usuario PERMANENTEMENTE?";
+                             "¿Desea desactivar el usuario?";
 
             DialogResult resultado = MessageBox.Show(mensaje, "Atención",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -84,7 +84,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                     int idParaDesactivar = Convert.ToInt32(dataGridViewUsuarios.CurrentRow.Cells["UsuarioID"].Value);
                     gestionUsuariosBLL.DesactivarUsuario(idParaDesactivar);
 
-                    MessageBox.Show($"Usuario Borrado Exitosamente",
+                    MessageBox.Show($"Usuario Desactivado Exitosamente",
                                     "Exito",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.None);

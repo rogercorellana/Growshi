@@ -1,7 +1,10 @@
 ﻿using BE;
 using DAL.DAO;
+using DAL.Mappers;
+using Interfaces.IBE;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DAL.Daos
@@ -18,22 +21,37 @@ namespace DAL.Daos
                 INSERT INTO Bitacora (UsuarioID, Nivel, Modulo, Mensaje)
                 VALUES (@UsuarioID, @Nivel, @Modulo, @Mensaje)";
 
-            // Usamos List<SqlParameter> para mantener la consistencia con tu UsuarioDAO
             var parametros = new List<SqlParameter>
             {
-                // Manejamos correctamente los valores nulos para columnas que lo permiten
                 new SqlParameter("@UsuarioID", evento.UsuarioID.HasValue ? (object)evento.UsuarioID.Value : DBNull.Value),
                 new SqlParameter("@Nivel", evento.Nivel.ToString()), // El enum se convierte a string para guardarlo en la DB
                 new SqlParameter("@Modulo", string.IsNullOrEmpty(evento.Modulo) ? DBNull.Value : (object)evento.Modulo),
                 new SqlParameter("@Mensaje", evento.Mensaje)
             };
 
-            // Llamamos al SqlHelper para ejecutar la consulta de inserción
             SqlHelper.GetInstance().ExecuteNonQuery(consulta, parametros);
         }
+
+        public List<Bitacora> ObtenerTodos()
+        {
+            List<Bitacora> lista = new List<Bitacora>();
+
+            string consulta = "SELECT * FROM Bitacora ORDER BY BitacoraID DESC";
+
+            DataTable tabla = SqlHelper.GetInstance().ExecuteReader(consulta, null);
+
+            foreach (DataRow row in tabla.Rows)
+            {
+                lista.Add(BitacoraMapper.MapearDesdeDataRow(row));
+            }
+
+            return lista;
+        }
+
 
         // Aquí podrías agregar métodos futuros para LEER la bitácora
         // public List<Bitacora> ObtenerTodos() { ... }
         // public List<Bitacora> ObtenerPorUsuario(int usuarioId) { ... }
     }
 }
+

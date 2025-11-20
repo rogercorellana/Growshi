@@ -34,15 +34,12 @@ namespace DAL.Daos
     SELECT DISTINCT PermisoID
     FROM UserPermissions;";
 
-            // Tu lógica de parámetros (se mantiene igual)
             var parametros = new List<SqlParameter> {
         new SqlParameter("@UsuarioID", usuarioId)
     };
 
-            // Tu lógica de SqlHelper (se mantiene igual)
             var tabla = SqlHelper.GetInstance().ExecuteReader(consulta, parametros);
 
-            // Tu lógica de procesamiento de resultados (se mantiene igual)
             var permisos = new List<string>();
             foreach (DataRow fila in tabla.Rows)
             {

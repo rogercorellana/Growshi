@@ -17,9 +17,9 @@ namespace BLL
         private readonly BackupDAO _backupDAO;
 
         //ruta pc
-        private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\";
+        //private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\";
         //ruta laptop
-        //private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\Backup\";
+        private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\Backup\";
 
 
         public BackupBLL()

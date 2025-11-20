@@ -59,12 +59,14 @@
             this.MenuStrip_historialMenuItem.Name = "MenuStrip_historialMenuItem";
             this.MenuStrip_historialMenuItem.Size = new System.Drawing.Size(63, 20);
             this.MenuStrip_historialMenuItem.Text = "Historial";
+            this.MenuStrip_historialMenuItem.Click += new System.EventHandler(this.MenuStrip_historialMenuItem_Click);
             // 
             // MenuStrip_reportesMenuItem
             // 
             this.MenuStrip_reportesMenuItem.Name = "MenuStrip_reportesMenuItem";
             this.MenuStrip_reportesMenuItem.Size = new System.Drawing.Size(65, 20);
             this.MenuStrip_reportesMenuItem.Text = "Reportes";
+            this.MenuStrip_reportesMenuItem.Click += new System.EventHandler(this.MenuStrip_reportesMenuItem_Click);
             // 
             // MenuStrip_configuracionMenuItem
             // 

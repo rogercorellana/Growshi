@@ -106,9 +106,7 @@ namespace growshiUI
 
             textBoxUsuario.Enabled = false;
             textBoxContraseña.Enabled = false;
-            buttonIniciarSesion.Enabled = false;
-           
-
+            buttonIniciarSesion.Enabled = false;w
             progressBar.Visible = true;
             progressBar.Maximum = 5;      
             progressBar.Value = 5;
