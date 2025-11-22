@@ -2,15 +2,8 @@
 {
     partial class CopiasSeguridadView
     {
-        /// <summary> 
-        /// Variable del diseñador necesaria.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Limpiar los recursos que se estén usando.
-        /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,257 +15,309 @@
 
         #region Código generado por el Diseñador de componentes
 
-        /// <summary> 
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
-        /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CopiasSeguridadView));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonCrearCopia = new System.Windows.Forms.Button();
-            this.textBoxNotasCopia = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonEliminar = new System.Windows.Forms.Button();
-            this.buttonAbrirUbicacion = new System.Windows.Forms.Button();
-            this.buttonRestaurar = new System.Windows.Forms.Button();
-            this.dataGridViewHistorial = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorial)).BeginInit();
+
+            this.tableLayoutPanelPrincipal = new System.Windows.Forms.TableLayoutPanel();
+            this.panelCrear = new System.Windows.Forms.Panel();
+            this.btnCrearCopia = new MetroFramework.Controls.MetroButton();
+            this.txtNotas = new MetroFramework.Controls.MetroTextBox();
+            this.lblInstruccion = new MetroFramework.Controls.MetroLabel();
+            this.lblTituloCrear = new MetroFramework.Controls.MetroLabel();
+            this.panelHistorial = new System.Windows.Forms.Panel();
+            this.panelBotones = new System.Windows.Forms.Panel();
+            this.btnEliminar = new MetroFramework.Controls.MetroButton();
+            this.btnAbrirUbicacion = new MetroFramework.Controls.MetroButton();
+            this.btnRestaurar = new MetroFramework.Controls.MetroButton();
+            this.metroGridHistorial = new MetroFramework.Controls.MetroGrid();
+            this.lblTituloHistorial = new MetroFramework.Controls.MetroLabel();
+
+            this.tableLayoutPanelPrincipal.SuspendLayout();
+            this.panelCrear.SuspendLayout();
+            this.panelHistorial.SuspendLayout();
+            this.panelBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGridHistorial)).BeginInit();
             this.SuspendLayout();
+
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanelPrincipal
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 196F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(662, 528);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanelPrincipal.ColumnCount = 1;
+            this.tableLayoutPanelPrincipal.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPrincipal.Controls.Add(this.panelCrear, 0, 0);
+            this.tableLayoutPanelPrincipal.Controls.Add(this.panelHistorial, 0, 1);
+            this.tableLayoutPanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelPrincipal.Name = "tableLayoutPanelPrincipal";
+            this.tableLayoutPanelPrincipal.RowCount = 2;
+            this.tableLayoutPanelPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F)); // Altura fija para panel crear
+            this.tableLayoutPanelPrincipal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPrincipal.Size = new System.Drawing.Size(800, 600);
+            this.tableLayoutPanelPrincipal.TabIndex = 0;
+
             // 
-            // panel1
+            // panelCrear
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonCrearCopia);
-            this.panel1.Controls.Add(this.textBoxNotasCopia);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(15);
-            this.panel1.Size = new System.Drawing.Size(639, 180);
-            this.panel1.TabIndex = 0;
+            this.panelCrear.BackColor = System.Drawing.Color.White;
+            this.panelCrear.Controls.Add(this.btnCrearCopia);
+            this.panelCrear.Controls.Add(this.txtNotas);
+            this.panelCrear.Controls.Add(this.lblInstruccion);
+            this.panelCrear.Controls.Add(this.lblTituloCrear);
+            this.panelCrear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCrear.Location = new System.Drawing.Point(3, 3);
+            this.panelCrear.Name = "panelCrear";
+            this.panelCrear.Padding = new System.Windows.Forms.Padding(20);
+            this.panelCrear.Size = new System.Drawing.Size(794, 174);
+            this.panelCrear.TabIndex = 0;
+
             // 
-            // buttonCrearCopia
+            // lblTituloCrear
             // 
-            this.buttonCrearCopia.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.buttonCrearCopia.FlatAppearance.BorderSize = 0;
-            this.buttonCrearCopia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCrearCopia.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCrearCopia.ForeColor = System.Drawing.Color.White;
-            this.buttonCrearCopia.Image = ((System.Drawing.Image)(resources.GetObject("buttonCrearCopia.Image")));
-            this.buttonCrearCopia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCrearCopia.Location = new System.Drawing.Point(463, 108);
-            this.buttonCrearCopia.Name = "buttonCrearCopia";
-            this.buttonCrearCopia.Size = new System.Drawing.Size(157, 31);
-            this.buttonCrearCopia.TabIndex = 4;
-            this.buttonCrearCopia.Text = "Realizar Copia Ahora";
-            this.buttonCrearCopia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCrearCopia.UseVisualStyleBackColor = false;
-            this.buttonCrearCopia.Click += new System.EventHandler(this.buttonCrearCopia_Click);
+            this.lblTituloCrear.AutoSize = true;
+            this.lblTituloCrear.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblTituloCrear.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblTituloCrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80))))); // Verde Growshi
+            this.lblTituloCrear.Location = new System.Drawing.Point(20, 15);
+            this.lblTituloCrear.Name = "lblTituloCrear";
+            this.lblTituloCrear.Size = new System.Drawing.Size(243, 25);
+            this.lblTituloCrear.Style = MetroFramework.MetroColorStyle.Green;
+            this.lblTituloCrear.TabIndex = 0;
+            this.lblTituloCrear.Text = "Nueva Copia de Seguridad";
+            this.lblTituloCrear.UseCustomForeColor = true;
+
             // 
-            // textBoxNotasCopia
+            // lblInstruccion
             // 
-            this.textBoxNotasCopia.Location = new System.Drawing.Point(15, 77);
-            this.textBoxNotasCopia.Name = "textBoxNotasCopia";
-            this.textBoxNotasCopia.Size = new System.Drawing.Size(605, 25);
-            this.textBoxNotasCopia.TabIndex = 3;
+            this.lblInstruccion.AutoSize = true;
+            this.lblInstruccion.Location = new System.Drawing.Point(20, 50);
+            this.lblInstruccion.Name = "lblInstruccion";
+            this.lblInstruccion.Size = new System.Drawing.Size(327, 19);
+            this.lblInstruccion.TabIndex = 1;
+            this.lblInstruccion.Text = "Agrega una nota descriptiva para identificar este backup:";
+
             // 
-            // label3
+            // txtNotas
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Location = new System.Drawing.Point(15, 40);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(0, 15, 0, 5);
-            this.label3.Size = new System.Drawing.Size(327, 37);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Añade una nota descriptiva para esta copia (opcional):";
             // 
-            // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label1.Location = new System.Drawing.Point(15, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nueva Copia de Seguridad";
             // 
-            // panel2
+            this.txtNotas.CustomButton.Image = null;
+            this.txtNotas.CustomButton.Location = new System.Drawing.Point(722, 1);
+            this.txtNotas.CustomButton.Name = "";
+            this.txtNotas.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.txtNotas.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtNotas.CustomButton.TabIndex = 1;
+            this.txtNotas.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtNotas.CustomButton.UseSelectable = true;
+            this.txtNotas.CustomButton.Visible = false;
+            this.txtNotas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNotas.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtNotas.Lines = new string[0];
+            this.txtNotas.Location = new System.Drawing.Point(20, 75);
+            this.txtNotas.MaxLength = 32767;
+            this.txtNotas.Name = "txtNotas";
+            this.txtNotas.PasswordChar = '\0';
+            this.txtNotas.WaterMark = "Ej: Backup antes de actualización mensual...";
+            this.txtNotas.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtNotas.SelectedText = "";
+            this.txtNotas.SelectionLength = 0;
+            this.txtNotas.SelectionStart = 0;
+            this.txtNotas.ShortcutsEnabled = true;
+            this.txtNotas.Size = new System.Drawing.Size(750, 29);
+            this.txtNotas.Style = MetroFramework.MetroColorStyle.Green;
+            this.txtNotas.TabIndex = 2;
+            this.txtNotas.UseSelectable = true;
+            this.txtNotas.WaterMark = "Ej: Backup antes de actualización mensual...";
+            this.txtNotas.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtNotas.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.dataGridViewHistorial);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(3, 199);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(15);
-            this.panel2.Size = new System.Drawing.Size(639, 312);
-            this.panel2.TabIndex = 1;
+            // btnCrearCopia
             // 
-            // panel3
+            this.btnCrearCopia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCrearCopia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80))))); // Verde Growshi
+            this.btnCrearCopia.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnCrearCopia.ForeColor = System.Drawing.Color.White;
+            this.btnCrearCopia.Location = new System.Drawing.Point(570, 120);
+            this.btnCrearCopia.Name = "btnCrearCopia";
+            this.btnCrearCopia.Size = new System.Drawing.Size(200, 35);
+            this.btnCrearCopia.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnCrearCopia.TabIndex = 3;
+            this.btnCrearCopia.Text = "Generar Copia Ahora";
+            this.btnCrearCopia.UseCustomBackColor = true;
+            this.btnCrearCopia.UseCustomForeColor = true;
+            this.btnCrearCopia.UseSelectable = true;
+            this.btnCrearCopia.Click += new System.EventHandler(this.buttonCrearCopia_Click);
+
             // 
-            this.panel3.Controls.Add(this.buttonEliminar);
-            this.panel3.Controls.Add(this.buttonAbrirUbicacion);
-            this.panel3.Controls.Add(this.buttonRestaurar);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(15, 247);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(609, 50);
-            this.panel3.TabIndex = 2;
+            // panelHistorial
             // 
-            // buttonEliminar
+            this.panelHistorial.BackColor = System.Drawing.Color.White;
+            this.panelHistorial.Controls.Add(this.panelBotones);
+            this.panelHistorial.Controls.Add(this.metroGridHistorial);
+            this.panelHistorial.Controls.Add(this.lblTituloHistorial);
+            this.panelHistorial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelHistorial.Location = new System.Drawing.Point(3, 183);
+            this.panelHistorial.Name = "panelHistorial";
+            this.panelHistorial.Padding = new System.Windows.Forms.Padding(20);
+            this.panelHistorial.Size = new System.Drawing.Size(794, 414);
+            this.panelHistorial.TabIndex = 1;
+
             // 
-            this.buttonEliminar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonEliminar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEliminar.Location = new System.Drawing.Point(433, 8);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(100, 34);
-            this.buttonEliminar.TabIndex = 2;
-            this.buttonEliminar.Text = "Eliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = false;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+            // lblTituloHistorial
             // 
-            // buttonAbrirUbicacion
+            this.lblTituloHistorial.AutoSize = true;
+            this.lblTituloHistorial.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblTituloHistorial.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblTituloHistorial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.lblTituloHistorial.Location = new System.Drawing.Point(20, 15);
+            this.lblTituloHistorial.Name = "lblTituloHistorial";
+            this.lblTituloHistorial.Size = new System.Drawing.Size(286, 25);
+            this.lblTituloHistorial.Style = MetroFramework.MetroColorStyle.Green;
+            this.lblTituloHistorial.TabIndex = 0;
+            this.lblTituloHistorial.Text = "Historial de Copias de Seguridad";
+            this.lblTituloHistorial.UseCustomForeColor = true;
+
             // 
-            this.buttonAbrirUbicacion.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonAbrirUbicacion.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.buttonAbrirUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAbrirUbicacion.Location = new System.Drawing.Point(250, 8);
-            this.buttonAbrirUbicacion.Name = "buttonAbrirUbicacion";
-            this.buttonAbrirUbicacion.Size = new System.Drawing.Size(122, 34);
-            this.buttonAbrirUbicacion.TabIndex = 1;
-            this.buttonAbrirUbicacion.Text = "Abrir Ubicacion";
-            this.buttonAbrirUbicacion.UseVisualStyleBackColor = false;
-            this.buttonAbrirUbicacion.Click += new System.EventHandler(this.buttonAbrirUbicacion_Click);
+            // metroGridHistorial
             // 
-            // buttonRestaurar
-            // 
-            this.buttonRestaurar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttonRestaurar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.buttonRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRestaurar.Location = new System.Drawing.Point(85, 8);
-            this.buttonRestaurar.Name = "buttonRestaurar";
-            this.buttonRestaurar.Size = new System.Drawing.Size(111, 34);
-            this.buttonRestaurar.TabIndex = 0;
-            this.buttonRestaurar.Text = "Restaurar";
-            this.buttonRestaurar.UseVisualStyleBackColor = false;
-            this.buttonRestaurar.Click += new System.EventHandler(this.buttonRestaurar_Click);
-            // 
-            // dataGridViewHistorial
-            // 
-            this.dataGridViewHistorial.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridViewHistorial.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewHistorial.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewHistorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewHistorial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.metroGridHistorial.AllowUserToAddRows = false;
+            this.metroGridHistorial.AllowUserToResizeRows = false;
+            this.metroGridHistorial.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroGridHistorial.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.metroGridHistorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.metroGridHistorial.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.metroGridHistorial.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89))))); // Verde Growshi encabezado
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(104)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridHistorial.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.metroGridHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(104)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGridHistorial.DefaultCellStyle = dataGridViewCellStyle2;
+            this.metroGridHistorial.EnableHeadersVisualStyles = false;
+            this.metroGridHistorial.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.metroGridHistorial.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.metroGridHistorial.Location = new System.Drawing.Point(20, 50);
+            this.metroGridHistorial.Name = "metroGridHistorial";
+            this.metroGridHistorial.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewHistorial.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewHistorial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewHistorial.GridColor = System.Drawing.Color.Gainsboro;
-            this.dataGridViewHistorial.Location = new System.Drawing.Point(15, 50);
-            this.dataGridViewHistorial.Name = "dataGridViewHistorial";
-            this.dataGridViewHistorial.RowHeadersVisible = false;
-            this.dataGridViewHistorial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewHistorial.Size = new System.Drawing.Size(609, 247);
-            this.dataGridViewHistorial.TabIndex = 1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(104)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridHistorial.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.metroGridHistorial.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.metroGridHistorial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGridHistorial.Size = new System.Drawing.Size(750, 280);
+            this.metroGridHistorial.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroGridHistorial.TabIndex = 1;
+            this.metroGridHistorial.UseStyleColors = true;
+
             // 
-            // label2
+            // panelBotones
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label2.Location = new System.Drawing.Point(15, 15);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.label2.Size = new System.Drawing.Size(291, 35);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Copias de Seguridad Realizadas";
+            this.panelBotones.Controls.Add(this.btnRestaurar);
+            this.panelBotones.Controls.Add(this.btnAbrirUbicacion);
+            this.panelBotones.Controls.Add(this.btnEliminar);
+            this.panelBotones.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBotones.Location = new System.Drawing.Point(20, 344);
+            this.panelBotones.Name = "panelBotones";
+            this.panelBotones.Size = new System.Drawing.Size(754, 50);
+            this.panelBotones.TabIndex = 2;
+
+            // 
+            // btnRestaurar
+            // 
+            this.btnRestaurar.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnRestaurar.Location = new System.Drawing.Point(0, 10);
+            this.btnRestaurar.Name = "btnRestaurar";
+            this.btnRestaurar.Size = new System.Drawing.Size(130, 30);
+            this.btnRestaurar.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnRestaurar.TabIndex = 0;
+            this.btnRestaurar.Text = "Restaurar Selección";
+            this.btnRestaurar.UseSelectable = true;
+            this.btnRestaurar.Click += new System.EventHandler(this.buttonRestaurar_Click);
+
+            // 
+            // btnAbrirUbicacion
+            // 
+            this.btnAbrirUbicacion.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnAbrirUbicacion.Location = new System.Drawing.Point(140, 10);
+            this.btnAbrirUbicacion.Name = "btnAbrirUbicacion";
+            this.btnAbrirUbicacion.Size = new System.Drawing.Size(130, 30);
+            this.btnAbrirUbicacion.Style = MetroFramework.MetroColorStyle.Blue;
+            this.btnAbrirUbicacion.TabIndex = 1;
+            this.btnAbrirUbicacion.Text = "Abrir Carpeta";
+            this.btnAbrirUbicacion.UseSelectable = true;
+            this.btnAbrirUbicacion.Click += new System.EventHandler(this.buttonAbrirUbicacion_Click);
+
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminar.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnEliminar.Location = new System.Drawing.Point(624, 10);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(130, 30);
+            this.btnEliminar.Style = MetroFramework.MetroColorStyle.Red;
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar Copia";
+            this.btnEliminar.UseSelectable = true;
+            this.btnEliminar.UseStyleColors = true; // Para que tome el rojo
+            this.btnEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+
             // 
             // CopiasSeguridadView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Controls.Add(this.tableLayoutPanelPrincipal);
             this.Name = "CopiasSeguridadView";
-            this.Size = new System.Drawing.Size(669, 546);
+            this.Size = new System.Drawing.Size(800, 600);
             this.Load += new System.EventHandler(this.CopiasSeguridadView_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorial)).EndInit();
+            this.tableLayoutPanelPrincipal.ResumeLayout(false);
+            this.panelCrear.ResumeLayout(false);
+            this.panelCrear.PerformLayout();
+            this.panelHistorial.ResumeLayout(false);
+            this.panelHistorial.PerformLayout();
+            this.panelBotones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroGridHistorial)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBoxNotasCopia;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonCrearCopia;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridViewHistorial;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button buttonEliminar;
-        private System.Windows.Forms.Button buttonAbrirUbicacion;
-        private System.Windows.Forms.Button buttonRestaurar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPrincipal;
+        private System.Windows.Forms.Panel panelCrear;
+        private System.Windows.Forms.Panel panelHistorial;
+        private MetroFramework.Controls.MetroLabel lblTituloCrear;
+        private MetroFramework.Controls.MetroLabel lblInstruccion;
+        private MetroFramework.Controls.MetroTextBox txtNotas;
+        private MetroFramework.Controls.MetroButton btnCrearCopia;
+        private MetroFramework.Controls.MetroLabel lblTituloHistorial;
+        private MetroFramework.Controls.MetroGrid metroGridHistorial;
+        private System.Windows.Forms.Panel panelBotones;
+        private MetroFramework.Controls.MetroButton btnRestaurar;
+        private MetroFramework.Controls.MetroButton btnAbrirUbicacion;
+        private MetroFramework.Controls.MetroButton btnEliminar;
     }
 }

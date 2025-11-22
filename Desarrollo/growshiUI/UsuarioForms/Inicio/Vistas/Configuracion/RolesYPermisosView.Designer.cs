@@ -2,297 +2,326 @@
 {
     partial class RolesYPermisosView
     {
-        /// <summary> 
-        /// Variable del diseñador necesaria.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Limpiar los recursos que se estén usando.
-        /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
         #region Código generado por el Diseñador de componentes
 
-        /// <summary> 
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
-        /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RolesYPermisosView));
-            this.pictureBoxQuitar = new System.Windows.Forms.PictureBox();
-            this.pictureBoxAgregar = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.buttonRenombrarRol = new System.Windows.Forms.Button();
-            this.dataGridViewFamiliaDeRoles = new System.Windows.Forms.DataGridView();
-            this.dataGridViewRolesDelSistema = new System.Windows.Forms.DataGridView();
-            this.dataGridViewRolesAsociados = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonEliminarFamilia = new System.Windows.Forms.Button();
-            this.buttonAgregarNuevaFamilia = new System.Windows.Forms.Button();
-            this.buttonRenombrarFamilia = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQuitar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgregar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFamiliaDeRoles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRolesDelSistema)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRolesAsociados)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+
+            this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
+
+            // --- COLUMNA 1: FAMILIAS ---
+            this.panelFamilia = new System.Windows.Forms.Panel();
+            this.marcoFamilia = new System.Windows.Forms.Panel();
+            this.metroGridFamilia = new MetroFramework.Controls.MetroGrid();
+            this.panelBotonesFamilia = new System.Windows.Forms.Panel();
+            this.btnEliminarFamilia = new MetroFramework.Controls.MetroButton();
+            this.btnRenombrarFamilia = new MetroFramework.Controls.MetroButton();
+            this.btnNuevaFamilia = new MetroFramework.Controls.MetroButton();
+            this.lblFamilia = new MetroFramework.Controls.MetroLabel();
+
+            // --- COLUMNA 2: ASOCIADOS ---
+            this.panelAsociados = new System.Windows.Forms.Panel();
+            this.marcoAsociados = new System.Windows.Forms.Panel();
+            this.metroGridAsociados = new MetroFramework.Controls.MetroGrid();
+            this.lblAsociados = new MetroFramework.Controls.MetroLabel();
+
+            // --- COLUMNA 3: FLECHAS ---
+            this.panelFlechas = new System.Windows.Forms.Panel();
+            this.btnQuitarPermiso = new System.Windows.Forms.Button();
+            this.btnAgregarPermiso = new System.Windows.Forms.Button();
+
+            // --- COLUMNA 4: SISTEMA ---
+            this.panelSistema = new System.Windows.Forms.Panel();
+            this.marcoSistema = new System.Windows.Forms.Panel();
+            this.metroGridSistema = new MetroFramework.Controls.MetroGrid();
+            this.lblSistema = new MetroFramework.Controls.MetroLabel();
+
+            this.tableLayoutPanelMain.SuspendLayout();
+
+            this.panelFamilia.SuspendLayout();
+            this.marcoFamilia.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGridFamilia)).BeginInit();
+            this.panelBotonesFamilia.SuspendLayout();
+
+            this.panelAsociados.SuspendLayout();
+            this.marcoAsociados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGridAsociados)).BeginInit();
+
+            this.panelFlechas.SuspendLayout();
+
+            this.panelSistema.SuspendLayout();
+            this.marcoSistema.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGridSistema)).BeginInit();
+
             this.SuspendLayout();
+
             // 
-            // pictureBoxQuitar
+            // tableLayoutPanelMain
             // 
-            this.pictureBoxQuitar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxQuitar.BackgroundImage")));
-            this.pictureBoxQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxQuitar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxQuitar.Image")));
-            this.pictureBoxQuitar.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxQuitar.InitialImage")));
-            this.pictureBoxQuitar.Location = new System.Drawing.Point(21, 212);
-            this.pictureBoxQuitar.Name = "pictureBoxQuitar";
-            this.pictureBoxQuitar.Size = new System.Drawing.Size(100, 44);
-            this.pictureBoxQuitar.TabIndex = 6;
-            this.pictureBoxQuitar.TabStop = false;
-            this.pictureBoxQuitar.Click += new System.EventHandler(this.pictureBoxQuitar_Click);
+            this.tableLayoutPanelMain.ColumnCount = 4;
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F)); // Familias
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F)); // Asignados
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F)); // Flechas
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F)); // Disponibles
+
+            this.tableLayoutPanelMain.Controls.Add(this.panelFamilia, 0, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.panelAsociados, 1, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.panelFlechas, 2, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.panelSistema, 3, 0);
+
+            this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
+            this.tableLayoutPanelMain.RowCount = 1;
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(1000, 600);
+            this.tableLayoutPanelMain.TabIndex = 0;
+
             // 
-            // pictureBoxAgregar
+            // --- PANEL 1: FAMILIAS ---
             // 
-            this.pictureBoxAgregar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxAgregar.BackgroundImage")));
-            this.pictureBoxAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxAgregar.Location = new System.Drawing.Point(21, 302);
-            this.pictureBoxAgregar.Name = "pictureBoxAgregar";
-            this.pictureBoxAgregar.Size = new System.Drawing.Size(100, 50);
-            this.pictureBoxAgregar.TabIndex = 7;
-            this.pictureBoxAgregar.TabStop = false;
-            this.pictureBoxAgregar.Click += new System.EventHandler(this.pictureBoxAgregar_Click);
+            this.panelFamilia.Controls.Add(this.marcoFamilia);
+            this.panelFamilia.Controls.Add(this.panelBotonesFamilia);
+            this.panelFamilia.Controls.Add(this.lblFamilia);
+            this.panelFamilia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFamilia.Padding = new System.Windows.Forms.Padding(10);
+            this.panelFamilia.Location = new System.Drawing.Point(3, 3);
+            this.panelFamilia.Name = "panelFamilia";
+            this.panelFamilia.Size = new System.Drawing.Size(294, 594);
+            this.panelFamilia.TabIndex = 0;
+
+            this.lblFamilia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblFamilia.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblFamilia.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblFamilia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.lblFamilia.Location = new System.Drawing.Point(10, 10);
+            this.lblFamilia.Name = "lblFamilia";
+            this.lblFamilia.Size = new System.Drawing.Size(274, 30);
+            this.lblFamilia.Text = "Familias de Roles";
+            this.lblFamilia.UseCustomForeColor = true;
+
+            // Botones Gestión (Abajo)
+            this.panelBotonesFamilia.Controls.Add(this.btnEliminarFamilia);
+            this.panelBotonesFamilia.Controls.Add(this.btnRenombrarFamilia);
+            this.panelBotonesFamilia.Controls.Add(this.btnNuevaFamilia);
+            this.panelBotonesFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBotonesFamilia.Location = new System.Drawing.Point(10, 464);
+            this.panelBotonesFamilia.Name = "panelBotonesFamilia";
+            this.panelBotonesFamilia.Size = new System.Drawing.Size(274, 120);
+            this.panelBotonesFamilia.TabIndex = 1;
+
+            this.btnNuevaFamilia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNuevaFamilia.Location = new System.Drawing.Point(0, 0);
+            this.btnNuevaFamilia.Name = "btnNuevaFamilia";
+            this.btnNuevaFamilia.Size = new System.Drawing.Size(274, 35);
+            this.btnNuevaFamilia.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnNuevaFamilia.Text = "+ Nueva Familia";
+            this.btnNuevaFamilia.Click += new System.EventHandler(this.btnNuevaFamilia_Click);
+
+            this.btnRenombrarFamilia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRenombrarFamilia.Location = new System.Drawing.Point(0, 35);
+            this.btnRenombrarFamilia.Name = "btnRenombrarFamilia";
+            this.btnRenombrarFamilia.Size = new System.Drawing.Size(274, 35);
+            this.btnRenombrarFamilia.Style = MetroFramework.MetroColorStyle.Orange;
+            this.btnRenombrarFamilia.Text = "Renombrar";
+            this.btnRenombrarFamilia.Click += new System.EventHandler(this.btnRenombrarFamilia_Click);
+
+            this.btnEliminarFamilia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEliminarFamilia.Location = new System.Drawing.Point(0, 70);
+            this.btnEliminarFamilia.Name = "btnEliminarFamilia";
+            this.btnEliminarFamilia.Size = new System.Drawing.Size(274, 35);
+            this.btnEliminarFamilia.Style = MetroFramework.MetroColorStyle.Red;
+            this.btnEliminarFamilia.Text = "Eliminar";
+            this.btnEliminarFamilia.Click += new System.EventHandler(this.btnEliminarFamilia_Click);
+
+            // Grid Familia (Marco)
+            this.marcoFamilia.BackColor = System.Drawing.Color.Silver;
+            this.marcoFamilia.Controls.Add(this.metroGridFamilia);
+            this.marcoFamilia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.marcoFamilia.Padding = new System.Windows.Forms.Padding(1);
+            this.marcoFamilia.Location = new System.Drawing.Point(10, 40);
+            this.marcoFamilia.Name = "marcoFamilia";
+            this.marcoFamilia.Size = new System.Drawing.Size(274, 424); // Se ajusta sobre los botones
+            this.marcoFamilia.TabIndex = 2;
+
+            this.metroGridFamilia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroGridFamilia.Location = new System.Drawing.Point(1, 1);
+            this.metroGridFamilia.Name = "metroGridFamilia";
+            this.metroGridFamilia.SelectionChanged += new System.EventHandler(this.metroGridFamilia_SelectionChanged);
+
             // 
-            // label3
+            // --- PANEL 2: ASOCIADOS ---
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 180);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Quitar";
+            this.panelAsociados.Controls.Add(this.marcoAsociados);
+            this.panelAsociados.Controls.Add(this.lblAsociados);
+            this.panelAsociados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAsociados.Padding = new System.Windows.Forms.Padding(10);
+            this.panelAsociados.Location = new System.Drawing.Point(303, 3);
+            this.panelAsociados.Name = "panelAsociados";
+            this.panelAsociados.Size = new System.Drawing.Size(294, 594);
+            this.panelAsociados.TabIndex = 1;
+
+            this.lblAsociados.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblAsociados.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblAsociados.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblAsociados.Location = new System.Drawing.Point(10, 10);
+            this.lblAsociados.Name = "lblAsociados";
+            this.lblAsociados.Size = new System.Drawing.Size(274, 30);
+            this.lblAsociados.Text = "Permisos Asignados";
+
+            this.marcoAsociados.BackColor = System.Drawing.Color.Silver;
+            this.marcoAsociados.Controls.Add(this.metroGridAsociados);
+            this.marcoAsociados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.marcoAsociados.Padding = new System.Windows.Forms.Padding(1);
+            this.marcoAsociados.Location = new System.Drawing.Point(10, 40);
+            this.marcoAsociados.Name = "marcoAsociados";
+            this.marcoAsociados.Size = new System.Drawing.Size(274, 544);
+
+            this.metroGridAsociados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroGridAsociados.Location = new System.Drawing.Point(1, 1);
+            this.metroGridAsociados.Name = "metroGridAsociados";
+
             // 
-            // label4
+            // --- PANEL 3: FLECHAS ---
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 269);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 20);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Agregar";
+            this.panelFlechas.Controls.Add(this.btnQuitarPermiso);
+            this.panelFlechas.Controls.Add(this.btnAgregarPermiso);
+            this.panelFlechas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFlechas.Location = new System.Drawing.Point(603, 3);
+            this.panelFlechas.Name = "panelFlechas";
+            this.panelFlechas.Size = new System.Drawing.Size(94, 594);
+            this.panelFlechas.TabIndex = 2;
+
+            this.btnAgregarPermiso.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAgregarPermiso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.btnAgregarPermiso.FlatAppearance.BorderSize = 0;
+            this.btnAgregarPermiso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarPermiso.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarPermiso.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarPermiso.Location = new System.Drawing.Point(22, 230);
+            this.btnAgregarPermiso.Name = "btnAgregarPermiso";
+            this.btnAgregarPermiso.Size = new System.Drawing.Size(50, 50);
+            this.btnAgregarPermiso.TabIndex = 0;
+            this.btnAgregarPermiso.Text = "◄";
+            this.btnAgregarPermiso.UseVisualStyleBackColor = false;
+            this.btnAgregarPermiso.Click += new System.EventHandler(this.btnAgregarPermiso_Click);
+
+            this.btnQuitarPermiso.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnQuitarPermiso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.btnQuitarPermiso.FlatAppearance.BorderSize = 0;
+            this.btnQuitarPermiso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitarPermiso.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
+            this.btnQuitarPermiso.ForeColor = System.Drawing.Color.White;
+            this.btnQuitarPermiso.Location = new System.Drawing.Point(22, 300);
+            this.btnQuitarPermiso.Name = "btnQuitarPermiso";
+            this.btnQuitarPermiso.Size = new System.Drawing.Size(50, 50);
+            this.btnQuitarPermiso.TabIndex = 1;
+            this.btnQuitarPermiso.Text = "►";
+            this.btnQuitarPermiso.UseVisualStyleBackColor = false;
+            this.btnQuitarPermiso.Click += new System.EventHandler(this.btnQuitarPermiso_Click);
+
             // 
-            // buttonRenombrarRol
+            // --- PANEL 4: DISPONIBLES ---
             // 
-            this.buttonRenombrarRol.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonRenombrarRol.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonRenombrarRol.Location = new System.Drawing.Point(3, 503);
-            this.buttonRenombrarRol.Name = "buttonRenombrarRol";
-            this.buttonRenombrarRol.Size = new System.Drawing.Size(391, 41);
-            this.buttonRenombrarRol.TabIndex = 13;
-            this.buttonRenombrarRol.Text = "Renombrar";
-            this.buttonRenombrarRol.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewFamiliaDeRoles
-            // 
-            this.dataGridViewFamiliaDeRoles.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridViewFamiliaDeRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewFamiliaDeRoles.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridViewFamiliaDeRoles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewFamiliaDeRoles.Location = new System.Drawing.Point(3, 21);
-            this.dataGridViewFamiliaDeRoles.Name = "dataGridViewFamiliaDeRoles";
-            this.dataGridViewFamiliaDeRoles.Size = new System.Drawing.Size(388, 400);
-            this.dataGridViewFamiliaDeRoles.TabIndex = 14;
-            this.dataGridViewFamiliaDeRoles.SelectionChanged += new System.EventHandler(this.dataGridViewFamiliaDeRoles_SelectionChanged);
-            // 
-            // dataGridViewRolesDelSistema
-            // 
-            this.dataGridViewRolesDelSistema.AllowUserToOrderColumns = true;
-            this.dataGridViewRolesDelSistema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRolesDelSistema.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewRolesDelSistema.Location = new System.Drawing.Point(3, 21);
-            this.dataGridViewRolesDelSistema.Name = "dataGridViewRolesDelSistema";
-            this.dataGridViewRolesDelSistema.Size = new System.Drawing.Size(391, 523);
-            this.dataGridViewRolesDelSistema.TabIndex = 15;
-            // 
-            // dataGridViewRolesAsociados
-            // 
-            this.dataGridViewRolesAsociados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRolesAsociados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewRolesAsociados.Location = new System.Drawing.Point(3, 21);
-            this.dataGridViewRolesAsociados.Name = "dataGridViewRolesAsociados";
-            this.dataGridViewRolesAsociados.Size = new System.Drawing.Size(388, 523);
-            this.dataGridViewRolesAsociados.TabIndex = 16;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox4, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1336, 551);
-            this.tableLayoutPanel1.TabIndex = 17;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.buttonRenombrarRol);
-            this.groupBox4.Controls.Add(this.dataGridViewRolesDelSistema);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox4.Location = new System.Drawing.Point(936, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(397, 547);
-            this.groupBox4.TabIndex = 20;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Roles del Sistema";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dataGridViewRolesAsociados);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(403, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(394, 547);
-            this.groupBox2.TabIndex = 19;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Roles Asociados";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.pictureBoxQuitar);
-            this.groupBox3.Controls.Add(this.pictureBoxAgregar);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(803, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(127, 547);
-            this.groupBox3.TabIndex = 19;
-            this.groupBox3.TabStop = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.dataGridViewFamiliaDeRoles);
-            this.groupBox1.Controls.Add(this.buttonAgregarNuevaFamilia);
-            this.groupBox1.Controls.Add(this.buttonRenombrarFamilia);
-            this.groupBox1.Controls.Add(this.buttonEliminarFamilia);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(394, 547);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Familia De Roles";
-            // 
-            // buttonEliminarFamilia
-            // 
-            this.buttonEliminarFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonEliminarFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonEliminarFamilia.Location = new System.Drawing.Point(3, 503);
-            this.buttonEliminarFamilia.Name = "buttonEliminarFamilia";
-            this.buttonEliminarFamilia.Size = new System.Drawing.Size(388, 41);
-            this.buttonEliminarFamilia.TabIndex = 12;
-            this.buttonEliminarFamilia.Text = "Eliminar";
-            this.buttonEliminarFamilia.UseVisualStyleBackColor = true;
-            this.buttonEliminarFamilia.Click += new System.EventHandler(this.buttonEliminarFamilia_Click);
-            // 
-            // buttonAgregarNuevaFamilia
-            // 
-            this.buttonAgregarNuevaFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonAgregarNuevaFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonAgregarNuevaFamilia.Location = new System.Drawing.Point(3, 421);
-            this.buttonAgregarNuevaFamilia.Name = "buttonAgregarNuevaFamilia";
-            this.buttonAgregarNuevaFamilia.Size = new System.Drawing.Size(388, 41);
-            this.buttonAgregarNuevaFamilia.TabIndex = 10;
-            this.buttonAgregarNuevaFamilia.Text = "Nuevo";
-            this.buttonAgregarNuevaFamilia.UseVisualStyleBackColor = true;
-            this.buttonAgregarNuevaFamilia.Click += new System.EventHandler(this.buttonAgregarNuevaFamilia_Click);
-            // 
-            // buttonRenombrarFamilia
-            // 
-            this.buttonRenombrarFamilia.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonRenombrarFamilia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonRenombrarFamilia.Location = new System.Drawing.Point(3, 462);
-            this.buttonRenombrarFamilia.Name = "buttonRenombrarFamilia";
-            this.buttonRenombrarFamilia.Size = new System.Drawing.Size(388, 41);
-            this.buttonRenombrarFamilia.TabIndex = 11;
-            this.buttonRenombrarFamilia.Text = "Renombrar";
-            this.buttonRenombrarFamilia.UseVisualStyleBackColor = true;
-            this.buttonRenombrarFamilia.Click += new System.EventHandler(this.buttonRenombrarFamilia_Click);
+            this.panelSistema.Controls.Add(this.marcoSistema);
+            this.panelSistema.Controls.Add(this.lblSistema);
+            this.panelSistema.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSistema.Padding = new System.Windows.Forms.Padding(10);
+            this.panelSistema.Location = new System.Drawing.Point(703, 3);
+            this.panelSistema.Name = "panelSistema";
+            this.panelSistema.Size = new System.Drawing.Size(294, 594);
+            this.panelSistema.TabIndex = 3;
+
+            this.lblSistema.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblSistema.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblSistema.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.lblSistema.ForeColor = System.Drawing.Color.Gray;
+            this.lblSistema.Location = new System.Drawing.Point(10, 10);
+            this.lblSistema.Name = "lblSistema";
+            this.lblSistema.Size = new System.Drawing.Size(274, 30);
+            this.lblSistema.Text = "Permisos Disponibles";
+            this.lblSistema.UseCustomForeColor = true;
+
+            this.marcoSistema.BackColor = System.Drawing.Color.Silver;
+            this.marcoSistema.Controls.Add(this.metroGridSistema);
+            this.marcoSistema.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.marcoSistema.Padding = new System.Windows.Forms.Padding(1);
+            this.marcoSistema.Location = new System.Drawing.Point(10, 40);
+            this.marcoSistema.Name = "marcoSistema";
+            this.marcoSistema.Size = new System.Drawing.Size(274, 544);
+
+            this.metroGridSistema.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroGridSistema.Location = new System.Drawing.Point(1, 1);
+            this.metroGridSistema.Name = "metroGridSistema";
+
             // 
             // RolesYPermisosView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.tableLayoutPanelMain);
             this.Name = "RolesYPermisosView";
-            this.Size = new System.Drawing.Size(1336, 551);
+            this.Size = new System.Drawing.Size(1000, 600);
             this.Load += new System.EventHandler(this.RolesYPermisosView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxQuitar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAgregar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFamiliaDeRoles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRolesDelSistema)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRolesAsociados)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.ResumeLayout(false);
+            this.tableLayoutPanelMain.ResumeLayout(false);
 
+            this.panelFamilia.ResumeLayout(false);
+            this.marcoFamilia.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroGridFamilia)).EndInit();
+            this.panelBotonesFamilia.ResumeLayout(false);
+
+            this.panelAsociados.ResumeLayout(false);
+            this.marcoAsociados.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroGridAsociados)).EndInit();
+
+            this.panelFlechas.ResumeLayout(false);
+
+            this.panelSistema.ResumeLayout(false);
+            this.marcoSistema.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroGridSistema)).EndInit();
+
+            this.ResumeLayout(false);
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBoxQuitar;
-        private System.Windows.Forms.PictureBox pictureBoxAgregar;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button buttonRenombrarRol;
-        private System.Windows.Forms.DataGridView dataGridViewFamiliaDeRoles;
-        private System.Windows.Forms.DataGridView dataGridViewRolesDelSistema;
-        private System.Windows.Forms.DataGridView dataGridViewRolesAsociados;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button buttonAgregarNuevaFamilia;
-        private System.Windows.Forms.Button buttonRenombrarFamilia;
-        private System.Windows.Forms.Button buttonEliminarFamilia;
+
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
+
+        // Panel 1
+        private System.Windows.Forms.Panel panelFamilia;
+        private System.Windows.Forms.Panel marcoFamilia;
+        private MetroFramework.Controls.MetroGrid metroGridFamilia;
+        private System.Windows.Forms.Panel panelBotonesFamilia;
+        private MetroFramework.Controls.MetroButton btnNuevaFamilia;
+        private MetroFramework.Controls.MetroButton btnRenombrarFamilia;
+        private MetroFramework.Controls.MetroButton btnEliminarFamilia;
+        private MetroFramework.Controls.MetroLabel lblFamilia;
+
+        // Panel 2
+        private System.Windows.Forms.Panel panelAsociados;
+        private System.Windows.Forms.Panel marcoAsociados;
+        private MetroFramework.Controls.MetroGrid metroGridAsociados;
+        private MetroFramework.Controls.MetroLabel lblAsociados;
+
+        // Panel 3 (Flechas)
+        private System.Windows.Forms.Panel panelFlechas;
+        private System.Windows.Forms.Button btnAgregarPermiso;
+        private System.Windows.Forms.Button btnQuitarPermiso;
+
+        // Panel 4
+        private System.Windows.Forms.Panel panelSistema;
+        private System.Windows.Forms.Panel marcoSistema;
+        private MetroFramework.Controls.MetroGrid metroGridSistema;
+        private MetroFramework.Controls.MetroLabel lblSistema;
     }
 }

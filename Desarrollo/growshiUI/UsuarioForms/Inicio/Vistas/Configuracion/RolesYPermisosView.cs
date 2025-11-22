@@ -1,15 +1,11 @@
 ﻿using BLL.InicioUsuarioBLL;
 using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_RolesYPermisos;
-using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using MetroFramework; // Importante
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 {
@@ -24,45 +20,69 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
         private void RolesYPermisosView_Load(object sender, EventArgs e)
         {
-            #region CONFIGURACIONES INICIALES DE LOS DATAGRIDVIEW
+            // 1. Estilizar las 3 Grillas
+            DarVidaAlGrid(metroGridFamilia);
+            DarVidaAlGrid(metroGridAsociados);
+            DarVidaAlGrid(metroGridSistema);
 
-            dataGridViewFamiliaDeRoles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewFamiliaDeRoles.RowHeadersVisible = false;
-            dataGridViewFamiliaDeRoles.ReadOnly = true;
-            dataGridViewFamiliaDeRoles.AllowUserToAddRows = false;
-            dataGridViewFamiliaDeRoles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewFamiliaDeRoles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dataGridViewFamiliaDeRoles.RowTemplate.Height = 40; // Ajusta este número
-            dataGridViewFamiliaDeRoles.AllowUserToResizeRows = false;
-            dataGridViewFamiliaDeRoles.Font = new Font(dataGridViewFamiliaDeRoles.Font, FontStyle.Regular);
+            // 2. Redondear Botones de Flechas (Centrales)
+            RedondearControl(btnAgregarPermiso, 20); // Radio 20 para 40x40
+            RedondearControl(btnQuitarPermiso, 20);
 
-            dataGridViewRolesAsociados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRolesAsociados.RowHeadersVisible = false;
-            dataGridViewRolesAsociados.ReadOnly = true;
-            dataGridViewRolesAsociados.AllowUserToAddRows = false;
-            dataGridViewRolesAsociados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewRolesAsociados.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dataGridViewRolesAsociados.RowTemplate.Height = 40; // Ajusta este número
-            dataGridViewRolesAsociados.AllowUserToResizeRows = false;
-            dataGridViewRolesAsociados.Font = new Font(dataGridViewFamiliaDeRoles.Font, FontStyle.Regular);
+            // 3. Estilizar Botones de Gestión (Abajo Izquierda)
+            // Los dejamos rectangulares con borde suave o MetroButton estándar
 
-            dataGridViewRolesDelSistema.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRolesDelSistema.RowHeadersVisible = false;
-            dataGridViewRolesDelSistema.ReadOnly = true;
-            dataGridViewRolesDelSistema.AllowUserToAddRows = false;
-            dataGridViewRolesDelSistema.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewRolesDelSistema.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dataGridViewRolesDelSistema.RowTemplate.Height = 40; // Ajusta este número
-            dataGridViewRolesDelSistema.AllowUserToResizeRows = false;
-            dataGridViewRolesDelSistema.Font = new Font(dataGridViewFamiliaDeRoles.Font, FontStyle.Regular);
+            // 4. Cargar Datos Iniciales
+            ListarFamiliaDeRoles();
+        }
 
-            #endregion
+        // --- ESTILOS VISUALES ---
+        private void DarVidaAlGrid(MetroFramework.Controls.MetroGrid grid)
+        {
+            // Candados
+            grid.ReadOnly = true;
+            grid.AllowUserToAddRows = false;
+            grid.AllowUserToDeleteRows = false;
+            grid.AllowUserToResizeRows = false;
+            grid.MultiSelect = false;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.EditMode = DataGridViewEditMode.EditProgrammatically;
 
-            listarFamiliaDeRoles();
+            // Visual
+            grid.BackgroundColor = Color.White;
+            grid.BorderStyle = BorderStyle.None;
+            grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            grid.GridColor = Color.FromArgb(224, 224, 224);
 
-            // las otras grillas se cargam automáticamente
-            // por el evento 'dataGridViewFamiliaDeRoles_SelectionChanged'
-            // al seleccionarse la primera fila.
+            // Encabezados
+            grid.EnableHeadersVisualStyles = false;
+            grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(46, 125, 50);
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            grid.ColumnHeadersHeight = 40;
+
+            // Filas
+            grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 252, 245);
+            grid.RowsDefaultCellStyle.BackColor = Color.White;
+            grid.RowsDefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            grid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 201);
+            grid.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            grid.RowTemplate.Height = 35;
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grid.RowHeadersVisible = false;
+        }
+
+        private void RedondearControl(Control control, int radio)
+        {
+            Rectangle bounds = new Rectangle(0, 0, control.Width, control.Height);
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(bounds.X, bounds.Y, radio, radio, 180, 90);
+            path.AddArc(bounds.X + bounds.Width - radio, bounds.Y, radio, radio, 270, 90);
+            path.AddArc(bounds.X + bounds.Width - radio, bounds.Y + bounds.Height - radio, radio, radio, 0, 90);
+            path.AddArc(bounds.X, bounds.Y + bounds.Height - radio, radio, radio, 90, 90);
+            path.CloseFigure();
+            control.Region = new Region(path);
         }
 
         private void CargarVista(UserControl vista)
@@ -70,241 +90,127 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             this.Controls.Clear();
             vista.Dock = DockStyle.Fill;
             this.Controls.Add(vista);
-        } 
+        }
 
+        // --- LÓGICA DE DATOS ---
 
+        public void ListarFamiliaDeRoles()
+        {
+            DataTable dataTable = rolesYPermisosBLL.ListarFamiliaDeRoles();
+            if (dataTable != null) metroGridFamilia.DataSource = dataTable;
+        }
 
+        public void ListarRolesAsociadosAUnaFamilia(string idFamilia)
+        {
+            DataTable dataTable = rolesYPermisosBLL.ListarRolesAsociadosAfamilia(idFamilia);
+            if (dataTable != null) metroGridAsociados.DataSource = dataTable;
+        }
 
-        #region CRUD - PRIMER DATAGRID FAMILIA DE PERMISOS
+        public void ListarRolesDelSistemaDisponibles(string idFamilia)
+        {
+            DataTable dataTable = rolesYPermisosBLL.ListarRolesDelSistemaDisponibles(idFamilia);
+            if (dataTable != null) metroGridSistema.DataSource = dataTable;
+        }
 
-        private void buttonAgregarNuevaFamilia_Click(object sender, EventArgs e)
+        private void metroGridFamilia_SelectionChanged(object sender, EventArgs e)
+        {
+            if (metroGridFamilia.CurrentRow == null)
+            {
+                metroGridAsociados.DataSource = null;
+                metroGridSistema.DataSource = null;
+                return;
+            }
+
+            // Asumo que la columna ID se llama "PermisoID", verifica tu BD
+            string idFamilia = metroGridFamilia.CurrentRow.Cells["PermisoID"].Value.ToString();
+            ListarRolesAsociadosAUnaFamilia(idFamilia);
+            ListarRolesDelSistemaDisponibles(idFamilia);
+        }
+
+        // --- BOTONES GESTIÓN FAMILIA (Izquierda) ---
+
+        private void btnNuevaFamilia_Click(object sender, EventArgs e)
         {
             CargarVista(new AgregarFamilia());
         }
 
-        public void listarFamiliaDeRoles()
+        private void btnRenombrarFamilia_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = rolesYPermisosBLL.ListarFamiliaDeRoles();
-
-            if (dataTable != null)
+            if (metroGridFamilia.CurrentRow == null)
             {
-                dataGridViewFamiliaDeRoles.DataSource = dataTable;
-            }
-        }
-
-        private void buttonEliminarFamilia_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewFamiliaDeRoles.CurrentRow == null)
-            {
+                MetroMessageBox.Show(this, "Seleccione una familia.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string mensaje = "¡Esta será una acción IRREVERSIBLE!\n\n" +
-                             "¿Desea borrar esta familia de permisos?";
+            string id = metroGridFamilia.CurrentRow.Cells["PermisoID"].Value.ToString();
+            string nombre = metroGridFamilia.CurrentRow.Cells["NombreDescriptivo"].Value.ToString(); // Ajustar nombre col
 
-            DialogResult resultado = MessageBox.Show(mensaje, "Atención",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            CargarVista(new ModificarFamilia(id, nombre));
+        }
 
-            if (resultado == DialogResult.Yes)
+        private void btnEliminarFamilia_Click(object sender, EventArgs e)
+        {
+            if (metroGridFamilia.CurrentRow == null) return;
+
+            string mensaje = "¡Acción IRREVERSIBLE!\n¿Desea borrar esta familia de permisos?";
+            if (MetroMessageBox.Show(this, mensaje, "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 try
                 {
-                    string idParaBorrar = dataGridViewFamiliaDeRoles.CurrentRow.Cells["PermisoID"].Value.ToString();
-                    rolesYPermisosBLL.EliminarFamiliaDeRoles(idParaBorrar);
-
-                    MessageBox.Show($"Familia Borrada Exitosamente",
-                                    "Exito",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.None);
-
-                    
-                    listarFamiliaDeRoles();
+                    string id = metroGridFamilia.CurrentRow.Cells["PermisoID"].Value.ToString();
+                    rolesYPermisosBLL.EliminarFamiliaDeRoles(id);
+                    MetroMessageBox.Show(this, "Familia eliminada.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ListarFamiliaDeRoles();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al eliminar la familia: {ex.Message}",
-                                    "Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                    MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        private void buttonRenombrarFamilia_Click(object sender, EventArgs e)
+        // --- BOTONES ASIGNACIÓN (Flechas Centro) ---
+
+        private void btnAgregarPermiso_Click(object sender, EventArgs e)
         {
-            if (dataGridViewFamiliaDeRoles.CurrentRow == null)
+            if (metroGridFamilia.CurrentRow == null || metroGridSistema.CurrentRow == null)
             {
-                MessageBox.Show("Por favor, seleccione la familia que desea modificar.",
-                                "Ninguna fila seleccionada",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                return;
-            }
-
-            string mensaje = "¡Esta accion puede ser REVERSIBLE!\n\n" +
-                             "Desea modificar la familia de Permisos??";
-
-            DialogResult resultado = MessageBox.Show(
-                mensaje,
-                "Atención",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (resultado == DialogResult.Yes)
-            {
-                try
-                {
-                    string idParaModificar = dataGridViewFamiliaDeRoles.CurrentRow.Cells["PermisoID"].Value.ToString();
-                    string nombreParaModificar = dataGridViewFamiliaDeRoles.CurrentRow.Cells["NombreDescriptivo"].Value.ToString();
-
-                    CargarVista(new ModificarFamilia(idParaModificar, nombreParaModificar));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al modificar la familia: {ex.Message}",
-                                    "Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        #endregion
-
-        #region CRUD - SEGUNDO DATAGRID PERMISOS ASOCIADOS A UNA FAMILIA
-
-        
-        public void listarRolesAsociadosAUnaFamilia(string idFamilia)
-        {
-            DataTable dataTable = rolesYPermisosBLL.ListarRolesAsociadosAfamilia(idFamilia);
-
-            if (dataTable != null)
-            {
-                dataGridViewRolesAsociados.DataSource = dataTable;
-            }
-        }
-
-        #endregion
-
-        #region CRUD - TERCER DATAGRID PERMISOS DISPONIBLES DE LA FAMILIA
-
-        
-        public void ListarRolesDelSistemaDisponibles(string idFamilia)
-        {
-            DataTable dataTable = rolesYPermisosBLL.ListarRolesDelSistemaDisponibles(idFamilia);
-
-            if (dataTable != null)
-            {
-                dataGridViewRolesDelSistema.DataSource = dataTable;
-            }
-        }
-
-
-
-
-
-
-        #endregion
-
-        #region AGREGAR Y BORRAR DGV2Y3
-        private void pictureBoxAgregar_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewFamiliaDeRoles.CurrentRow == null)
-            {
-                MessageBox.Show("Por favor, seleccione la familia a la cual desea agregar el permiso.",
-                                "Familia no seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (dataGridViewRolesDelSistema.CurrentRow == null)
-            {
-                MessageBox.Show("Por favor, seleccione el permiso que desea agregar.",
-                                "Permiso no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this, "Seleccione una Familia y un Permiso Disponible.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                string idParaAgregar = dataGridViewRolesDelSistema.CurrentRow.Cells["PermisoID"].Value.ToString();
-                string idFamiliaPadre = dataGridViewFamiliaDeRoles.CurrentRow.Cells["PermisoID"].Value.ToString();
+                string idFamilia = metroGridFamilia.CurrentRow.Cells["PermisoID"].Value.ToString();
+                string idPermiso = metroGridSistema.CurrentRow.Cells["PermisoID"].Value.ToString();
 
-                rolesYPermisosBLL.AgregarPermisoComponenteAFamilia(idParaAgregar, idFamiliaPadre);
+                rolesYPermisosBLL.AgregarPermisoComponenteAFamilia(idPermiso, idFamilia);
 
-                listarRolesAsociadosAUnaFamilia(idFamiliaPadre);
-                ListarRolesDelSistemaDisponibles(idFamiliaPadre);
+                ListarRolesAsociadosAUnaFamilia(idFamilia);
+                ListarRolesDelSistemaDisponibles(idFamilia);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al agregar Permiso:  {ex.Message}",
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-
-        private void pictureBoxQuitar_Click(object sender, EventArgs e)
+        private void btnQuitarPermiso_Click(object sender, EventArgs e)
         {
-            if (dataGridViewFamiliaDeRoles.CurrentRow == null)
+            if (metroGridFamilia.CurrentRow == null || metroGridAsociados.CurrentRow == null)
             {
-                MessageBox.Show("Por favor, seleccione la familia de la cual desea quitar el permiso.",
-                                "Familia no seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (dataGridViewRolesAsociados.CurrentRow == null)
-            {
-                MessageBox.Show("Por favor, seleccione el permiso que desea quitar de la familia.",
-                                "Permiso no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this, "Seleccione un Permiso Asignado para quitar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                string idFamiliaPadre = dataGridViewFamiliaDeRoles.CurrentRow.Cells["PermisoID"].Value.ToString();
-                string idParaQuitar = dataGridViewRolesAsociados.CurrentRow.Cells["PermisoID"].Value.ToString();
+                string idFamilia = metroGridFamilia.CurrentRow.Cells["PermisoID"].Value.ToString();
+                string idPermiso = metroGridAsociados.CurrentRow.Cells["PermisoID"].Value.ToString();
 
-                rolesYPermisosBLL.QuitarPermisoComponenteDeFamilia(idParaQuitar, idFamiliaPadre);
+                rolesYPermisosBLL.QuitarPermisoComponenteDeFamilia(idPermiso, idFamilia);
 
-                string idFamiliaSeleccionada = dataGridViewFamiliaDeRoles.CurrentRow.Cells["PermisoID"].Value.ToString();
-                listarRolesAsociadosAUnaFamilia(idFamiliaSeleccionada);
-                ListarRolesDelSistemaDisponibles(idFamiliaSeleccionada);
+                ListarRolesAsociadosAUnaFamilia(idFamilia);
+                ListarRolesDelSistemaDisponibles(idFamilia);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al quitar el permiso: {ex.Message}",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
-
-
-        #endregion
-
-
-
-
-
-
-        private void dataGridViewFamiliaDeRoles_SelectionChanged(object sender, EventArgs e)
-        {
-           
-            if (dataGridViewFamiliaDeRoles.CurrentRow == null)
-            {
-                dataGridViewRolesAsociados.DataSource = null;
-                dataGridViewRolesDelSistema.DataSource = null;
-                return;
-            }
-
-            string idFamiliaSeleccionada = dataGridViewFamiliaDeRoles.CurrentRow.Cells["PermisoID"].Value.ToString();
-
-            listarRolesAsociadosAUnaFamilia(idFamiliaSeleccionada);
-            ListarRolesDelSistemaDisponibles(idFamiliaSeleccionada);
-        }
-
-
-
-
-        
     }
 }

@@ -1,21 +1,18 @@
 ﻿using BLL;
 using BLL.InicioUsuarioBLL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using MetroFramework;
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_GestionUsuarios
 {
     public partial class ModificarPermisosPorUsuario : UserControl
     {
-
         RolesYPermisosPorUsuarioBLL RolesYPermisosPorUsuarioBLL = new RolesYPermisosPorUsuarioBLL();
+
         public ModificarPermisosPorUsuario()
         {
             InitializeComponent();
@@ -23,194 +20,131 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_GestionUsuarios
 
         private void ModificarPermisosPorUsuario_Load(object sender, EventArgs e)
         {
-            #region CONFIGURACIONES INICIALES DE LOS DATAGRIDVIEW
+            // 1. Aplicar Estilos y Candados
+            DarVidaAlGrid(metroGridUsuarios);
+            DarVidaAlGrid(metroGridAsignados);
+            DarVidaAlGrid(metroGridDisponibles);
 
-            dataGridViewUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewUsuarios.RowHeadersVisible = false;
-            dataGridViewUsuarios.ReadOnly = true;
-            dataGridViewUsuarios.AllowUserToAddRows = false;
-            dataGridViewUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewUsuarios.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dataGridViewUsuarios.RowTemplate.Height = 40; // Ajusta este número
-            dataGridViewUsuarios.AllowUserToResizeRows = false;
-            dataGridViewUsuarios.Font = new Font(dataGridViewUsuarios.Font, FontStyle.Regular);
+            // 2. Botones Redondos
+            HacerBotonRedondo(btnAgregar);
+            HacerBotonRedondo(btnQuitar);
 
-            dataGridViewRolesAsociadosAlUsuario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRolesAsociadosAlUsuario.RowHeadersVisible = false;
-            dataGridViewRolesAsociadosAlUsuario.ReadOnly = true;
-            dataGridViewRolesAsociadosAlUsuario.AllowUserToAddRows = false;
-            dataGridViewRolesAsociadosAlUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewRolesAsociadosAlUsuario.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dataGridViewRolesAsociadosAlUsuario.RowTemplate.Height = 40; // Ajusta este número
-            dataGridViewRolesAsociadosAlUsuario.AllowUserToResizeRows = false;
-            dataGridViewRolesAsociadosAlUsuario.Font = new Font(dataGridViewRolesAsociadosAlUsuario.Font, FontStyle.Regular);
-
-            dataGridViewRolesDisponibles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewRolesDisponibles.RowHeadersVisible = false;
-            dataGridViewRolesDisponibles.ReadOnly = true;
-            dataGridViewRolesDisponibles.AllowUserToAddRows = false;
-            dataGridViewRolesDisponibles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewRolesDisponibles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dataGridViewRolesDisponibles.RowTemplate.Height = 40; // Ajusta este número
-            dataGridViewRolesDisponibles.AllowUserToResizeRows = false;
-            dataGridViewRolesDisponibles.Font = new Font(dataGridViewRolesDisponibles.Font, FontStyle.Regular);
-
-            #endregion
-
-            listarFamiliaDeRoles();
+            // 3. Cargar Datos Iniciales
+            ListarFamiliaDeRoles();
         }
 
-        private void CargarVista(UserControl vista)
+        // --- MÉTODO DE ESTILO CORREGIDO ---
+        private void DarVidaAlGrid(MetroFramework.Controls.MetroGrid grid)
         {
-            this.Controls.Clear();
-            vista.Dock = DockStyle.Fill;
-            this.Controls.Add(vista);
+            // 1. CANDADOS DE EDICIÓN (Lo que pediste)
+            grid.ReadOnly = true;                           // Nadie escribe
+            grid.AllowUserToAddRows = false;                // Adios fila blanca del final
+            grid.AllowUserToDeleteRows = false;             // No borrar con Supr
+            grid.AllowUserToResizeRows = false;             // Filas fijas
+            grid.EditMode = DataGridViewEditMode.EditProgrammatically; // Bloquea el doble click para editar
+            grid.MultiSelect = false;                       // Selección de a uno (más limpio)
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Seleccionar toda la fila
+
+            // 2. ESTILO VISUAL
+            grid.BackgroundColor = Color.White;
+            grid.Style = MetroColorStyle.Green;
+            grid.BorderStyle = BorderStyle.None;
+            grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            grid.GridColor = Color.FromArgb(224, 224, 224);
+
+            // Encabezado
+            grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(46, 125, 50);
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            grid.ColumnHeadersHeight = 40;
+            grid.EnableHeadersVisualStyles = false; // Importante para que tome el color verde
+
+            // Filas
+            grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 250, 245);
+            grid.RowsDefaultCellStyle.BackColor = Color.White;
+            grid.RowsDefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            grid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 201);
+            grid.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+
+            grid.RowTemplate.Height = 35;
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grid.RowHeadersVisible = false; // Ocultar la columna gris fea de la izquierda
         }
 
-        #region PRIMER DATAGRID
-        public void listarFamiliaDeRoles()
+        private void HacerBotonRedondo(Button btn)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(0, 0, btn.Width, btn.Height);
+            btn.Region = new Region(path);
+        }
+
+        // --- LÓGICA DE NEGOCIO ---
+
+        public void ListarFamiliaDeRoles()
         {
             DataTable dataTable = RolesYPermisosPorUsuarioBLL.ListarUsuarios();
-
-            if (dataTable != null)
-            {
-                dataGridViewUsuarios.DataSource = dataTable;
-            }
+            if (dataTable != null) metroGridUsuarios.DataSource = dataTable;
         }
-        #endregion
-
-
-        #region CRUD - SEGUNDO DATAGRID PERMISOS ASOCIADOS A USUARIO
-
 
         public void ListarRolesAsociadosAlUsuario(string idUsuarioSeleccionado)
         {
             DataTable dataTable = RolesYPermisosPorUsuarioBLL.ListarRolesAsociadosAlUsuario(idUsuarioSeleccionado);
-
-            if (dataTable != null)
-            {
-                dataGridViewRolesAsociadosAlUsuario.DataSource = dataTable;
-            }
+            if (dataTable != null) metroGridAsignados.DataSource = dataTable;
         }
-
-        #endregion
-
-
-        #region CRUD - TERCER DATAGRID PERMISOS DISPONIBLES DE LA FAMILIA
-
 
         public void ListarRolesDisponibles(string idUsuarioSeleccionado)
         {
             DataTable dataTable = RolesYPermisosPorUsuarioBLL.ListarRolesDelSistemaDisponibles(idUsuarioSeleccionado);
-
-            if (dataTable != null)
-            {
-                dataGridViewRolesDisponibles.DataSource = dataTable;
-            }
+            if (dataTable != null) metroGridDisponibles.DataSource = dataTable;
         }
 
-
-
-
-
-
-        #endregion
-
-
-        private void dataGridViewUsuarios_SelectionChanged(object sender, EventArgs e)
+        private void metroGridUsuarios_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridViewUsuarios.CurrentRow == null)
+            if (metroGridUsuarios.CurrentRow == null)
             {
-                dataGridViewRolesAsociadosAlUsuario.DataSource = null;
-                dataGridViewRolesDisponibles.DataSource = null;
+                metroGridAsignados.DataSource = null;
+                metroGridDisponibles.DataSource = null;
                 return;
             }
 
-            string idUsuarioSeleccionado = dataGridViewUsuarios.CurrentRow.Cells["UsuarioNombre"].Value.ToString();
-
+            string idUsuarioSeleccionado = metroGridUsuarios.CurrentRow.Cells["UsuarioNombre"].Value.ToString();
             ListarRolesAsociadosAlUsuario(idUsuarioSeleccionado);
             ListarRolesDisponibles(idUsuarioSeleccionado);
         }
 
-
-
-        #region AGREGAR - QUITAR FAMILIA DE PERMISOS A USUARIO
-        private void pictureBoxAgregar_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-
-            if (dataGridViewUsuarios.CurrentRow == null)
-            {
-                MessageBox.Show("Por favor, seleccione el usuario a la cual desea agregar el permiso.",
-                                "Usuario no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (dataGridViewRolesDisponibles.CurrentRow == null)
-            {
-                MessageBox.Show("Por favor, seleccione el permiso que desea agregar.",
-                                "Permiso no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (metroGridUsuarios.CurrentRow == null || metroGridDisponibles.CurrentRow == null) return;
 
             try
             {
-                string idFamiliaPadre = dataGridViewUsuarios.CurrentRow.Cells["UsuarioNombre"].Value.ToString();
-                string idParaAgregar = dataGridViewRolesDisponibles.CurrentRow.Cells["PermisoID"].Value.ToString();
+                string idUsuario = metroGridUsuarios.CurrentRow.Cells["UsuarioNombre"].Value.ToString();
+                string idPermiso = metroGridDisponibles.CurrentRow.Cells["PermisoID"].Value.ToString();
 
+                RolesYPermisosPorUsuarioBLL.AgregarPermisoAUsuario(idPermiso, idUsuario);
 
-                RolesYPermisosPorUsuarioBLL.AgregarPermisoAUsuario(idParaAgregar, idFamiliaPadre);
-
-                ListarRolesAsociadosAlUsuario(idFamiliaPadre);
-                ListarRolesDisponibles(idFamiliaPadre);
+                ListarRolesAsociadosAlUsuario(idUsuario);
+                ListarRolesDisponibles(idUsuario);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al agregar Permiso:  {ex.Message}",
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        private void pictureBoxQuitar_Click(object sender, EventArgs e)
+        private void btnQuitar_Click(object sender, EventArgs e)
         {
-            if (dataGridViewUsuarios.CurrentRow == null)
-            {
-                MessageBox.Show("Por favor, seleccione el usuario.",
-                                "Usuario no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // AHORA VALIDAMOS Y LEEMOS DEL GRID DE ROLES ASOCIADOS
-            if (dataGridViewRolesAsociadosAlUsuario.CurrentRow == null)
-            {
-                MessageBox.Show("Por favor, seleccione el permiso que desea quitar de la lista de 'Roles Asociados'.",
-                                "Permiso no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (metroGridUsuarios.CurrentRow == null || metroGridAsignados.CurrentRow == null) return;
 
             try
             {
-                string idFamiliaPadre = dataGridViewUsuarios.CurrentRow.Cells["UsuarioNombre"].Value.ToString();
+                string idUsuario = metroGridUsuarios.CurrentRow.Cells["UsuarioNombre"].Value.ToString();
+                string idPermiso = metroGridAsignados.CurrentRow.Cells["PermisoID"].Value.ToString();
 
-                // ¡LA CORRECCIÓN! Leemos del grid de roles ASOCIADOS
-                string idParaQuitar = dataGridViewRolesAsociadosAlUsuario.CurrentRow.Cells["PermisoID"].Value.ToString();
+                RolesYPermisosPorUsuarioBLL.QuitarPermisoAUsuario(idPermiso, idUsuario);
 
-                // Llamamos al BLL (que llamará al DAO)
-                RolesYPermisosPorUsuarioBLL.QuitarPermisoAUsuario(idParaQuitar, idFamiliaPadre);
-
-                // Refrescamos ambas listas
-                ListarRolesAsociadosAlUsuario(idFamiliaPadre);
-                ListarRolesDisponibles(idFamiliaPadre);
+                ListarRolesAsociadosAlUsuario(idUsuario);
+                ListarRolesDisponibles(idUsuario);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al quitar Permiso: {ex.Message}",
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
-        #endregion
     }
 }
