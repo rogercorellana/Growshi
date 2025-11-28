@@ -1,4 +1,8 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using Interfaces.IServices;
+using Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,29 +16,51 @@ namespace growshiUI.UsuarioForms.Inicio
 {
     public partial class InicioView : UserControl
     {
+
+        private readonly IdiomaBLL _idiomaBLL;
+        private readonly ISessionService<Usuario> _sessionService;
+        private readonly Usuario _usuarioActual;
+
         public InicioView()
         {
             InitializeComponent();
+            _idiomaBLL = new IdiomaBLL();
+
+            _sessionService = SessionService<Usuario>.GetInstance();
+            _usuarioActual = _sessionService.UsuarioLogueado;
+
+            this._usuarioActual = _sessionService.UsuarioLogueado;
+
+            _idiomaBLL.CargarIdiomaInicial(this._usuarioActual);
+            IdiomaService.GetInstance().IdiomaCambiado += ActualizarTraducciones;
+            ActualizarTraducciones();
+
         }
 
-        private void tileGestionarCultivos_Click(object sender, EventArgs e)
+        
+
+
+        public void ActualizarTraducciones()
         {
-            // Aquí irá la lógica para cambiar a la vista de "Mis Cultivos"
-            MessageBox.Show("¡Cambiando a la pantalla de gestión de cultivos!");
-            // Por ahora, un mensaje es suficiente para probar que funciona.
+            labelBienvenidosAGrowshi.Text = _idiomaBLL.Traducir("labelBienvenidosAGrowshi");
+            labelCultivosActivos.Text = _idiomaBLL.Traducir("labelCultivosActivos");
+            labelAlertasPendientes.Text = _idiomaBLL.Traducir("labelAlertasPendientes");
+            labelGestionarCultivos.Text = _idiomaBLL.Traducir("labelGestionarCultivos");
+            labelConfiguracion.Text = _idiomaBLL.Traducir("labelConfiguracion");
+
         }
 
+        #region Movimiento de mouse
         private void tileGestionarCultivos_MouseEnter(object sender, EventArgs e)
         {
-            // Cambia el color de fondo cuando el mouse está encima
             this.tileGestionarCultivos.BackColor = Color.LightGray;
         }
 
         private void tileGestionarCultivos_MouseLeave(object sender, EventArgs e)
         {
-            // Vuelve al color original cuando el mouse se va
             this.tileGestionarCultivos.BackColor = SystemColors.ControlLight;
         }
+        #endregion
     }
 }
 

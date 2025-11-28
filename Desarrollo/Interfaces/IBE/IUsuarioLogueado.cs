@@ -12,11 +12,10 @@ namespace Interfaces.IBE
     /// </summary>
     public interface IUsuarioLogueado
     {
-        // El nombre de la propiedad en tu clase Usuario es 'IdUsuario', 
-        // pero es una buena práctica usar nombres genéricos como 'Id' en las interfaces.
-        // La clase Usuario implementará esto sin problemas.
+      
         int IdUsuario { get; set; }
         string NombreUsuario { get; set; }
+        int IdiomaPreferidoID { get; set; }
 
         List<string> Permisos { get; set; }
 

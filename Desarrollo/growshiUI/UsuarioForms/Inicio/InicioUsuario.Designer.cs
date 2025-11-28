@@ -2,15 +2,8 @@
 {
     partial class InicioUsuario
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,121 +15,151 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.inicioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.misCultivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.idiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_inicioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_misCultivosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_historialMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_reportesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_configuracionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStrip_miCuentaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
+            this.MenuStrip_idiomaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProbandoESP32ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.panelInicio = new System.Windows.Forms.Panel();
-            this.menuStrip1.SuspendLayout();
+            this.menuStripGlobal.SuspendLayout();
             this.SuspendLayout();
             // 
-            // inicioMenuItem
+            // MenuStrip_inicioMenuItem
             // 
-            this.inicioMenuItem.Name = "inicioMenuItem";
-            this.inicioMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.inicioMenuItem.Text = "Inicio";
-            this.inicioMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
+            this.MenuStrip_inicioMenuItem.Name = "MenuStrip_inicioMenuItem";
+            this.MenuStrip_inicioMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.MenuStrip_inicioMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.MenuStrip_inicioMenuItem.Text = "Inicio";
+            this.MenuStrip_inicioMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
             // 
-            // misCultivosToolStripMenuItem
+            // MenuStrip_misCultivosMenuItem
             // 
-            this.misCultivosToolStripMenuItem.Name = "misCultivosToolStripMenuItem";
-            this.misCultivosToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.misCultivosToolStripMenuItem.Text = "Mis Cultivos";
+            this.MenuStrip_misCultivosMenuItem.Name = "MenuStrip_misCultivosMenuItem";
+            this.MenuStrip_misCultivosMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.MenuStrip_misCultivosMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.MenuStrip_misCultivosMenuItem.Text = "Mis Cultivos";
+            this.MenuStrip_misCultivosMenuItem.Click += new System.EventHandler(this.MenuStrip_misCultivosMenuItem_Click);
             // 
-            // historialToolStripMenuItem
+            // MenuStrip_historialMenuItem
             // 
-            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
-            this.historialToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.historialToolStripMenuItem.Text = "Historial";
+            this.MenuStrip_historialMenuItem.Name = "MenuStrip_historialMenuItem";
+            this.MenuStrip_historialMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.MenuStrip_historialMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.MenuStrip_historialMenuItem.Text = "Historial";
+            this.MenuStrip_historialMenuItem.Click += new System.EventHandler(this.MenuStrip_historialMenuItem_Click);
             // 
-            // reportesToolStripMenuItem
+            // MenuStrip_reportesMenuItem
             // 
-            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.reportesToolStripMenuItem.Text = "Reportes";
+            this.MenuStrip_reportesMenuItem.Name = "MenuStrip_reportesMenuItem";
+            this.MenuStrip_reportesMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.MenuStrip_reportesMenuItem.Size = new System.Drawing.Size(87, 24);
+            this.MenuStrip_reportesMenuItem.Text = "Reportes";
+            this.MenuStrip_reportesMenuItem.Click += new System.EventHandler(this.MenuStrip_reportesMenuItem_Click);
             // 
-            // configuraciónToolStripMenuItem
+            // MenuStrip_configuracionMenuItem
             // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.ShowShortcutKeys = false;
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            this.MenuStrip_configuracionMenuItem.Name = "MenuStrip_configuracionMenuItem";
+            this.MenuStrip_configuracionMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.MenuStrip_configuracionMenuItem.ShowShortcutKeys = false;
+            this.MenuStrip_configuracionMenuItem.Size = new System.Drawing.Size(118, 24);
+            this.MenuStrip_configuracionMenuItem.Text = "Configuración";
+            this.MenuStrip_configuracionMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
-            // miCuentaToolStripMenuItem
+            // MenuStrip_miCuentaMenuItem
             // 
-            this.miCuentaToolStripMenuItem.Name = "miCuentaToolStripMenuItem";
-            this.miCuentaToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
-            this.miCuentaToolStripMenuItem.Text = "Mi Cuenta";
+            this.MenuStrip_miCuentaMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.MenuStrip_miCuentaMenuItem.Name = "MenuStrip_miCuentaMenuItem";
+            this.MenuStrip_miCuentaMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.MenuStrip_miCuentaMenuItem.Size = new System.Drawing.Size(97, 24);
+            this.MenuStrip_miCuentaMenuItem.Text = "Mi Cuenta";
             // 
-            // menuStrip1
+            // menuStripGlobal
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inicioMenuItem,
-            this.misCultivosToolStripMenuItem,
-            this.historialToolStripMenuItem,
-            this.reportesToolStripMenuItem,
-            this.configuraciónToolStripMenuItem,
-            this.miCuentaToolStripMenuItem,
-            this.idiomaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(916, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStripGlobal.BackColor = System.Drawing.Color.White;
+            this.menuStripGlobal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStripGlobal.GripMargin = new System.Windows.Forms.Padding(0);
+            this.menuStripGlobal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuStrip_inicioMenuItem,
+            this.MenuStrip_misCultivosMenuItem,
+            this.MenuStrip_historialMenuItem,
+            this.MenuStrip_reportesMenuItem,
+            this.MenuStrip_configuracionMenuItem,
+            this.MenuStrip_miCuentaMenuItem,
+            this.MenuStrip_idiomaMenuItem,
+            this.ProbandoESP32ToolStrip});
+            this.menuStripGlobal.Location = new System.Drawing.Point(20, 60);
+            this.menuStripGlobal.Name = "menuStripGlobal";
+            this.menuStripGlobal.Padding = new System.Windows.Forms.Padding(0);
+            this.menuStripGlobal.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStripGlobal.Size = new System.Drawing.Size(1260, 24);
+            this.menuStripGlobal.TabIndex = 4;
+            this.menuStripGlobal.Text = "menuStripGlobal";
             // 
-            // idiomaToolStripMenuItem
+            // MenuStrip_idiomaMenuItem
             // 
-            this.idiomaToolStripMenuItem.Name = "idiomaToolStripMenuItem";
-            this.idiomaToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.idiomaToolStripMenuItem.Text = "Idioma";
-            this.idiomaToolStripMenuItem.Click += new System.EventHandler(this.idiomaToolStripMenuItem_Click);
+            this.MenuStrip_idiomaMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.MenuStrip_idiomaMenuItem.Name = "MenuStrip_idiomaMenuItem";
+            this.MenuStrip_idiomaMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.MenuStrip_idiomaMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.MenuStrip_idiomaMenuItem.Text = "Idioma";
+            this.MenuStrip_idiomaMenuItem.Click += new System.EventHandler(this.idiomaToolStripMenuItem_Click);
+            // 
+            // ProbandoESP32ToolStrip
+            // 
+            this.ProbandoESP32ToolStrip.Name = "ProbandoESP32ToolStrip";
+            this.ProbandoESP32ToolStrip.Size = new System.Drawing.Size(138, 24);
+            this.ProbandoESP32ToolStrip.Text = "PROBANDO ESP32";
+            this.ProbandoESP32ToolStrip.Click += new System.EventHandler(this.ProbandoESP32ToolStrip_Click);
             // 
             // panelInicio
             // 
+            this.panelInicio.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelInicio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInicio.Location = new System.Drawing.Point(0, 24);
+            this.panelInicio.Location = new System.Drawing.Point(20, 84);
             this.panelInicio.Name = "panelInicio";
-            this.panelInicio.Size = new System.Drawing.Size(916, 603);
+            this.panelInicio.Padding = new System.Windows.Forms.Padding(10);
+            this.panelInicio.Size = new System.Drawing.Size(1260, 484);
             this.panelInicio.TabIndex = 5;
             // 
             // InicioUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(916, 627);
+            this.ClientSize = new System.Drawing.Size(1300, 588);
             this.Controls.Add(this.panelInicio);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStripGlobal);
+            this.MainMenuStrip = this.menuStripGlobal;
             this.Name = "InicioUsuario";
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
+            this.Style = MetroFramework.MetroColorStyle.Green;
+            this.Text = "Growshi Dashboard";
+            this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InicioUsuario_FormClosing);
             this.Load += new System.EventHandler(this.InicioUsuario_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStripGlobal.ResumeLayout(false);
+            this.menuStripGlobal.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripMenuItem inicioMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem misCultivosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem miCuentaToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_inicioMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_misCultivosMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_historialMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_reportesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_configuracionMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_miCuentaMenuItem;
+        private System.Windows.Forms.MenuStrip menuStripGlobal;
         private System.Windows.Forms.Panel panelInicio;
-        private System.Windows.Forms.ToolStripMenuItem idiomaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuStrip_idiomaMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ProbandoESP32ToolStrip;
     }
 }

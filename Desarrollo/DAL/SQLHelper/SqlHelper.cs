@@ -21,18 +21,17 @@ namespace DAL.DAO
         private SqlHelper()
         {
             //PARA PC
-            this.ConnString = "Data Source=./;Initial Catalog=Growshi;Integrated Security=True";
+            //this.ConnString = "Data Source=./;Initial Catalog=Growshi;Integrated Security=True";
 
             //PARA MI LAPTOP
-            //this.ConnString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Growshi;Integrated Security=True";
+            this.ConnString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Growshi;Integrated Security=True";
         }
 
         private static SqlHelper _instance;
         private string ConnString;
 
 
-        //
-        private string ConnStringMaster; 
+   
 
         public static SqlHelper GetInstance(string connectionString)
         {
@@ -54,26 +53,27 @@ namespace DAL.DAO
 
         #endregion
 
-
+        #region Variables
         SqlConnection connection;
         SqlCommand command;
         SqlDataReader reader;
         DataTable table;
+        #endregion
 
         //CRUD
 
         #region R(READ) ExecuteReader - Lee filas y columnas  - Devuelve: DataTable o SqlDataReader
 
-       
+
         //string consulta = "SELECT * FROM Usuario WHERE NombreUsuario = @nombre";
 
         public DataTable ExecuteReader(string query, List<SqlParameter> parametros)
         {
-            var table = new DataTable();
-            using (var connection = new SqlConnection(this.ConnString))
+            table = new DataTable();
+            using (connection = new SqlConnection(this.ConnString))
             {
                 connection.Open();
-                using (var command = connection.CreateCommand())
+                using (command = connection.CreateCommand())
                 {
                     command.CommandText = query;
                     // Línea clave: los parámetros se añaden de forma segura
@@ -81,7 +81,7 @@ namespace DAL.DAO
                     {
                         command.Parameters.AddRange(parametros.ToArray());
                     }
-                    using (var reader = command.ExecuteReader())
+                    using (reader = command.ExecuteReader())
                     {
                         table.Load(reader);
                     }
@@ -96,10 +96,10 @@ namespace DAL.DAO
         public int ExecuteNonQuery(string query, List<SqlParameter> parameters)
         {
             int rowsAffected = 0;
-            using (var connection = new SqlConnection(this.ConnString))
+            using (connection = new SqlConnection(this.ConnString))
             {
                 connection.Open();
-                using (var command = connection.CreateCommand())
+                using (command = connection.CreateCommand())
                 {
                     command.CommandText = query;
                     if (parameters != null)

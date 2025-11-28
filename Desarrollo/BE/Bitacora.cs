@@ -9,9 +9,6 @@ namespace BE
 {
     public class Bitacora : IBitacora 
     {
-        // El ID y la Fecha se generan en la DB pero son útiles en el objeto
-        // 'int?' para permitir valores nulos.
-
         public int BitacoraID { get; set; }
         public DateTime FechaHora { get; set; }
 

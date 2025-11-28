@@ -4,29 +4,32 @@ using Interfaces.IServices;
 
 namespace Services
 {
-    /// <summary>
-    /// Implementa las herramientas de lógica de negocio para backups.
-    /// Esta clase solo conoce interfaces y no tiene dependencias con DAL o BLL.
-    /// </summary>
+ 
     public class BackupService : IBackupService
     {
+
+        /// <summary>
+        /// Genera el nombre del archivo .bak
+        /// </summary>
         public string GenerarNombreDeArchivo()
         {
-            // Lógica pura: crear un nombre basado en la fecha y hora.
             return $"backup_{DateTime.Now:yyyyMMdd_HHmmss}.bak";
         }
 
+
+        /// <summary>
+        /// Valida que exista un usuario asociado y que el textbox de nota no exceda los 100 caracteres
+        /// </summary>
         public bool Validar(IBackup backup)
         {
-            // Lógica pura: aplicar reglas de negocio.
             if (backup.Usuario == null)
             {
                 throw new ArgumentException("El backup debe tener un usuario asociado.");
             }
 
-            if (backup.Nota != null && backup.Nota.Length > 500)
+            if (backup.Nota != null && backup.Nota.Length > 100)
             {
-                throw new ArgumentException("La nota no puede exceder los 500 caracteres.");
+                throw new ArgumentException("La nota no puede exceder los 100 caracteres.");
             }
 
             return true;

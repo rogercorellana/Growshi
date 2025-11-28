@@ -12,12 +12,12 @@ namespace DAL.Mappers
     {
         public static Usuario MapearDesdeDataRow(DataRow fila)
         {
-            // asegurar que los nombres de columna en fila["..."]
-            // coincidan EXACTAMENTE con la DB.
+          
             return new Usuario
             {
                 IdUsuario = Convert.ToInt32(fila["UsuarioID"]),
-                NombreUsuario = fila["UsuarioNombre"].ToString()
+                NombreUsuario = fila["UsuarioNombre"].ToString(),
+                IdiomaPreferidoID = Convert.ToInt32(fila["IdiomaPreferidoID"])
             }; 
         }
     }

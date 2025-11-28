@@ -24,6 +24,19 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DA
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.Up2Date
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DAL.dll
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\obj\Debug\DAL.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\bin\Debug\DAL.dll
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\bin\Debug\DAL.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\bin\Debug\BE.dll
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.dll
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\bin\Debug\Services.dll
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\bin\Debug\BE.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\bin\Debug\Services.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\obj\Debug\DAL.dll
+C:\Users\Compu\Desktop\Nueva carpeta (4)\Growshi\Desarrollo\DAL\obj\Debug\DAL.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\DAL\bin\Debug\DAL.dll
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\DAL\bin\Debug\DAL.pdb
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\DAL\bin\Debug\BE.dll
@@ -37,3 +50,52 @@ C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\DAL\obj\Deb
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.Up2Date
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\DAL\obj\Debug\DAL.dll
 C:\Users\Roger\Desktop\Growshi Definitivo - copia\growshi\Desarrollo\DAL\obj\Debug\DAL.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\bin\Debug\DAL.dll
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\bin\Debug\DAL.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\bin\Debug\BE.dll
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.dll
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\bin\Debug\Services.dll
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\bin\Debug\BE.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\bin\Debug\Services.pdb
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\obj\Debug\DAL.dll
+C:\Users\Compu\Desktop\Nueva carpeta (3)\Growshi\Desarrollo\DAL\obj\Debug\DAL.pdb
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\DAL.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\DAL.pdb
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\BE.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\MetroFramework.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\Services.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\BE.pdb
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\bin\Debug\Services.pdb
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\obj\Debug\DAL.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\DAL\obj\Debug\DAL.pdb
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\DAL.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\DAL.pdb
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\BE.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\Interfaces.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\MetroFramework.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\Services.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\BE.pdb
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\Interfaces.pdb
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\Services.pdb
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\obj\Debug\DAL.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\obj\Debug\DAL.pdb
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\itextsharp.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\itextsharp.xml
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\DAL\bin\Debug\Newtonsoft.Json.xml

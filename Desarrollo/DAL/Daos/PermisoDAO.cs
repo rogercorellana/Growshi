@@ -11,30 +11,32 @@ namespace DAL.Daos
 {
     public class PermisoDAO
     {
-        /// <summary>
-        /// Obtiene la lista final de todos los PermisoID que un usuario tiene.
-        /// </summary>
+
         public List<string> ObtenerPermisosPorUsuario(int usuarioId)
         {
+            // Consulta (CTE) actualizada para usar la nueva tabla Usuario_Permiso
             string consulta = @"
-                ;WITH UserPermissions AS (
-                    SELECT tup.PermisoID
-                    FROM Usuario_TipoUsuario utu
-                    JOIN TipoUsuario_Permiso tup ON utu.TipoUsuarioID = tup.TipoUsuarioID
-                    WHERE utu.UsuarioID = @UsuarioID
-                    UNION ALL
-                    SELECT child.PermisoID
-                    FROM PermisoComponente child
-                    JOIN UserPermissions up ON child.PadreID = up.PermisoID
-                )
-                SELECT DISTINCT pc.PermisoID
-                FROM UserPermissions up
-                JOIN PermisoComponente pc ON up.PermisoID = pc.PermisoID
-                WHERE pc.EsFamilia = 0;";
+    ;WITH UserPermissions AS (
+        -- 1. Punto de partida: Permisos asignados directamente al usuario
+        --    Buscamos en la nueva tabla 'Usuario_Permiso'.
+        SELECT up.PermisoID
+        FROM dbo.Usuario_Permiso up
+        WHERE up.UsuarioID = @UsuarioID
+
+        UNION ALL
+
+        -- 2. Parte recursiva: Busca los hijos usando la tabla de relación (Esta lógica no cambia)
+        SELECT pr.HijoID   -- <-- SELECCIONAMOS EL HIJO
+        FROM dbo.Permiso_Relacion pr
+        JOIN UserPermissions up_cte ON pr.PadreID = up_cte.PermisoID -- <-- DONDE EL PADRE es un permiso que ya tenemos
+    )
+    -- 3. Selección final: Devuelve TODOS los permisos (directos + recursivos) sin duplicados
+    SELECT DISTINCT PermisoID
+    FROM UserPermissions;";
 
             var parametros = new List<SqlParameter> {
-                new SqlParameter("@UsuarioID", usuarioId)
-            };
+        new SqlParameter("@UsuarioID", usuarioId)
+    };
 
             var tabla = SqlHelper.GetInstance().ExecuteReader(consulta, parametros);
 

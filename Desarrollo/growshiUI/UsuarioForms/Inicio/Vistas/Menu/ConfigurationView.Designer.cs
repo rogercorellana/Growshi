@@ -2,150 +2,235 @@
 {
     partial class ConfigurationView
     {
-        /// <summary> 
-        /// Variable del diseñador necesaria.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Limpiar los recursos que se estén usando.
-        /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
         #region Código generado por el Diseñador de componentes
 
-        /// <summary> 
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonCopiaSeguridad = new System.Windows.Forms.Button();
-            this.buttonAjusteSistema = new System.Windows.Forms.Button();
-            this.buttonRolesPermisos = new System.Windows.Forms.Button();
-            this.btnGestionUsuarios = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.tableLayoutMenu = new System.Windows.Forms.TableLayoutPanel();
+            this.btnGestionUsuarios = new MetroFramework.Controls.MetroButton();
+            this.btnRolesPermisos = new MetroFramework.Controls.MetroButton();
+            this.btnAjusteSistema = new MetroFramework.Controls.MetroButton();
+            this.btnCopiaSeguridad = new MetroFramework.Controls.MetroButton();
+            this.btnActualizaciones = new MetroFramework.Controls.MetroButton();
+            this.panelTituloMenu = new System.Windows.Forms.Panel();
+            this.lblMenuTitulo = new System.Windows.Forms.Label();
+            this.panelContenido = new System.Windows.Forms.Panel();
+            this.lblPlaceholder = new MetroFramework.Controls.MetroLabel();
+            this.panelMenu.SuspendLayout();
+            this.tableLayoutMenu.SuspendLayout();
+            this.panelTituloMenu.SuspendLayout();
+            this.panelContenido.SuspendLayout();
             this.SuspendLayout();
             // 
-            // splitContainer1
+            // panelMenu
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(150)))), ((int)(((byte)(90)))));
+            this.panelMenu.Controls.Add(this.tableLayoutMenu);
+            this.panelMenu.Controls.Add(this.panelTituloMenu);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(180, 500);
+            this.panelMenu.TabIndex = 0;
+            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
+            this.panelMenu.Resize += new System.EventHandler(this.panelMenu_Resize);
             // 
-            // splitContainer1.Panel1
+            // tableLayoutMenu
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.buttonCopiaSeguridad);
-            this.splitContainer1.Panel1.Controls.Add(this.buttonAjusteSistema);
-            this.splitContainer1.Panel1.Controls.Add(this.buttonRolesPermisos);
-            this.splitContainer1.Panel1.Controls.Add(this.btnGestionUsuarios);
-            this.splitContainer1.Size = new System.Drawing.Size(816, 597);
-            this.splitContainer1.SplitterDistance = 224;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 470);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(224, 124);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Actualizaciones";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // buttonCopiaSeguridad
-            // 
-            this.buttonCopiaSeguridad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonCopiaSeguridad.FlatAppearance.BorderSize = 0;
-            this.buttonCopiaSeguridad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCopiaSeguridad.Location = new System.Drawing.Point(0, 345);
-            this.buttonCopiaSeguridad.Name = "buttonCopiaSeguridad";
-            this.buttonCopiaSeguridad.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonCopiaSeguridad.Size = new System.Drawing.Size(224, 125);
-            this.buttonCopiaSeguridad.TabIndex = 3;
-            this.buttonCopiaSeguridad.Text = "Copias de Seguridad";
-            this.buttonCopiaSeguridad.UseVisualStyleBackColor = true;
-            this.buttonCopiaSeguridad.Click += new System.EventHandler(this.buttonCopiaSeguridad_Click);
-            // 
-            // buttonAjusteSistema
-            // 
-            this.buttonAjusteSistema.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonAjusteSistema.FlatAppearance.BorderSize = 0;
-            this.buttonAjusteSistema.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjusteSistema.Location = new System.Drawing.Point(0, 236);
-            this.buttonAjusteSistema.Name = "buttonAjusteSistema";
-            this.buttonAjusteSistema.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonAjusteSistema.Size = new System.Drawing.Size(224, 109);
-            this.buttonAjusteSistema.TabIndex = 2;
-            this.buttonAjusteSistema.Text = "Ajustes del Sistema";
-            this.buttonAjusteSistema.UseVisualStyleBackColor = true;
-            // 
-            // buttonRolesPermisos
-            // 
-            this.buttonRolesPermisos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonRolesPermisos.FlatAppearance.BorderSize = 0;
-            this.buttonRolesPermisos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRolesPermisos.Location = new System.Drawing.Point(0, 127);
-            this.buttonRolesPermisos.Name = "buttonRolesPermisos";
-            this.buttonRolesPermisos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonRolesPermisos.Size = new System.Drawing.Size(224, 109);
-            this.buttonRolesPermisos.TabIndex = 1;
-            this.buttonRolesPermisos.Text = "Roles y permisos\n\n";
-            this.buttonRolesPermisos.UseVisualStyleBackColor = true;
-            this.buttonRolesPermisos.Click += new System.EventHandler(this.buttonRolesPermisos_Click);
+            this.tableLayoutMenu.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutMenu.ColumnCount = 1;
+            this.tableLayoutMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutMenu.Controls.Add(this.btnGestionUsuarios, 0, 0);
+            this.tableLayoutMenu.Controls.Add(this.btnRolesPermisos, 0, 1);
+            this.tableLayoutMenu.Controls.Add(this.btnAjusteSistema, 0, 2);
+            this.tableLayoutMenu.Controls.Add(this.btnCopiaSeguridad, 0, 3);
+            this.tableLayoutMenu.Controls.Add(this.btnActualizaciones, 0, 4);
+            this.tableLayoutMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutMenu.Location = new System.Drawing.Point(0, 80);
+            this.tableLayoutMenu.Name = "tableLayoutMenu";
+            this.tableLayoutMenu.RowCount = 5;
+            this.tableLayoutMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutMenu.Size = new System.Drawing.Size(180, 350);
+            this.tableLayoutMenu.TabIndex = 1;
             // 
             // btnGestionUsuarios
             // 
-            this.btnGestionUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGestionUsuarios.FlatAppearance.BorderSize = 0;
-            this.btnGestionUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGestionUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.btnGestionUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGestionUsuarios.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnGestionUsuarios.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnGestionUsuarios.ForeColor = System.Drawing.Color.White;
+            this.btnGestionUsuarios.Location = new System.Drawing.Point(3, 3);
             this.btnGestionUsuarios.Name = "btnGestionUsuarios";
-            this.btnGestionUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnGestionUsuarios.Size = new System.Drawing.Size(224, 127);
+            this.btnGestionUsuarios.Size = new System.Drawing.Size(174, 64);
+            this.btnGestionUsuarios.Style = MetroFramework.MetroColorStyle.Green;
             this.btnGestionUsuarios.TabIndex = 0;
             this.btnGestionUsuarios.Text = "Gestión de Usuarios";
-            this.btnGestionUsuarios.UseVisualStyleBackColor = true;
+            this.btnGestionUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionUsuarios.UseCustomBackColor = true;
+            this.btnGestionUsuarios.UseCustomForeColor = true;
+            this.btnGestionUsuarios.UseSelectable = true;
             this.btnGestionUsuarios.Click += new System.EventHandler(this.btnGestionUsuarios_Click);
+            // 
+            // btnRolesPermisos
+            // 
+            this.btnRolesPermisos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRolesPermisos.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnRolesPermisos.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnRolesPermisos.ForeColor = System.Drawing.Color.White;
+            this.btnRolesPermisos.Location = new System.Drawing.Point(3, 73);
+            this.btnRolesPermisos.Name = "btnRolesPermisos";
+            this.btnRolesPermisos.Size = new System.Drawing.Size(174, 64);
+            this.btnRolesPermisos.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnRolesPermisos.TabIndex = 1;
+            this.btnRolesPermisos.Text = "Roles y Permisos";
+            this.btnRolesPermisos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRolesPermisos.UseCustomBackColor = true;
+            this.btnRolesPermisos.UseCustomForeColor = true;
+            this.btnRolesPermisos.UseSelectable = true;
+            this.btnRolesPermisos.Click += new System.EventHandler(this.btnRolesPermisos_Click);
+            // 
+            // btnAjusteSistema
+            // 
+            this.btnAjusteSistema.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAjusteSistema.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnAjusteSistema.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnAjusteSistema.ForeColor = System.Drawing.Color.White;
+            this.btnAjusteSistema.Location = new System.Drawing.Point(3, 143);
+            this.btnAjusteSistema.Name = "btnAjusteSistema";
+            this.btnAjusteSistema.Size = new System.Drawing.Size(174, 64);
+            this.btnAjusteSistema.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnAjusteSistema.TabIndex = 2;
+            this.btnAjusteSistema.Text = "Ajustes del Sistema";
+            this.btnAjusteSistema.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAjusteSistema.UseCustomBackColor = true;
+            this.btnAjusteSistema.UseCustomForeColor = true;
+            this.btnAjusteSistema.UseSelectable = true;
+            this.btnAjusteSistema.Click += new System.EventHandler(this.btnAjusteSistema_Click);
+            // 
+            // btnCopiaSeguridad
+            // 
+            this.btnCopiaSeguridad.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCopiaSeguridad.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnCopiaSeguridad.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnCopiaSeguridad.ForeColor = System.Drawing.Color.White;
+            this.btnCopiaSeguridad.Location = new System.Drawing.Point(3, 213);
+            this.btnCopiaSeguridad.Name = "btnCopiaSeguridad";
+            this.btnCopiaSeguridad.Size = new System.Drawing.Size(174, 64);
+            this.btnCopiaSeguridad.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnCopiaSeguridad.TabIndex = 3;
+            this.btnCopiaSeguridad.Text = "Copias de Seguridad";
+            this.btnCopiaSeguridad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCopiaSeguridad.UseCustomBackColor = true;
+            this.btnCopiaSeguridad.UseCustomForeColor = true;
+            this.btnCopiaSeguridad.UseSelectable = true;
+            this.btnCopiaSeguridad.Click += new System.EventHandler(this.btnCopiaSeguridad_Click);
+            // 
+            // btnActualizaciones
+            // 
+            this.btnActualizaciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnActualizaciones.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btnActualizaciones.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnActualizaciones.ForeColor = System.Drawing.Color.White;
+            this.btnActualizaciones.Location = new System.Drawing.Point(3, 283);
+            this.btnActualizaciones.Name = "btnActualizaciones";
+            this.btnActualizaciones.Size = new System.Drawing.Size(174, 64);
+            this.btnActualizaciones.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnActualizaciones.TabIndex = 4;
+            this.btnActualizaciones.Text = "Actualizaciones";
+            this.btnActualizaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizaciones.UseCustomBackColor = true;
+            this.btnActualizaciones.UseCustomForeColor = true;
+            this.btnActualizaciones.UseSelectable = true;
+            this.btnActualizaciones.Click += new System.EventHandler(this.btnActualizaciones_Click);
+            // 
+            // panelTituloMenu
+            // 
+            this.panelTituloMenu.BackColor = System.Drawing.Color.Transparent;
+            this.panelTituloMenu.Controls.Add(this.lblMenuTitulo);
+            this.panelTituloMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTituloMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelTituloMenu.Name = "panelTituloMenu";
+            this.panelTituloMenu.Size = new System.Drawing.Size(180, 80);
+            this.panelTituloMenu.TabIndex = 0;
+            // 
+            // lblMenuTitulo
+            // 
+            this.lblMenuTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMenuTitulo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMenuTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblMenuTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblMenuTitulo.Name = "lblMenuTitulo";
+            this.lblMenuTitulo.Padding = new System.Windows.Forms.Padding(20, 20, 0, 0);
+            this.lblMenuTitulo.Size = new System.Drawing.Size(180, 80);
+            this.lblMenuTitulo.TabIndex = 0;
+            this.lblMenuTitulo.Text = "Configuración";
+            // 
+            // panelContenido
+            // 
+            this.panelContenido.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelContenido.Controls.Add(this.lblPlaceholder);
+            this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenido.Location = new System.Drawing.Point(180, 0);
+            this.panelContenido.Name = "panelContenido";
+            this.panelContenido.Padding = new System.Windows.Forms.Padding(30);
+            this.panelContenido.Size = new System.Drawing.Size(720, 500);
+            this.panelContenido.TabIndex = 1;
+            // 
+            // lblPlaceholder
+            // 
+            this.lblPlaceholder.AutoSize = true;
+            this.lblPlaceholder.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblPlaceholder.ForeColor = System.Drawing.Color.Gray;
+            this.lblPlaceholder.Location = new System.Drawing.Point(30, 40);
+            this.lblPlaceholder.Name = "lblPlaceholder";
+            this.lblPlaceholder.Size = new System.Drawing.Size(272, 25);
+            this.lblPlaceholder.TabIndex = 0;
+            this.lblPlaceholder.Text = "Seleccione una opción del menú...";
+            this.lblPlaceholder.UseCustomForeColor = true;
             // 
             // ConfigurationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer1);
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panelContenido);
+            this.Controls.Add(this.panelMenu);
             this.Name = "ConfigurationView";
-            this.Size = new System.Drawing.Size(816, 597);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(900, 500);
+            this.panelMenu.ResumeLayout(false);
+            this.tableLayoutMenu.ResumeLayout(false);
+            this.panelTituloMenu.ResumeLayout(false);
+            this.panelContenido.ResumeLayout(false);
+            this.panelContenido.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button btnGestionUsuarios;
-        private System.Windows.Forms.Button buttonCopiaSeguridad;
-        private System.Windows.Forms.Button buttonAjusteSistema;
-        private System.Windows.Forms.Button buttonRolesPermisos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Panel panelContenido;
+        private System.Windows.Forms.Panel panelTituloMenu;
+        private System.Windows.Forms.Label lblMenuTitulo;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutMenu;
+        private MetroFramework.Controls.MetroButton btnGestionUsuarios;
+        private MetroFramework.Controls.MetroButton btnRolesPermisos;
+        private MetroFramework.Controls.MetroButton btnAjusteSistema;
+        private MetroFramework.Controls.MetroButton btnCopiaSeguridad;
+        private MetroFramework.Controls.MetroButton btnActualizaciones;
+        private MetroFramework.Controls.MetroLabel lblPlaceholder;
     }
 }

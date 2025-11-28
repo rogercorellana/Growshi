@@ -3,7 +3,6 @@ using Interfaces.IServices;
 
 namespace Services
 {
-    // Este es tu módulo de sesión 100% reutilizable.
     public sealed class SessionService<T> : ISessionService<T> where T : class, IUsuarioLogueado
     {
         private static readonly ISessionService<T> _instancia = new SessionService<T>();

@@ -2,222 +2,239 @@
 {
     partial class Login
     {
-        /// <summary>
-        /// Variable del diseñador necesaria.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Limpiar los recursos que se estén usando.
-        /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
         #region Código generado por el Diseñador de Windows Forms
 
-        /// <summary>
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
+            this.panelFondo = new System.Windows.Forms.Panel();
+            this.panelTarjeta = new System.Windows.Forms.Panel();
+            this.lblSubtitulo = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.textBoxUsuario = new MetroFramework.Controls.MetroTextBox();
             this.textBoxContraseña = new MetroFramework.Controls.MetroTextBox();
             this.buttonIniciarSesion = new MetroFramework.Controls.MetroButton();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.metroLink1 = new MetroFramework.Controls.MetroLink();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.buttonOlvideMiContraseña = new MetroFramework.Controls.MetroLink();
+            this.progressBar = new MetroFramework.Controls.MetroProgressBar();
             this.temporizadorBloqueo = new System.Windows.Forms.Timer(this.components);
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panelFondo.SuspendLayout();
+            this.panelTarjeta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panelFondo
+            // 
+            this.panelFondo.Controls.Add(this.panelTarjeta);
+            this.panelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFondo.Location = new System.Drawing.Point(0, 30);
+            this.panelFondo.Name = "panelFondo";
+            this.panelFondo.Size = new System.Drawing.Size(900, 570);
+            this.panelFondo.TabIndex = 0;
+            this.panelFondo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFondo_Paint);
+            this.panelFondo.Resize += new System.EventHandler(this.panelFondo_Resize);
+            // 
+            // panelTarjeta
+            // 
+            this.panelTarjeta.BackColor = System.Drawing.Color.White;
+            this.panelTarjeta.Controls.Add(this.lblSubtitulo);
+            this.panelTarjeta.Controls.Add(this.lblTitulo);
+            this.panelTarjeta.Controls.Add(this.pictureBoxLogo);
+            this.panelTarjeta.Controls.Add(this.textBoxUsuario);
+            this.panelTarjeta.Controls.Add(this.textBoxContraseña);
+            this.panelTarjeta.Controls.Add(this.buttonIniciarSesion);
+            this.panelTarjeta.Controls.Add(this.buttonOlvideMiContraseña);
+            this.panelTarjeta.Controls.Add(this.progressBar);
+            this.panelTarjeta.Location = new System.Drawing.Point(275, 75);
+            this.panelTarjeta.Name = "panelTarjeta";
+            this.panelTarjeta.Size = new System.Drawing.Size(350, 480);
+            this.panelTarjeta.TabIndex = 0;
+            // 
+            // lblSubtitulo
+            // 
+            this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSubtitulo.ForeColor = System.Drawing.Color.Gray;
+            this.lblSubtitulo.Location = new System.Drawing.Point(0, 165);
+            this.lblSubtitulo.Name = "lblSubtitulo";
+            this.lblSubtitulo.Size = new System.Drawing.Size(350, 20);
+            this.lblSubtitulo.TabIndex = 101;
+            this.lblSubtitulo.Text = "Inicia sesión en tu cuenta Growshi";
+            this.lblSubtitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lblTitulo.Location = new System.Drawing.Point(0, 135);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(350, 30);
+            this.lblTitulo.TabIndex = 100;
+            this.lblTitulo.Text = "Bienvenido";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxLogo.Image = global::growshiUI.Properties.Resources.LogoGrowshiEsp;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(115, 30);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(120, 100);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 99;
+            this.pictureBoxLogo.TabStop = false;
             // 
             // textBoxUsuario
             // 
-            this.textBoxUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.textBoxUsuario.Location = new System.Drawing.Point(262, 57);
+            // 
+            // 
+            // 
+            this.textBoxUsuario.CustomButton.Image = null;
+            this.textBoxUsuario.CustomButton.Location = new System.Drawing.Point(242, 2);
+            this.textBoxUsuario.CustomButton.Name = "";
+            this.textBoxUsuario.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.textBoxUsuario.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBoxUsuario.CustomButton.TabIndex = 1;
+            this.textBoxUsuario.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBoxUsuario.CustomButton.UseSelectable = true;
+            this.textBoxUsuario.CustomButton.Visible = false;
+            this.textBoxUsuario.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.textBoxUsuario.Icon = global::growshiUI.Properties.Resources.Usuario;
+            this.textBoxUsuario.IconRight = true;
+            this.textBoxUsuario.Lines = new string[0];
+            this.textBoxUsuario.Location = new System.Drawing.Point(40, 210);
+            this.textBoxUsuario.MaxLength = 32767;
             this.textBoxUsuario.Name = "textBoxUsuario";
-            this.textBoxUsuario.Size = new System.Drawing.Size(168, 23);
-            this.textBoxUsuario.TabIndex = 1;
+            this.textBoxUsuario.PasswordChar = '\0';
+            this.textBoxUsuario.WaterMark = "Usuario";
+            this.textBoxUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBoxUsuario.SelectedText = "";
+            this.textBoxUsuario.SelectionLength = 0;
+            this.textBoxUsuario.SelectionStart = 0;
+            this.textBoxUsuario.ShortcutsEnabled = true;
+            this.textBoxUsuario.Size = new System.Drawing.Size(270, 30);
+            this.textBoxUsuario.TabIndex = 0;
+            this.textBoxUsuario.UseSelectable = true;
+            this.textBoxUsuario.WaterMark = "Usuario";
+            this.textBoxUsuario.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBoxUsuario.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // textBoxContraseña
             // 
-            this.textBoxContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.textBoxContraseña.Location = new System.Drawing.Point(262, 117);
+            // 
+            // 
+            // 
+            this.textBoxContraseña.CustomButton.Image = null;
+            this.textBoxContraseña.CustomButton.Location = new System.Drawing.Point(242, 2);
+            this.textBoxContraseña.CustomButton.Name = "";
+            this.textBoxContraseña.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.textBoxContraseña.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBoxContraseña.CustomButton.TabIndex = 1;
+            this.textBoxContraseña.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBoxContraseña.CustomButton.UseSelectable = true;
+            this.textBoxContraseña.CustomButton.Visible = false;
+            this.textBoxContraseña.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.textBoxContraseña.Icon = global::growshiUI.Properties.Resources.Candado;
+            this.textBoxContraseña.IconRight = true;
+            this.textBoxContraseña.Lines = new string[0];
+            this.textBoxContraseña.Location = new System.Drawing.Point(40, 260);
+            this.textBoxContraseña.MaxLength = 32767;
             this.textBoxContraseña.Name = "textBoxContraseña";
-            this.textBoxContraseña.PasswordChar = '*';
-            this.textBoxContraseña.Size = new System.Drawing.Size(168, 23);
-            this.textBoxContraseña.TabIndex = 2;
-            this.textBoxContraseña.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBoxContraseña.PasswordChar = '●';
+            this.textBoxContraseña.WaterMark = "Contraseña";
+            this.textBoxContraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBoxContraseña.SelectedText = "";
+            this.textBoxContraseña.SelectionLength = 0;
+            this.textBoxContraseña.SelectionStart = 0;
+            this.textBoxContraseña.ShortcutsEnabled = true;
+            this.textBoxContraseña.Size = new System.Drawing.Size(270, 30);
+            this.textBoxContraseña.TabIndex = 1;
+            this.textBoxContraseña.UseSelectable = true;
+            this.textBoxContraseña.WaterMark = "Contraseña";
+            this.textBoxContraseña.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBoxContraseña.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // buttonIniciarSesion
             // 
-            this.buttonIniciarSesion.Location = new System.Drawing.Point(238, 184);
+            this.buttonIniciarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(140)))), ((int)(((byte)(100)))));
+            this.buttonIniciarSesion.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.buttonIniciarSesion.ForeColor = System.Drawing.Color.White;
+            this.buttonIniciarSesion.Location = new System.Drawing.Point(40, 320);
             this.buttonIniciarSesion.Name = "buttonIniciarSesion";
-            this.buttonIniciarSesion.Size = new System.Drawing.Size(192, 23);
-            this.buttonIniciarSesion.Style = MetroFramework.MetroColorStyle.Green;
-            this.buttonIniciarSesion.TabIndex = 0;
-            this.buttonIniciarSesion.Text = "Iniciar Sesion";
-            this.buttonIniciarSesion.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.buttonIniciarSesion.Size = new System.Drawing.Size(270, 40);
+            this.buttonIniciarSesion.Style = MetroFramework.MetroColorStyle.White;
+            this.buttonIniciarSesion.TabIndex = 2;
+            this.buttonIniciarSesion.Text = "ACCEDER";
+            this.buttonIniciarSesion.UseCustomBackColor = true;
+            this.buttonIniciarSesion.UseCustomForeColor = true;
+            this.buttonIniciarSesion.UseSelectable = true;
             this.buttonIniciarSesion.Click += new System.EventHandler(this.buttonIniciarSesion_Click);
             // 
-            // pictureBox3
+            // buttonOlvideMiContraseña
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(238, 117);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(25, 23);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 11;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(238, 57);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 23);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(203, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(-5, 26);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(453, 226);
-            this.pictureBox4.TabIndex = 12;
-            this.pictureBox4.TabStop = false;
-            // 
-            // metroLink1
-            // 
-            this.metroLink1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.metroLink1.CustomBackground = true;
-            this.metroLink1.CustomForeColor = true;
-            this.metroLink1.ForeColor = System.Drawing.Color.Black;
-            this.metroLink1.Location = new System.Drawing.Point(306, 146);
-            this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(124, 16);
-            this.metroLink1.TabIndex = 13;
-            this.metroLink1.Text = "Olvide mi contraseña";
-            this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.metroLabel1.CustomBackground = true;
-            this.metroLabel1.Location = new System.Drawing.Point(238, 35);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(53, 19);
-            this.metroLabel1.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroLabel1.TabIndex = 14;
-            this.metroLabel1.Text = "Usuario";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.metroLabel2.CustomBackground = true;
-            this.metroLabel2.Location = new System.Drawing.Point(238, 95);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(75, 19);
-            this.metroLabel2.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroLabel2.TabIndex = 15;
-            this.metroLabel2.Text = "Contraseña";
-            // 
-            // temporizadorBloqueo
-            // 
-            this.temporizadorBloqueo.Interval = 500;
-            this.temporizadorBloqueo.Tick += new System.EventHandler(this.temporizadorBloqueo_Tick);
+            this.buttonOlvideMiContraseña.FontWeight = MetroFramework.MetroLinkWeight.Regular;
+            this.buttonOlvideMiContraseña.ForeColor = System.Drawing.Color.DimGray;
+            this.buttonOlvideMiContraseña.Location = new System.Drawing.Point(40, 370);
+            this.buttonOlvideMiContraseña.Name = "buttonOlvideMiContraseña";
+            this.buttonOlvideMiContraseña.Size = new System.Drawing.Size(270, 23);
+            this.buttonOlvideMiContraseña.TabIndex = 3;
+            this.buttonOlvideMiContraseña.Text = "¿Olvidaste tu contraseña?";
+            this.buttonOlvideMiContraseña.UseCustomForeColor = true;
+            this.buttonOlvideMiContraseña.UseSelectable = true;
+            this.buttonOlvideMiContraseña.Click += new System.EventHandler(this.buttonOlvideMiContraseña_Click);
             // 
             // progressBar
             // 
-            this.progressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(149)))));
-            this.progressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.progressBar.Location = new System.Drawing.Point(-5, 229);
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar.Location = new System.Drawing.Point(0, 475);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(453, 23);
-            this.progressBar.TabIndex = 16;
+            this.progressBar.Size = new System.Drawing.Size(350, 5);
+            this.progressBar.Style = MetroFramework.MetroColorStyle.Orange;
+            this.progressBar.TabIndex = 4;
             this.progressBar.Visible = false;
+            // 
+            // temporizadorBloqueo
+            // 
+            this.temporizadorBloqueo.Interval = 1000;
+            this.temporizadorBloqueo.Tick += new System.EventHandler(this.temporizadorBloqueo_Tick);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(448, 253);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroLink1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.buttonIniciarSesion);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.textBoxContraseña);
-            this.Controls.Add(this.textBoxUsuario);
-            this.Controls.Add(this.pictureBox4);
-            this.ForeColor = System.Drawing.Color.Green;
+            this.ClientSize = new System.Drawing.Size(900, 600);
+            this.Controls.Add(this.panelFondo);
+            this.DisplayHeader = false;
             this.Name = "Login";
-            this.Style = MetroFramework.MetroColorStyle.Green;
-            this.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
+            this.Text = "Growshi Login";
             this.Load += new System.EventHandler(this.Login_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panelFondo.ResumeLayout(false);
+            this.panelTarjeta.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
-
         #endregion
 
+        private System.Windows.Forms.Panel panelFondo;
+        private System.Windows.Forms.Panel panelTarjeta;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblSubtitulo;
+        private System.Windows.Forms.PictureBox pictureBoxLogo;
         private MetroFramework.Controls.MetroTextBox textBoxUsuario;
         private MetroFramework.Controls.MetroTextBox textBoxContraseña;
         private MetroFramework.Controls.MetroButton buttonIniciarSesion;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private MetroFramework.Controls.MetroLink metroLink1;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLink buttonOlvideMiContraseña;
+        private MetroFramework.Controls.MetroProgressBar progressBar;
         private System.Windows.Forms.Timer temporizadorBloqueo;
-        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
-

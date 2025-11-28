@@ -1,5 +1,6 @@
 ﻿using DAL.DAO;
-using System.Data.SqlClient; // Asegúrate de tener este 'using'
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace DAL.Daos
 {
@@ -14,23 +15,42 @@ namespace DAL.Daos
             _sqlHelper = SqlHelper.GetInstance();
         }
 
-        // ... tu método RealizarBackup() no cambia ...
         public void RealizarBackup(string rutaCompletaDestino)
         {
             string comandoSql = $"BACKUP DATABASE [{_databaseName}] TO DISK = N'{rutaCompletaDestino}'";
             _sqlHelper.ExecuteNonQuery(comandoSql, null);
         }
 
-        // --- MÉTODO CORREGIDO ---
+        
+
         public void RealizarRestore(string rutaCompletaOrigen)
         {
-            string sqlSetSingleUser = $"ALTER DATABASE [{_databaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
-            string sqlRestore = $"RESTORE DATABASE [{_databaseName}] FROM DISK = N'{rutaCompletaOrigen}' WITH REPLACE";
-            string sqlSetMultiUser = $"ALTER DATABASE [{_databaseName}] SET MULTI_USER";
 
-            _sqlHelper.ExecuteNonQuery(sqlSetSingleUser, null);
-            _sqlHelper.ExecuteNonQuery(sqlRestore, null);
-            _sqlHelper.ExecuteNonQuery(sqlSetMultiUser, null);
+           string query = $@"
+                USE master;
+
+                -- Forzar modo single_user y cerrar conexiones activas
+                ALTER DATABASE Growshi SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+
+                -- Restaurar base desde el archivo .bak
+                RESTORE DATABASE Growshi 
+                FROM DISK = @ruta
+                WITH REPLACE;
+
+                -- Volver a multi_user
+                ALTER DATABASE Growshi SET MULTI_USER;
+            ";
+
+
+            var parametros = new List<SqlParameter> {
+            new SqlParameter("@ruta", rutaCompletaOrigen)
+            };
+
+            _sqlHelper.ExecuteNonQuery(query, parametros);
         }
+
+
+
+
     }
 }

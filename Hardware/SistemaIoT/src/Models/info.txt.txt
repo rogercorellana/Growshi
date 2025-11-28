@@ -1,0 +1,5 @@
+CAPA DE MODELOS (DTOs)
+-----------------------
+Aquí se definen las estructuras de datos puras.
+Sirven para transportar información entre la Capa de Hardware y la Capa de Lógica
+sin mezclar funciones ni código complejo.

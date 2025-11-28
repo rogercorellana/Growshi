@@ -2,13 +2,15 @@
 using DAL.DAO;
 using DAL.Mappers;
 using Interfaces.IBE;
+using Interfaces.IDAL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace DAL.Daos
 {
-    public class BackupDAO
+    public class BackupDAO : IABM<Backup>
     {
         private readonly SqlHelper _sqlHelper;
 
@@ -17,9 +19,10 @@ namespace DAL.Daos
             _sqlHelper = SqlHelper.GetInstance();
         }
 
-        public void Guardar(IBackup backup)
+
+        #region CREAR - BACKUP QUERY
+        public void Crear(Backup backup)
         {
-            // --- CORRECCIÓN AQUÍ ---
             string query = "INSERT INTO [Backup] (FechaHora, NombreArchivo, RutaArchivo, Nota, UsuarioID) VALUES (@FechaHora, @NombreArchivo, @RutaArchivo, @Nota, @IdUsuario)";
 
             var parameters = new List<SqlParameter>
@@ -28,26 +31,27 @@ namespace DAL.Daos
                 new SqlParameter("@NombreArchivo", backup.NombreArchivo),
                 new SqlParameter("@RutaArchivo", backup.RutaArchivo),
                 new SqlParameter("@Nota", backup.Nota),
-                new SqlParameter("@IdUsuario", backup.Usuario.IdUsuario) // Asumo que la propiedad se llama IdUsuario
+                new SqlParameter("@IdUsuario", backup.Usuario.IdUsuario)
             };
 
             _sqlHelper.ExecuteNonQuery(query, parameters);
         }
+        #endregion
 
+        #region ELIMINAR - BACKUP QUERY
         public void Eliminar(int id)
         {
-            // --- CORRECCIÓN AQUÍ ---
             string query = "DELETE FROM [Backup] WHERE Id = @Id";
             var parameters = new List<SqlParameter> { new SqlParameter("@Id", id) };
 
             _sqlHelper.ExecuteNonQuery(query, parameters);
         }
 
-        public List<Backup> ListarTodos()
+        #endregion
+
+        #region LEER TODO - BACKUP QUERY 
+        public List<Backup> ObtenerTodos()
         {
-            // --- CORRECCIÓN FINAL AQUÍ ---
-            // Se ajustaron los nombres de las columnas de la tabla Usuario (u.Id -> u.UsuarioID, u.Nombre -> u.UsuarioNombre)
-            // para que coincidan EXACTAMENTE con tu base de datos.
             string query = @"SELECT b.Id, b.FechaHora, b.NombreArchivo, b.RutaArchivo, b.Nota, 
                             u.UsuarioID, 
                             u.UsuarioNombre
@@ -66,5 +70,27 @@ namespace DAL.Daos
 
             return listaDeBackups;
         }
+        #endregion
+
+
+        //NO IMPLEMENTADO 
+
+        #region LEER POR ID -
+        public Backup ObtenerPorId(int id)
+        {
+            throw new NotSupportedException("La obtención de un backup individual por ID no está soportada.");
+        }
+
+        #endregion
+
+        #region MODIFICAR - 
+        public void Actualizar(Backup entidad)
+        {
+            throw new NotSupportedException("Los registros de Backup son inmutables y no pueden ser modificados.");
+        }
+
+        #endregion
+  
+
     }
 }

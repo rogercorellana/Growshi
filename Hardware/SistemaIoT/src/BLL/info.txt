@@ -1,0 +1,6 @@
+CAPA BLL (BUSINESS LOGIC LAYER)
+-------------------------------
+Aquí reside la inteligencia del dispositivo.
+Se encarga de leer sensores (simulados o reales) y aplicar las reglas de negocio
+(ej: decidir si la temperatura es peligrosa).
+No sabe nada de Wi-Fi, solo procesa datos.

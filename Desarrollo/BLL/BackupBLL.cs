@@ -5,29 +5,23 @@ using Interfaces.IServices;
 using Services;
 using System;
 using System.Collections.Generic;
-using System.IO; // Necesario para la lógica de eliminación de archivos
+using System.IO; 
 
 namespace BLL
 {
-    /// <summary>
-    /// Orquesta todas las operaciones relacionadas con la gestión de copias de seguridad.
-    /// Es el único que conoce e instancia las capas de Servicios y DAL.
-    /// </summary>
+    
     public class BackupBLL
     {
-        // --- Sus Herramientas (los Servicios) ---
-        private readonly IBackupService _backupService;
-
-        // --- Sus Conexiones (a la DAL) ---
+        private readonly BackupService _backupService;
         private readonly DatabaseAdminDAO _databaseAdminDAO;
         private readonly BackupDAO _backupDAO;
 
-        // --- Configuración ---
-        private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\";
+        //ruta pc
+        //private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\";
+        //ruta laptop
+        private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\Backup\";
 
-        /// <summary>
-        /// En el constructor, la BLL prepara todas las herramientas y conexiones que necesitará.
-        /// </summary>
+
         public BackupBLL()
         {
             _backupService = new BackupService();
@@ -35,76 +29,77 @@ namespace BLL
             _backupDAO = new BackupDAO();
         }
 
-        /// <summary>
-        /// Orquesta el caso de uso completo para "Crear una nueva copia de seguridad".
-        /// </summary>
-        /// <param name="nota">La nota opcional escrita por el usuario.</param>
-        /// <param name="usuario">El usuario logueado que realiza la acción.</param>
+        #region "C" Crear COPIA DE SEGURIDAD
         public void CrearCopiaDeSeguridad(string nota, IUsuarioLogueado usuario)
         {
-            // 1. La BLL crea la entidad de negocio inicial.
-            var nuevoBackup = new Backup
+
+
+            Backup nuevoBackup = new Backup
             {
-                Nota = nota,
+                //Id se crea automaticamente en la DB
+                //NombreArchivo mas abajo
+
                 FechaHora = DateTime.Now,
-
+                RutaArchivo = _rutaDeBackups,
+                Nota = nota,
                 Usuario = usuario,
-                RutaArchivo = _rutaDeBackups
             };
-            //esto hay en la clase de la BE Backup
-            //public int Id { get; set; }
-            //public DateTime FechaHora { get; set; }
-            //public string NombreArchivo { get; set; }
-            //public string RutaArchivo { get; set; }
-            //public string Nota { get; set; }
-            //public IUsuarioLogueado Usuario { get; set; }
 
 
-            // 2. La BLL usa la HERRAMIENTA del servicio para validar la entidad.
             _backupService.Validar(nuevoBackup);
 
-            // 3. La BLL usa OTRA HERRAMIENTA del servicio para obtener el nombre del archivo.
             nuevoBackup.NombreArchivo = _backupService.GenerarNombreDeArchivo();
             string rutaCompleta = _rutaDeBackups + nuevoBackup.NombreArchivo;
 
-            // 4. La BLL da la ORDEN a la DAL para que cree el archivo físico.
             _databaseAdminDAO.RealizarBackup(rutaCompleta);
 
-            // 5. La BLL da la ORDEN a la DAL para que guarde el registro en la tabla 'Backup'.
-            _backupDAO.Guardar(nuevoBackup);
+
+            _backupDAO.Crear(nuevoBackup);
+
+
+
+
+
+            //BITACORA - espacio para guardar evento 
+
         }
 
-        /// <summary>
-        /// Obtiene el historial completo de backups.
-        /// </summary>
+        #endregion
+
+        #region "R" Leer Existencias en la base de datos 
         public List<IBackup> ObtenerHistorial()
         {
-            // Simplemente le pide a la DAL los datos y los devuelve.
-            return new List<IBackup>(_backupDAO.ListarTodos());
-        }
+            return new List<IBackup>(_backupDAO.ObtenerTodos());
 
-        /// <summary>
-        /// Orquesta la eliminación de una copia de seguridad.
-        /// </summary>
+
+
+            //BITACORA - espacio para guardar evento 
+        }
+        #endregion
+
+        #region "D" Borrar COPIA DE SEGURIDAD
+
         public void EliminarCopiaDeSeguridad(IBackup backup)
         {
             if (backup == null) throw new ArgumentNullException("No se ha seleccionado ningún backup para eliminar.");
 
             string rutaCompleta = backup.RutaArchivo + backup.NombreArchivo;
 
-            // 1. La BLL da la ORDEN a la DAL para eliminar el registro de la base de datos.
             _backupDAO.Eliminar(backup.Id);
 
-            // 2. La BLL se encarga de la lógica del sistema de archivos.
             if (File.Exists(rutaCompleta))
             {
                 File.Delete(rutaCompleta);
             }
-        }
 
-        /// <summary>
-        /// Orquesta la restauración de una base de datos.
-        /// </summary>
+            //BITACORA - espacio para guardar evento 
+
+
+        }
+        #endregion
+
+
+        #region Restaurar COPIA DE SEGURIDAD
         public void RestaurarCopiaDeSeguridad(IBackup backup)
         {
             if (backup == null) throw new ArgumentNullException("No se ha seleccionado ningún backup para restaurar.");
@@ -113,11 +108,17 @@ namespace BLL
 
             if (!File.Exists(rutaCompleta))
             {
+                _backupDAO.Eliminar(backup.Id);
+
                 throw new FileNotFoundException("El archivo de backup no se encontró en la ruta especificada.", rutaCompleta);
+
+
+
             }
 
-            // La BLL le da la ORDEN a la DAL para que realice la restauración.
             _databaseAdminDAO.RealizarRestore(rutaCompleta);
         }
+
+        #endregion
     }
 }
