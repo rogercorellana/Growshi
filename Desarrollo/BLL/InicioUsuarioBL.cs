@@ -28,7 +28,7 @@ namespace BLL
             IBitacora eventoLogout = _bitacoraService.CrearEvento(
                 NivelCriticidad.Info,
                 $"Cierre de sesión para el usuario '{usuario.NombreUsuario}'.",
-                "Sesión",
+                "Logout",
                 usuario.IdUsuario
             );
             var bitacoraParaGuardar = new Bitacora

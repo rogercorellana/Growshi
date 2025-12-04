@@ -1,13 +1,14 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using growshiUI.Configuracion_ConnString;
+using growshiUI.UsuarioForms; 
+using MetroFramework;
+using MetroFramework.Forms;
+using System;
+using System.Data.SqlClient; 
 using System.Drawing;
 using System.Drawing.Drawing2D; 
 using System.Windows.Forms;
-using MetroFramework;
-using MetroFramework.Forms;
-using System.Data.SqlClient; 
-using BE;
-using BLL;
-using growshiUI.UsuarioForms; 
 
 namespace growshiUI
 {
@@ -29,6 +30,7 @@ namespace growshiUI
         {
             InitializeComponent();
             usuarioBLL = new UsuarioBLL();
+            ValidarConexion();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -98,7 +100,6 @@ namespace growshiUI
         #region Lógica de Negocio (Login)
 
         private void buttonIniciarSesion_Click(object sender, EventArgs e)
-        
         {
             string usuario = textBoxUsuario.Text;
             string password = textBoxContraseña.Text;
@@ -219,6 +220,43 @@ namespace growshiUI
 
                 progressBar.Visible = false;
                 textBoxUsuario.Focus();
+            }
+        }
+
+        #endregion
+
+        #region Logica de conexion (Connection string)
+
+        public void ValidarConexion()
+        {
+            bool conectado = usuarioBLL.ValidarConexion();
+
+            if (!conectado)
+            {
+                MessageBox.Show("No se pudo conectar al servidor. Es necesario configurar la conexión.", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                FormConfiguracion formConfig = new FormConfiguracion();
+                var resultado = formConfig.ShowDialog();
+
+                if (resultado == DialogResult.OK)
+                {
+                    // Como SqlHelper reseteó su instancia al guardar, 
+                    // la siguiente llamada usará los datos nuevos automáticamente.
+                    if (usuarioBLL.ValidarConexion())
+                    {
+                        MessageBox.Show("¡Conexión exitosa!", "Growshi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sigue sin haber conexión. El sistema se cerrará.", "Error Fatal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                    }
+                }
+                else
+                {
+                    // Si canceló la configuración
+                    Application.Exit();
+                }
             }
         }
 

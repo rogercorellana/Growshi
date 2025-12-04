@@ -1,15 +1,16 @@
-﻿using DAL.DAO;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BE;
+﻿using BE;
+using DAL.DAO;
 using DAL.Mappers;
 using Interfaces;
 using Interfaces.IDAL;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DAL
 {
@@ -112,6 +113,20 @@ namespace DAL
                 Console.WriteLine($"Error al actualizar el idioma en la BD: {ex.Message}");
                 throw;
             }
+        }
+
+        public bool ValidarConexion()
+        {
+            // Usamos el método CheckConnection que devuelve true/false sin lanzar excepción
+            bool conectado = SqlHelper.GetInstance().CheckConnection();
+
+            return conectado;
+        }
+
+        public void GuardarCadenaConexion(string v1, string v2)
+        {
+
+            SqlHelper.GuardarCadenaConexion(v1, v2);
         }
     }
 }

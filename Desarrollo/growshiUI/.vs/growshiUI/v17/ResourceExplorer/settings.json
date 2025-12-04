@@ -1,1 +1,16 @@
-{"CustomColumnOrderings":{"name":0,"file-path":1,"file-name":2,"neutral-value":3,"neutral-comment":4,"type":5},"ShowValidationErrors":true,"SelectedResourceGroups":["C:\\Users\\Roger\\Desktop\\Nueva carpeta (2)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\InicioUsuario.resx","C:\\Users\\Roger\\Desktop\\Nueva carpeta (2)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Menu\\ConfigurationView.resx","C:\\Users\\Roger\\Desktop\\Nueva carpeta (2)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Menu\\IdiomaView.resx","C:\\Users\\Roger\\Desktop\\Nueva carpeta (2)\\Growshi\\Desarrollo\\growshiUI\\UsuarioForms\\Inicio\\Vistas\\Configuracion\\RolesYPermisosView.resx"],"VisibleColumnKeys":["name","neutral-value"]}
+{
+  "ShowEmptyProjects": false,
+  "SelectedGroups": [],
+  "ExpandedProjects": [],
+  "EnableSpellChecker": true,
+  "ColumnOrder": [
+    "name",
+    "type",
+    "neutral-value",
+    "neutral-comment"
+  ],
+  "VisibleColumnKeys": [
+    "name",
+    "neutral-value"
+  ]
+}

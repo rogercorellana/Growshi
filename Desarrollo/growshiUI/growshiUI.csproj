@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracion ConnString\FormConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuracion ConnString\FormConfiguracion.Designer.cs">
+      <DependentUpon>FormConfiguracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>

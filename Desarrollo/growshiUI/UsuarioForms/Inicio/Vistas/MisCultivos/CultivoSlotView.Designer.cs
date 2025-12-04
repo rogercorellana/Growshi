@@ -66,7 +66,6 @@
             this.Controls.Add(this.panelFondo);
             this.Name = "CultivoSlotView";
             this.Size = new System.Drawing.Size(200, 200);
-            this.Click += new System.EventHandler(this.CultivoSlotView_Click);
             this.panelFondo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picIcono)).EndInit();
             this.ResumeLayout(false);

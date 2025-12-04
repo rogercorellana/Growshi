@@ -2,44 +2,44 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration; // <--- NO OLVIDES AGREGAR ESTA REFERENCIA
+using System.Windows.Forms; // Para el Path del ejecutable si fuera necesario
 
 namespace DAL.DAO
 {
     internal class SqlHelper
     {
-
         #region Singleton
-        private SqlHelper(string connStr)
-        {
-            this.ConnString = connStr;
-
-        }
-
-        private SqlHelper()
-        {
-            //PARA PC
-            //this.ConnString = "Data Source=./;Initial Catalog=Growshi;Integrated Security=True";
-
-            //PARA MI LAPTOP
-            this.ConnString = "Data Source=.\\SQLEXPRESS;Initial Catalog=Growshi;Integrated Security=True";
-        }
-
         private static SqlHelper _instance;
         private string ConnString;
 
-
-   
-
-        public static SqlHelper GetInstance(string connectionString)
+        // Constructor privado: Lee del App.Config
+        private SqlHelper()
         {
-            if (_instance == null)
+            try
             {
-                _instance = new SqlHelper(connectionString);
+                // Intenta leer la cadena llamada "MainCon"
+                var connectionStringSettings = ConfigurationManager.ConnectionStrings["MainCon"];
+                if (connectionStringSettings != null)
+                {
+                    this.ConnString = connectionStringSettings.ConnectionString;
+                }
+                else
+                {
+                    // Fallback por si no existe la key aún (evita crash inicial si está vacío)
+                    this.ConnString = "";
+                }
             }
-            return _instance;
+            catch
+            {
+                this.ConnString = "";
+            }
+        }
+
+        // Constructor manual (por si acaso)
+        private SqlHelper(string connStr)
+        {
+            this.ConnString = connStr;
         }
 
         public static SqlHelper GetInstance()
@@ -53,19 +53,52 @@ namespace DAL.DAO
 
         #endregion
 
-        #region Variables
+        #region Configuración Dinámica (NUEVO)
+
+        // Método para validar conexión rápida (lo usas en el Login)
+        public bool CheckConnection()
+        {
+            try
+            {
+                using (var conn = new SqlConnection(this.ConnString))
+                {
+                    conn.Open(); // Intenta abrir
+                    return true; // Si llega aquí, todo ok
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static void GuardarCadenaConexion(string servidor, string baseDatos)
+        {
+            // 1. Construir nueva cadena
+            string nuevaCadena = $"Data Source={servidor};Initial Catalog={baseDatos};Integrated Security=True";
+
+            // 2. Abrir configuración
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            // 3. Borrar vieja y poner nueva
+            config.ConnectionStrings.ConnectionStrings.Remove("MainCon");
+            config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("MainCon", nuevaCadena, "System.Data.SqlClient"));
+
+            // 4. Guardar
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("connectionStrings");
+
+            // 5. IMPORTANTE: Resetear el Singleton para que recargue la nueva cadena
+            _instance = null;
+        }
+
+        #endregion
+
+        #region Variables y CRUD (Igual que antes)
         SqlConnection connection;
         SqlCommand command;
         SqlDataReader reader;
         DataTable table;
-        #endregion
-
-        //CRUD
-
-        #region R(READ) ExecuteReader - Lee filas y columnas  - Devuelve: DataTable o SqlDataReader
-
-
-        //string consulta = "SELECT * FROM Usuario WHERE NombreUsuario = @nombre";
 
         public DataTable ExecuteReader(string query, List<SqlParameter> parametros)
         {
@@ -76,11 +109,7 @@ namespace DAL.DAO
                 using (command = connection.CreateCommand())
                 {
                     command.CommandText = query;
-                    // Línea clave: los parámetros se añaden de forma segura
-                    if (parametros != null)
-                    {
-                        command.Parameters.AddRange(parametros.ToArray());
-                    }
+                    if (parametros != null) command.Parameters.AddRange(parametros.ToArray());
                     using (reader = command.ExecuteReader())
                     {
                         table.Load(reader);
@@ -89,9 +118,6 @@ namespace DAL.DAO
             }
             return table;
         }
-        #endregion
-
-        #region CUD(CREATE,UPDATE,DELETE) ExecuteNonQuery - Escribir datos (INSERT, UPDATE, DELETE) - Devuelve: int(filas afectadas)
 
         public int ExecuteNonQuery(string query, List<SqlParameter> parameters)
         {
@@ -102,18 +128,12 @@ namespace DAL.DAO
                 using (command = connection.CreateCommand())
                 {
                     command.CommandText = query;
-                    if (parameters != null)
-                    {
-                        command.Parameters.AddRange(parameters.ToArray());
-                    }
+                    if (parameters != null) command.Parameters.AddRange(parameters.ToArray());
                     rowsAffected = command.ExecuteNonQuery();
                 }
             }
             return rowsAffected;
         }
-
-        #endregion 
-
-
+        #endregion
     }
 }

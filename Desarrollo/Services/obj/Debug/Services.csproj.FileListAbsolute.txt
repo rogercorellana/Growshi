@@ -71,3 +71,11 @@ C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\Services\obj\Deb
 C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\Services\obj\Debug\Services.pdb
 C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\Services\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Compu\Desktop\Growshi-main (2)\Growshi-main\Desarrollo\Services\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\itextsharp.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\MetroFramework.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\itextsharp.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Newtonsoft.Json.xml

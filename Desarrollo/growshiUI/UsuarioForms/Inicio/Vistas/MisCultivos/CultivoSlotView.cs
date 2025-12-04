@@ -77,8 +77,6 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos
             };
         }
 
-        private void CultivoSlotView_Click(object sender, EventArgs e)
-        {
-        }
+        
     }
 }

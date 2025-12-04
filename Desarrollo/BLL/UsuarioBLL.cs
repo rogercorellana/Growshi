@@ -12,6 +12,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BLL
 {
@@ -34,6 +35,11 @@ namespace BLL
             _bitacoraService = BitacoraService.GetInstance();
             _bitacoraDAO = new BitacoraDAO();
             _permisoDAO = new PermisoDAO();
+        }
+
+        public void GuardarCadenaConexion(string v1, string v2)
+        {
+            usuarioDAO.GuardarCadenaConexion(v1, v2);
         }
 
         public Usuario Login(string usernameTextBox, string passwordTextBox)
@@ -158,7 +164,7 @@ namespace BLL
 
                 IBitacora eventoFallo = _bitacoraService.CrearEvento(
                     NivelCriticidad.Advertencia,
-                    $"Intento de inicio de sesión fallido para el usuario con ID {usuarioId}.",
+                    $"Intento de inicio de sesión fallido para el usuario con ID {usuarioId}. correspondiente al usuario: {usernameTextBox}",
                     "Login",
                     usuarioId
                 );
@@ -183,6 +189,11 @@ namespace BLL
             }
 
             #endregion
+        }
+
+        public bool ValidarConexion()
+        {
+            return usuarioDAO.ValidarConexion();
         }
     }
 }
