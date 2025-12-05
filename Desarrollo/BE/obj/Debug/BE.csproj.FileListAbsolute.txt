@@ -79,3 +79,26 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BE\bin\Debug\New
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BE\bin\Debug\BouncyCastle.Cryptography.xml
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BE\bin\Debug\itextsharp.xml
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BE\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BE\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BE\bin\Debug\itextsharp.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BE\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BE\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BE\bin\Debug\itextsharp.xml
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BE\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\BE.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\BE.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\itextsharp.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\MetroFramework.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\itextsharp.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\obj\Debug\BE.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\obj\Debug\BE.csproj.Up2Date
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\obj\Debug\BE.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BE\obj\Debug\BE.pdb

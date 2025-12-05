@@ -12,8 +12,6 @@ namespace DAL.Mappers
             {
                 PlanCultivoID = Convert.ToInt32(row["PlanCultivoID"]),
                 NombrePlan = row["NombrePlan"].ToString(),
-                FechaInicio = Convert.ToDateTime(row["FechaInicio"]),
-                Estado = row["Estado"].ToString()
             };
         }
     }

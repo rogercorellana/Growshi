@@ -64,22 +64,27 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
 
             if (slot.PlantaAsociadaID == null)
             {
-                string titulo = _idiomaBLL.Traducir("msg_slot_disponible_titulo");
-                string formatoCuerpo = _idiomaBLL.Traducir("msg_slot_disponible_cuerpo");
-                string mensaje = string.Format(formatoCuerpo, slot.NumeroVisual);
+                //string titulo = _idiomaBLL.Traducir("msg_slot_disponible_titulo");
+                //string formatoCuerpo = _idiomaBLL.Traducir("msg_slot_disponible_cuerpo");
+                //string mensaje = string.Format(formatoCuerpo, slot.NumeroVisual);
 
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 new AgregarPlantaForm(slot.SlotID).ShowDialog();
                 CargarSlots(); 
             }
             else
             {
-                string tituloInfo = _idiomaBLL.Traducir("titulo_informacion"); 
-                string formatoCuerpo = _idiomaBLL.Traducir("msg_slot_ocupado_cuerpo");
-                string mensaje = string.Format(formatoCuerpo, slot.NumeroVisual, slot.NombrePlanta);
+                //string tituloInfo = _idiomaBLL.Traducir("titulo_informacion"); 
+                //string formatoCuerpo = _idiomaBLL.Traducir("msg_slot_ocupado_cuerpo");
+                //string mensaje = string.Format(formatoCuerpo, slot.NumeroVisual, slot.NombrePlanta);
 
-                MessageBox.Show(mensaje, tituloInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show(mensaje, tituloInfo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                new PlantaResumenForm(slot.SlotID).ShowDialog();
+                CargarSlots();
+
+
             }
         }
     }

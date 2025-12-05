@@ -52,7 +52,6 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo
             txtNombrePlan.WaterMark = _idiomaBLL.Traducir("prompt_ejemplo_plan");
             txtNombrePlan.WaterMark = _idiomaBLL.Traducir("prompt_ejemplo_plan");
 
-            lblFecha.Text = _idiomaBLL.Traducir("lbl_fecha_inicio");
             btnGuardar.Text = _idiomaBLL.Traducir("btn_guardar_plan");
             btnCancelar.Text = _idiomaBLL.Traducir("btn_cancelar");
         }
@@ -130,8 +129,6 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo
             {
                 PlanCultivo nuevoPlan = new PlanCultivo();
                 nuevoPlan.NombrePlan = txtNombrePlan.Text;
-                nuevoPlan.FechaInicio = dtpFechaInicio.Value;
-                nuevoPlan.Estado = "Activo";
 
                 nuevoPlan.Etapas = new System.Collections.Generic.List<EtapaCultivo>();
 
@@ -154,6 +151,9 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo
 
                 int usuarioID = _sessionService.UsuarioLogueado.IdUsuario;
                 bll.GuardarPlan(nuevoPlan, usuarioID);
+
+
+
 
                 // 4. Feedback al usuario
                 string mensajeExito = _idiomaBLL.Traducir("msg_plan_guardado") ?? "Plan guardado correctamente"; // Fallback por si no hay traducción

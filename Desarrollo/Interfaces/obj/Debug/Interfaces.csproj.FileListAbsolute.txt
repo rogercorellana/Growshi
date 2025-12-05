@@ -61,3 +61,24 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\bin\D
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\bin\Debug\itextsharp.xml
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.Up2Date
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\itextsharp.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\itextsharp.xml
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\Interfaces\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\itextsharp.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\MetroFramework.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\itextsharp.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.csproj.Up2Date
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\Debug\Interfaces.pdb

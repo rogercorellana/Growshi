@@ -26,6 +26,7 @@
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.MenuStrip_idiomaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProbandoESP32ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.planesDeCultivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelInicio = new System.Windows.Forms.Panel();
             this.menuStripGlobal.SuspendLayout();
             this.SuspendLayout();
@@ -87,12 +88,13 @@
             this.menuStripGlobal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuStrip_inicioMenuItem,
             this.MenuStrip_misCultivosMenuItem,
-            this.MenuStrip_historialMenuItem,
             this.MenuStrip_reportesMenuItem,
             this.MenuStrip_configuracionMenuItem,
             this.MenuStrip_miCuentaMenuItem,
             this.MenuStrip_idiomaMenuItem,
-            this.ProbandoESP32ToolStrip});
+            this.MenuStrip_historialMenuItem,
+            this.ProbandoESP32ToolStrip,
+            this.planesDeCultivoToolStripMenuItem});
             this.menuStripGlobal.Location = new System.Drawing.Point(20, 60);
             this.menuStripGlobal.Name = "menuStripGlobal";
             this.menuStripGlobal.Padding = new System.Windows.Forms.Padding(0);
@@ -116,6 +118,13 @@
             this.ProbandoESP32ToolStrip.Size = new System.Drawing.Size(138, 24);
             this.ProbandoESP32ToolStrip.Text = "PROBANDO ESP32";
             this.ProbandoESP32ToolStrip.Click += new System.EventHandler(this.ProbandoESP32ToolStrip_Click);
+            // 
+            // planesDeCultivoToolStripMenuItem
+            // 
+            this.planesDeCultivoToolStripMenuItem.Name = "planesDeCultivoToolStripMenuItem";
+            this.planesDeCultivoToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            this.planesDeCultivoToolStripMenuItem.Text = "Planes de Cultivo";
+            this.planesDeCultivoToolStripMenuItem.Click += new System.EventHandler(this.planesDeCultivoToolStripMenuItem_Click);
             // 
             // panelInicio
             // 
@@ -161,5 +170,6 @@
         private System.Windows.Forms.Panel panelInicio;
         private System.Windows.Forms.ToolStripMenuItem MenuStrip_idiomaMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProbandoESP32ToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem planesDeCultivoToolStripMenuItem;
     }
 }

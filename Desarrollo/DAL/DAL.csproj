@@ -66,6 +66,7 @@
     <Compile Include="Daos\BackupDAO.cs" />
     <Compile Include="Daos\BitacoraDAO.cs" />
     <Compile Include="Daos\DatabaseAdminDAO.cs" />
+    <Compile Include="Daos\EtapaCultivoDAO.cs" />
     <Compile Include="Daos\GestionUsuariosDAO.cs" />
     <Compile Include="Daos\IdiomaDAO.cs" />
     <Compile Include="Daos\PermisoDAO.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Daos\SlotDAO.cs" />
     <Compile Include="Mappers\BackupMapper.cs" />
     <Compile Include="Mappers\BitacoraMapper.cs" />
+    <Compile Include="Mappers\EtapaCultivoMapper.cs" />
     <Compile Include="Mappers\PlanCultivoMapper.cs" />
     <Compile Include="Mappers\PlantaMapper.cs" />
     <Compile Include="Mappers\RolesYPermisosMapper.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Daos\UsuarioDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="BackupBLL.cs" />
     <Compile Include="BitacoraBLL.cs" />
+    <Compile Include="EtapaCultivoBLL.cs" />
     <Compile Include="Exceptions\CuentaBloqueadaException.cs" />
     <Compile Include="GestionUsuariosBLL.cs" />
     <Compile Include="IdiomaBLL.cs" />
@@ -95,6 +96,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

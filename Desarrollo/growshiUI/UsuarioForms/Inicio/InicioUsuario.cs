@@ -9,7 +9,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion;
 using growshiUI.UsuarioForms.Inicio.Vistas.Menu;
-using MetroFramework.Forms; 
+using MetroFramework.Forms;
+using growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo;
 
 namespace growshiUI.UsuarioForms
 {
@@ -218,6 +219,50 @@ namespace growshiUI.UsuarioForms
             probandoESP32ToolStrip.Dock = DockStyle.Fill;
             this.panelInicio.Controls.Add(probandoESP32ToolStrip);
 
+        }
+
+
+        private void planesDeCultivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResaltarBotonMenu((ToolStripMenuItem)sender);
+            //this.panelInicio.Controls.Clear();
+            //PlanesDeCultivoView planes = new PlanesDeCultivoView();
+            //planes.Dock = DockStyle.Fill;
+            //this.panelInicio.Controls.Add(planes);
+            CargarVistaListaPlanes();
+        }
+        private void CargarVistaListaPlanes()
+        {
+            this.panelInicio.Controls.Clear();
+
+            PlanesDeCultivoView planesView = new PlanesDeCultivoView();
+            planesView.Dock = DockStyle.Fill;
+
+            // --- AQUÍ CONECTAMOS EL CABLE ---
+            // Cuando la vista grite "OnSolicitarEdicion", ejecutamos "AbrirEditorDePlan"
+            planesView.OnSolicitarEdicion += AbrirEditorDePlan;
+
+            this.panelInicio.Controls.Add(planesView);
+        }
+
+        // Este método recibe el plan desde la lista y abre la otra vista
+        private void AbrirEditorDePlan(PlanCultivo planSeleccionado)
+        {
+            this.panelInicio.Controls.Clear();
+
+            // Instanciamos la vista de edición
+            PlanEdicionView editorView = new PlanEdicionView();
+            editorView.Dock = DockStyle.Fill;
+
+            // Le pasamos los datos
+            editorView.CargarDatos(planSeleccionado);
+
+            // Nos suscribimos al evento Cancelar para volver a la lista si se arrepiente
+            editorView.OnCancelar += (s, e) => CargarVistaListaPlanes();
+
+            // TODO: También podrías suscribirte a un evento OnGuardar para volver a la lista y refrescar
+
+            this.panelInicio.Controls.Add(editorView);
         }
         #endregion
 

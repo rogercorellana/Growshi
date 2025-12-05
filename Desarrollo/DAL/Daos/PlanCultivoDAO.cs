@@ -38,8 +38,8 @@ namespace DAL.Daos
             query.AppendLine("BEGIN TRY");
 
             
-            query.AppendLine("   INSERT INTO PlanCultivo (NombrePlan, FechaInicio, Estado)");
-            query.AppendLine("   VALUES (@NombrePlan, @FechaInicio, @Estado);");
+            query.AppendLine("   INSERT INTO PlanCultivo (NombrePlan)");
+            query.AppendLine("   VALUES (@NombrePlan);");
 
             query.AppendLine("   DECLARE @NuevoID INT = SCOPE_IDENTITY();");
 
@@ -48,8 +48,6 @@ namespace DAL.Daos
             query.AppendLine("   VALUES (@UsuarioID, @NuevoID);");
 
             parametros.Add(new SqlParameter("@NombrePlan", plan.NombrePlan));
-            parametros.Add(new SqlParameter("@FechaInicio", plan.FechaInicio));
-            parametros.Add(new SqlParameter("@Estado", true)); 
             parametros.Add(new SqlParameter("@UsuarioID", usuarioID)); 
 
             for (int i = 0; i < plan.Etapas.Count; i++)
@@ -90,6 +88,78 @@ namespace DAL.Daos
             }
 
             return false;
+        }
+
+        public bool modificarPlan(PlanCultivo plan)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            StringBuilder query = new StringBuilder();
+
+            query.AppendLine("BEGIN TRANSACTION;");
+            query.AppendLine("BEGIN TRY");
+
+            // 1. Actualizar el Nombre del Plan (Cabecera)
+            query.AppendLine("   UPDATE PlanCultivo SET NombrePlan = @NombrePlan WHERE PlanCultivoID = @PlanID;");
+
+            parametros.Add(new SqlParameter("@NombrePlan", plan.NombrePlan));
+            parametros.Add(new SqlParameter("@PlanID", plan.PlanCultivoID));
+
+            // 2. Actualizar cada Etapa (Detalle)
+            for (int i = 0; i < plan.Etapas.Count; i++)
+            {
+                var etapa = plan.Etapas[i];
+                string s = i.ToString(); // Sufijo para que los parámetros sean únicos (@Nom0, @Nom1, etc.)
+
+                query.AppendLine($"   UPDATE EtapaCultivo SET ");
+                query.AppendLine($"       Nombre = @Nom{s}, ");
+                query.AppendLine($"       DuracionDias = @Dur{s}, ");
+                query.AppendLine($"       TempMinima = @TMin{s}, TempMaxima = @TMax{s}, ");
+                query.AppendLine($"       HumedadMinima = @HMin{s}, HumedadMaxima = @HMax{s}, ");
+                query.AppendLine($"       PHMinimo = @PMin{s}, PHMaximo = @PMax{s}, ");
+                query.AppendLine($"       ECMinima = @EMin{s}, ECMaxima = @EMax{s} ");
+                query.AppendLine($"   WHERE EtapaCultivoID = @EtapaID{s};");
+
+                // Parámetros de la etapa
+                parametros.Add(new SqlParameter($"@EtapaID{s}", etapa.EtapaCultivoID)); // ¡CRUCIAL! El ID para el WHERE
+                parametros.Add(new SqlParameter($"@Nom{s}", etapa.NombreEtapa));
+                parametros.Add(new SqlParameter($"@Dur{s}", etapa.Duracion));
+                parametros.Add(new SqlParameter($"@TMin{s}", etapa.TempMin));
+                parametros.Add(new SqlParameter($"@TMax{s}", etapa.TempMax));
+                parametros.Add(new SqlParameter($"@HMin{s}", etapa.HumMin));
+                parametros.Add(new SqlParameter($"@HMax{s}", etapa.HumMax));
+                parametros.Add(new SqlParameter($"@PMin{s}", etapa.PhMin));
+                parametros.Add(new SqlParameter($"@PMax{s}", etapa.PhMax));
+                parametros.Add(new SqlParameter($"@EMin{s}", etapa.EcMin));
+                parametros.Add(new SqlParameter($"@EMax{s}", etapa.EcMax));
+            }
+
+            // 3. Confirmar transacción
+            query.AppendLine("   COMMIT TRANSACTION;");
+            query.AppendLine("END TRY");
+            query.AppendLine("BEGIN CATCH");
+            query.AppendLine("   ROLLBACK TRANSACTION;");
+            query.AppendLine("   THROW;"); // Lanza el error hacia C#
+            query.AppendLine("END CATCH");
+
+            // Ejecutar todo el bloque
+            int filasAfectadas = sqlHelper.ExecuteNonQuery(query.ToString(), parametros);
+
+            // Si afectó filas (al menos 1 del plan + las etapas), retornamos true
+            return filasAfectadas > 0;
+        }
+
+        public bool Eliminar(int idPlan)
+        {
+            // Gracias al ON DELETE CASCADE en tu base de datos, 
+            // al borrar el Plan se borran solas las Etapas.
+            string query = "DELETE FROM PlanCultivo WHERE PlanCultivoID = @id";
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@id", idPlan));
+
+            int filas = sqlHelper.ExecuteNonQuery(query, parametros);
+
+            return filas > 0;
         }
     }
 }

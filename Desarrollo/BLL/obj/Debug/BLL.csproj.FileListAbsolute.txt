@@ -121,3 +121,35 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\Ne
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\BouncyCastle.Cryptography.xml
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\itextsharp.xml
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BLL\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BLL\bin\Debug\itextsharp.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BLL\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BLL\bin\Debug\itextsharp.xml
+C:\Users\Roger\Desktop\Nueva carpeta (2)\Growshi\Desarrollo\BLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\BLL.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\BLL.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\BE.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\DAL.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\Interfaces.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\itextsharp.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\MetroFramework.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\Services.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\BE.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\DAL.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\Interfaces.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\Services.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\itextsharp.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\obj\Debug\BLL.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\obj\Debug\BLL.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\BLL.dll.config
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\DAL.dll.config
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\Services.dll.config

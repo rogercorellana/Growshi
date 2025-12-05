@@ -229,16 +229,44 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
         private void lnkNuevoPlan_Click(object sender, EventArgs e)
         {
             string msg = _idiomaBLL.Traducir("msg_redirigiendo_plan");
-            string titulo = _idiomaBLL.Traducir("titulo_navegacion");
 
-            MetroMessageBox.Show(this, msg, titulo, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            #region VENTANA DE 0.5 SEGUNDOS DE REDIRECCIONAMIENTO
+            using (Form mensajeForm = new Form())
+            {
+                mensajeForm.FormBorderStyle = FormBorderStyle.None;
+                mensajeForm.StartPosition = FormStartPosition.CenterScreen;
+                mensajeForm.Size = new Size(320, 110);
+                mensajeForm.BackColor = Color.FromArgb(0, 174, 219); 
+                mensajeForm.TopMost = true; 
+
+                Label lbl = new Label();
+                lbl.Text = msg;
+                lbl.ForeColor = Color.White;
+                lbl.Dock = DockStyle.Fill;
+                lbl.TextAlign = ContentAlignment.MiddleCenter; 
+                lbl.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+                mensajeForm.Controls.Add(lbl);
+
+                System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                timer.Interval = 500;
+                timer.Tick += (s, ev) =>
+                {
+                    timer.Stop();
+                    mensajeForm.Close(); 
+                };
+                timer.Start();
+
+                mensajeForm.ShowDialog();
+            }
+            #endregion
 
             AgregarPlanCultivoForm planCultivoForm = new AgregarPlanCultivoForm();
-            this.Hide();
-            planCultivoForm.ShowDialog();
+
+            this.Hide(); 
+            planCultivoForm.ShowDialog(); 
 
             ListarPlanCultivo();
-            this.Show();
+            this.Show(); 
         }
 
         private void ABMPlanta_Resize(object sender, EventArgs e)

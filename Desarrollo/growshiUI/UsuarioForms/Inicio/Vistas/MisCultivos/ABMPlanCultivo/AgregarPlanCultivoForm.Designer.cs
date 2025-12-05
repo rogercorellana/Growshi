@@ -23,8 +23,6 @@
             this.panelFloracion = new System.Windows.Forms.Panel();
             this.lblTituloFlor = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.dtpFechaInicio = new MetroFramework.Controls.MetroDateTime();
-            this.lblFecha = new MetroFramework.Controls.MetroLabel();
             this.txtNombrePlan = new MetroFramework.Controls.MetroTextBox();
             this.lblNombrePlan = new MetroFramework.Controls.MetroLabel();
             this.lblTituloPrincipal = new MetroFramework.Controls.MetroLabel();
@@ -139,8 +137,6 @@
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.White;
-            this.panelHeader.Controls.Add(this.dtpFechaInicio);
-            this.panelHeader.Controls.Add(this.lblFecha);
             this.panelHeader.Controls.Add(this.txtNombrePlan);
             this.panelHeader.Controls.Add(this.lblNombrePlan);
             this.panelHeader.Controls.Add(this.lblTituloPrincipal);
@@ -149,24 +145,6 @@
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1010, 100);
             this.panelHeader.TabIndex = 0;
-            // 
-            // dtpFechaInicio
-            // 
-            this.dtpFechaInicio.Location = new System.Drawing.Point(570, 50);
-            this.dtpFechaInicio.MinimumSize = new System.Drawing.Size(0, 29);
-            this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(200, 29);
-            this.dtpFechaInicio.Style = MetroFramework.MetroColorStyle.Green;
-            this.dtpFechaInicio.TabIndex = 4;
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(480, 55);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(80, 19);
-            this.lblFecha.TabIndex = 3;
-            this.lblFecha.Text = "Fecha Inicio:";
             // 
             // txtNombrePlan
             // 
@@ -187,7 +165,7 @@
             this.txtNombrePlan.MaxLength = 32767;
             this.txtNombrePlan.Name = "txtNombrePlan";
             this.txtNombrePlan.PasswordChar = '\0';
-            this.txtNombrePlan.WaterMark = "Ej: Tomates Invierno 2025";
+            this.txtNombrePlan.PromptText = "Ej: Tomates Invierno 2025";
             this.txtNombrePlan.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtNombrePlan.SelectedText = "";
             this.txtNombrePlan.SelectionLength = 0;
@@ -281,8 +259,6 @@
         private MetroFramework.Controls.MetroLabel lblTituloPrincipal;
         private MetroFramework.Controls.MetroTextBox txtNombrePlan;
         private MetroFramework.Controls.MetroLabel lblNombrePlan;
-        private MetroFramework.Controls.MetroDateTime dtpFechaInicio;
-        private MetroFramework.Controls.MetroLabel lblFecha;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
 
