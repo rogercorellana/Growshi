@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BE;
 using DAL.Daos;
 using Interfaces.IBE;
@@ -78,6 +79,11 @@ namespace BLL
 
                 #endregion
             }
+        }
+
+        public Planta ObtenerPorSlot(int slotId)
+        {
+            return plantaDao.ObtenerPorSlot(slotId);
         }
     }
 }

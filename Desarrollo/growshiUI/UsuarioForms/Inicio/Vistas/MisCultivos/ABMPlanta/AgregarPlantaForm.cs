@@ -101,15 +101,15 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
         {
             metroGridPlantas.Columns.Clear();
 
-            // Agregamos las columnas con encabezados traducidos
+            // Columnas existentes
             metroGridPlantas.Columns.Add("ID", "ID");
-
-            // Usamos _idiomaBLL para los encabezados visibles
             metroGridPlantas.Columns.Add("Nombre", _idiomaBLL.Traducir("col_nombre_planta"));
             metroGridPlantas.Columns.Add("Plan", _idiomaBLL.Traducir("col_plan_asignado"));
 
-            // Opcional: Ocultar la columna ID
-            // metroGridPlantas.Columns[0].Visible = false; 
+            // --- NUEVA COLUMNA ---
+            // Asegúrate de tener la clave "col_fecha_inicio" en tu base de datos de idiomas
+            // O pon "Fecha Inicio" como string fijo si prefieres por ahora.
+            metroGridPlantas.Columns.Add("FechaInicio", _idiomaBLL.Traducir("col_fecha_inicio"));
         }
 
         private void RedondearControl(Control control, int radio)
@@ -160,7 +160,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
 
             foreach (Planta p in lista)
             {
-                metroGridPlantas.Rows.Add(p.PlantaID, p.Nombre, p.NombrePlan);
+                metroGridPlantas.Rows.Add(p.PlantaID, p.Nombre, p.NombrePlan, p.FechaInicio);
             }
         }
 

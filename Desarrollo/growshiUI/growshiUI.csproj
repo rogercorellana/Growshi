@@ -390,6 +390,9 @@
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\MisCultivos\ABMPlanta\AgregarPlantaForm.resx">
       <DependentUpon>AgregarPlantaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\MisCultivos\ABMPlanta\PlantaResumenForm.resx">
+      <DependentUpon>PlantaResumenForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\MisCultivos\CultivoSlotView.resx">
       <DependentUpon>CultivoSlotView.cs</DependentUpon>
     </EmbeddedResource>

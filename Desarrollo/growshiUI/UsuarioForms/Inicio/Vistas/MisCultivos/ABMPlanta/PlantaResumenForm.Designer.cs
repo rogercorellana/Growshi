@@ -63,7 +63,7 @@
             this.lblTituloPlanta.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblTituloPlanta.Location = new System.Drawing.Point(23, 60);
             this.lblTituloPlanta.Name = "lblTituloPlanta";
-            this.lblTituloPlanta.Size = new System.Drawing.Size(209, 25);
+            this.lblTituloPlanta.Size = new System.Drawing.Size(213, 25);
             this.lblTituloPlanta.Style = MetroFramework.MetroColorStyle.Green;
             this.lblTituloPlanta.TabIndex = 0;
             this.lblTituloPlanta.Text = "Planta: [NombrePlanta]";
@@ -93,7 +93,7 @@
             this.lblFechaCosecha.AutoSize = true;
             this.lblFechaCosecha.Location = new System.Drawing.Point(15, 110);
             this.lblFechaCosecha.Name = "lblFechaCosecha";
-            this.lblFechaCosecha.Size = new System.Drawing.Size(163, 19);
+            this.lblFechaCosecha.Size = new System.Drawing.Size(168, 19);
             this.lblFechaCosecha.TabIndex = 6;
             this.lblFechaCosecha.Text = "Estimada Cosecha: --/--/--";
             // 
@@ -102,7 +102,7 @@
             this.lblFechaSiembra.AutoSize = true;
             this.lblFechaSiembra.Location = new System.Drawing.Point(15, 80);
             this.lblFechaSiembra.Name = "lblFechaSiembra";
-            this.lblFechaSiembra.Size = new System.Drawing.Size(139, 19);
+            this.lblFechaSiembra.Size = new System.Drawing.Size(149, 19);
             this.lblFechaSiembra.TabIndex = 5;
             this.lblFechaSiembra.Text = "Fecha Siembra: --/--/--";
             // 
@@ -112,7 +112,7 @@
             this.lblPlanAsignado.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.lblPlanAsignado.Location = new System.Drawing.Point(15, 45);
             this.lblPlanAsignado.Name = "lblPlanAsignado";
-            this.lblPlanAsignado.Size = new System.Drawing.Size(99, 19);
+            this.lblPlanAsignado.Size = new System.Drawing.Size(100, 19);
             this.lblPlanAsignado.TabIndex = 4;
             this.lblPlanAsignado.Text = "Plan: [Nombre]";
             // 
@@ -132,7 +132,7 @@
             this.lblTituloInfo.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblTituloInfo.Location = new System.Drawing.Point(10, 10);
             this.lblTituloInfo.Name = "lblTituloInfo";
-            this.lblTituloInfo.Size = new System.Drawing.Size(149, 19);
+            this.lblTituloInfo.Size = new System.Drawing.Size(146, 19);
             this.lblTituloInfo.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblTituloInfo.TabIndex = 2;
             this.lblTituloInfo.Text = "Información General";
@@ -161,7 +161,7 @@
             this.lblProgresoDia.AutoSize = true;
             this.lblProgresoDia.Location = new System.Drawing.Point(15, 80);
             this.lblProgresoDia.Name = "lblProgresoDia";
-            this.lblProgresoDia.Size = new System.Drawing.Size(73, 19);
+            this.lblProgresoDia.Size = new System.Drawing.Size(71, 19);
             this.lblProgresoDia.TabIndex = 5;
             this.lblProgresoDia.Text = "Día X de Y";
             // 
@@ -172,7 +172,7 @@
             this.lblEtapaActual.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.lblEtapaActual.Location = new System.Drawing.Point(15, 45);
             this.lblEtapaActual.Name = "lblEtapaActual";
-            this.lblEtapaActual.Size = new System.Drawing.Size(176, 25);
+            this.lblEtapaActual.Size = new System.Drawing.Size(168, 25);
             this.lblEtapaActual.TabIndex = 4;
             this.lblEtapaActual.Text = "[Germinación / Veg]";
             // 
@@ -191,7 +191,7 @@
             this.lblTituloEstado.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblTituloEstado.Location = new System.Drawing.Point(10, 10);
             this.lblTituloEstado.Name = "lblTituloEstado";
-            this.lblTituloEstado.Size = new System.Drawing.Size(98, 19);
+            this.lblTituloEstado.Size = new System.Drawing.Size(99, 19);
             this.lblTituloEstado.Style = MetroFramework.MetroColorStyle.Orange;
             this.lblTituloEstado.TabIndex = 2;
             this.lblTituloEstado.Text = "Estado Actual";
@@ -226,7 +226,7 @@
             this.lblUltimaMedicion.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.lblUltimaMedicion.Location = new System.Drawing.Point(520, 130);
             this.lblUltimaMedicion.Name = "lblUltimaMedicion";
-            this.lblUltimaMedicion.Size = new System.Drawing.Size(180, 15);
+            this.lblUltimaMedicion.Size = new System.Drawing.Size(184, 15);
             this.lblUltimaMedicion.TabIndex = 9;
             this.lblUltimaMedicion.Text = "Última medición: Hace 5 minutos";
             // 
@@ -237,7 +237,7 @@
             this.lblLuminosidadVal.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblLuminosidadVal.Location = new System.Drawing.Point(520, 75);
             this.lblLuminosidadVal.Name = "lblLuminosidadVal";
-            this.lblLuminosidadVal.Size = new System.Drawing.Size(46, 25);
+            this.lblLuminosidadVal.Size = new System.Drawing.Size(44, 25);
             this.lblLuminosidadVal.Style = MetroFramework.MetroColorStyle.Yellow;
             this.lblLuminosidadVal.TabIndex = 8;
             this.lblLuminosidadVal.Text = "OFF";
@@ -250,7 +250,7 @@
             this.lblHumedadVal.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblHumedadVal.Location = new System.Drawing.Point(280, 75);
             this.lblHumedadVal.Name = "lblHumedadVal";
-            this.lblHumedadVal.Size = new System.Drawing.Size(49, 25);
+            this.lblHumedadVal.Size = new System.Drawing.Size(48, 25);
             this.lblHumedadVal.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblHumedadVal.TabIndex = 7;
             this.lblHumedadVal.Text = "60%";
@@ -263,7 +263,7 @@
             this.lblTempVal.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblTempVal.Location = new System.Drawing.Point(40, 75);
             this.lblTempVal.Name = "lblTempVal";
-            this.lblTempVal.Size = new System.Drawing.Size(60, 25);
+            this.lblTempVal.Size = new System.Drawing.Size(55, 25);
             this.lblTempVal.Style = MetroFramework.MetroColorStyle.Red;
             this.lblTempVal.TabIndex = 6;
             this.lblTempVal.Text = "24 °C";
@@ -302,7 +302,7 @@
             this.lblTituloMediciones.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblTituloMediciones.Location = new System.Drawing.Point(10, 10);
             this.lblTituloMediciones.Name = "lblTituloMediciones";
-            this.lblTituloMediciones.Size = new System.Drawing.Size(135, 19);
+            this.lblTituloMediciones.Size = new System.Drawing.Size(166, 19);
             this.lblTituloMediciones.Style = MetroFramework.MetroColorStyle.Teal;
             this.lblTituloMediciones.TabIndex = 2;
             this.lblTituloMediciones.Text = "Sensores (Tiempo Real)";

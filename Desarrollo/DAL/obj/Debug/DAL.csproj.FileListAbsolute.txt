@@ -136,3 +136,5 @@ C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\DAL\obj\Debug\DAL
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\DAL\obj\Debug\DAL.pdb
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\DAL\bin\Debug\DAL.dll.config
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\DAL\bin\Debug\Services.dll.config
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\DAL.dll.config
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\DAL\bin\Debug\Services.dll.config

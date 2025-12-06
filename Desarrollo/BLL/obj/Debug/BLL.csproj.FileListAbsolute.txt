@@ -153,3 +153,6 @@ C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\obj\Debug\BLL
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\BLL.dll.config
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\DAL.dll.config
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\BLL\bin\Debug\Services.dll.config
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\BLL.dll.config
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\DAL.dll.config
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\BLL\bin\Debug\Services.dll.config

@@ -135,3 +135,36 @@ C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Services\bin\Debu
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Services\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Services\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Services\bin\Debug\System.ValueTuple.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Services.dll.config
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\itext.bouncy-castle-adapter.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\itext.commons.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.Logging.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Buffers.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Memory.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.ValueTuple.dll
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\itext.bouncy-castle-adapter.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\itext.commons.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.Options.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Buffers.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Memory.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\Services\bin\Debug\System.ValueTuple.xml
