@@ -110,5 +110,37 @@ namespace DAL.Daos
 
             sqlHelper.ExecuteNonQuery(query, parameters);
         }
+
+        public void EliminarPlantaDelSlot(int slotId, int idPlanta)
+        {
+            // Usamos una transacción dentro del string SQL para mayor eficiencia
+            // 1. UPDATE Slot: Pone NULL en PlantaAsociada
+            // 2. DELETE Planta: Borra la fila de la tabla Planta
+
+            string query = @"
+        BEGIN TRANSACTION;
+            
+            -- Paso 1: Liberar el Slot (Evita error de Foreign Key)
+            UPDATE Slot 
+            SET PlantaAsociada = NULL 
+            WHERE SlotID = @slotId;
+
+            -- Paso 2: Borrar la Planta físicamente
+            DELETE FROM Planta 
+            WHERE PlantaID = @plantaId;
+
+        COMMIT TRANSACTION;";
+
+            List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>
+    {
+        new System.Data.SqlClient.SqlParameter("@slotId", slotId),
+        new System.Data.SqlClient.SqlParameter("@plantaId", idPlanta)
+    };
+
+            sqlHelper.ExecuteNonQuery(query, parametros);
+        }
+
+
+        
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="Backup.cs" />
     <Compile Include="Bitacora.cs" />
     <Compile Include="EtapaCultivo.cs" />
+    <Compile Include="Medicion.cs" />
     <Compile Include="PlanCultivo.cs" />
     <Compile Include="Planta.cs" />
     <Compile Include="Slot.cs" />

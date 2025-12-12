@@ -508,3 +508,4 @@ C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\bin\De
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.Menu.PlanesDeCultivoView.resources
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo.PlanEdicionView.resources
 C:\Users\Compu\Desktop\GROWSHI FINAL\Growshi\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta.PlantaResumenForm.resources
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\growshiUI\obj\Debug\growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta.PlantaResumenForm.resources

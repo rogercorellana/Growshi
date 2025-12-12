@@ -85,5 +85,10 @@ namespace BLL
         {
             return plantaDao.ObtenerPorSlot(slotId);
         }
+
+        public void EliminarPlantaDelSlot(int slotId, int idPlanta)
+        {
+            slotDao.EliminarPlantaDelSlot(slotId, idPlanta);
+        }
     }
 }
