@@ -55,8 +55,8 @@ namespace DAL.Daos
                 var etapa = plan.Etapas[i];
                 string s = i.ToString();
 
-                query.AppendLine($"   INSERT INTO EtapaCultivo (PlanCultivoID, Nombre, Orden, DuracionDias, TempMinima, TempMaxima, HumedadMinima, HumedadMaxima, PHMinimo, PHMaximo, ECMinima, ECMaxima)");
-                query.AppendLine($"   VALUES (@NuevoID, @Nom{s}, @Ord{s}, @Dur{s}, @TMin{s}, @TMax{s}, @HMin{s}, @HMax{s}, @PMin{s}, @PMax{s}, @EMin{s}, @EMax{s});");
+                query.AppendLine($"   INSERT INTO EtapaCultivo (PlanCultivoID, Nombre, Orden, DuracionDias, TempMinima, TempMaxima, HumedadMinima, HumedadMaxima, PHMinimo, PHMaximo, ECMinima, ECMaxima, HorasLuz)");
+                query.AppendLine($"   VALUES (@NuevoID, @Nom{s}, @Ord{s}, @Dur{s}, @TMin{s}, @TMax{s}, @HMin{s}, @HMax{s}, @PMin{s}, @PMax{s}, @EMin{s}, @EMax{s}, @HorasLuz{s});");
 
                 parametros.Add(new SqlParameter($"@Nom{s}", etapa.NombreEtapa));
                 parametros.Add(new SqlParameter($"@Ord{s}", etapa.Orden));
@@ -69,6 +69,8 @@ namespace DAL.Daos
                 parametros.Add(new SqlParameter($"@PMax{s}", etapa.PhMax));
                 parametros.Add(new SqlParameter($"@EMin{s}", etapa.EcMin));
                 parametros.Add(new SqlParameter($"@EMax{s}", etapa.EcMax));
+                parametros.Add(new SqlParameter($"@HorasLuz{s}", etapa.HorasLuz));
+
             }
 
             query.AppendLine("   COMMIT TRANSACTION;");
@@ -117,6 +119,8 @@ namespace DAL.Daos
                 query.AppendLine($"       HumedadMinima = @HMin{s}, HumedadMaxima = @HMax{s}, ");
                 query.AppendLine($"       PHMinimo = @PMin{s}, PHMaximo = @PMax{s}, ");
                 query.AppendLine($"       ECMinima = @EMin{s}, ECMaxima = @EMax{s} ");
+                query.AppendLine($"       HorasLuz = @HorasLuz{s}, ");
+
                 query.AppendLine($"   WHERE EtapaCultivoID = @EtapaID{s};");
 
                 // Parámetros de la etapa
@@ -131,6 +135,9 @@ namespace DAL.Daos
                 parametros.Add(new SqlParameter($"@PMax{s}", etapa.PhMax));
                 parametros.Add(new SqlParameter($"@EMin{s}", etapa.EcMin));
                 parametros.Add(new SqlParameter($"@EMax{s}", etapa.EcMax));
+
+                parametros.Add(new SqlParameter($"@HorasLuz{s}", etapa.HorasLuz));
+
             }
 
             // 3. Confirmar transacción

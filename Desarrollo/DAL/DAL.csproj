@@ -69,6 +69,7 @@
     <Compile Include="Daos\EtapaCultivoDAO.cs" />
     <Compile Include="Daos\GestionUsuariosDAO.cs" />
     <Compile Include="Daos\IdiomaDAO.cs" />
+    <Compile Include="Daos\MedicionDAO.cs" />
     <Compile Include="Daos\PermisoDAO.cs" />
     <Compile Include="Daos\PlanCultivoDAO.cs" />
     <Compile Include="Daos\PlantaDAO.cs" />

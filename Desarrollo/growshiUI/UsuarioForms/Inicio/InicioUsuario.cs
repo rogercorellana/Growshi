@@ -209,17 +209,7 @@ namespace growshiUI.UsuarioForms
 
         
 
-        private void ProbandoESP32ToolStrip_Click(object sender, EventArgs e)
-        {
-
-
-            ResaltarBotonMenu((ToolStripMenuItem)sender);
-            this.panelInicio.Controls.Clear();
-            ProbandoESP32View probandoESP32ToolStrip = new ProbandoESP32View();
-            probandoESP32ToolStrip.Dock = DockStyle.Fill;
-            this.panelInicio.Controls.Add(probandoESP32ToolStrip);
-
-        }
+       
 
 
         private void planesDeCultivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -264,8 +254,19 @@ namespace growshiUI.UsuarioForms
 
             this.panelInicio.Controls.Add(editorView);
         }
+
+
+        private void configuracionDeSensorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResaltarBotonMenu((ToolStripMenuItem)sender);
+            this.panelInicio.Controls.Clear();
+            ConfiguracionSensorView configuracionSensorView = new ConfiguracionSensorView();
+            configuracionSensorView.Dock = DockStyle.Fill;
+            this.panelInicio.Controls.Add(configuracionSensorView);
+        }
+
         #endregion
 
-
+        
     }
 }

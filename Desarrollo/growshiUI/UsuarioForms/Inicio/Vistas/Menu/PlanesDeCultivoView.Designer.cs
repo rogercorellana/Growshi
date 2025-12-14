@@ -34,6 +34,7 @@
             this.tlpDerecho = new System.Windows.Forms.TableLayoutPanel();
             this.gridEtapas = new MetroFramework.Controls.MetroGrid();
             this.pnlDetalleFicha = new MetroFramework.Controls.MetroPanel();
+            this.lblInfoHorasLuz = new MetroFramework.Controls.MetroLabel();
             this.lblInfoPh = new MetroFramework.Controls.MetroLabel();
             this.lblInfoHum = new MetroFramework.Controls.MetroLabel();
             this.lblInfoTemp = new MetroFramework.Controls.MetroLabel();
@@ -305,6 +306,7 @@
             // 
             // pnlDetalleFicha
             // 
+            this.pnlDetalleFicha.Controls.Add(this.lblInfoHorasLuz);
             this.pnlDetalleFicha.Controls.Add(this.lblInfoPh);
             this.pnlDetalleFicha.Controls.Add(this.lblInfoHum);
             this.pnlDetalleFicha.Controls.Add(this.lblInfoTemp);
@@ -320,6 +322,15 @@
             this.pnlDetalleFicha.VerticalScrollbarBarColor = true;
             this.pnlDetalleFicha.VerticalScrollbarHighlightOnWheel = false;
             this.pnlDetalleFicha.VerticalScrollbarSize = 10;
+            // 
+            // lblInfoHorasLuz
+            // 
+            this.lblInfoHorasLuz.AutoSize = true;
+            this.lblInfoHorasLuz.Location = new System.Drawing.Point(10, 134);
+            this.lblInfoHorasLuz.Name = "lblInfoHorasLuz";
+            this.lblInfoHorasLuz.Size = new System.Drawing.Size(123, 19);
+            this.lblInfoHorasLuz.TabIndex = 6;
+            this.lblInfoHorasLuz.Text = "Horas Luz: -- Horas";
             // 
             // lblInfoPh
             // 
@@ -423,5 +434,7 @@
         private MetroFramework.Controls.MetroLabel lblInfoHum;
         private MetroFramework.Controls.MetroLabel lblInfoPh;
         #endregion
+
+        private MetroFramework.Controls.MetroLabel lblInfoHorasLuz;
     }
 }

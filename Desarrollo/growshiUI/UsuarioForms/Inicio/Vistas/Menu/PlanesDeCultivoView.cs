@@ -110,7 +110,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                                          "TempMin", "TempMax",
                                          "HumMin", "HumMax",
                                          "PhMin", "PhMax",
-                                         "EcMin", "EcMax" };
+                                         "EcMin", "EcMax",
+                                         "HorasLuz",};
 
             foreach (string col in columnasOcultar)
             {
@@ -143,6 +144,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             lblInfoTemp.Text = $"Temperatura: {etapa.TempMin}°C - {etapa.TempMax}°C";
             lblInfoHum.Text = $"Humedad: {etapa.HumMin}% - {etapa.HumMax}%";
             lblInfoPh.Text = $"pH Ideal: {etapa.PhMin} - {etapa.PhMax}";
+            lblInfoHorasLuz.Text = $"Horas Luz: {etapa.HorasLuz}";
 
             // Puedes agregar más labels para EC o Duración si quieres
         }
@@ -153,6 +155,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             lblInfoTemp.Text = "Temperatura: --";
             lblInfoHum.Text = "Humedad: --";
             lblInfoPh.Text = "pH: --";
+            lblInfoHorasLuz.Text = "Horas Luz: --";
         }
 
         // --- BOTONES ---

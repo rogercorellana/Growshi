@@ -73,6 +73,16 @@ namespace growshiUI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FondoHidroponia {
+            get {
+                object obj = ResourceManager.GetObject("FondoHidroponia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap growshi_Americano {
             get {
                 object obj = ResourceManager.GetObject("growshi_Americano", resourceCulture);
@@ -96,6 +106,16 @@ namespace growshiUI.Properties {
         internal static System.Drawing.Bitmap growshi_Multicultural {
             get {
                 object obj = ResourceManager.GetObject("growshi_Multicultural", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoPlantaViva {
+            get {
+                object obj = ResourceManager.GetObject("IconoPlantaViva", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

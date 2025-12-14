@@ -69,6 +69,7 @@
     <Compile Include="GestionUsuariosBLL.cs" />
     <Compile Include="IdiomaBLL.cs" />
     <Compile Include="InicioUsuarioBL.cs" />
+    <Compile Include="MedicionBLL.cs" />
     <Compile Include="PlanCultivoBLL.cs" />
     <Compile Include="PlantaBLL.cs" />
     <Compile Include="RolesYPermisosBLL.cs" />
@@ -102,5 +103,6 @@
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

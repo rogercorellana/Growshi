@@ -17,5 +17,7 @@
         public decimal PhMax { get; set; }
         public decimal EcMin { get; set; }
         public decimal EcMax { get; set; }
+
+        public decimal HorasLuz { get; set; }
     }
 }

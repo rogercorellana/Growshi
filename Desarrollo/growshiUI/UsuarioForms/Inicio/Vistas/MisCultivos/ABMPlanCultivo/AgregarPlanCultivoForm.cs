@@ -71,13 +71,14 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo
                 _idiomaBLL.Traducir("param_ph_min"),
                 _idiomaBLL.Traducir("param_ph_max"),
                 _idiomaBLL.Traducir("param_ec_min"),
-                _idiomaBLL.Traducir("param_ec_max")
+                _idiomaBLL.Traducir("param_ec_max"),
+                _idiomaBLL.Traducir("param_horasLuz")
             };
 
             // Definimos claves internas para poder recuperar los datos después
             // no traduzco, sino para logica interna
             string[] suffixes = {
-                "Duracion", "TempMin", "TempMax", "HumMin", "HumMax", "PhMin", "PhMax", "EcMin", "EcMax"
+                "Duracion", "TempMin", "TempMax", "HumMin", "HumMax", "PhMin", "PhMax", "EcMin", "EcMax", "HorasLuz"
             };
 
             int y = 60; 
@@ -193,6 +194,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo
 
             etapa.EcMin = decimal.Parse(panel.Controls[$"txt_{prefijo}_EcMin"].Text);
             etapa.EcMax = decimal.Parse(panel.Controls[$"txt_{prefijo}_EcMax"].Text);
+
+            etapa.HorasLuz = decimal.Parse(panel.Controls[$"txt_{prefijo}_HorasLuz"].Text);
 
             return etapa;
         }

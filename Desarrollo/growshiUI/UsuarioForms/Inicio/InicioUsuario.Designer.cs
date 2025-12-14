@@ -28,6 +28,7 @@
             this.ProbandoESP32ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.planesDeCultivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelInicio = new System.Windows.Forms.Panel();
+            this.configuracionDeSensorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripGlobal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +95,8 @@
             this.MenuStrip_idiomaMenuItem,
             this.MenuStrip_historialMenuItem,
             this.ProbandoESP32ToolStrip,
-            this.planesDeCultivoToolStripMenuItem});
+            this.planesDeCultivoToolStripMenuItem,
+            this.configuracionDeSensorToolStripMenuItem});
             this.menuStripGlobal.Location = new System.Drawing.Point(20, 60);
             this.menuStripGlobal.Name = "menuStripGlobal";
             this.menuStripGlobal.Padding = new System.Windows.Forms.Padding(0);
@@ -112,12 +114,6 @@
             this.MenuStrip_idiomaMenuItem.Text = "Idioma";
             this.MenuStrip_idiomaMenuItem.Click += new System.EventHandler(this.idiomaToolStripMenuItem_Click);
             // 
-            // ProbandoESP32ToolStrip
-            // 
-            this.ProbandoESP32ToolStrip.Name = "ProbandoESP32ToolStrip";
-            this.ProbandoESP32ToolStrip.Size = new System.Drawing.Size(138, 24);
-            this.ProbandoESP32ToolStrip.Text = "PROBANDO ESP32";
-            this.ProbandoESP32ToolStrip.Click += new System.EventHandler(this.ProbandoESP32ToolStrip_Click);
             // 
             // planesDeCultivoToolStripMenuItem
             // 
@@ -135,6 +131,13 @@
             this.panelInicio.Padding = new System.Windows.Forms.Padding(10);
             this.panelInicio.Size = new System.Drawing.Size(1260, 484);
             this.panelInicio.TabIndex = 5;
+            // 
+            // configuracionDeSensorToolStripMenuItem
+            // 
+            this.configuracionDeSensorToolStripMenuItem.Name = "configuracionDeSensorToolStripMenuItem";
+            this.configuracionDeSensorToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.configuracionDeSensorToolStripMenuItem.Text = "Configuracion de Sensor";
+            this.configuracionDeSensorToolStripMenuItem.Click += new System.EventHandler(this.configuracionDeSensorToolStripMenuItem_Click);
             // 
             // InicioUsuario
             // 
@@ -171,5 +174,6 @@
         private System.Windows.Forms.ToolStripMenuItem MenuStrip_idiomaMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProbandoESP32ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem planesDeCultivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuracionDeSensorToolStripMenuItem;
     }
 }

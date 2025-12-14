@@ -33,7 +33,6 @@
             this.lblFechaCosecha = new MetroFramework.Controls.MetroLabel();
             this.lblFechaSiembra = new MetroFramework.Controls.MetroLabel();
             this.lblPlanAsignado = new MetroFramework.Controls.MetroLabel();
-            this.lnkVerPlan = new MetroFramework.Controls.MetroLink();
             this.lblTituloInfo = new MetroFramework.Controls.MetroLabel();
             this.pnlEstadoActual = new MetroFramework.Controls.MetroPanel();
             this.lblProgresoDia = new MetroFramework.Controls.MetroLabel();
@@ -75,7 +74,6 @@
             this.pnlInfoGeneral.Controls.Add(this.lblFechaCosecha);
             this.pnlInfoGeneral.Controls.Add(this.lblFechaSiembra);
             this.pnlInfoGeneral.Controls.Add(this.lblPlanAsignado);
-            this.pnlInfoGeneral.Controls.Add(this.lnkVerPlan);
             this.pnlInfoGeneral.Controls.Add(this.lblTituloInfo);
             this.pnlInfoGeneral.HorizontalScrollbarBarColor = true;
             this.pnlInfoGeneral.HorizontalScrollbarHighlightOnWheel = false;
@@ -112,19 +110,9 @@
             this.lblPlanAsignado.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.lblPlanAsignado.Location = new System.Drawing.Point(15, 45);
             this.lblPlanAsignado.Name = "lblPlanAsignado";
-            this.lblPlanAsignado.Size = new System.Drawing.Size(100, 19);
+            this.lblPlanAsignado.Size = new System.Drawing.Size(166, 19);
             this.lblPlanAsignado.TabIndex = 4;
-            this.lblPlanAsignado.Text = "Plan: [Nombre]";
-            // 
-            // lnkVerPlan
-            // 
-            this.lnkVerPlan.Location = new System.Drawing.Point(220, 43);
-            this.lnkVerPlan.Name = "lnkVerPlan";
-            this.lnkVerPlan.Size = new System.Drawing.Size(110, 23);
-            this.lnkVerPlan.TabIndex = 3;
-            this.lnkVerPlan.Text = "Ver Detalles Plan";
-            this.lnkVerPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lnkVerPlan.UseSelectable = true;
+            this.lblPlanAsignado.Text = "Plan de Cultivo: [Nombre]";
             // 
             // lblTituloInfo
             // 
@@ -237,10 +225,10 @@
             this.lblLuminosidadVal.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblLuminosidadVal.Location = new System.Drawing.Point(520, 75);
             this.lblLuminosidadVal.Name = "lblLuminosidadVal";
-            this.lblLuminosidadVal.Size = new System.Drawing.Size(44, 25);
+            this.lblLuminosidadVal.Size = new System.Drawing.Size(42, 25);
             this.lblLuminosidadVal.Style = MetroFramework.MetroColorStyle.Yellow;
             this.lblLuminosidadVal.TabIndex = 8;
-            this.lblLuminosidadVal.Text = "OFF";
+            this.lblLuminosidadVal.Text = "--%";
             this.lblLuminosidadVal.UseStyleColors = true;
             // 
             // lblHumedadVal
@@ -250,10 +238,10 @@
             this.lblHumedadVal.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblHumedadVal.Location = new System.Drawing.Point(280, 75);
             this.lblHumedadVal.Name = "lblHumedadVal";
-            this.lblHumedadVal.Size = new System.Drawing.Size(48, 25);
+            this.lblHumedadVal.Size = new System.Drawing.Size(42, 25);
             this.lblHumedadVal.Style = MetroFramework.MetroColorStyle.Blue;
             this.lblHumedadVal.TabIndex = 7;
-            this.lblHumedadVal.Text = "60%";
+            this.lblHumedadVal.Text = "--%";
             this.lblHumedadVal.UseStyleColors = true;
             // 
             // lblTempVal
@@ -263,10 +251,10 @@
             this.lblTempVal.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.lblTempVal.Location = new System.Drawing.Point(40, 75);
             this.lblTempVal.Name = "lblTempVal";
-            this.lblTempVal.Size = new System.Drawing.Size(55, 25);
+            this.lblTempVal.Size = new System.Drawing.Size(49, 25);
             this.lblTempVal.Style = MetroFramework.MetroColorStyle.Red;
             this.lblTempVal.TabIndex = 6;
-            this.lblTempVal.Text = "24 °C";
+            this.lblTempVal.Text = "-- °C";
             this.lblTempVal.UseStyleColors = true;
             // 
             // lblLuminosidad
@@ -274,9 +262,9 @@
             this.lblLuminosidad.AutoSize = true;
             this.lblLuminosidad.Location = new System.Drawing.Point(520, 50);
             this.lblLuminosidad.Name = "lblLuminosidad";
-            this.lblLuminosidad.Size = new System.Drawing.Size(83, 19);
+            this.lblLuminosidad.Size = new System.Drawing.Size(28, 19);
             this.lblLuminosidad.TabIndex = 5;
-            this.lblLuminosidad.Text = "Luminosidad";
+            this.lblLuminosidad.Text = "Luz";
             // 
             // lblHumedad
             // 
@@ -368,7 +356,6 @@
         // Panel Info General
         private MetroFramework.Controls.MetroPanel pnlInfoGeneral;
         private MetroFramework.Controls.MetroLabel lblTituloInfo;
-        private MetroFramework.Controls.MetroLink lnkVerPlan;
         private MetroFramework.Controls.MetroLabel lblPlanAsignado;
         private MetroFramework.Controls.MetroLabel lblFechaSiembra;
         private MetroFramework.Controls.MetroLabel lblFechaCosecha;

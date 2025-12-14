@@ -90,5 +90,69 @@ namespace BLL
         {
             slotDao.EliminarPlantaDelSlot(slotId, idPlanta);
         }
+
+
+
+
+        // LÓGICA 1: Calcular fecha estimada
+        public DateTime CalcularFechaCosecha(Planta planta)
+        {
+            if (planta == null) return DateTime.Now;
+            double dias = planta.DiasTotalesPlan.GetValueOrDefault();
+            return planta.FechaInicio.AddDays(dias);
+        }
+
+        // LÓGICA 2: Calcular días transcurridos
+        public int CalcularDiasPasados(Planta planta)
+        {
+            if (planta == null) return 0;
+            TimeSpan diff = DateTime.Now - planta.FechaInicio;
+            int dias = diff.Days + 1; // +1 para contar el día de hoy
+            return dias < 0 ? 0 : dias;
+        }
+
+        // LÓGICA 3: Calcular porcentaje (0 a 100)
+        public int CalcularPorcentajeProgreso(Planta planta)
+        {
+            if (planta == null) return 0;
+            double total = planta.DiasTotalesPlan.GetValueOrDefault();
+            if (total <= 0) return 0;
+
+            int pasados = CalcularDiasPasados(planta);
+            int porcentaje = (int)((pasados * 100) / total);
+
+            return porcentaje > 100 ? 100 : porcentaje;
+        }
+
+        // LÓGICA 4: Determinar el texto de la etapa (LO QUE PEDISTE)
+        public string ObtenerEstadoEtapa(Planta planta)
+        {
+            if (planta == null) return "Sin Datos";
+
+            int porcentaje = CalcularPorcentajeProgreso(planta);
+            int diasPasados = CalcularDiasPasados(planta);
+            double diasTotales = planta.DiasTotalesPlan.GetValueOrDefault();
+
+            if (diasTotales <= 0) return "Etapa: Configuración Pendiente";
+
+            if (porcentaje >= 100)
+            {
+                return "Etapa: ¡Lista para Cosecha!";
+            }
+            else if (porcentaje < 10)
+            {
+                return "Etapa: Germinación / Inicial";
+            }
+            else if (porcentaje < 50)
+            {
+                return "Etapa: Crecimiento Vegetativo";
+            }
+            else
+            {
+                return "Etapa: Floración / Maduración";
+            }
+        }
+
+
     }
 }

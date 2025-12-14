@@ -37,6 +37,10 @@ namespace DAL.Mappers
             etapa.EcMin = row["ECMinima"] == DBNull.Value ? 0 : Convert.ToDecimal(row["ECMinima"]);
             etapa.EcMax = row["ECMaxima"] == DBNull.Value ? 0 : Convert.ToDecimal(row["ECMaxima"]);
 
+
+            etapa.HorasLuz = row["HorasLuz"] == DBNull.Value ? 0 : Convert.ToDecimal(row["HorasLuz"]);
+
+
             return etapa;
         }
     }

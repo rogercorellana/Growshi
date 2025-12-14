@@ -121,6 +121,9 @@
   <data name="Candado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Candado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FondoHidroponia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FondoHidroponia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="growshi_Americano" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\growshi_Americano.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -129,6 +132,9 @@
   </data>
   <data name="growshi_Multicultural" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\growshi_Multicultural.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconoPlantaViva" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconoPlantaViva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LogoGrowshiEsp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>LogoGrowshiEsp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
