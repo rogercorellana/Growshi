@@ -12,6 +12,7 @@ using BLL;
 using BE;
 using Services;
 using MetroFramework.Controls;
+using BE.DataMining;
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
 {
@@ -21,13 +22,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
         private MedicionBLL _medicionBLL;
         private PlantaBLL _plantaBLL;
 
-        // Clase interna para el dropdown de filtros
-        private class ItemFiltro
-        {
-            public string Clave { get; set; }
-            public string Texto { get; set; }
-            public override string ToString() => Texto;
-        }
+        
 
         public MisReportesView()
         {

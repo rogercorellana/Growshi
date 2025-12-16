@@ -1,13 +1,11 @@
 ﻿using BE;
 using BLL;
+using Interfaces.IBE;
+using MetroFramework;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
@@ -15,6 +13,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
     public partial class HistorialView : UserControl
     {
         private BitacoraBLL _bitacoraBLL;
+        private List<Bitacora> _listaCompleta;
 
         public HistorialView()
         {
@@ -22,65 +21,127 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             _bitacoraBLL = new BitacoraBLL();
 
             this.Load += HistorialView_Load;
-
             this.Resize += HistorialView_Resize;
+
+            // Eventos
+            txtBuscar.TextChanged += Filtros_Changed;
+            cmbNivel.SelectedIndexChanged += Filtros_Changed;
+            dtpDesde.ValueChanged += Filtros_Changed;
+            dtpHasta.ValueChanged += Filtros_Changed;
+            btnLimpiar.Click += BtnLimpiar_Click;
         }
 
         private void HistorialView_Load(object sender, EventArgs e)
         {
-            CargarHistorial();
+            CargarCombos();
+            ResetearFiltros();
+            CargarDatos();
         }
 
-        public void CargarHistorial()
+        private void CargarCombos()
         {
-            panelLista.Controls.Clear();
+            cmbNivel.Items.Clear();
+            cmbNivel.Items.Add("Todos");
+            foreach (var item in Enum.GetValues(typeof(NivelCriticidad)))
+            {
+                cmbNivel.Items.Add(item);
+            }
+            cmbNivel.SelectedIndex = 0;
+        }
 
+        private void ResetearFiltros()
+        {
+            txtBuscar.Text = "";
+            cmbNivel.SelectedIndex = 0;
+            dtpDesde.Value = DateTime.Now.AddDays(-30);
+            dtpHasta.Value = DateTime.Now;
+        }
+
+        public void CargarDatos()
+        {
             try
             {
-                List<Bitacora> listaLogs = _bitacoraBLL.Listar();
-
-                if (listaLogs.Count == 0)
-                {
-                    Label lblVacio = new Label();
-                    lblVacio.Text = "No se encontraron registros en la bitácora.";
-                    lblVacio.AutoSize = true;
-                    lblVacio.ForeColor = System.Drawing.Color.Gray;
-                    lblVacio.Font = new System.Drawing.Font("Segoe UI", 10);
-                    panelLista.Controls.Add(lblVacio);
-                    return;
-                }
-
-                panelLista.SuspendLayout();
-
-                foreach (var log in listaLogs)
-                {
-                    BitacoraItemView tarjeta = new BitacoraItemView(log);
-
-                    tarjeta.Width = panelLista.ClientSize.Width - 25;
-                    tarjeta.Margin = new Padding(0, 0, 0, 5); 
-
-                    panelLista.Controls.Add(tarjeta);
-                }
-
-                panelLista.ResumeLayout();
+                _listaCompleta = _bitacoraBLL.Listar();
+                AplicarFiltros();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar el historial: " + ex.Message);
+                MetroMessageBox.Show(this, "Error: " + ex.Message, "Error de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Filtros_Changed(object sender, EventArgs e)
+        {
+            if (_listaCompleta != null) AplicarFiltros();
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            ResetearFiltros();
+        }
+
+        private void AplicarFiltros()
+        {
+            var consulta = _listaCompleta.AsEnumerable();
+
+            if (!string.IsNullOrWhiteSpace(txtBuscar.Text))
+            {
+                string txt = txtBuscar.Text.ToLower();
+                consulta = consulta.Where(x =>
+                    (x.Mensaje != null && x.Mensaje.ToLower().Contains(txt)) ||
+                    (x.Modulo != null && x.Modulo.ToLower().Contains(txt)));
+            }
+
+            if (cmbNivel.SelectedIndex > 0)
+            {
+                var nivelSel = (NivelCriticidad)cmbNivel.SelectedItem;
+                consulta = consulta.Where(x => x.Nivel == nivelSel);
+            }
+
+            DateTime desde = dtpDesde.Value.Date;
+            DateTime hasta = dtpHasta.Value.Date.AddDays(1).AddTicks(-1);
+            consulta = consulta.Where(x => x.FechaHora >= desde && x.FechaHora <= hasta);
+
+            var resultado = consulta.OrderByDescending(x => x.FechaHora).ToList();
+            DibujarLista(resultado);
+        }
+
+        private void DibujarLista(List<Bitacora> lista)
+        {
+            flowLista.SuspendLayout();
+            flowLista.Controls.Clear();
+
+            var listaVisible = lista.Take(100).ToList(); // Paginación virtual
+
+            if (listaVisible.Count == 0)
+            {
+                // Mostrar un Label Metro de "Sin resultados"
+                MetroFramework.Controls.MetroLabel lblEmpty = new MetroFramework.Controls.MetroLabel();
+                lblEmpty.Text = "No se encontraron eventos con los filtros actuales.";
+                lblEmpty.AutoSize = true;
+                lblEmpty.UseCustomBackColor = true;
+                flowLista.Controls.Add(lblEmpty);
+            }
+
+            foreach (var item in listaVisible)
+            {
+                var card = new BitacoraItemView(item);
+                // Ajustamos el ancho restando el scrollbar (aprox 25px)
+                card.Width = flowLista.ClientSize.Width - 25;
+                flowLista.Controls.Add(card);
+            }
+
+            flowLista.ResumeLayout();
         }
 
         private void HistorialView_Resize(object sender, EventArgs e)
         {
-            if (panelLista.Controls.Count > 0)
+            flowLista.SuspendLayout();
+            foreach (Control c in flowLista.Controls)
             {
-                panelLista.SuspendLayout();
-                foreach (Control c in panelLista.Controls)
-                {
-                    c.Width = panelLista.ClientSize.Width - 25;
-                }
-                panelLista.ResumeLayout();
+                c.Width = flowLista.ClientSize.Width - 25;
             }
+            flowLista.ResumeLayout();
         }
     }
 }
