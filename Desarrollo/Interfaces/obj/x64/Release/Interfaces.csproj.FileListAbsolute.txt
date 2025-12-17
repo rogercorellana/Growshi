@@ -1,0 +1,15 @@
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\Interfaces.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\Interfaces.pdb
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\BouncyCastle.Cryptography.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\itextsharp.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\MetroFramework.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\MetroFramework.Fonts.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\Newtonsoft.Json.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\BouncyCastle.Cryptography.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\itextsharp.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\bin\x64\Release\Newtonsoft.Json.xml
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\x64\Release\Interfaces.csproj.AssemblyReference.cache
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\x64\Release\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\x64\Release\Interfaces.csproj.Up2Date
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\x64\Release\Interfaces.dll
+C:\Users\Roger\Desktop\GROWSHI FINALN FINAL\Growshi\Desarrollo\Interfaces\obj\x64\Release\Interfaces.pdb
