@@ -113,7 +113,7 @@
             this.textBoxUsuario.MaxLength = 32767;
             this.textBoxUsuario.Name = "textBoxUsuario";
             this.textBoxUsuario.PasswordChar = '\0';
-            this.textBoxUsuario.PromptText = "Usuario";
+            this.textBoxUsuario.WaterMark = "Usuario";
             this.textBoxUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.textBoxUsuario.SelectedText = "";
             this.textBoxUsuario.SelectionLength = 0;
@@ -148,7 +148,7 @@
             this.textBoxContraseña.MaxLength = 32767;
             this.textBoxContraseña.Name = "textBoxContraseña";
             this.textBoxContraseña.PasswordChar = '●';
-            this.textBoxContraseña.PromptText = "Contraseña";
+            this.textBoxContraseña.WaterMark = "Contraseña";
             this.textBoxContraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.textBoxContraseña.SelectedText = "";
             this.textBoxContraseña.SelectionLength = 0;

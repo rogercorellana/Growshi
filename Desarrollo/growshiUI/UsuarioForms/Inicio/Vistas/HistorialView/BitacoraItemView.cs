@@ -1,9 +1,8 @@
-﻿using BE;
-using Interfaces.IBE;
-using MetroFramework; // Importante
-using System;
-using System.Drawing;
+﻿using System.Globalization;
 using System.Windows.Forms;
+using BE;
+using Interfaces.IBE;
+using MetroFramework;
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
 {
@@ -22,15 +21,19 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
         private void CargarDatos(Bitacora log)
         {
             lblHora.Text = log.FechaHora.ToString("HH:mm");
-            lblFecha.Text = log.FechaHora.ToString("dd MMM").ToUpper();
+
+            // Usamos CultureInfo.CurrentCulture para que "OCT" salga en el idioma de la app si está configurado
+            lblFecha.Text = log.FechaHora.ToString("dd MMM", CultureInfo.CurrentCulture).ToUpper();
+
             lblMensaje.Text = log.Mensaje;
             lblModulo.Text = log.Modulo?.ToUpper() ?? "SISTEMA";
 
-            // Colores estilo Metro
+            // Colores por Criticidad
             switch (log.Nivel)
             {
                 case NivelCriticidad.Error:
-                    pnlIndicador.BackColor = MetroColors.Red; // Usando paleta Metro
+                case NivelCriticidad.Critico: // Agregamos Crítico al rojo también
+                    pnlIndicador.BackColor = MetroColors.Red;
                     lblModulo.ForeColor = MetroColors.Red;
                     break;
                 case NivelCriticidad.Advertencia:

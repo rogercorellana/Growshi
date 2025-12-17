@@ -1,40 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing; // Para UI (Fuentes, Colores)
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
-using iTextSharp.text; // Para PDF
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using BLL;
 using BE;
 using Services;
 using MetroFramework.Controls;
+using MetroFramework;
 using BE.DataMining;
+using Interfaces.IBE;
+using Interfaces.IServices;
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
 {
     public partial class MisReportesView : UserControl
     {
+        #region Propiedades y Servicios
+
         private IdiomaBLL _idiomaBLL;
         private MedicionBLL _medicionBLL;
         private PlantaBLL _plantaBLL;
 
-        
+        // Servicios extra (Bitácora/Sesión)
+        private BitacoraBLL _bitacoraBLL;
+        private IBitacoraService _bitacoraService;
+        private ISessionService<Usuario> _sessionService;
+        private Usuario _usuarioActual;
+
+        // Referencias para traducir títulos de tarjetas (nuevas variables solo para títulos)
+        private MetroLabel lblTituloCardTemp;
+        private MetroLabel lblTituloCardHum;
+        private MetroLabel lblTituloCardLuz;
+
+        // NOTA: NO redeclaramos lblTotalAlertasTemp, etc., porque ya están en el Designer/Partial
+
+        #endregion
+
+        #region Constructor e Inicialización
 
         public MisReportesView()
         {
             InitializeComponent();
 
-            // Evitar errores en tiempo de diseño
             if (this.DesignMode || System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
             {
                 return;
             }
 
-            // Dibujar línea gris en el header
             this.panelHeader.Paint += (s, e) => {
                 using (Pen p = new Pen(Color.LightGray))
                 {
@@ -42,23 +60,26 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                 }
             };
 
-            // Inicializar BLL (Solo en ejecución)
+            // Inicializar BLLs y Servicios
             _idiomaBLL = new IdiomaBLL();
             _medicionBLL = new MedicionBLL();
             _plantaBLL = new PlantaBLL();
+            _bitacoraBLL = new BitacoraBLL();
+            _bitacoraService = BitacoraService.GetInstance();
+            _sessionService = SessionService<Usuario>.GetInstance();
+            _usuarioActual = _sessionService.UsuarioLogueado;
 
             ConfigurarGraficos();
             CargarComboFiltros();
-            CrearTarjetasEnPanel();
+            CrearTarjetasEnPanel(); // Aquí inicializamos los labels existentes
 
-            // Suscripción de eventos
+            // Suscripciones
             this.Load += MisReportesView_Load;
-
-            // IMPORTANTE: Usamos el nombre correcto del evento aquí
             this.btnExportarPdf.Click += BtnExportarPdf_Click;
-
             this.cmbFiltroTiempo.SelectedIndexChanged += (s, e) => CargarDatos();
             this.cmbPlantas.SelectedIndexChanged += (s, e) => CargarDatos();
+
+            // Idioma
             IdiomaService.GetInstance().IdiomaCambiado += TraducirInterfaz;
         }
 
@@ -68,76 +89,95 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             CargarComboPlantas();
         }
 
-        #region Creación de UI (Tarjetas)
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            IdiomaService.GetInstance().IdiomaCambiado -= TraducirInterfaz;
+            base.OnHandleDestroyed(e);
+        }
+
+        #endregion
+
+        #region Gestión de Idioma
+
+        private void TraducirInterfaz()
+        {
+            if (this.InvokeRequired) { this.Invoke(new Action(TraducirInterfaz)); return; }
+
+            // Controles fijos (Designer)
+            lblTitulo.Text = _idiomaBLL.Traducir("Reportes_Lbl_Titulo");
+            btnExportarPdf.Text = _idiomaBLL.Traducir("Reportes_Btn_ExportarPDF");
+            lblPlanta.Text = _idiomaBLL.Traducir("Reportes_Lbl_Planta");
+
+            // Estado inicial del label de info
+            if (lblAnalisisInfo.Text.Contains("...")) // Solo si está en estado de espera
+                lblAnalisisInfo.Text = _idiomaBLL.Traducir("Reportes_Lbl_Esperando");
+
+            // Títulos de tarjetas dinámicos
+            if (lblTituloCardTemp != null) lblTituloCardTemp.Text = _idiomaBLL.Traducir("Reportes_Card_Temp").ToUpper();
+            if (lblTituloCardHum != null) lblTituloCardHum.Text = _idiomaBLL.Traducir("Reportes_Card_Hum").ToUpper();
+            if (lblTituloCardLuz != null) lblTituloCardLuz.Text = _idiomaBLL.Traducir("Reportes_Card_Luz").ToUpper();
+
+            CargarComboFiltros();
+            ConfigurarColumnasGrid();
+        }
+
+        #endregion
+
+        #region UI: Tarjetas y Gráficos
 
         private void CrearTarjetasEnPanel()
         {
             this.tblResumen.Controls.Clear();
 
-            // Tarjetas más compactas y alineadas
-            System.Windows.Forms.Panel card1 = CrearCard("Alertas Temp.", Color.FromArgb(231, 76, 60), out lblTotalAlertasTemp);
-            System.Windows.Forms.Panel card2 = CrearCard("Alertas Hum.", Color.FromArgb(52, 152, 219), out lblTotalAlertasHum);
-            System.Windows.Forms.Panel card3 = CrearCard("Alertas Luz", Color.FromArgb(241, 196, 15), out lblTotalAlertasLuz);
+            // Aquí instanciamos y asignamos a las variables que YA EXISTEN en la clase parcial
+            System.Windows.Forms.Panel card1 = CrearCard("Alertas Temp.", Color.FromArgb(231, 76, 60), out lblTotalAlertasTemp, out lblTituloCardTemp);
+            System.Windows.Forms.Panel card2 = CrearCard("Alertas Hum.", Color.FromArgb(52, 152, 219), out lblTotalAlertasHum, out lblTituloCardHum);
+            System.Windows.Forms.Panel card3 = CrearCard("Alertas Luz", Color.FromArgb(241, 196, 15), out lblTotalAlertasLuz, out lblTituloCardLuz);
 
-            // Agregar a la tabla (Columna, Fila)
             this.tblResumen.Controls.Add(card1, 0, 0);
             this.tblResumen.Controls.Add(card2, 1, 0);
             this.tblResumen.Controls.Add(card3, 2, 0);
         }
 
-        private System.Windows.Forms.Panel CrearCard(string titulo, Color color, out Label lblVal)
+        private System.Windows.Forms.Panel CrearCard(string titulo, Color color, out Label lblValorRef, out MetroLabel lblTituloRef)
         {
             System.Windows.Forms.Panel p = new System.Windows.Forms.Panel();
             p.BackColor = Color.White;
             p.BorderStyle = BorderStyle.None;
-            p.Margin = new Padding(10, 0, 10, 0); // Margen lateral para efecto "flotante"
+            p.Margin = new Padding(10, 0, 10, 0);
             p.Dock = DockStyle.Fill;
 
-            // Barra lateral de color
             System.Windows.Forms.Panel bar = new System.Windows.Forms.Panel();
             bar.Dock = DockStyle.Left;
             bar.Width = 6;
             bar.BackColor = color;
             p.Controls.Add(bar);
 
-            // Título (Arriba)
-            MetroLabel lblT = new MetroLabel();
-            lblT.Text = titulo.ToUpper();
-            lblT.FontSize = MetroFramework.MetroLabelSize.Small;
-            lblT.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            lblT.ForeColor = Color.Gray;
-            lblT.UseCustomBackColor = true;
-            lblT.UseCustomForeColor = true;
-            lblT.Dock = DockStyle.Top;
-            lblT.Padding = new Padding(10, 10, 0, 0);
-            lblT.Height = 30;
-            p.Controls.Add(lblT);
+            lblTituloRef = new MetroLabel();
+            lblTituloRef.Text = titulo.ToUpper();
+            lblTituloRef.FontSize = MetroFramework.MetroLabelSize.Small;
+            lblTituloRef.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            lblTituloRef.ForeColor = Color.Gray;
+            lblTituloRef.UseCustomBackColor = true;
+            lblTituloRef.UseCustomForeColor = true;
+            lblTituloRef.Dock = DockStyle.Top;
+            lblTituloRef.Padding = new Padding(10, 10, 0, 0);
+            lblTituloRef.Height = 30;
+            p.Controls.Add(lblTituloRef);
 
-            // Valor (Centro)
-            lblVal = new Label();
-            lblVal.Text = "0";
-            lblVal.Font = new System.Drawing.Font("Segoe UI", 26F, FontStyle.Bold);
-            lblVal.ForeColor = Color.FromArgb(64, 64, 64);
-            lblVal.AutoSize = false;
-            lblVal.Dock = DockStyle.Fill;
-            lblVal.TextAlign = ContentAlignment.MiddleCenter;
+            // Instanciamos el label y lo asignamos al parámetro de salida
+            lblValorRef = new Label();
+            lblValorRef.Text = "0";
+            lblValorRef.Font = new System.Drawing.Font("Segoe UI", 26F, FontStyle.Bold);
+            lblValorRef.ForeColor = Color.FromArgb(64, 64, 64);
+            lblValorRef.AutoSize = false;
+            lblValorRef.Dock = DockStyle.Fill;
+            lblValorRef.TextAlign = ContentAlignment.MiddleCenter;
 
-            p.Controls.Add(lblVal);
-            lblVal.BringToFront();
+            p.Controls.Add(lblValorRef);
+            lblValorRef.BringToFront();
 
             return p;
-        }
-
-        #endregion
-
-        #region Configuración y Carga de Datos
-
-        private void TraducirInterfaz()
-        {
-            lblTitulo.Text = _idiomaBLL.Traducir("lbl_titulo_reporte") ?? "Reporte de Cultivo";
-            btnExportarPdf.Text = _idiomaBLL.Traducir("btn_exportar_pdf");
-            lblPlanta.Text = _idiomaBLL.Traducir("lbl_seleccionar_planta");
-            CargarComboFiltros();
         }
 
         private void ConfigurarGraficos()
@@ -165,13 +205,19 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             area.AxisX.LabelStyle.Format = "HH:mm";
         }
 
+        #endregion
+
+        #region Carga de Datos
+
+        private class ItemFiltro { public string Clave { get; set; } public string Texto { get; set; } override public string ToString() { return Texto; } }
+
         private void CargarComboFiltros()
         {
             int savedIdx = cmbFiltroTiempo.SelectedIndex;
             cmbFiltroTiempo.Items.Clear();
-            cmbFiltroTiempo.Items.Add(new ItemFiltro { Clave = "semana", Texto = "Última Semana" });
-            cmbFiltroTiempo.Items.Add(new ItemFiltro { Clave = "mes", Texto = "Último Mes" });
-            cmbFiltroTiempo.Items.Add(new ItemFiltro { Clave = "todo", Texto = "Todo el Historial" });
+            cmbFiltroTiempo.Items.Add(new ItemFiltro { Clave = "semana", Texto = _idiomaBLL.Traducir("Reportes_Filtro_Semana") });
+            cmbFiltroTiempo.Items.Add(new ItemFiltro { Clave = "mes", Texto = _idiomaBLL.Traducir("Reportes_Filtro_Mes") });
+            cmbFiltroTiempo.Items.Add(new ItemFiltro { Clave = "todo", Texto = _idiomaBLL.Traducir("Reportes_Filtro_Todo") });
             cmbFiltroTiempo.SelectedIndex = (savedIdx >= 0) ? savedIdx : 0;
         }
 
@@ -199,7 +245,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             var serieFunc = chartTemperatura.Series.FindByName("FuncionMatematica");
             if (serieFunc != null) chartTemperatura.Series.Remove(serieFunc);
 
-            lblAnalisisInfo.Text = "Esperando análisis...";
+            lblAnalisisInfo.Text = _idiomaBLL.Traducir("Reportes_Msg_Esperando");
             dgvMediciones.DataSource = null;
 
             var planta = (Planta)cmbPlantas.SelectedItem;
@@ -223,9 +269,10 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                     }
                     else
                     {
-                        lblAnalisisInfo.Text = "Datos insuficientes para análisis matemático (mínimo 3).";
+                        lblAnalisisInfo.Text = _idiomaBLL.Traducir("Reportes_Msg_Insuficiente");
                     }
 
+                    // AQUI USAMOS LAS VARIABLES QUE INSTANCIAMOS EN CrearTarjetasEnPanel
                     lblTotalAlertasTemp.Text = datos.Count(x => x.AlertaTemperatura).ToString();
                     lblTotalAlertasTemp.ForeColor = datos.Any(x => x.AlertaTemperatura) ? Color.Red : Color.Gray;
 
@@ -241,7 +288,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al procesar datos: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
@@ -253,15 +300,18 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
 
             if (dgvMediciones.Columns["FechaRegistro"] != null)
             {
-                dgvMediciones.Columns["FechaRegistro"].HeaderText = "Fecha";
+                dgvMediciones.Columns["FechaRegistro"].HeaderText = _idiomaBLL.Traducir("Reportes_Col_Fecha");
                 dgvMediciones.Columns["FechaRegistro"].DefaultCellStyle.Format = "dd/MM HH:mm";
                 dgvMediciones.Columns["FechaRegistro"].Width = 120;
             }
+            if (dgvMediciones.Columns["Temperatura"] != null) dgvMediciones.Columns["Temperatura"].HeaderText = _idiomaBLL.Traducir("Reportes_Col_Temp");
+            if (dgvMediciones.Columns["Humedad"] != null) dgvMediciones.Columns["Humedad"].HeaderText = _idiomaBLL.Traducir("Reportes_Col_Hum");
+            if (dgvMediciones.Columns["Luminosidad"] != null) dgvMediciones.Columns["Luminosidad"].HeaderText = _idiomaBLL.Traducir("Reportes_Col_Luz");
         }
 
         #endregion
 
-        #region Módulo de Ingeniería Matemática 🧠📐
+        #region Módulo de Ingeniería Matemática
 
         private class PolinomioCuadratico
         {
@@ -313,7 +363,11 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                         chartTemperatura.Series[0].Points[i].MarkerColor = Color.Purple;
                     }
                 }
-                lblAnalisisInfo.Text = $"ANÁLISIS MATEMÁTICO:\n• Función: {funcion}\n• Dominio: [0h ; {domMax:F1}h] | Imagen: [{imgMin}°C ; {imgMax}°C]\n• Puntos Críticos: {picos} Máx, {valles} Mín | Tipo: {(funcion.A < 0 ? "Cóncava" : "Convexa")}";
+
+                string tipo = funcion.A < 0 ? _idiomaBLL.Traducir("Reportes_Analisis_Concava") : _idiomaBLL.Traducir("Reportes_Analisis_Convexa");
+                string tituloAnalisis = _idiomaBLL.Traducir("Reportes_Analisis_Titulo");
+
+                lblAnalisisInfo.Text = $"{tituloAnalisis}:\n• f(t): {funcion}\n• Dom: [0h ; {domMax:F1}h] | Img: [{imgMin}°C ; {imgMax}°C]\n• Puntos: {picos} Max, {valles} Min | Tipo: {tipo}";
             }
             catch { lblAnalisisInfo.Text = "Error matemático."; }
         }
@@ -350,19 +404,18 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
 
         #region Exportación PDF
 
-        // Este es el método correcto conectado en el Constructor
         private void BtnExportarPdf_Click(object sender, EventArgs e)
         {
             if (chartTemperatura.Series.Count == 0 || chartTemperatura.Series[0].Points.Count == 0)
             {
-                MessageBox.Show("No hay datos para exportar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(_idiomaBLL.Traducir("Reportes_Msg_NoDatos"), _idiomaBLL.Traducir("Global_Titulo_Atencion"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Archivo PDF (*.pdf)|*.pdf";
             string nombre = cmbPlantas.Text.Replace(" ", "_");
-            sfd.FileName = $"Reporte_Ingenieria_{nombre}_{DateTime.Now:yyyyMMdd}.pdf";
+            sfd.FileName = $"Reporte_{nombre}_{DateTime.Now:yyyyMMdd}.pdf";
 
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -370,9 +423,13 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                 try
                 {
                     GenerarReportePDF(sfd.FileName);
+
+                    // --- BITÁCORA ---
+                    RegistrarBitacora($"Reporte PDF exportado: {Path.GetFileName(sfd.FileName)}", NivelCriticidad.Info);
+
                     this.Cursor = Cursors.Default;
 
-                    DialogResult res = MessageBox.Show("Reporte generado correctamente.\n¿Desea abrirlo?", "Éxito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult res = MessageBox.Show(_idiomaBLL.Traducir("Reportes_Msg_Exito"), _idiomaBLL.Traducir("Global_Titulo_Exito"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (res == DialogResult.Yes) AbrirReporte(sfd.FileName);
                 }
                 catch (Exception ex)
@@ -381,6 +438,20 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                     MessageBox.Show("Error al exportar: " + ex.Message);
                 }
             }
+        }
+
+        private void RegistrarBitacora(string mensaje, NivelCriticidad nivel)
+        {
+            var evento = _bitacoraService.CrearEvento(nivel, mensaje, "Reportes", _usuarioActual.IdUsuario);
+            var bitacora = new Bitacora
+            {
+                FechaHora = evento.FechaHora,
+                Nivel = evento.Nivel,
+                Mensaje = evento.Mensaje,
+                Modulo = evento.Modulo,
+                UsuarioID = evento.UsuarioID
+            };
+            _bitacoraBLL.Registrar(bitacora);
         }
 
         private void AbrirReporte(string ruta)
@@ -398,8 +469,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             var fontTitulo = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
             var fontMono = FontFactory.GetFont(FontFactory.COURIER, 9, BaseColor.DARK_GRAY);
 
-            doc.Add(new Paragraph("Reporte de Ingeniería - Growshi", fontTitulo));
-            doc.Add(new Paragraph($"Planta: {cmbPlantas.Text} | Fecha: {DateTime.Now}", FontFactory.GetFont(FontFactory.HELVETICA, 10)));
+            doc.Add(new Paragraph(_idiomaBLL.Traducir("Reportes_PDF_Titulo"), fontTitulo));
+            doc.Add(new Paragraph($"{_idiomaBLL.Traducir("Reportes_Lbl_Planta")}: {cmbPlantas.Text} | Fecha: {DateTime.Now}", FontFactory.GetFont(FontFactory.HELVETICA, 10)));
             doc.Add(new Chunk("\n"));
 
             PdfPTable tableAnalisis = new PdfPTable(1);
@@ -413,9 +484,9 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
 
             doc.Add(new Chunk("\n"));
 
-            AgregarGraficoAlPdf(doc, chartTemperatura, "Temperatura & Análisis de Función");
+            AgregarGraficoAlPdf(doc, chartTemperatura, _idiomaBLL.Traducir("Reportes_Pdf_ChartTemp"));
             doc.Add(new Chunk("\n"));
-            AgregarGraficoAlPdf(doc, chartHumedad, "Humedad Relativa");
+            AgregarGraficoAlPdf(doc, chartHumedad, _idiomaBLL.Traducir("Reportes_Pdf_ChartHum"));
 
             doc.Add(new Chunk("\n"));
             AgregarTablaAlPdf(doc);

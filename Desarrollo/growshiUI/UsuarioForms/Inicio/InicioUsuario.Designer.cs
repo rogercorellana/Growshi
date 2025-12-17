@@ -25,10 +25,9 @@
             this.MenuStrip_miCuentaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.MenuStrip_idiomaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ProbandoESP32ToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.planesDeCultivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelInicio = new System.Windows.Forms.Panel();
             this.configuracionDeSensorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelInicio = new System.Windows.Forms.Panel();
             this.menuStripGlobal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,8 +77,9 @@
             this.MenuStrip_miCuentaMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.MenuStrip_miCuentaMenuItem.Name = "MenuStrip_miCuentaMenuItem";
             this.MenuStrip_miCuentaMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.MenuStrip_miCuentaMenuItem.Size = new System.Drawing.Size(97, 24);
-            this.MenuStrip_miCuentaMenuItem.Text = "Mi Cuenta";
+            this.MenuStrip_miCuentaMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.MenuStrip_miCuentaMenuItem.Text = "Soporte";
+            this.MenuStrip_miCuentaMenuItem.Click += new System.EventHandler(this.MenuStrip_miCuentaMenuItem_Click);
             // 
             // menuStripGlobal
             // 
@@ -94,7 +94,6 @@
             this.MenuStrip_miCuentaMenuItem,
             this.MenuStrip_idiomaMenuItem,
             this.MenuStrip_historialMenuItem,
-            this.ProbandoESP32ToolStrip,
             this.planesDeCultivoToolStripMenuItem,
             this.configuracionDeSensorToolStripMenuItem});
             this.menuStripGlobal.Location = new System.Drawing.Point(20, 60);
@@ -114,13 +113,19 @@
             this.MenuStrip_idiomaMenuItem.Text = "Idioma";
             this.MenuStrip_idiomaMenuItem.Click += new System.EventHandler(this.idiomaToolStripMenuItem_Click);
             // 
-            // 
             // planesDeCultivoToolStripMenuItem
             // 
             this.planesDeCultivoToolStripMenuItem.Name = "planesDeCultivoToolStripMenuItem";
             this.planesDeCultivoToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
             this.planesDeCultivoToolStripMenuItem.Text = "Planes de Cultivo";
             this.planesDeCultivoToolStripMenuItem.Click += new System.EventHandler(this.planesDeCultivoToolStripMenuItem_Click);
+            // 
+            // configuracionDeSensorToolStripMenuItem
+            // 
+            this.configuracionDeSensorToolStripMenuItem.Name = "configuracionDeSensorToolStripMenuItem";
+            this.configuracionDeSensorToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.configuracionDeSensorToolStripMenuItem.Text = "Configuracion de Sensor";
+            this.configuracionDeSensorToolStripMenuItem.Click += new System.EventHandler(this.configuracionDeSensorToolStripMenuItem_Click);
             // 
             // panelInicio
             // 
@@ -131,13 +136,6 @@
             this.panelInicio.Padding = new System.Windows.Forms.Padding(10);
             this.panelInicio.Size = new System.Drawing.Size(1260, 484);
             this.panelInicio.TabIndex = 5;
-            // 
-            // configuracionDeSensorToolStripMenuItem
-            // 
-            this.configuracionDeSensorToolStripMenuItem.Name = "configuracionDeSensorToolStripMenuItem";
-            this.configuracionDeSensorToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
-            this.configuracionDeSensorToolStripMenuItem.Text = "Configuracion de Sensor";
-            this.configuracionDeSensorToolStripMenuItem.Click += new System.EventHandler(this.configuracionDeSensorToolStripMenuItem_Click);
             // 
             // InicioUsuario
             // 
@@ -172,7 +170,6 @@
         private System.Windows.Forms.MenuStrip menuStripGlobal;
         private System.Windows.Forms.Panel panelInicio;
         private System.Windows.Forms.ToolStripMenuItem MenuStrip_idiomaMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ProbandoESP32ToolStrip;
         private System.Windows.Forms.ToolStripMenuItem planesDeCultivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuracionDeSensorToolStripMenuItem;
     }

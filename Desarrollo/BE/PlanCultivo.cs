@@ -10,6 +10,8 @@ namespace BE
         public DateTime FechaInicio { get; set; }
         public string Estado { get; set; }
         public List<EtapaCultivo> Etapas { get; set; } = new List<EtapaCultivo>();
+
+        public decimal HorasLuz { get; set; }
         public override string ToString()
         {
             return NombrePlan;

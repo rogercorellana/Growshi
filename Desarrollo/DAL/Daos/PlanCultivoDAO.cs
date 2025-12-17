@@ -107,10 +107,11 @@ namespace DAL.Daos
             parametros.Add(new SqlParameter("@PlanID", plan.PlanCultivoID));
 
             // 2. Actualizar cada Etapa (Detalle)
+            // 2. Actualizar cada Etapa (Detalle)
             for (int i = 0; i < plan.Etapas.Count; i++)
             {
                 var etapa = plan.Etapas[i];
-                string s = i.ToString(); // Sufijo para que los parámetros sean únicos (@Nom0, @Nom1, etc.)
+                string s = i.ToString(); // Sufijo para que los parámetros sean únicos
 
                 query.AppendLine($"   UPDATE EtapaCultivo SET ");
                 query.AppendLine($"       Nombre = @Nom{s}, ");
@@ -118,13 +119,13 @@ namespace DAL.Daos
                 query.AppendLine($"       TempMinima = @TMin{s}, TempMaxima = @TMax{s}, ");
                 query.AppendLine($"       HumedadMinima = @HMin{s}, HumedadMaxima = @HMax{s}, ");
                 query.AppendLine($"       PHMinimo = @PMin{s}, PHMaximo = @PMax{s}, ");
-                query.AppendLine($"       ECMinima = @EMin{s}, ECMaxima = @EMax{s} ");
-                query.AppendLine($"       HorasLuz = @HorasLuz{s}, ");
+                query.AppendLine($"       ECMinima = @EMin{s}, ECMaxima = @EMax{s}, "); // Coma necesaria aquí
+                query.AppendLine($"       HorasLuz = @HorasLuz{s} "); // <--- SIN COMA AQUÍ (es el último)
 
                 query.AppendLine($"   WHERE EtapaCultivoID = @EtapaID{s};");
 
                 // Parámetros de la etapa
-                parametros.Add(new SqlParameter($"@EtapaID{s}", etapa.EtapaCultivoID)); // ¡CRUCIAL! El ID para el WHERE
+                parametros.Add(new SqlParameter($"@EtapaID{s}", etapa.EtapaCultivoID));
                 parametros.Add(new SqlParameter($"@Nom{s}", etapa.NombreEtapa));
                 parametros.Add(new SqlParameter($"@Dur{s}", etapa.Duracion));
                 parametros.Add(new SqlParameter($"@TMin{s}", etapa.TempMin));
@@ -136,8 +137,8 @@ namespace DAL.Daos
                 parametros.Add(new SqlParameter($"@EMin{s}", etapa.EcMin));
                 parametros.Add(new SqlParameter($"@EMax{s}", etapa.EcMax));
 
+                // El parámetro nuevo
                 parametros.Add(new SqlParameter($"@HorasLuz{s}", etapa.HorasLuz));
-
             }
 
             // 3. Confirmar transacción

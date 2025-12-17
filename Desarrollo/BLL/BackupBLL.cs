@@ -5,22 +5,18 @@ using Interfaces.IServices;
 using Services;
 using System;
 using System.Collections.Generic;
-using System.IO; 
+using System.IO;
 
 namespace BLL
 {
-    
     public class BackupBLL
     {
         private readonly BackupService _backupService;
         private readonly DatabaseAdminDAO _databaseAdminDAO;
         private readonly BackupDAO _backupDAO;
 
-        //ruta pc
-        private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\";
-        //ruta laptop
-        //private readonly string _rutaDeBackups = @"C:\Program Files\Microsoft SQL Server\MSSQL16.SQLEXPRESS\MSSQL\Backup\";
-
+        // YA NO HAY RUTAS HARDCODEADAS AQUÍ
+        // La ruta se obtiene dinámicamente en tiempo de ejecución.
 
         public BackupBLL()
         {
@@ -32,93 +28,115 @@ namespace BLL
         #region "C" Crear COPIA DE SEGURIDAD
         public void CrearCopiaDeSeguridad(string nota, IUsuarioLogueado usuario)
         {
+            // 1. Obtener la ruta dinámica desde SQL Server
+            string directorioBase = _databaseAdminDAO.ObtenerRutaBackupPorDefecto();
 
+            // Asegurarnos que el directorio existe (por si acaso el fallback es una ruta local)
+            if (!Directory.Exists(directorioBase))
+            {
+                // Si es una ruta de red o del sistema, CreateDirectory podría fallar por permisos,
+                // pero si es la ruta por defecto de SQL, ya debería existir.
+                try { Directory.CreateDirectory(directorioBase); } catch { /* Ignorar si no tenemos permiso, confiamos en SQL */ }
+            }
 
+            // 2. Preparar el objeto
             Backup nuevoBackup = new Backup
             {
-                //Id se crea automaticamente en la DB
-                //NombreArchivo mas abajo
-
                 FechaHora = DateTime.Now,
-                RutaArchivo = _rutaDeBackups,
                 Nota = nota,
                 Usuario = usuario,
+                RutaArchivo = directorioBase // Guardamos DÓNDE se hizo
             };
-
 
             _backupService.Validar(nuevoBackup);
 
-            nuevoBackup.NombreArchivo = _backupService.GenerarNombreDeArchivo();
-            string rutaCompleta = _rutaDeBackups + nuevoBackup.NombreArchivo;
+            // 3. Generar nombre y ruta completa
+            nuevoBackup.NombreArchivo = _backupService.GenerarNombreDeArchivo(); // Ej: "Growshi_20251025.bak"
 
-            _databaseAdminDAO.RealizarBackup(rutaCompleta);
+            // Path.Combine es más seguro que concatenar strings con "+"
+            string rutaCompleta = Path.Combine(directorioBase, nuevoBackup.NombreArchivo);
 
+            // 4. Realizar el Backup Físico (Si falla aquí, explota y no guarda en BD)
+            try
+            {
+                _databaseAdminDAO.RealizarBackup(rutaCompleta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error crítico del motor SQL al generar el archivo en '{directorioBase}': {ex.Message}", ex);
+            }
 
+            // 5. Guardar registro en la Base de Datos (Solo si el físico funcionó)
             _backupDAO.Crear(nuevoBackup);
 
-
-
-
-
-            //BITACORA - espacio para guardar evento 
-
+            // BITACORA - (Aquí iría tu llamada al servicio de bitácora)
         }
-
         #endregion
 
-        #region "R" Leer Existencias en la base de datos 
+        #region "R" Leer Historial
         public List<IBackup> ObtenerHistorial()
         {
             return new List<IBackup>(_backupDAO.ObtenerTodos());
-
-
-
-            //BITACORA - espacio para guardar evento 
         }
         #endregion
 
-        #region "D" Borrar COPIA DE SEGURIDAD
-
+        #region "D" Eliminar COPIA DE SEGURIDAD
         public void EliminarCopiaDeSeguridad(IBackup backup)
         {
-            if (backup == null) throw new ArgumentNullException("No se ha seleccionado ningún backup para eliminar.");
+            if (backup == null) throw new ArgumentNullException(nameof(backup), "No se ha seleccionado ningún backup para eliminar.");
 
-            string rutaCompleta = backup.RutaArchivo + backup.NombreArchivo;
-
+            // 1. Eliminar registro de la base de datos primero (Integridad referencial)
             _backupDAO.Eliminar(backup.Id);
 
-            if (File.Exists(rutaCompleta))
+            // 2. Intentar eliminar el archivo físico
+            try
             {
-                File.Delete(rutaCompleta);
+                string rutaCompleta = Path.Combine(backup.RutaArchivo, backup.NombreArchivo);
+
+                if (File.Exists(rutaCompleta))
+                {
+                    File.Delete(rutaCompleta);
+                }
+            }
+            catch (Exception)
+            {
+                // Si no se puede borrar el archivo físico (permisos, bloqueado, o ya no existe),
+                // no detenemos el proceso porque ya lo borramos de la base de datos (lógico).
+                // Podrías loguear este error silencioso en la bitácora técnica.
             }
 
-            //BITACORA - espacio para guardar evento 
-
-
+            // BITACORA - (Aquí iría tu llamada al servicio de bitácora)
         }
         #endregion
-
 
         #region Restaurar COPIA DE SEGURIDAD
         public void RestaurarCopiaDeSeguridad(IBackup backup)
         {
-            if (backup == null) throw new ArgumentNullException("No se ha seleccionado ningún backup para restaurar.");
+            if (backup == null) throw new ArgumentNullException(nameof(backup), "No se ha seleccionado ningún backup para restaurar.");
 
-            string rutaCompleta = backup.RutaArchivo + backup.NombreArchivo;
+            // Armar ruta segura
+            string rutaCompleta = Path.Combine(backup.RutaArchivo, backup.NombreArchivo);
 
+            // Verificación básica de existencia (Solo funciona si App y DB están en el mismo servidor/PC)
             if (!File.Exists(rutaCompleta))
             {
-                _backupDAO.Eliminar(backup.Id);
-
-                throw new FileNotFoundException("El archivo de backup no se encontró en la ruta especificada.", rutaCompleta);
-
-
-
+                // Opcional: Marcar en BD que el archivo se perdió, o borrarlo de la lista.
+                // _backupDAO.Eliminar(backup.Id); 
+                throw new FileNotFoundException($"El archivo físico no se encuentra en: {rutaCompleta}. Es posible que haya sido movido o eliminado manualmente.");
             }
 
-            _databaseAdminDAO.RealizarRestore(rutaCompleta);
-        }
+            // Ejecutar Restore
+            try
+            {
+                _databaseAdminDAO.RealizarRestore(rutaCompleta);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error crítico al restaurar la base de datos: {ex.Message}", ex);
+            }
 
+            // BITACORA - (Aquí iría tu llamada al servicio de bitácora)
+        }
         #endregion
     }
 }

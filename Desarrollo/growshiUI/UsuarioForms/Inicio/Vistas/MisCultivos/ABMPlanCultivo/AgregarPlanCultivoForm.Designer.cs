@@ -240,7 +240,6 @@
             this.Name = "AgregarPlanCultivoForm";
             this.Text = "Agregar Nuevo Plan";
             this.Load += new System.EventHandler(this.AgregarPlanCultivoForm_Load);
-            this.Resize += new System.EventHandler(this.AgregarPlanCultivoForm_Resize);
             this.panelMain.ResumeLayout(false);
             this.tableLayoutPanelEtapas.ResumeLayout(false);
             this.panelGerminacion.ResumeLayout(false);

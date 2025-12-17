@@ -1,21 +1,21 @@
-﻿using BLL;
-using BLL.InicioUsuarioBLL;
-using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_GestionUsuarios;
-using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_RolesYPermisos;
-using Services; 
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using BLL;
+using BLL.InicioUsuarioBLL;
+using Services;
 using MetroFramework;
+using MetroFramework.Controls;
+using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_GestionUsuarios;
+using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_RolesYPermisos;
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 {
     public partial class GestionUsuariosView : UserControl
     {
         private GestionUsuariosBLL gestionUsuariosBLL = new GestionUsuariosBLL();
-
         private IdiomaBLL _idiomaBLL = new IdiomaBLL();
 
         public GestionUsuariosView()
@@ -31,13 +31,16 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             RedondearControl(btnAgregar, 15);
             RedondearControl(btnEditar, 15);
             RedondearControl(btnDesactivar, 15);
+            RedondearControl(btnActivar, 15);
             RedondearControl(btnPermisos, 15);
 
+            // Carga inicial de traducciones
             TraducirInterfaz();
 
+            // Suscripción al evento de cambio de idioma
             IdiomaService.GetInstance().IdiomaCambiado += () => {
                 TraducirInterfaz();
-                ListarUsuarios(); 
+                ListarUsuarios(); // Recargamos para aplicar headers traducidos
             };
 
             ListarUsuarios();
@@ -45,20 +48,21 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
         private void TraducirInterfaz()
         {
-            btnAgregar.Text = _idiomaBLL.Traducir("btn_agregar_usuario");
-            btnEditar.Text = _idiomaBLL.Traducir("btn_editar_usuario");
-            btnDesactivar.Text = _idiomaBLL.Traducir("btn_desactivar_usuario");
-            btnPermisos.Text = _idiomaBLL.Traducir("btn_permisos_usuario");
+            // Títulos y Textos Fijos
+            lblTitulo.Text = _idiomaBLL.Traducir("GestionUsuarios_Lbl_Titulo");
+            txtBuscar.PromptText = _idiomaBLL.Traducir("GestionUsuarios_Txt_Buscar");
 
-            lblTitulo.Text = _idiomaBLL.Traducir("lbl_titulo_GestionUsuarios");
-
-            txtBuscar.WaterMark = _idiomaBLL.Traducir("watermark_txtBuscar_GestionUsuario");
-
-            // Para la suscripcion
-            // btnSuscripcion.Text = _idiomaBLL.Traducir("btn_suscripcion");
+            // Botones
+            btnAgregar.Text = _idiomaBLL.Traducir("GestionUsuarios_Btn_Agregar");
+            btnEditar.Text = _idiomaBLL.Traducir("GestionUsuarios_Btn_Editar");
+            btnDesactivar.Text = _idiomaBLL.Traducir("GestionUsuarios_Btn_Desactivar");
+            btnActivar.Text = _idiomaBLL.Traducir("GestionUsuarios_Btn_Activar");
+            btnPermisos.Text = _idiomaBLL.Traducir("GestionUsuarios_Btn_Permisos");
         }
 
-        private void DarVidaAlGrid(MetroFramework.Controls.MetroGrid grid)
+        // --- MÉTODOS DE GRILLA Y ESTILOS (Sin cambios lógicos) ---
+
+        private void DarVidaAlGrid(MetroGrid grid)
         {
             grid.ReadOnly = true;
             grid.AllowUserToAddRows = false;
@@ -107,6 +111,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
         private void CargarVista(UserControl vista)
         {
+            // Mantenemos tu método original aunque tenga limitaciones con Forms, 
+            // ya que pediste solo enfocarnos en el idioma.
             this.Controls.Clear();
             vista.Dock = DockStyle.Fill;
             this.Controls.Add(vista);
@@ -119,17 +125,19 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             {
                 metroGridUsuarios.DataSource = dataTable;
 
+                // Aplicar traducciones a los encabezados
                 if (metroGridUsuarios.Columns.Contains("UsuarioNombre"))
-                    metroGridUsuarios.Columns["UsuarioNombre"].HeaderText = _idiomaBLL.Traducir("col_header_usuario");
+                    metroGridUsuarios.Columns["UsuarioNombre"].HeaderText = _idiomaBLL.Traducir("GestionUsuarios_Col_Usuario");
 
                 if (metroGridUsuarios.Columns.Contains("UsuarioIntentos"))
-                    metroGridUsuarios.Columns["UsuarioIntentos"].HeaderText = _idiomaBLL.Traducir("col_header_intentos");
+                    metroGridUsuarios.Columns["UsuarioIntentos"].HeaderText = _idiomaBLL.Traducir("GestionUsuarios_Col_Intentos");
 
                 if (metroGridUsuarios.Columns.Contains("EstaActivo"))
-                    metroGridUsuarios.Columns["EstaActivo"].HeaderText = _idiomaBLL.Traducir("col_header_activo");
+                    metroGridUsuarios.Columns["EstaActivo"].HeaderText = _idiomaBLL.Traducir("GestionUsuarios_Col_Activo");
 
+                // Ocultar columnas
                 if (metroGridUsuarios.Columns.Contains("UsuarioContraseña"))
-                    metroGridUsuarios.Columns["UsuarioContraseña"].Visible = false; 
+                    metroGridUsuarios.Columns["UsuarioContraseña"].Visible = false;
 
                 if (metroGridUsuarios.Columns.Contains("UsuarioClaveRecuperacion"))
                     metroGridUsuarios.Columns["UsuarioClaveRecuperacion"].Visible = false;
@@ -144,6 +152,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
         private void buttonAgregarUsuario_Click(object sender, EventArgs e)
         {
+            // Usamos tu método original
             CargarVista(new AgregarUsuario());
         }
 
@@ -151,8 +160,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (metroGridUsuarios.CurrentRow == null) return;
 
-            string mensaje = _idiomaBLL.Traducir("msg_confirmar_desactivar");
-            string titulo = _idiomaBLL.Traducir("titulo_confirmar");
+            string mensaje = _idiomaBLL.Traducir("GestionUsuarios_Msg_ConfirmarDesactivar");
+            string titulo = _idiomaBLL.Traducir("Global_Titulo_Confirmar");
 
             DialogResult resultado = MetroMessageBox.Show(this, mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -163,15 +172,15 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                     int id = Convert.ToInt32(metroGridUsuarios.CurrentRow.Cells["UsuarioID"].Value);
                     gestionUsuariosBLL.DesactivarUsuario(id);
 
-                    string msgExito = _idiomaBLL.Traducir("msg_usuario_desactivado");
-                    string tituloExito = _idiomaBLL.Traducir("titulo_exito");
+                    string msgExito = _idiomaBLL.Traducir("GestionUsuarios_Msg_DesactivadoExito");
+                    string tituloExito = _idiomaBLL.Traducir("Global_Titulo_Exito");
 
                     MetroMessageBox.Show(this, msgExito, tituloExito, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ListarUsuarios();
                 }
                 catch (Exception ex)
                 {
-                    string tituloError = _idiomaBLL.Traducir("titulo_error");
+                    string tituloError = _idiomaBLL.Traducir("Global_Titulo_Error");
                     MetroMessageBox.Show(this, ex.Message, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -181,8 +190,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (metroGridUsuarios.CurrentRow == null) return;
 
-            string mensaje = _idiomaBLL.Traducir("msg_confirmar_activar");
-            string titulo = _idiomaBLL.Traducir("titulo_confirmar");
+            string mensaje = _idiomaBLL.Traducir("GestionUsuarios_Msg_ConfirmarActivar");
+            string titulo = _idiomaBLL.Traducir("Global_Titulo_Confirmar");
 
             DialogResult resultado = MetroMessageBox.Show(this, mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -193,15 +202,15 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                     int id = Convert.ToInt32(metroGridUsuarios.CurrentRow.Cells["UsuarioID"].Value);
                     gestionUsuariosBLL.ActivarUsuario(id);
 
-                    string msgExito = _idiomaBLL.Traducir("msg_usuario_activado");
-                    string tituloExito = _idiomaBLL.Traducir("titulo_exito");
+                    string msgExito = _idiomaBLL.Traducir("GestionUsuarios_Msg_ActivadoExito");
+                    string tituloExito = _idiomaBLL.Traducir("Global_Titulo_Exito");
 
                     MetroMessageBox.Show(this, msgExito, tituloExito, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ListarUsuarios();
                 }
                 catch (Exception ex)
                 {
-                    string tituloError = _idiomaBLL.Traducir("titulo_error");
+                    string tituloError = _idiomaBLL.Traducir("Global_Titulo_Error");
                     MetroMessageBox.Show(this, ex.Message, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -211,8 +220,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (metroGridUsuarios.CurrentRow == null)
             {
-                string msg = _idiomaBLL.Traducir("msg_seleccione_usuario");
-                string titulo = _idiomaBLL.Traducir("titulo_atencion");
+                string msg = _idiomaBLL.Traducir("GestionUsuarios_Msg_SeleccionarEditar");
+                string titulo = _idiomaBLL.Traducir("Global_Titulo_Atencion");
                 MetroMessageBox.Show(this, msg, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -230,7 +239,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             }
             catch (Exception ex)
             {
-                string tituloError = _idiomaBLL.Traducir("titulo_error");
+                string tituloError = _idiomaBLL.Traducir("Global_Titulo_Error");
                 MetroMessageBox.Show(this, "Error: " + ex.Message, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -238,13 +247,9 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         private void buttonModificarPermisosUsuario_Click(object sender, EventArgs e)
         {
             CargarVista(new ModificarPermisosPorUsuario());
-        }
 
-        private void btnSuscripcion_Click(object sender, EventArgs e)
-        {
-            string msg = _idiomaBLL.Traducir("msg_modulo_desarrollo");
-            string titulo = _idiomaBLL.Traducir("titulo_informacion");
-            MetroMessageBox.Show(this, msg, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
         }
 
         private void metroGridUsuarios_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

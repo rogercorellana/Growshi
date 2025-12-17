@@ -1,8 +1,13 @@
-﻿using BLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using BE;
+using BLL;
+using Interfaces.IBE;
+using Interfaces.IServices;
+using Services;
+using MetroFramework;
+using MetroFramework.Controls;
 using growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo;
 using growshiUI.Reportes;
 
@@ -10,25 +15,103 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
 {
     public partial class PlanesDeCultivoView : UserControl
     {
-        PlanCultivoBLL planCultivoBLL = new PlanCultivoBLL();
-        EtapaCultivoBLL etapaCultivoBLL = new EtapaCultivoBLL();
+        #region Propiedades y Servicios
+
+        private readonly PlanCultivoBLL _planCultivoBLL;
+        private readonly EtapaCultivoBLL _etapaCultivoBLL;
+        private readonly IdiomaBLL _idiomaBLL;
+        private readonly BitacoraBLL _bitacoraBLL;
+        private readonly ISessionService<Usuario> _sessionService;
+        private readonly IBitacoraService _bitacoraService;
+        private readonly Usuario _usuarioActual;
+
+        // Evento para comunicar con el formulario principal si es necesario
         public event Action<PlanCultivo> OnSolicitarEdicion;
+
+        // Variables para textos dinámicos (Ficha técnica)
+        private string _fmtTemperatura = "Temperatura: {0}°C - {1}°C";
+        private string _fmtHumedad = "Humedad: {0}% - {1}%";
+        private string _fmtPh = "pH: {0} - {1}";
+        private string _fmtLuz = "Horas Luz: {0}";
+        private string _txtSeleccioneEtapa = "Seleccione una etapa...";
+
+        #endregion
+
+        #region Constructor e Inicialización
+
         public PlanesDeCultivoView()
         {
             InitializeComponent();
+
+            // 1. Instancias
+            _planCultivoBLL = new PlanCultivoBLL();
+            _etapaCultivoBLL = new EtapaCultivoBLL();
+            _idiomaBLL = new IdiomaBLL();
+            _bitacoraBLL = new BitacoraBLL();
+            _sessionService = SessionService<Usuario>.GetInstance();
+            _bitacoraService = BitacoraService.GetInstance();
+
+            _usuarioActual = _sessionService.UsuarioLogueado;
+
+            // 2. Suscripciones
             this.Load += PlanesDeCultivoView_Load;
+            IdiomaService.GetInstance().IdiomaCambiado += ActualizarTraducciones;
         }
 
         private void PlanesDeCultivoView_Load(object sender, EventArgs e)
         {
             ConfigurarGrillas();
-
-            // Suscribimos eventos
-            gridPlanes.SelectionChanged += GridPlanes_SelectionChanged;
-            gridEtapas.SelectionChanged += GridEtapas_SelectionChanged; // Nuevo evento
-
+            ActualizarTraducciones();
             CargarPlanes();
+
+            // Eventos de grilla
+            gridPlanes.SelectionChanged += GridPlanes_SelectionChanged;
+            gridEtapas.SelectionChanged += GridEtapas_SelectionChanged;
         }
+
+        #endregion
+
+        #region Gestión de Idioma
+
+        public void ActualizarTraducciones()
+        {
+            // Títulos
+            lblTituloPlanes.Text = _idiomaBLL.Traducir("Planes_Lbl_TituloPrincipal");
+            lblTituloDetalle.Text = _idiomaBLL.Traducir("Planes_Lbl_TituloDetalle");
+            lblTituloFicha.Text = _idiomaBLL.Traducir("Planes_Lbl_TituloFicha");
+
+            // Botones
+            btnNuevo.Text = _idiomaBLL.Traducir("Planes_Btn_Nuevo");
+            btnEditar.Text = _idiomaBLL.Traducir("Planes_Btn_Editar");
+            btnExportar.Text = _idiomaBLL.Traducir("Planes_Btn_Exportar");
+            btnEliminar.Text = _idiomaBLL.Traducir("Planes_Btn_Eliminar");
+
+            // Columnas Grilla (Solo si existen)
+            if (gridPlanes.Columns.Contains("colPlanNombre"))
+                gridPlanes.Columns["colPlanNombre"].HeaderText = _idiomaBLL.Traducir("Planes_Col_NombrePlan");
+
+            // Textos Dinámicos (Formatos)
+            _fmtTemperatura = _idiomaBLL.Traducir("Planes_Fmt_Temperatura");
+            _fmtHumedad = _idiomaBLL.Traducir("Planes_Fmt_Humedad");
+            _fmtPh = _idiomaBLL.Traducir("Planes_Fmt_Ph");
+            _fmtLuz = _idiomaBLL.Traducir("Planes_Fmt_Luz");
+            _txtSeleccioneEtapa = _idiomaBLL.Traducir("Planes_Txt_SeleccioneEtapa");
+
+            // Refrescar ficha si hay algo seleccionado
+            if (gridEtapas.SelectedRows.Count > 0)
+            {
+                var etapa = (EtapaCultivo)gridEtapas.SelectedRows[0].DataBoundItem;
+                MostrarFichaTecnica(etapa);
+            }
+            else
+            {
+                LimpiarDetalleFicha();
+            }
+        }
+
+        #endregion
+
+        #region Lógica de Grillas y Carga
 
         private void ConfigurarGrillas()
         {
@@ -37,7 +120,10 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                 gridPlanes.AutoGenerateColumns = false;
                 gridPlanes.MultiSelect = false;
                 gridPlanes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                colPlanNombre.DataPropertyName = "NombrePlan";
+
+                // Aseguramos que la columna tenga el DataPropertyName correcto
+                if (gridPlanes.Columns.Contains("colPlanNombre"))
+                    gridPlanes.Columns["colPlanNombre"].DataPropertyName = "NombrePlan";
             }
 
             if (gridEtapas != null)
@@ -52,18 +138,21 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
         {
             try
             {
-                var lista = planCultivoBLL.Listar();
+                var lista = _planCultivoBLL.Listar();
                 gridPlanes.DataSource = null;
                 gridPlanes.DataSource = lista;
                 gridPlanes.ClearSelection();
+
+                // Limpiamos la parte derecha
+                gridEtapas.DataSource = null;
+                LimpiarDetalleFicha();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar planes: " + ex.Message);
+                MostrarError(ex.Message);
             }
         }
 
-        // --- IZQUIERDA: SELECCION DE PLAN ---
         private void GridPlanes_SelectionChanged(object sender, EventArgs e)
         {
             if (gridPlanes.SelectedRows.Count > 0)
@@ -85,47 +174,56 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
         {
             try
             {
-                List<EtapaCultivo> listaEtapas = etapaCultivoBLL.ListarPorPlan(plan.PlanCultivoID);
+                List<EtapaCultivo> listaEtapas = _etapaCultivoBLL.ListarPorPlan(plan.PlanCultivoID);
 
                 gridEtapas.DataSource = null;
                 gridEtapas.DataSource = listaEtapas;
 
-                // Ocultar columnas técnicas feas, dejamos solo lo básico para la grilla
                 OcultarColumnasTecnicas();
 
-                // Si hay etapas, seleccionamos la primera por defecto
                 if (gridEtapas.Rows.Count > 0)
                     gridEtapas.Rows[0].Selected = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar etapas: " + ex.Message);
+                MostrarError(ex.Message);
             }
         }
 
         private void OcultarColumnasTecnicas()
         {
-            // Ocultamos IDs y datos que mostraremos abajo
-            string[] columnasOcultar = { "EtapaCultivoID", "PlanCultivoID",
-                                         "TempMin", "TempMax",
-                                         "HumMin", "HumMax",
-                                         "PhMin", "PhMax",
-                                         "EcMin", "EcMax",
-                                         "HorasLuz",};
+            // 1. Ocultar columnas que no queremos ver
+            string[] columnasOcultar = {
+        "EtapaCultivoID", "PlanCultivoID",
+        "TempMin", "TempMax",
+        "HumMin", "HumMax",
+        "PhMin", "PhMax",
+        "EcMin", "EcMax",
+        "HorasLuz"
+    };
 
             foreach (string col in columnasOcultar)
             {
                 if (gridEtapas.Columns[col] != null)
                     gridEtapas.Columns[col].Visible = false;
             }
+
+            // 2. Aplicar TRADUCCIONES a los encabezados visibles
+            // Asegúrate de que los nombres "DataPropertyName" coincidan con tu BE
+            if (gridEtapas.Columns["NombreEtapa"] != null)
+                gridEtapas.Columns["NombreEtapa"].HeaderText = _idiomaBLL.Traducir("Planes_Col_Etapa");
+
+            if (gridEtapas.Columns["Duracion"] != null)
+                gridEtapas.Columns["Duracion"].HeaderText = _idiomaBLL.Traducir("Planes_Col_Duracion");
+
+            if (gridEtapas.Columns["Orden"] != null)
+                gridEtapas.Columns["Orden"].HeaderText = _idiomaBLL.Traducir("Planes_Col_Orden");
         }
 
-        // --- DERECHA ARRIBA: SELECCION DE ETAPA ---
         private void GridEtapas_SelectionChanged(object sender, EventArgs e)
         {
             if (gridEtapas.SelectedRows.Count > 0)
             {
-                // Obtenemos la etapa seleccionada
                 EtapaCultivo etapa = (EtapaCultivo)gridEtapas.SelectedRows[0].DataBoundItem;
                 MostrarFichaTecnica(etapa);
             }
@@ -135,41 +233,43 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             }
         }
 
-        // --- DERECHA ABAJO: MOSTRAR DATOS ---
         private void MostrarFichaTecnica(EtapaCultivo etapa)
         {
-            // Actualizamos los labels del panel inferior
-            lblTituloFicha.Text = $"Ficha Técnica: {etapa.NombreEtapa}";
+            lblTituloFicha.Text = $"{_idiomaBLL.Traducir("Planes_Lbl_TituloFicha")}: {etapa.NombreEtapa}";
 
-            lblInfoTemp.Text = $"Temperatura: {etapa.TempMin}°C - {etapa.TempMax}°C";
-            lblInfoHum.Text = $"Humedad: {etapa.HumMin}% - {etapa.HumMax}%";
-            lblInfoPh.Text = $"pH Ideal: {etapa.PhMin} - {etapa.PhMax}";
-            lblInfoHorasLuz.Text = $"Horas Luz: {etapa.HorasLuz}";
-
-            // Puedes agregar más labels para EC o Duración si quieres
+            // Usamos las variables de formato cargadas por el idioma
+            lblInfoTemp.Text = string.Format(_fmtTemperatura, etapa.TempMin, etapa.TempMax);
+            lblInfoHum.Text = string.Format(_fmtHumedad, etapa.HumMin, etapa.HumMax);
+            lblInfoPh.Text = string.Format(_fmtPh, etapa.PhMin, etapa.PhMax);
+            lblInfoHorasLuz.Text = string.Format(_fmtLuz, etapa.HorasLuz);
         }
 
         private void LimpiarDetalleFicha()
         {
-            lblTituloFicha.Text = "Seleccione una etapa...";
-            lblInfoTemp.Text = "Temperatura: --";
+            lblTituloFicha.Text = _txtSeleccioneEtapa;
+            lblInfoTemp.Text = "Temperature: --";
             lblInfoHum.Text = "Humedad: --";
             lblInfoPh.Text = "pH: --";
-            lblInfoHorasLuz.Text = "Horas Luz: --";
+            lblInfoHorasLuz.Text = "Light: --";
         }
 
-        // --- BOTONES ---
+        #endregion
+
+        #region Acciones (Botones)
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             AgregarPlanCultivoForm planCultivoForm = new AgregarPlanCultivoForm();
+            this.Hide(); // Opcional: Ocultar padre
 
-            this.Hide();
-            planCultivoForm.ShowDialog();
+            if (planCultivoForm.ShowDialog() == DialogResult.OK)
+            {
+                // Bitácora
+                RegistrarBitacora("Nuevo Plan creado", NivelCriticidad.Info);
+            }
 
-
-            CargarPlanes(); 
+            CargarPlanes();
             this.Show();
-
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -177,13 +277,14 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             if (gridPlanes.SelectedRows.Count > 0)
             {
                 var plan = (PlanCultivo)gridPlanes.SelectedRows[0].DataBoundItem;
-
-                // EN LUGAR DE MESSAGEBOX, DISPARAMOS EL EVENTO
                 OnSolicitarEdicion?.Invoke(plan);
             }
             else
             {
-                MessageBox.Show("Selecciona un plan para editar.");
+                MetroMessageBox.Show(this,
+                    _idiomaBLL.Traducir("Planes_Msg_SeleccionarEditar"),
+                    _idiomaBLL.Traducir("Global_Titulo_Atencion"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -193,9 +294,9 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
             {
                 var plan = (PlanCultivo)gridPlanes.SelectedRows[0].DataBoundItem;
 
-                var confirmacion = MetroFramework.MetroMessageBox.Show(this,
-                    $"¿Estás seguro de que deseas eliminar el plan '{plan.NombrePlan}'?",
-                    "Confirmar Eliminación",
+                var confirmacion = MetroMessageBox.Show(this,
+                    string.Format(_idiomaBLL.Traducir("Planes_Msg_ConfirmarEliminar"), plan.NombrePlan),
+                    _idiomaBLL.Traducir("Global_Titulo_Atencion"),
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
@@ -203,71 +304,54 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                 {
                     try
                     {
-                        planCultivoBLL.EliminarPlan(plan.PlanCultivoID, plan.NombrePlan);
+                        _planCultivoBLL.EliminarPlan(plan.PlanCultivoID, plan.NombrePlan);
 
-                        MetroFramework.MetroMessageBox.Show(this,
-                            "Plan eliminado correctamente.",
-                            "Éxito",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        RegistrarBitacora($"Plan eliminado: {plan.NombrePlan}", NivelCriticidad.Advertencia);
+
+                        MetroMessageBox.Show(this,
+                            _idiomaBLL.Traducir("Planes_Msg_EliminadoExito"),
+                            _idiomaBLL.Traducir("Global_Titulo_Exito"),
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         CargarPlanes();
-                        gridEtapas.DataSource = null;
-                        LimpiarDetalleFicha();
                     }
                     catch (Exception ex)
                     {
-                        // --- AQUI ESTÁ LA TRADUCCIÓN DEL ERROR ---
-
-                        // Verificamos si el mensaje de error contiene el nombre de la restricción que vimos en la foto
                         if (ex.Message.Contains("FK_Planta_PlanCultivo"))
                         {
-                            MetroFramework.MetroMessageBox.Show(this,
-                                "No se puede eliminar este Plan de Cultivo porque tiene plantas activas asociadas.\n\n" +
-                                "Por favor, elimina primero las plantas que usan este plan.",
-                                "No se puede eliminar",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning); // Usamos icono de advertencia, no de error
+                            MetroMessageBox.Show(this,
+                                _idiomaBLL.Traducir("Planes_Err_PlanEnUso"),
+                                _idiomaBLL.Traducir("Global_Titulo_Error"),
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         else
                         {
-                            // Si es cualquier otro error, lo mostramos normal
-                            MetroFramework.MetroMessageBox.Show(this,
-                                "Ocurrió un error inesperado: " + ex.Message,
-                                "Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                            MostrarError(ex.Message);
                         }
                     }
                 }
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this,
-                    "Selecciona un plan para eliminar.",
-                    "Atención",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this,
+                    _idiomaBLL.Traducir("Planes_Msg_SeleccionarEliminar"),
+                    _idiomaBLL.Traducir("Global_Titulo_Atencion"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-
-        // Asegúrate de agregar el using de tu carpeta nueva
-
-        // --- BOTÓN EXPORTAR ---
         private void btnExportar_Click(object sender, EventArgs e)
         {
             if (gridPlanes.SelectedRows.Count > 0)
             {
                 var plan = (PlanCultivo)gridPlanes.SelectedRows[0].DataBoundItem;
-                var etapas = etapaCultivoBLL.ListarPorPlan(plan.PlanCultivoID);
+                var etapas = _etapaCultivoBLL.ListarPorPlan(plan.PlanCultivoID);
 
-                // 1. LIMPIEZA DE NOMBRE (Evita caracteres prohibidos como / \ : *)
                 string nombreSeguro = string.Join("_", plan.NombrePlan.Split(System.IO.Path.GetInvalidFileNameChars()));
 
                 SaveFileDialog saveFile = new SaveFileDialog();
                 saveFile.Filter = "PDF Files|*.pdf";
-                saveFile.Title = "Guardar Reporte de Cultivo";
+                saveFile.Title = _idiomaBLL.Traducir("Planes_Dialog_GuardarPDF");
                 saveFile.FileName = $"Plan_{nombreSeguro}.pdf";
 
                 if (saveFile.ShowDialog() == DialogResult.OK)
@@ -277,9 +361,12 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                         GeneradorReportePlan generador = new GeneradorReportePlan();
                         generador.ExportarPdf(plan, etapas, saveFile.FileName);
 
-                        var abrir = MetroFramework.MetroMessageBox.Show(this,
-                            "PDF generado exitosamente.\n¿Deseas abrirlo ahora?",
-                            "Exportación Exitosa",
+                        // Bitácora
+                        RegistrarBitacora($"Plan exportado a PDF: {plan.NombrePlan}", NivelCriticidad.Info);
+
+                        var abrir = MetroMessageBox.Show(this,
+                            _idiomaBLL.Traducir("Planes_Msg_ExportarExito"),
+                            _idiomaBLL.Traducir("Global_Titulo_Exito"),
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question);
 
@@ -288,30 +375,52 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
                             System.Diagnostics.Process.Start(saveFile.FileName);
                         }
                     }
-                    catch (System.IO.IOException) // Capturamos error de archivo en uso
+                    catch (System.IO.IOException)
                     {
-                        MetroFramework.MetroMessageBox.Show(this,
-                            "El archivo PDF parece estar abierto en otro programa.\n\nPor favor, ciérralo e intenta nuevamente.",
-                            "Archivo Bloqueado",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
+                        MetroMessageBox.Show(this,
+                            _idiomaBLL.Traducir("Planes_Err_ArchivoEnUso"),
+                            _idiomaBLL.Traducir("Global_Titulo_Error"),
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     catch (Exception ex)
                     {
-                        // Mostramos la InnerException para saber qué pasa realmente
                         string mensaje = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-                        MetroFramework.MetroMessageBox.Show(this,
-                            "Error al generar: " + mensaje,
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        MostrarError(mensaje);
                     }
                 }
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "Selecciona un plan para exportar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this,
+                    _idiomaBLL.Traducir("Planes_Msg_SeleccionarExportar"),
+                    _idiomaBLL.Traducir("Global_Titulo_Atencion"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        #endregion
+
+        #region Helpers
+
+        private void RegistrarBitacora(string mensaje, NivelCriticidad nivel)
+        {
+            var evento = _bitacoraService.CrearEvento(nivel, mensaje, "Gestión Cultivos", _usuarioActual.IdUsuario);
+            var bitacora = new Bitacora
+            {
+                FechaHora = evento.FechaHora,
+                Nivel = evento.Nivel,
+                Mensaje = evento.Mensaje,
+                Modulo = evento.Modulo,
+                UsuarioID = evento.UsuarioID
+            };
+            _bitacoraBLL.Registrar(bitacora);
+        }
+
+        private void MostrarError(string mensaje)
+        {
+            MetroMessageBox.Show(this, mensaje, _idiomaBLL.Traducir("Global_Titulo_Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
     }
 }

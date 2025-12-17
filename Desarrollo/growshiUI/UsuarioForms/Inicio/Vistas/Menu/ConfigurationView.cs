@@ -1,87 +1,96 @@
-﻿using BE;
-using BLL;
-using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion;
-using Interfaces.IServices;
-using Services;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using BE;
+using BLL;
+using Interfaces.IServices;
+using Services;
+using MetroFramework;
 using MetroFramework.Controls;
+using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion; // Para GestionUsuariosView, RolesView, etc.
+using growshiUI.UsuarioForms.Inicio.Vistas.Menu; // Para IdiomaView (si lo moviste ahí)
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas
 {
     public partial class ConfigurationView : UserControl
     {
+        #region Propiedades y Servicios
+
         private readonly ISessionService<Usuario> _sessionService;
-        private readonly InicioUsuarioBL _inicioUsuarioBLL;
         private readonly IPermissionService _permissionService;
         private readonly IdiomaBLL _idiomaBLL;
 
         public Usuario UsuarioActual { get; private set; }
 
+        #endregion
+
+        #region Constructor e Inicialización
+
         public ConfigurationView()
         {
             InitializeComponent();
 
+            // 1. Instancias
             _sessionService = SessionService<Usuario>.GetInstance();
-            _inicioUsuarioBLL = new InicioUsuarioBL();
             _permissionService = PermissionService.GetInstance();
             _idiomaBLL = new IdiomaBLL();
 
             this.UsuarioActual = _sessionService.UsuarioLogueado;
 
+            // 2. Configuración Inicial
             AplicarPermisos();
-
             TraducirInterfaz();
 
+            // 3. Suscripción a cambios de idioma
             IdiomaService.GetInstance().IdiomaCambiado += TraducirInterfaz;
         }
 
+        #endregion
+
+        #region Gestión de Idioma
+
         private void TraducirInterfaz()
         {
-            lblMenuTitulo.Text = _idiomaBLL.Traducir("menu_titulo_configuracion");
+            // Títulos y Labels
+            lblMenuTitulo.Text = _idiomaBLL.Traducir("Config_Lbl_TituloMenu");
+            lblPlaceholder.Text = _idiomaBLL.Traducir("Config_Lbl_Placeholder");
 
-            btnGestionUsuarios.Text = _idiomaBLL.Traducir("btn_gestion_usuarios");
-            btnRolesPermisos.Text = _idiomaBLL.Traducir("btn_roles_permisos");
-            btnAjusteSistema.Text = _idiomaBLL.Traducir("btn_ajustes_sistema");
-            btnCopiaSeguridad.Text = _idiomaBLL.Traducir("btn_copia_seguridad");
-            btnActualizaciones.Text = _idiomaBLL.Traducir("btn_actualizaciones");
-
-            lblPlaceholder.Text = _idiomaBLL.Traducir("lbl_placeholder_seleccion");
+            // Botones del Menú
+            btnGestionUsuarios.Text = _idiomaBLL.Traducir("Config_Btn_GestionUsuarios");
+            btnRolesPermisos.Text = _idiomaBLL.Traducir("Config_Btn_RolesPermisos");
+            btnAjusteSistema.Text = _idiomaBLL.Traducir("Config_Btn_AjustesIdioma"); // Cambiado a Idioma
+            btnCopiaSeguridad.Text = _idiomaBLL.Traducir("Config_Btn_Backups");
+            btnActualizaciones.Text = _idiomaBLL.Traducir("Config_Btn_Actualizaciones");
         }
+
+        #endregion
+
+        #region Gestión de Permisos
 
         private void AplicarPermisos()
         {
+            // Verificamos permisos para mostrar/ocultar botones
             btnGestionUsuarios.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonGestionUsuarios");
             btnRolesPermisos.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonRolesPermisos");
+
+            // Estos suelen ser visibles para admins o usuarios avanzados
             btnAjusteSistema.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonAjusteSistema");
             btnCopiaSeguridad.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonCopiaSeguridad");
-            btnActualizaciones.Visible = _permissionService.TienePermiso(this.UsuarioActual, "MenuStrip_configuracionMenuItem_buttonActualizaciones");
+
+            // Actualizaciones visible para todos o restringido según lógica
+            btnActualizaciones.Visible = true;
         }
+
+        #endregion
+
+        #region Navegación y UI
 
         private void CargarVista(UserControl vista)
         {
             this.panelContenido.Controls.Clear();
             vista.Dock = DockStyle.Fill;
             this.panelContenido.Controls.Add(vista);
-        }
-
-
-        private void panelMenu_Paint(object sender, PaintEventArgs e)
-        {
-            Color colorArriba = Color.FromArgb(60, 150, 90);    
-            Color colorAbajo = Color.FromArgb(100, 200, 120);
-
-            using (LinearGradientBrush brush = new LinearGradientBrush(this.panelMenu.ClientRectangle, colorArriba, colorAbajo, 90F))
-            {
-                e.Graphics.FillRectangle(brush, this.panelMenu.ClientRectangle);
-            }
-        }
-
-        private void panelMenu_Resize(object sender, EventArgs e)
-        {
-            this.panelMenu.Invalidate();
         }
 
         private void ResaltarBoton(MetroButton botonSeleccionado)
@@ -95,7 +104,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas
             if (botonSeleccionado != null)
             {
                 botonSeleccionado.UseCustomBackColor = true;
-                botonSeleccionado.BackColor = Color.FromArgb(220, 255, 255, 255);
+                botonSeleccionado.BackColor = Color.FromArgb(220, 255, 255, 255); // Blanco semi-transparente
                 botonSeleccionado.ForeColor = Color.DarkGreen;
                 botonSeleccionado.UseCustomForeColor = true;
             }
@@ -109,7 +118,26 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas
             btn.ForeColor = Color.White;
         }
 
-        // --- EVENTOS CLICK ---
+        // Efecto gradiente en el panel izquierdo
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
+        {
+            Color colorArriba = Color.FromArgb(60, 150, 90);
+            Color colorAbajo = Color.FromArgb(100, 200, 120);
+
+            using (LinearGradientBrush brush = new LinearGradientBrush(this.panelMenu.ClientRectangle, colorArriba, colorAbajo, 90F))
+            {
+                e.Graphics.FillRectangle(brush, this.panelMenu.ClientRectangle);
+            }
+        }
+
+        private void panelMenu_Resize(object sender, EventArgs e)
+        {
+            this.panelMenu.Invalidate();
+        }
+
+        #endregion
+
+        #region Eventos Click (Botones)
 
         private void btnGestionUsuarios_Click(object sender, EventArgs e)
         {
@@ -133,20 +161,21 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas
         {
             ResaltarBoton((MetroButton)sender);
 
-            string mensaje = _idiomaBLL.Traducir("msg_modulo_desarrollo");
-            string titulo = _idiomaBLL.Traducir("titulo_informacion");
-
-            MetroFramework.MetroMessageBox.Show(this, mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Ahora abrimos la vista real de Idioma que creamos antes
+            CargarVista(new IdiomaView());
         }
 
         private void btnActualizaciones_Click(object sender, EventArgs e)
         {
             ResaltarBoton((MetroButton)sender);
 
-            string mensaje = _idiomaBLL.Traducir("msg_sistema_actualizado");
-            string titulo = _idiomaBLL.Traducir("titulo_estado");
-
-            MetroFramework.MetroMessageBox.Show(this, mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Simulación de check de updates
+            MetroMessageBox.Show(this,
+                _idiomaBLL.Traducir("Config_Msg_SistemaActualizado"),
+                _idiomaBLL.Traducir("Global_Titulo_Estado"),
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        #endregion
     }
 }

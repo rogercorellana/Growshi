@@ -47,6 +47,7 @@
             this.colTempMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPhMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHorasLuz = new System.Windows.Forms.DataGridViewTextBoxColumn(); // <--- 2. INSTANCIAR AQUI
             this.tlpPrincipal.SuspendLayout();
             this.pnlCabecera.SuspendLayout();
             this.pnlBotones.SuspendLayout();
@@ -221,7 +222,8 @@
             this.colTempMin,
             this.colTempMax,
             this.colPhMin,
-            this.colPhMax});
+            this.colPhMax,
+            this.colHorasLuz}); // <--- AGREGAR AL FINAL});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -289,6 +291,12 @@
             this.colPhMax.HeaderText = "pH Máx";
             this.colPhMax.Name = "colPhMax";
             // 
+            // colHorasLuz (CONFIGURACIÓN NUEVA)
+            // 
+            this.colHorasLuz.DataPropertyName = "HorasLuz"; // Debe coincidir con tu BE
+            this.colHorasLuz.HeaderText = "Horas Luz";
+            this.colHorasLuz.Name = "colHorasLuz";
+
             // PlanEdicionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,5 +334,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTempMax;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhMin;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPhMax;
+
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHorasLuz;
+
     }
 }

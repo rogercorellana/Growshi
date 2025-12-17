@@ -1,5 +1,8 @@
 ﻿using BE;
 using BLL;
+using Interfaces.IBE;
+using Interfaces.IServices;
+using Services;
 using MetroFramework;
 using MetroFramework.Forms;
 using System;
@@ -11,29 +14,167 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
 {
     public partial class PlantaResumenForm : MetroForm
     {
-        // --- PROPIEDADES ---
+        #region Propiedades y Servicios
+
         private int _slotId;
         private Planta miPlanta;
-
-        // Instanciamos BLLs
-        private PlantaBLL plantaBLL = new PlantaBLL();
-        private MedicionBLL medicionBLL = new MedicionBLL(); // Asegúrate de tener esta clase creada como vimos antes
-
-        // Bandera de navegación
         public bool SolicitaIrAPlanes { get; private set; } = false;
 
-        // --- VARIABLES SENSOR ---
+        // BLLs y Servicios
+        private readonly PlantaBLL _plantaBLL;
+        private readonly MedicionBLL _medicionBLL;
+        private readonly IdiomaBLL _idiomaBLL;
+        private readonly BitacoraBLL _bitacoraBLL;
+        private readonly IBitacoraService _bitacoraService;
+        private readonly ISessionService<Usuario> _sessionService;
+        private readonly Usuario _usuarioActual;
+
+        // Sensor
         private SerialPort _puertoSerie;
         private bool _sensorActivo = false;
+
+        #endregion
+
+        #region Constructor e Inicialización
 
         public PlantaResumenForm(int slot)
         {
             InitializeComponent();
             this._slotId = slot;
 
+            // 1. Instancias
+            _plantaBLL = new PlantaBLL();
+            _medicionBLL = new MedicionBLL();
+            _idiomaBLL = new IdiomaBLL();
+            _bitacoraBLL = new BitacoraBLL();
+            _bitacoraService = BitacoraService.GetInstance();
+            _sessionService = SessionService<Usuario>.GetInstance();
+            _usuarioActual = _sessionService.UsuarioLogueado;
+
+            // 2. Carga Inicial
             CargarDatosReales();
             IniciarConexionSensor();
+
+            // 3. Traducción y Eventos
+            ActualizarTraducciones();
+            IdiomaService.GetInstance().IdiomaCambiado += ActualizarTraducciones;
         }
+
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            IdiomaService.GetInstance().IdiomaCambiado -= ActualizarTraducciones;
+            base.OnHandleDestroyed(e);
+        }
+
+        #endregion
+
+        #region Gestión de Idioma
+
+        private void ActualizarTraducciones()
+        {
+            // Títulos de Paneles
+            lblTituloInfo.Text = _idiomaBLL.Traducir("PlantaResumen_Lbl_InfoGeneral");
+            lblTituloEstado.Text = _idiomaBLL.Traducir("PlantaResumen_Lbl_EstadoActual");
+            lblTituloMediciones.Text = _idiomaBLL.Traducir("PlantaResumen_Lbl_Sensores");
+
+            // Etiquetas de Datos
+            lblTemperatura.Text = _idiomaBLL.Traducir("PlantaResumen_Lbl_Temp");
+            lblHumedad.Text = _idiomaBLL.Traducir("PlantaResumen_Lbl_Hum");
+            lblLuminosidad.Text = _idiomaBLL.Traducir("PlantaResumen_Lbl_Luz");
+
+            // Botones
+            btnEliminarPlanta.Text = _idiomaBLL.Traducir("PlantaResumen_Btn_Eliminar");
+            btnCerrar.Text = _idiomaBLL.Traducir("PlantaResumen_Btn_Volver");
+
+            // Título dinámico (si ya cargó la planta)
+            if (miPlanta != null)
+            {
+                this.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Titulo_Form"), _slotId);
+                lblTituloPlanta.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Lbl_PlantaNombre"), miPlanta.Nombre);
+                // Recargar textos que dependen de datos
+                CargarDatosReales();
+            }
+        }
+
+        #endregion
+
+        #region Lógica de Negocio (Carga de Datos)
+
+        private void CargarDatosReales()
+        {
+            miPlanta = _plantaBLL.ObtenerPorSlot(_slotId);
+
+            if (miPlanta != null)
+            {
+                // Textos con formato traducido
+                this.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Titulo_Form"), _slotId);
+                lblTituloPlanta.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Lbl_PlantaNombre"), miPlanta.Nombre);
+
+                lblPlanAsignado.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Lbl_Plan"), miPlanta.NombrePlan);
+                lblFechaSiembra.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Lbl_Siembra"), miPlanta.FechaInicio);
+
+                // Cálculos BLL
+                DateTime fechaCosecha = _plantaBLL.CalcularFechaCosecha(miPlanta);
+                int diasPasados = _plantaBLL.CalcularDiasPasados(miPlanta);
+                int porcentaje = _plantaBLL.CalcularPorcentajeProgreso(miPlanta);
+
+                lblFechaCosecha.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Lbl_Cosecha"), fechaCosecha);
+                lblProgresoDia.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Lbl_Progreso"), diasPasados, miPlanta.DiasTotalesPlan);
+
+                progresoEtapa.Value = porcentaje;
+                lblEtapaActual.Text = _plantaBLL.ObtenerEstadoEtapa(miPlanta); // Esto podría necesitar traducción interna en BLL o aquí
+            }
+            else
+            {
+                MetroMessageBox.Show(this, _idiomaBLL.Traducir("PlantaResumen_Msg_NoEncontrada"));
+                this.Close();
+            }
+        }
+
+        private void btnEliminarPlanta_Click(object sender, EventArgs e)
+        {
+            if (miPlanta == null) return;
+
+            string msg = string.Format(_idiomaBLL.Traducir("PlantaResumen_Msg_ConfirmarEliminar"), miPlanta.Nombre);
+            string titulo = _idiomaBLL.Traducir("Global_Titulo_Confirmar");
+
+            var result = MetroMessageBox.Show(this, msg, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    _plantaBLL.EliminarPlantaDelSlot(_slotId, miPlanta.PlantaID);
+
+                    // BITÁCORA
+                    RegistrarBitacora($"Planta eliminada: {miPlanta.Nombre} (Slot {_slotId})", NivelCriticidad.Advertencia);
+
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e) => this.Close();
+
+        private void RegistrarBitacora(string mensaje, NivelCriticidad nivel)
+        {
+            var evento = _bitacoraService.CrearEvento(nivel, mensaje, "Gestión Cultivos", _usuarioActual.IdUsuario);
+            var bitacora = new Bitacora
+            {
+                FechaHora = evento.FechaHora,
+                Nivel = evento.Nivel,
+                Mensaje = evento.Mensaje,
+                Modulo = evento.Modulo,
+                UsuarioID = evento.UsuarioID
+            };
+            _bitacoraBLL.Registrar(bitacora);
+        }
+
+        #endregion
 
         #region Lógica del Sensor
 
@@ -44,7 +185,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
 
             if (modo != "USB" || string.IsNullOrEmpty(puertoGuardado))
             {
-                lblUltimaMedicion.Text = "Sensor no configurado";
+                lblUltimaMedicion.Text = _idiomaBLL.Traducir("PlantaResumen_Sensor_NoConfig");
                 lblUltimaMedicion.ForeColor = Color.Gray;
                 return;
             }
@@ -61,12 +202,12 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
                 _puertoSerie.DiscardInBuffer();
 
                 _sensorActivo = true;
-                lblUltimaMedicion.Text = "Esperando datos...";
+                lblUltimaMedicion.Text = _idiomaBLL.Traducir("PlantaResumen_Sensor_Esperando");
                 lblUltimaMedicion.ForeColor = Color.Blue;
             }
             catch
             {
-                lblUltimaMedicion.Text = "Error conexión sensor";
+                lblUltimaMedicion.Text = _idiomaBLL.Traducir("PlantaResumen_Sensor_Error");
                 lblUltimaMedicion.ForeColor = Color.Red;
             }
         }
@@ -78,32 +219,25 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
             try
             {
                 string linea = _puertoSerie.ReadLine().Trim();
-
-                // DEBUG: Esto imprimirá en la ventana de "Salida" de Visual Studio lo que llega
                 System.Diagnostics.Debug.WriteLine($"Recibido RAW: {linea}");
 
-                Medicion nuevaMedicion = medicionBLL.InterpretarDatosSensor(linea, this._slotId, this.miPlanta?.PlantaID ?? 0);
+                Medicion nuevaMedicion = _medicionBLL.InterpretarDatosSensor(linea, this._slotId, this.miPlanta?.PlantaID ?? 0);
 
                 if (nuevaMedicion != null)
                 {
                     this.BeginInvoke(new Action(() =>
                     {
                         ActualizarPanelMediciones(nuevaMedicion);
-                        medicionBLL.Guardar(nuevaMedicion);
+                        _medicionBLL.Guardar(nuevaMedicion);
                     }));
-                }
-                else
-                {
-                    // Si entra aquí es porque el JSON llegó mal o es de otro Slot
-                    System.Diagnostics.Debug.WriteLine($"Dato descartado (Null o Slot incorrecto)");
                 }
             }
             catch (Exception ex)
             {
-                // ¡Ahora sí verás si falla!
                 System.Diagnostics.Debug.WriteLine($"ERROR PUERTO: {ex.Message}");
             }
         }
+
         private void ActualizarPanelMediciones(Medicion m)
         {
             if (this.IsDisposed) return;
@@ -117,7 +251,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
             lblLuminosidadVal.Text = $"{m.Luminosidad}%";
             lblLuminosidadVal.ForeColor = m.AlertaLuz ? Color.Gray : Color.Orange;
 
-            lblUltimaMedicion.Text = $"Lectura: {m.FechaRegistro:HH:mm:ss}";
+            lblUltimaMedicion.Text = string.Format(_idiomaBLL.Traducir("PlantaResumen_Sensor_Lectura"), m.FechaRegistro);
             lblUltimaMedicion.ForeColor = Color.Green;
         }
 
@@ -136,66 +270,6 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
                 _puertoSerie.Dispose();
             }
             base.OnFormClosing(e);
-        }
-
-        #endregion
-
-        #region UI: Carga de Datos (LIMPIA)
-
-        private void CargarDatosReales()
-        {
-            miPlanta = plantaBLL.ObtenerPorSlot(_slotId);
-
-            if (miPlanta != null)
-            {
-                // 1. Textos directos
-                this.Text = $"Detalle del Slot #{_slotId}";
-                lblPlanAsignado.Text = $"Slot {_slotId}: {miPlanta.NombrePlan}";
-                lblTituloPlanta.Text = $"Slot {_slotId}: {miPlanta.Nombre}";
-                lblFechaSiembra.Text = $"Siembra: {miPlanta.FechaInicio:dd/MM/yyyy}";
-
-                // 2. Cálculos delegados a la BLL (¡Mucho más limpio!)
-                DateTime fechaCosecha = plantaBLL.CalcularFechaCosecha(miPlanta);
-                int diasPasados = plantaBLL.CalcularDiasPasados(miPlanta);
-                int porcentaje = plantaBLL.CalcularPorcentajeProgreso(miPlanta);
-
-                // 3. Asignación a controles
-                lblFechaCosecha.Text = $"Estimada: {fechaCosecha:dd/MM/yyyy}";
-                lblProgresoDia.Text = $"Día {diasPasados} de {miPlanta.DiasTotalesPlan}";
-
-                progresoEtapa.Value = porcentaje;
-
-                // Aquí llamamos al método nuevo que creamos arriba
-                lblEtapaActual.Text = plantaBLL.ObtenerEstadoEtapa(miPlanta);
-            }
-            else
-            {
-                MetroMessageBox.Show(this, "No se encontró planta en este slot.");
-                this.Close();
-            }
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e) => this.Close();
-
-        private void btnEliminarPlanta_Click(object sender, EventArgs e)
-        {
-            if (miPlanta == null) return;
-
-            var result = MetroMessageBox.Show(this,
-                $"¿Estás SEGURO de eliminar '{miPlanta.Nombre}'?\nSe perderán los datos.",
-                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
-
-            if (result == DialogResult.Yes)
-            {
-                plantaBLL.EliminarPlantaDelSlot(_slotId, miPlanta.PlantaID);
-                this.Close();
-            }
-        }
-
-        private void lnkVerPlan_Click(object sender, EventArgs e)
-        {
-            this.SolicitaIrAPlanes = true;
-            this.Close();
         }
 
         #endregion

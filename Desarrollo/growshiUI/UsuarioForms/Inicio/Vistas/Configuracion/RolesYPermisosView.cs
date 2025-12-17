@@ -1,7 +1,7 @@
 ﻿using BLL;
 using BLL.InicioUsuarioBLL;
 using growshiUI.UsuarioForms.Inicio.Vistas.Configuracion.ABM_RolesYPermisos;
-using Services; 
+using Services;
 using System;
 using System.Data;
 using System.Drawing;
@@ -28,11 +28,14 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             DarVidaAlGrid(metroGridSistema);
             RedondearControl(btnAgregarPermiso, 20);
             RedondearControl(btnQuitarPermiso, 20);
+
+            // Carga inicial de traducciones
             TraducirInterfaz();
 
+            // Suscripción al cambio de idioma
             IdiomaService.GetInstance().IdiomaCambiado += () => {
                 TraducirInterfaz();
-                ListarFamiliaDeRoles();
+                ListarFamiliaDeRoles(); // Recargar para actualizar columnas
 
                 if (metroGridFamilia.CurrentRow != null)
                 {
@@ -47,15 +50,37 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
 
         private void TraducirInterfaz()
         {
-           
-            if (btnNuevaFamilia != null) btnNuevaFamilia.Text = _idiomaBLL.Traducir("btn_nueva_familia");
-            if (btnRenombrarFamilia != null) btnRenombrarFamilia.Text = _idiomaBLL.Traducir("btn_renombrar_familia");
-            if (btnEliminarFamilia != null) btnEliminarFamilia.Text = _idiomaBLL.Traducir("btn_eliminar_familia");
-            if (lblFamilia != null) lblFamilia.Text = _idiomaBLL.Traducir("lbl_familiaDeRoles");
-            if (lblAsignados != null) lblAsignados.Text = _idiomaBLL.Traducir("lbl_permisosAsignados");
-            if (lblDisponibles != null) lblDisponibles.Text = _idiomaBLL.Traducir("lbl_permisosDisponibles");
+            // Botones
+            if (btnNuevaFamilia != null) btnNuevaFamilia.Text = _idiomaBLL.Traducir("Roles_Btn_NuevaFamilia");
+            if (btnRenombrarFamilia != null) btnRenombrarFamilia.Text = _idiomaBLL.Traducir("Roles_Btn_Renombrar");
+            if (btnEliminarFamilia != null) btnEliminarFamilia.Text = _idiomaBLL.Traducir("Roles_Btn_Eliminar");
 
+            // Etiquetas
+            if (lblFamilia != null) lblFamilia.Text = _idiomaBLL.Traducir("Roles_Lbl_Familias");
+            if (lblAsignados != null) lblAsignados.Text = _idiomaBLL.Traducir("Roles_Lbl_Asignados");
+            if (lblDisponibles != null) lblDisponibles.Text = _idiomaBLL.Traducir("Roles_Lbl_Disponibles");
+        }
 
+        // Método auxiliar para traducir columnas de cualquier grid
+        private void TraducirColumnas(MetroFramework.Controls.MetroGrid grid)
+        {
+            if (grid.DataSource == null) return;
+
+            if (grid.Columns.Contains("NombreDescriptivo"))
+            {
+                grid.Columns["NombreDescriptivo"].HeaderText = _idiomaBLL.Traducir("Roles_Col_Nombre");
+            }
+            else if (grid.Columns.Contains("Nombre"))
+            {
+                grid.Columns["Nombre"].HeaderText = _idiomaBLL.Traducir("Roles_Col_Nombre");
+            }
+
+            // Ocultar ID siempre (esto ya estaba en tu lógica implícita, lo mantengo)
+            if (grid.Columns.Contains("PermisoID"))
+                grid.Columns["PermisoID"].Visible = false;
+
+            if (grid.Columns.Contains("Permiso"))
+                grid.Columns["Permiso"].Visible = false;
         }
 
         // --- ESTILOS VISUALES ---
@@ -111,28 +136,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             this.Controls.Add(vista);
         }
 
-        // --- LÓGICA DE DATOS Y TRADUCCIÓN DE COLUMNAS ---
-
-        private void TraducirColumnas(MetroFramework.Controls.MetroGrid grid)
-        {
-            if (grid.DataSource == null) return;
-
-            if (grid.Columns.Contains("NombreDescriptivo"))
-            {
-                grid.Columns["NombreDescriptivo"].HeaderText = _idiomaBLL.Traducir("col_nombre_permiso");
-            }
-            else if (grid.Columns.Contains("Nombre")) 
-            {
-                grid.Columns["Nombre"].HeaderText = _idiomaBLL.Traducir("col_nombre_permiso");
-            }
-
-            // Ocultar ID
-            if (grid.Columns.Contains("PermisoID"))
-                grid.Columns["PermisoID"].Visible = false;
-
-            if (grid.Columns.Contains("Permiso")) 
-                grid.Columns["Permiso"].Visible = false;
-        }
+        // --- LÓGICA DE DATOS ---
 
         public void ListarFamiliaDeRoles()
         {
@@ -140,7 +144,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             if (dataTable != null)
             {
                 metroGridFamilia.DataSource = dataTable;
-                TraducirColumnas(metroGridFamilia);
+                TraducirColumnas(metroGridFamilia); // Traducción aplicada
             }
         }
 
@@ -150,7 +154,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             if (dataTable != null)
             {
                 metroGridAsociados.DataSource = dataTable;
-                TraducirColumnas(metroGridAsociados);
+                TraducirColumnas(metroGridAsociados); // Traducción aplicada
             }
         }
 
@@ -160,7 +164,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             if (dataTable != null)
             {
                 metroGridSistema.DataSource = dataTable;
-                TraducirColumnas(metroGridSistema);
+                TraducirColumnas(metroGridSistema); // Traducción aplicada
             }
         }
 
@@ -189,8 +193,9 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (metroGridFamilia.CurrentRow == null)
             {
-                string msg = _idiomaBLL.Traducir("msg_seleccione_familia");
-                string titulo = _idiomaBLL.Traducir("titulo_atencion");
+                // Mensaje traducido
+                string msg = _idiomaBLL.Traducir("Roles_Msg_SeleccioneFamilia");
+                string titulo = _idiomaBLL.Traducir("Global_Titulo_Atencion"); // Asumiendo que existe
                 MetroMessageBox.Show(this, msg, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -205,8 +210,9 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (metroGridFamilia.CurrentRow == null) return;
 
-            string mensaje = _idiomaBLL.Traducir("msg_confirmar_borrar_familia");
-            string titulo = _idiomaBLL.Traducir("titulo_confirmar");
+            // Mensaje traducido
+            string mensaje = _idiomaBLL.Traducir("Roles_Msg_ConfirmarBorrar");
+            string titulo = _idiomaBLL.Traducir("Global_Titulo_Confirmar"); // Asumiendo que existe
 
             if (MetroMessageBox.Show(this, mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
@@ -215,15 +221,15 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
                     string id = metroGridFamilia.CurrentRow.Cells["PermisoID"].Value.ToString();
                     rolesYPermisosBLL.EliminarFamiliaDeRoles(id);
 
-                    string msgExito = _idiomaBLL.Traducir("msg_familia_eliminada");
-                    string tituloExito = _idiomaBLL.Traducir("titulo_exito");
+                    string msgExito = _idiomaBLL.Traducir("Roles_Msg_EliminadaExito");
+                    string tituloExito = _idiomaBLL.Traducir("Global_Titulo_Exito"); // Asumiendo que existe
 
                     MetroMessageBox.Show(this, msgExito, tituloExito, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ListarFamiliaDeRoles();
                 }
                 catch (Exception ex)
                 {
-                    string tituloError = _idiomaBLL.Traducir("titulo_error");
+                    string tituloError = _idiomaBLL.Traducir("Global_Titulo_Error"); // Asumiendo que existe
                     MetroMessageBox.Show(this, ex.Message, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -235,8 +241,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (metroGridFamilia.CurrentRow == null || metroGridSistema.CurrentRow == null)
             {
-                string msg = _idiomaBLL.Traducir("msg_seleccione_familia_permiso");
-                string titulo = _idiomaBLL.Traducir("titulo_atencion");
+                string msg = _idiomaBLL.Traducir("Roles_Msg_SeleccionIncompleta");
+                string titulo = _idiomaBLL.Traducir("Global_Titulo_Atencion");
                 MetroMessageBox.Show(this, msg, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -253,7 +259,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             }
             catch (Exception ex)
             {
-                string tituloError = _idiomaBLL.Traducir("titulo_error");
+                string tituloError = _idiomaBLL.Traducir("Global_Titulo_Error");
                 MetroMessageBox.Show(this, ex.Message, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -262,8 +268,8 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
         {
             if (metroGridFamilia.CurrentRow == null || metroGridAsociados.CurrentRow == null)
             {
-                string msg = _idiomaBLL.Traducir("msg_seleccione_permiso_quitar");
-                string titulo = _idiomaBLL.Traducir("titulo_atencion");
+                string msg = _idiomaBLL.Traducir("Roles_Msg_SeleccionQuitar");
+                string titulo = _idiomaBLL.Traducir("Global_Titulo_Atencion");
                 MetroMessageBox.Show(this, msg, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -280,7 +286,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Configuracion
             }
             catch (Exception ex)
             {
-                string tituloError = _idiomaBLL.Traducir("titulo_error");
+                string tituloError = _idiomaBLL.Traducir("Global_Titulo_Error");
                 MetroMessageBox.Show(this, ex.Message, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

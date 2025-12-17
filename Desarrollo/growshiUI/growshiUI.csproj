@@ -300,6 +300,12 @@
     <Compile Include="UsuarioForms\Inicio\Vistas\HistorialView\BitacoraItemView.Designer.cs">
       <DependentUpon>BitacoraItemView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Menu\AyudaSoporteView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsuarioForms\Inicio\Vistas\Menu\AyudaSoporteView.Designer.cs">
+      <DependentUpon>AyudaSoporteView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioForms\Inicio\Vistas\Menu\ConfiguracionSensorView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -426,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\AjustesGeneralesView.resx">
       <DependentUpon>AjustesGeneralesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\AyudaSoporteView.resx">
+      <DependentUpon>AyudaSoporteView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForms\Inicio\Vistas\Menu\ConfiguracionSensorView.resx">
       <DependentUpon>ConfiguracionSensorView.cs</DependentUpon>
