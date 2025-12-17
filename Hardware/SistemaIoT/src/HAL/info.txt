@@ -1,5 +1,0 @@
-CAPA DAL (DATA ACCESS LAYER / HARDWARE ABSTRACTION)
----------------------------------------------------
-Esta carpeta contiene todo el código que interactúa directamente con el hardware
-o servicios externos (como el Wi-Fi o el chip NTP).
-Si se cambia el hardware (ej: Ethernet en vez de Wi-Fi), solo se toca esta carpeta.
