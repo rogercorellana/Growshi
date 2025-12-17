@@ -154,8 +154,12 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.Menu
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
             CargarPuertos();
-        }
 
+            //if (cboPuertos.Items.Count == 0)
+            //{
+            //    MessageBox.Show("El botón funciona, pero Windows dice que hay 0 puertos conectados.");
+            //}
+        }
         private void cboTipoConexion_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool esUSB = cboTipoConexion.SelectedIndex == 0;

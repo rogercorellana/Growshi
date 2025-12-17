@@ -15,6 +15,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panelFondo = new System.Windows.Forms.Panel();
             this.panelTarjeta = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
@@ -113,7 +114,7 @@
             this.textBoxUsuario.MaxLength = 32767;
             this.textBoxUsuario.Name = "textBoxUsuario";
             this.textBoxUsuario.PasswordChar = '\0';
-            this.textBoxUsuario.WaterMark = "Usuario";
+            this.textBoxUsuario.PromptText = "Usuario";
             this.textBoxUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.textBoxUsuario.SelectedText = "";
             this.textBoxUsuario.SelectionLength = 0;
@@ -148,7 +149,7 @@
             this.textBoxContraseña.MaxLength = 32767;
             this.textBoxContraseña.Name = "textBoxContraseña";
             this.textBoxContraseña.PasswordChar = '●';
-            this.textBoxContraseña.WaterMark = "Contraseña";
+            this.textBoxContraseña.PromptText = "Contraseña";
             this.textBoxContraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.textBoxContraseña.SelectedText = "";
             this.textBoxContraseña.SelectionLength = 0;
@@ -212,6 +213,7 @@
             this.ClientSize = new System.Drawing.Size(900, 600);
             this.Controls.Add(this.panelFondo);
             this.DisplayHeader = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;

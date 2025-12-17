@@ -8,23 +8,29 @@ using BLL;
 using growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanCultivo;
 using MetroFramework;
 using MetroFramework.Forms;
+using Services; // Necesario para IdiomaService
 
 namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
 {
     public partial class AgregarPlantaForm : MetroForm
     {
-        #region Campos y Constructores
+        #region Propiedades y Servicios
 
         private int _slotIdSeleccionado;
-        private PlanCultivoBLL planCultivoBll = new PlanCultivoBLL();
-        private PlantaBLL plantaBll = new PlantaBLL();
 
-        // Servicio de traducción
-        private IdiomaBLL _idiomaBLL = new IdiomaBLL();
+        // BLLs
+        private PlanCultivoBLL _planCultivoBLL;
+        private PlantaBLL _plantaBLL;
+        private IdiomaBLL _idiomaBLL;
+
+        #endregion
+
+        #region Constructores e Inicialización
 
         public AgregarPlantaForm()
         {
             InitializeComponent();
+            InicializarServicios();
             ConfigurarVentana();
         }
 
@@ -32,46 +38,71 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
         {
             this._slotIdSeleccionado = slotID;
 
-            // Título dinámico traducido
-            string formatoTitulo = _idiomaBLL.Traducir("titulo_asignando_slot");
-            this.Text = string.Format(formatoTitulo, slotID);
+            // Título específico para cuando se abre desde un slot
+            string formato = _idiomaBLL.Traducir("AgregarPlanta_Titulo_Slot");
+            this.Text = string.Format(formato, slotID);
 
+            // Ocultamos el título interno si el del form ya lo dice
             if (lblTitulo != null) lblTitulo.Visible = false;
         }
 
-        #endregion
-
-        #region Configuración Inicial
+        private void InicializarServicios()
+        {
+            _planCultivoBLL = new PlanCultivoBLL();
+            _plantaBLL = new PlantaBLL();
+            _idiomaBLL = new IdiomaBLL();
+        }
 
         private void AgregarPlantaForm_Load(object sender, EventArgs e)
         {
             ConfigurarEstilos();
 
-            // 0. Traducir textos estáticos
+            // Suscripción al cambio de idioma en caliente
+            IdiomaService.GetInstance().IdiomaCambiado += TraducirInterfaz;
+
+            // 1. Traducir textos
             TraducirInterfaz();
 
-            // 1. PRIMERO: Definimos las columnas (Ahora traducidas)
-            ConfigurarColumnasGrid();
-
-            // 2. SEGUNDO: Cargamos los combos
+            // 2. Cargar datos
             ListarPlanCultivo();
-
-            // 3. TERCERO: Llenamos la grilla
             ListarPlantas();
         }
 
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            // Desuscripción vital para evitar fugas de memoria
+            IdiomaService.GetInstance().IdiomaCambiado -= TraducirInterfaz;
+            base.OnHandleDestroyed(e);
+        }
+
+        #endregion
+
+        #region Gestión de Idioma
+
         private void TraducirInterfaz()
         {
-            // Si se usó el constructor por defecto, ponemos el título genérico
-            if (_slotIdSeleccionado == 0)
-                this.Text = _idiomaBLL.Traducir("form_agregar_planta_titulo");
+            if (this.InvokeRequired) { this.Invoke(new Action(TraducirInterfaz)); return; }
 
-            lblTitulo.Text = _idiomaBLL.Traducir("lbl_asignacion_planta");
-            lblNombre.Text = _idiomaBLL.Traducir("lbl_nombre_planta_campo");
-            lblPlan.Text = _idiomaBLL.Traducir("lbl_plan_cultivo_campo");
-            btnGuardar.Text = _idiomaBLL.Traducir("btn_guardar_planta");
-            lnkNuevoPlan.Text = _idiomaBLL.Traducir("lnk_crear_nuevo_plan");
+            // Si es constructor por defecto (sin slot), título genérico
+            if (_slotIdSeleccionado == 0)
+                this.Text = _idiomaBLL.Traducir("AgregarPlanta_Titulo_Default");
+            else
+                this.Text = string.Format(_idiomaBLL.Traducir("AgregarPlanta_Titulo_Slot"), _slotIdSeleccionado);
+
+            // Labels y Botones
+            lblTitulo.Text = _idiomaBLL.Traducir("AgregarPlanta_Lbl_TituloMain");
+            lblNombre.Text = _idiomaBLL.Traducir("AgregarPlanta_Lbl_Nombre");
+            lblPlan.Text = _idiomaBLL.Traducir("AgregarPlanta_Lbl_Plan");
+            btnGuardar.Text = _idiomaBLL.Traducir("AgregarPlanta_Btn_Guardar");
+            lnkNuevoPlan.Text = _idiomaBLL.Traducir("AgregarPlanta_Lnk_NuevoPlan");
+
+            // Refrescar columnas de la grilla con los nuevos textos
+            ConfigurarColumnasGrid();
         }
+
+        #endregion
+
+        #region Configuración Visual (Estilos)
 
         private void ConfigurarVentana()
         {
@@ -83,7 +114,6 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
             this.ShadowType = MetroFormShadowType.AeroShadow;
             this.Style = MetroColorStyle.Green;
             this.StartPosition = FormStartPosition.CenterParent;
-            // El texto se setea en Load o Constructor
         }
 
         private void ConfigurarEstilos()
@@ -93,35 +123,19 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
             RedondearControl(btnGuardar, 20);
         }
 
-        #endregion
-
-        #region Métodos Visuales 
-
         private void ConfigurarColumnasGrid()
         {
             metroGridPlantas.Columns.Clear();
 
-            // Columnas existentes
             metroGridPlantas.Columns.Add("ID", "ID");
-            metroGridPlantas.Columns.Add("Nombre", _idiomaBLL.Traducir("col_nombre_planta"));
-            metroGridPlantas.Columns.Add("Plan", _idiomaBLL.Traducir("col_plan_asignado"));
+            metroGridPlantas.Columns["ID"].Visible = false; // Ocultar ID generalmente es mejor
 
-            // --- NUEVA COLUMNA ---
-            // Asegúrate de tener la clave "col_fecha_inicio" en tu base de datos de idiomas
-            // O pon "Fecha Inicio" como string fijo si prefieres por ahora.
-            metroGridPlantas.Columns.Add("FechaInicio", _idiomaBLL.Traducir("col_fecha_inicio"));
-        }
+            metroGridPlantas.Columns.Add("Nombre", _idiomaBLL.Traducir("AgregarPlanta_Col_Nombre"));
+            metroGridPlantas.Columns.Add("Plan", _idiomaBLL.Traducir("AgregarPlanta_Col_Plan"));
+            metroGridPlantas.Columns.Add("FechaInicio", _idiomaBLL.Traducir("AgregarPlanta_Col_Fecha"));
 
-        private void RedondearControl(Control control, int radio)
-        {
-            Rectangle bounds = new Rectangle(0, 0, control.Width, control.Height);
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(bounds.X, bounds.Y, radio, radio, 180, 90);
-            path.AddArc(bounds.X + bounds.Width - radio, bounds.Y, radio, radio, 270, 90);
-            path.AddArc(bounds.X + bounds.Width - radio, bounds.Y + bounds.Height - radio, radio, radio, 0, 90);
-            path.AddArc(bounds.X, bounds.Y + bounds.Height - radio, radio, radio, 90, 90);
-            path.CloseFigure();
-            control.Region = new Region(path);
+            // Recargar datos para que se vean en las columnas nuevas
+            ListarPlantas();
         }
 
         private void DarVidaAlGrid(MetroFramework.Controls.MetroGrid grid)
@@ -149,6 +163,23 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
             grid.ReadOnly = true;
         }
 
+        private void RedondearControl(Control control, int radio)
+        {
+            Rectangle bounds = new Rectangle(0, 0, control.Width, control.Height);
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(bounds.X, bounds.Y, radio, radio, 180, 90);
+            path.AddArc(bounds.X + bounds.Width - radio, bounds.Y, radio, radio, 270, 90);
+            path.AddArc(bounds.X + bounds.Width - radio, bounds.Y + bounds.Height - radio, radio, radio, 0, 90);
+            path.AddArc(bounds.X, bounds.Y + bounds.Height - radio, radio, radio, 90, 90);
+            path.CloseFigure();
+            control.Region = new Region(path);
+        }
+
+        private void ABMPlanta_Resize(object sender, EventArgs e)
+        {
+            this.Refresh();
+        }
+
         #endregion
 
         #region Lógica de Datos
@@ -156,11 +187,11 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
         private void ListarPlantas()
         {
             metroGridPlantas.Rows.Clear();
-            List<Planta> lista = plantaBll.Listar();
+            List<Planta> lista = _plantaBLL.Listar();
 
             foreach (Planta p in lista)
             {
-                metroGridPlantas.Rows.Add(p.PlantaID, p.Nombre, p.NombrePlan, p.FechaInicio);
+                metroGridPlantas.Rows.Add(p.PlantaID, p.Nombre, p.NombrePlan, p.FechaInicio.ToShortDateString());
             }
         }
 
@@ -169,7 +200,7 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
             cmbPlanCultivo.DataSource = null;
             cmbPlanCultivo.Items.Clear();
 
-            List<PlanCultivo> listaPlanes = planCultivoBll.Listar();
+            List<PlanCultivo> listaPlanes = _planCultivoBLL.Listar();
 
             cmbPlanCultivo.DataSource = listaPlanes;
             cmbPlanCultivo.DisplayMember = "NombrePlan";
@@ -178,23 +209,21 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
 
         #endregion
 
-        #region Eventos
+        #region Eventos y Acciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string tituloAtencion = _idiomaBLL.Traducir("titulo_atencion");
+            string tituloAtencion = _idiomaBLL.Traducir("Global_Titulo_Atencion");
 
             if (string.IsNullOrEmpty(txtNombrePlanta.Text))
             {
-                string msg = _idiomaBLL.Traducir("msg_falta_nombre_planta");
-                MetroMessageBox.Show(this, msg, tituloAtencion, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this, _idiomaBLL.Traducir("AgregarPlanta_Msg_FaltaNombre"), tituloAtencion, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (cmbPlanCultivo.SelectedItem == null)
             {
-                string msg = _idiomaBLL.Traducir("msg_falta_plan");
-                MetroMessageBox.Show(this, msg, tituloAtencion, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MetroMessageBox.Show(this, _idiomaBLL.Traducir("AgregarPlanta_Msg_FaltaPlan"), tituloAtencion, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -208,10 +237,10 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
                     PlanCultivoID = planSeleccionado.PlanCultivoID
                 };
 
-                plantaBll.GuardarNuevaSiembra(nuevaPlanta, _slotIdSeleccionado);
+                _plantaBLL.GuardarNuevaSiembra(nuevaPlanta, _slotIdSeleccionado);
 
-                string tituloExito = _idiomaBLL.Traducir("titulo_exito");
-                string formatoMensaje = _idiomaBLL.Traducir("msg_planta_guardada_formato");
+                string tituloExito = _idiomaBLL.Traducir("Global_Titulo_Exito");
+                string formatoMensaje = _idiomaBLL.Traducir("AgregarPlanta_Msg_Exito");
                 string mensajeFinal = string.Format(formatoMensaje, nuevaPlanta.Nombre, _slotIdSeleccionado);
 
                 MetroMessageBox.Show(this, mensajeFinal, tituloExito, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -221,57 +250,52 @@ namespace growshiUI.UsuarioForms.Inicio.Vistas.MisCultivos.ABMPlanta
             }
             catch (Exception ex)
             {
-                string tituloError = _idiomaBLL.Traducir("titulo_error");
+                string tituloError = _idiomaBLL.Traducir("Global_Titulo_Error");
                 MetroMessageBox.Show(this, ex.Message, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void lnkNuevoPlan_Click(object sender, EventArgs e)
         {
-            string msg = _idiomaBLL.Traducir("msg_redirigiendo_plan");
+            // Ventana modal temporal simulando redirección
+            string msg = _idiomaBLL.Traducir("AgregarPlanta_Msg_Redirigiendo");
 
-            #region VENTANA DE 0.5 SEGUNDOS DE REDIRECCIONAMIENTO
             using (Form mensajeForm = new Form())
             {
                 mensajeForm.FormBorderStyle = FormBorderStyle.None;
                 mensajeForm.StartPosition = FormStartPosition.CenterScreen;
                 mensajeForm.Size = new Size(320, 110);
-                mensajeForm.BackColor = Color.FromArgb(0, 174, 219); 
-                mensajeForm.TopMost = true; 
+                mensajeForm.BackColor = Color.FromArgb(0, 174, 219);
+                mensajeForm.TopMost = true;
 
                 Label lbl = new Label();
                 lbl.Text = msg;
                 lbl.ForeColor = Color.White;
                 lbl.Dock = DockStyle.Fill;
-                lbl.TextAlign = ContentAlignment.MiddleCenter; 
+                lbl.TextAlign = ContentAlignment.MiddleCenter;
                 lbl.Font = new Font("Segoe UI", 11, FontStyle.Bold);
                 mensajeForm.Controls.Add(lbl);
 
-                System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                Timer timer = new Timer();
                 timer.Interval = 500;
                 timer.Tick += (s, ev) =>
                 {
                     timer.Stop();
-                    mensajeForm.Close(); 
+                    mensajeForm.Close();
                 };
                 timer.Start();
 
                 mensajeForm.ShowDialog();
             }
-            #endregion
 
+            // Flujo de navegación
             AgregarPlanCultivoForm planCultivoForm = new AgregarPlanCultivoForm();
+            this.Hide();
+            planCultivoForm.ShowDialog();
 
-            this.Hide(); 
-            planCultivoForm.ShowDialog(); 
-
+            // Al volver
             ListarPlanCultivo();
-            this.Show(); 
-        }
-
-        private void ABMPlanta_Resize(object sender, EventArgs e)
-        {
-            this.Refresh();
+            this.Show();
         }
 
         #endregion

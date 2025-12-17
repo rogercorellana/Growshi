@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioUsuario));
             this.MenuStrip_inicioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip_misCultivosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip_historialMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -144,6 +145,7 @@
             this.ClientSize = new System.Drawing.Size(1300, 588);
             this.Controls.Add(this.panelInicio);
             this.Controls.Add(this.menuStripGlobal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripGlobal;
             this.Name = "InicioUsuario";
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
